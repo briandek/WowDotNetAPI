@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e97a8232-4812-4b55-9920-c1b2881c59dc" name="briandek@TERRA 2011-04-23 03:34:29" runUser="Terra\briandek" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0134485d-d616-41be-ad31-963a4aa628bb">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="briandek_TERRA 2011-04-23 03_34_29">
+      <DeploymentItem filename="D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\RealmAPI.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-04-23T03:34:29.6185440-04:00" queuing="2011-04-23T03:34:29.6315447-04:00" start="2011-04-23T03:34:29.6375451-04:00" finish="2011-04-23T03:34:40.0891429-04:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="21" executed="21" passed="21" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetAll_KR_Realms_Returns_All_KR_Realms" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="6a5af8ba-1649-fa6f-04cb-4e7907ab9f9d">
+      <Execution id="9eedeb71-00f6-4ac6-b277-db7644473aad" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetAll_KR_Realms_Returns_All_KR_Realms" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Multiple_ValidNames_Query_Returns_Valid_Results" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="e2215a6e-e592-4a84-bf11-86df07375fb2">
+      <Execution id="9a0e78c3-7c4e-48b8-b592-ad52e77c431a" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_ValidNames_Query_Returns_Valid_Results" />
+    </UnitTest>
+    <UnitTest name="GetAll_EU_Realms_Returns_All_EU_Realms" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="016416bb-5658-18e6-338e-14fab632fbb4">
+      <Execution id="71d52e9d-d717-46ae-8458-bc1ae82aeceb" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetAll_EU_Realms_Returns_All_EU_Realms" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Multiple_InvalidNamesArray_Query_Returns_Null" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="c8ece4fe-fdd5-8895-437a-ba9d562a9393">
+      <Execution id="5027e743-6f00-41db-91db-80396b1a2c0f" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_InvalidNamesArray_Query_Returns_Null" />
+    </UnitTest>
+    <UnitTest name="Get_Valid_US_Realm_Returns_Unique_Realm" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="c7d225fc-83c1-55fe-9ae3-d47fdb1fcede">
+      <Execution id="87d81fe8-ed8b-433c-9101-a57e4586d25b" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Valid_US_Realm_Returns_Unique_Realm" />
+    </UnitTest>
+    <UnitTest name="Get_All_Realms_By_Type_Returns_Pvp_Realms" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="c9c45897-e78f-62ad-4751-2c45d854b123">
+      <Execution id="55541d3f-1cb3-4997-9ed5-5d39d124a774" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_All_Realms_By_Type_Returns_Pvp_Realms" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Multiple_ValidNamesArray_Query_Returns_Valid_Results" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="d87e1b83-355f-19ba-4fe3-fcbe52a0fe6d">
+      <Execution id="8521bdf9-4eac-4961-a99a-8c061bb22135" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_ValidNamesArray_Query_Returns_Valid_Results" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Multiple_InvalidNames_Query_Returns_One_Valid_Result" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="d608dcce-d9fb-6d84-90fd-9e607a078572">
+      <Execution id="cfdb0571-cc4c-4c30-b855-32c43f42a275" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_InvalidNames_Query_Returns_One_Valid_Result" />
+    </UnitTest>
+    <UnitTest name="Get_Valid_KR_Realm_Returns_Unique_KR_Realm" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="1c3657c1-2092-354d-0489-a5922b3117c4">
+      <Execution id="3bcea067-43e9-4932-a154-ae00deb0cdae" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Valid_KR_Realm_Returns_Unique_KR_Realm" />
+    </UnitTest>
+    <UnitTest name="Get_All_Realms_By_Status_Returns_Realms_That_Are_Up" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="3a58a424-202c-4993-1f21-dcc161491d40">
+      <Execution id="909dcf7b-ec3d-4f98-bdf9-00a1d97772cd" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_All_Realms_By_Status_Returns_Realms_That_Are_Up" />
+    </UnitTest>
+    <UnitTest name="GetAllRealms_InvalidRegion_URL_Throws_WebException" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="f6966b7c-5c2e-4e63-4e06-258062d73de5">
+      <Execution id="954bb3c7-4bb0-4d30-bd4d-5bc3094150af" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetAllRealms_InvalidRegion_URL_Throws_WebException" />
+    </UnitTest>
+    <UnitTest name="Get_Invalid_KR_Realm_Returns_Null" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="fa9fed67-eb0e-afb0-864a-a12221f60dd9">
+      <Execution id="0a00c725-d68d-4aa1-a9a8-f0ab2f0f0d67" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Invalid_KR_Realm_Returns_Null" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Valid_Query_Returns_Valid_Results" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="b00eb8c3-44d1-b0d5-78ed-133c1351f56b">
+      <Execution id="070e7005-4abb-41d3-822a-74f20d9b692d" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Valid_Query_Returns_Valid_Results" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Garbage_Query_Still_Returns_All_Realms" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="e963691d-9802-8dbe-87d9-40c135a80620">
+      <Execution id="fd72c0f3-ee92-4b6b-b9cb-74f4b7d9c443" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Garbage_Query_Still_Returns_All_Realms" />
+    </UnitTest>
+    <UnitTest name="Get_Invalid_EU_Realm_Returns_Null" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="3b9aa556-05fa-334a-f8e6-db13047f8893">
+      <Execution id="21c4360d-5593-45e6-a68a-2019df1bd80f" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Invalid_EU_Realm_Returns_Null" />
+    </UnitTest>
+    <UnitTest name="Get_Valid_EU_Realm_Returns_Unique_EU_Realm" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="4ec20c7b-f01b-d96e-c825-f861e7c35ccc">
+      <Execution id="019cb332-5e76-42f1-9223-e4ff297399e4" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Valid_EU_Realm_Returns_Unique_EU_Realm" />
+    </UnitTest>
+    <UnitTest name="Get_Invalid_US_Realm_Returns_Null" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="baffacb8-31fa-91fb-ce8c-dedacdb1da42">
+      <Execution id="e45b91ec-f020-4ade-bba0-cda4deb054ea" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Invalid_US_Realm_Returns_Null" />
+    </UnitTest>
+    <UnitTest name="Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="54503d8b-a3d8-1798-6cd1-f35962641478">
+      <Execution id="cdf0ae8e-d1dc-44de-8772-2823299747c5" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population" />
+    </UnitTest>
+    <UnitTest name="Get_All_Realms_By_Queue_Returns_Realms_That_Have_Queues" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="a6bce660-b39b-2f9d-0612-08c1546f021e">
+      <Execution id="ba6d59a8-2bb9-4e0d-a2b2-f46ec912ee39" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_All_Realms_By_Queue_Returns_Realms_That_Have_Queues" />
+    </UnitTest>
+    <UnitTest name="Get_Realms_Using_Invalid_Realm_Name_In_Query_Returns_Null" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="f1eef956-58c1-3c5f-13db-9a26d9fdbd4f">
+      <Execution id="30d71c46-7e43-42b3-8b8f-bca184ddfb59" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Invalid_Realm_Name_In_Query_Returns_Null" />
+    </UnitTest>
+    <UnitTest name="GetAll_US_Realms_Returns_All_Realms" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="74e71098-7b33-aa98-3016-e2856bfb56ac">
+      <Execution id="41c37685-6fe8-446a-bea9-fcb11e2c872d" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetAll_US_Realms_Returns_All_Realms" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="016416bb-5658-18e6-338e-14fab632fbb4" executionId="71d52e9d-d717-46ae-8458-bc1ae82aeceb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c3657c1-2092-354d-0489-a5922b3117c4" executionId="3bcea067-43e9-4932-a154-ae00deb0cdae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3a58a424-202c-4993-1f21-dcc161491d40" executionId="909dcf7b-ec3d-4f98-bdf9-00a1d97772cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b9aa556-05fa-334a-f8e6-db13047f8893" executionId="21c4360d-5593-45e6-a68a-2019df1bd80f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ec20c7b-f01b-d96e-c825-f861e7c35ccc" executionId="019cb332-5e76-42f1-9223-e4ff297399e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54503d8b-a3d8-1798-6cd1-f35962641478" executionId="cdf0ae8e-d1dc-44de-8772-2823299747c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a5af8ba-1649-fa6f-04cb-4e7907ab9f9d" executionId="9eedeb71-00f6-4ac6-b277-db7644473aad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="74e71098-7b33-aa98-3016-e2856bfb56ac" executionId="41c37685-6fe8-446a-bea9-fcb11e2c872d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6bce660-b39b-2f9d-0612-08c1546f021e" executionId="ba6d59a8-2bb9-4e0d-a2b2-f46ec912ee39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b00eb8c3-44d1-b0d5-78ed-133c1351f56b" executionId="070e7005-4abb-41d3-822a-74f20d9b692d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="baffacb8-31fa-91fb-ce8c-dedacdb1da42" executionId="e45b91ec-f020-4ade-bba0-cda4deb054ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c7d225fc-83c1-55fe-9ae3-d47fdb1fcede" executionId="87d81fe8-ed8b-433c-9101-a57e4586d25b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c8ece4fe-fdd5-8895-437a-ba9d562a9393" executionId="5027e743-6f00-41db-91db-80396b1a2c0f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c9c45897-e78f-62ad-4751-2c45d854b123" executionId="55541d3f-1cb3-4997-9ed5-5d39d124a774" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d608dcce-d9fb-6d84-90fd-9e607a078572" executionId="cfdb0571-cc4c-4c30-b855-32c43f42a275" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d87e1b83-355f-19ba-4fe3-fcbe52a0fe6d" executionId="8521bdf9-4eac-4961-a99a-8c061bb22135" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e2215a6e-e592-4a84-bf11-86df07375fb2" executionId="9a0e78c3-7c4e-48b8-b592-ad52e77c431a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e963691d-9802-8dbe-87d9-40c135a80620" executionId="fd72c0f3-ee92-4b6b-b9cb-74f4b7d9c443" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1eef956-58c1-3c5f-13db-9a26d9fdbd4f" executionId="30d71c46-7e43-42b3-8b8f-bca184ddfb59" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6966b7c-5c2e-4e63-4e06-258062d73de5" executionId="954bb3c7-4bb0-4d30-bd4d-5bc3094150af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa9fed67-eb0e-afb0-864a-a12221f60dd9" executionId="0a00c725-d68d-4aa1-a9a8-f0ab2f0f0d67" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="71d52e9d-d717-46ae-8458-bc1ae82aeceb" testId="016416bb-5658-18e6-338e-14fab632fbb4" testName="GetAll_EU_Realms_Returns_All_EU_Realms" computerName="TERRA" duration="00:00:01.0313561" startTime="2011-04-23T03:34:29.6395452-04:00" endTime="2011-04-23T03:34:30.8126123-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71d52e9d-d717-46ae-8458-bc1ae82aeceb">
+    </UnitTestResult>
+    <UnitTestResult executionId="3bcea067-43e9-4932-a154-ae00deb0cdae" testId="1c3657c1-2092-354d-0489-a5922b3117c4" testName="Get_Valid_KR_Realm_Returns_Unique_KR_Realm" computerName="TERRA" duration="00:00:00.6590369" startTime="2011-04-23T03:34:30.8136124-04:00" endTime="2011-04-23T03:34:31.4756502-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3bcea067-43e9-4932-a154-ae00deb0cdae">
+    </UnitTestResult>
+    <UnitTestResult executionId="909dcf7b-ec3d-4f98-bdf9-00a1d97772cd" testId="3a58a424-202c-4993-1f21-dcc161491d40" testName="Get_All_Realms_By_Status_Returns_Realms_That_Are_Up" computerName="TERRA" duration="00:00:00.9286088" startTime="2011-04-23T03:34:31.4776503-04:00" endTime="2011-04-23T03:34:32.4097036-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="909dcf7b-ec3d-4f98-bdf9-00a1d97772cd">
+    </UnitTestResult>
+    <UnitTestResult executionId="21c4360d-5593-45e6-a68a-2019df1bd80f" testId="3b9aa556-05fa-334a-f8e6-db13047f8893" testName="Get_Invalid_EU_Realm_Returns_Null" computerName="TERRA" duration="00:00:00.1755912" startTime="2011-04-23T03:34:32.4107037-04:00" endTime="2011-04-23T03:34:32.5897139-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21c4360d-5593-45e6-a68a-2019df1bd80f">
+    </UnitTestResult>
+    <UnitTestResult executionId="019cb332-5e76-42f1-9223-e4ff297399e4" testId="4ec20c7b-f01b-d96e-c825-f861e7c35ccc" testName="Get_Valid_EU_Realm_Returns_Unique_EU_Realm" computerName="TERRA" duration="00:00:00.2622853" startTime="2011-04-23T03:34:32.5917141-04:00" endTime="2011-04-23T03:34:32.8587293-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="019cb332-5e76-42f1-9223-e4ff297399e4">
+    </UnitTestResult>
+    <UnitTestResult executionId="cdf0ae8e-d1dc-44de-8772-2823299747c5" testId="54503d8b-a3d8-1798-6cd1-f35962641478" testName="Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population" computerName="TERRA" duration="00:00:00.5163736" startTime="2011-04-23T03:34:32.8607294-04:00" endTime="2011-04-23T03:34:33.3827593-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cdf0ae8e-d1dc-44de-8772-2823299747c5">
+    </UnitTestResult>
+    <UnitTestResult executionId="9eedeb71-00f6-4ac6-b277-db7644473aad" testId="6a5af8ba-1649-fa6f-04cb-4e7907ab9f9d" testName="GetAll_KR_Realms_Returns_All_KR_Realms" computerName="TERRA" duration="00:00:00.6245898" startTime="2011-04-23T03:34:33.3837594-04:00" endTime="2011-04-23T03:34:34.0137954-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9eedeb71-00f6-4ac6-b277-db7644473aad">
+    </UnitTestResult>
+    <UnitTestResult executionId="41c37685-6fe8-446a-bea9-fcb11e2c872d" testId="74e71098-7b33-aa98-3016-e2856bfb56ac" testName="GetAll_US_Realms_Returns_All_Realms" computerName="TERRA" duration="00:00:00.5297846" startTime="2011-04-23T03:34:34.0147955-04:00" endTime="2011-04-23T03:34:34.5498261-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="41c37685-6fe8-446a-bea9-fcb11e2c872d">
+    </UnitTestResult>
+    <UnitTestResult executionId="ba6d59a8-2bb9-4e0d-a2b2-f46ec912ee39" testId="a6bce660-b39b-2f9d-0612-08c1546f021e" testName="Get_All_Realms_By_Queue_Returns_Realms_That_Have_Queues" computerName="TERRA" duration="00:00:00.2826209" startTime="2011-04-23T03:34:34.5508261-04:00" endTime="2011-04-23T03:34:34.8388426-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba6d59a8-2bb9-4e0d-a2b2-f46ec912ee39">
+    </UnitTestResult>
+    <UnitTestResult executionId="070e7005-4abb-41d3-822a-74f20d9b692d" testId="b00eb8c3-44d1-b0d5-78ed-133c1351f56b" testName="Get_Realms_Using_Valid_Query_Returns_Valid_Results" computerName="TERRA" duration="00:00:00.1295745" startTime="2011-04-23T03:34:34.8398426-04:00" endTime="2011-04-23T03:34:34.9718502-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="070e7005-4abb-41d3-822a-74f20d9b692d">
+    </UnitTestResult>
+    <UnitTestResult executionId="e45b91ec-f020-4ade-bba0-cda4deb054ea" testId="baffacb8-31fa-91fb-ce8c-dedacdb1da42" testName="Get_Invalid_US_Realm_Returns_Null" computerName="TERRA" duration="00:00:00.1334131" startTime="2011-04-23T03:34:34.9728503-04:00" endTime="2011-04-23T03:34:35.1088580-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e45b91ec-f020-4ade-bba0-cda4deb054ea">
+    </UnitTestResult>
+    <UnitTestResult executionId="87d81fe8-ed8b-433c-9101-a57e4586d25b" testId="c7d225fc-83c1-55fe-9ae3-d47fdb1fcede" testName="Get_Valid_US_Realm_Returns_Unique_Realm" computerName="TERRA" duration="00:00:00.2533568" startTime="2011-04-23T03:34:35.1098581-04:00" endTime="2011-04-23T03:34:35.3668728-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87d81fe8-ed8b-433c-9101-a57e4586d25b">
+    </UnitTestResult>
+    <UnitTestResult executionId="5027e743-6f00-41db-91db-80396b1a2c0f" testId="c8ece4fe-fdd5-8895-437a-ba9d562a9393" testName="Get_Realms_Using_Multiple_InvalidNamesArray_Query_Returns_Null" computerName="TERRA" duration="00:00:00.1431055" startTime="2011-04-23T03:34:35.3688729-04:00" endTime="2011-04-23T03:34:35.5168814-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5027e743-6f00-41db-91db-80396b1a2c0f">
+    </UnitTestResult>
+    <UnitTestResult executionId="55541d3f-1cb3-4997-9ed5-5d39d124a774" testId="c9c45897-e78f-62ad-4751-2c45d854b123" testName="Get_All_Realms_By_Type_Returns_Pvp_Realms" computerName="TERRA" duration="00:00:00.8991145" startTime="2011-04-23T03:34:35.5178814-04:00" endTime="2011-04-23T03:34:36.4219331-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55541d3f-1cb3-4997-9ed5-5d39d124a774">
+    </UnitTestResult>
+    <UnitTestResult executionId="cfdb0571-cc4c-4c30-b855-32c43f42a275" testId="d608dcce-d9fb-6d84-90fd-9e607a078572" testName="Get_Realms_Using_Multiple_InvalidNames_Query_Returns_One_Valid_Result" computerName="TERRA" duration="00:00:00.1356981" startTime="2011-04-23T03:34:36.4239332-04:00" endTime="2011-04-23T03:34:36.5639413-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cfdb0571-cc4c-4c30-b855-32c43f42a275">
+    </UnitTestResult>
+    <UnitTestResult executionId="8521bdf9-4eac-4961-a99a-8c061bb22135" testId="d87e1b83-355f-19ba-4fe3-fcbe52a0fe6d" testName="Get_Realms_Using_Multiple_ValidNamesArray_Query_Returns_Valid_Results" computerName="TERRA" duration="00:00:00.1343685" startTime="2011-04-23T03:34:36.5659414-04:00" endTime="2011-04-23T03:34:36.7049493-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8521bdf9-4eac-4961-a99a-8c061bb22135">
+    </UnitTestResult>
+    <UnitTestResult executionId="9a0e78c3-7c4e-48b8-b592-ad52e77c431a" testId="e2215a6e-e592-4a84-bf11-86df07375fb2" testName="Get_Realms_Using_Multiple_ValidNames_Query_Returns_Valid_Results" computerName="TERRA" duration="00:00:00.1381288" startTime="2011-04-23T03:34:36.7069494-04:00" endTime="2011-04-23T03:34:36.8499576-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a0e78c3-7c4e-48b8-b592-ad52e77c431a">
+    </UnitTestResult>
+    <UnitTestResult executionId="fd72c0f3-ee92-4b6b-b9cb-74f4b7d9c443" testId="e963691d-9802-8dbe-87d9-40c135a80620" testName="Get_Realms_Using_Garbage_Query_Still_Returns_All_Realms" computerName="TERRA" duration="00:00:00.3914968" startTime="2011-04-23T03:34:36.8509577-04:00" endTime="2011-04-23T03:34:37.2479804-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd72c0f3-ee92-4b6b-b9cb-74f4b7d9c443">
+    </UnitTestResult>
+    <UnitTestResult executionId="30d71c46-7e43-42b3-8b8f-bca184ddfb59" testId="f1eef956-58c1-3c5f-13db-9a26d9fdbd4f" testName="Get_Realms_Using_Invalid_Realm_Name_In_Query_Returns_Null" computerName="TERRA" duration="00:00:00.1370701" startTime="2011-04-23T03:34:37.2489804-04:00" endTime="2011-04-23T03:34:37.3909886-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30d71c46-7e43-42b3-8b8f-bca184ddfb59">
+    </UnitTestResult>
+    <UnitTestResult executionId="954bb3c7-4bb0-4d30-bd4d-5bc3094150af" testId="f6966b7c-5c2e-4e63-4e06-258062d73de5" testName="GetAllRealms_InvalidRegion_URL_Throws_WebException" computerName="TERRA" duration="00:00:02.3308233" startTime="2011-04-23T03:34:37.3929887-04:00" endTime="2011-04-23T03:34:39.7281222-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="954bb3c7-4bb0-4d30-bd4d-5bc3094150af">
+    </UnitTestResult>
+    <UnitTestResult executionId="0a00c725-d68d-4aa1-a9a8-f0ab2f0f0d67" testId="fa9fed67-eb0e-afb0-864a-a12221f60dd9" testName="Get_Invalid_KR_Realm_Returns_Null" computerName="TERRA" duration="00:00:00.3232133" startTime="2011-04-23T03:34:39.7301224-04:00" endTime="2011-04-23T03:34:40.0581411-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a00c725-d68d-4aa1-a9a8-f0ab2f0f0d67">
+    </UnitTestResult>
+  </Results>
+</TestRun>
