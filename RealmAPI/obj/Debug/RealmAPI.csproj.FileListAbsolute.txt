@@ -1,0 +1,8 @@
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\RealmAPI.dll
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\RealmAPI.pdb
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\obj\Debug\ResolveAssemblyReference.cache
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\obj\Debug\RealmAPI.dll
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\obj\Debug\RealmAPI.pdb
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\Newtonsoft.Json.Net35.dll
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\Newtonsoft.Json.Net35.pdb
+D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\Newtonsoft.Json.Net35.xml

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f180bfba-c1e7-44ff-a9b4-8ac7e2f24afe" name="briandek@TERRA 2011-04-23 02:46:55" runUser="Terra\briandek" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0134485d-d616-41be-ad31-963a4aa628bb">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="briandek_TERRA 2011-04-23 02_46_55">
+      <DeploymentItem filename="D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\RealmAPI.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-04-23T02:46:55.5563010-04:00" queuing="2011-04-23T02:46:56.2403401-04:00" start="2011-04-23T02:46:56.3273451-04:00" finish="2011-04-23T02:47:09.4190939-04:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="TERRA" outcome="Error" timestamp="2011-04-23T02:47:09.4180938-04:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Get_Realms_Using_Multiple_InValidNamesArray_Query" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="48ff3ff3-b9b0-5e96-7688-23d101604e06">
+      <Execution id="aefb8792-a8dc-4ffb-ac76-50c962707202" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_InValidNamesArray_Query" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="48ff3ff3-b9b0-5e96-7688-23d101604e06" executionId="aefb8792-a8dc-4ffb-ac76-50c962707202" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="aefb8792-a8dc-4ffb-ac76-50c962707202" testId="48ff3ff3-b9b0-5e96-7688-23d101604e06" testName="Get_Realms_Using_Multiple_InValidNamesArray_Query" computerName="TERRA" duration="00:00:13.0067440" startTime="2011-04-23T02:46:56.4123499-04:00" endTime="2011-04-23T02:47:09.4190939-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aefb8792-a8dc-4ffb-ac76-50c962707202">
+    </UnitTestResult>
+  </Results>
+</TestRun>

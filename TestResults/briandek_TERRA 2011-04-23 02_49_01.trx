@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="418e995e-c4d3-4a06-96ac-9c6ede381945" name="briandek@TERRA 2011-04-23 02:49:01" runUser="Terra\briandek" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="0134485d-d616-41be-ad31-963a4aa628bb">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="briandek_TERRA 2011-04-23 02_49_01">
+      <DeploymentItem filename="D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI\bin\Debug\RealmAPI.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-04-23T02:49:01.1854866-04:00" queuing="2011-04-23T02:49:01.9235288-04:00" start="2011-04-23T02:49:02.0305349-04:00" finish="2011-04-23T02:49:39.6876888-04:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Get_Realms_Using_Multiple_InvalidNamesArray_Query" storage="d:\visual studio 2010\projects\wowdotnetapi\realmapi.test\bin\debug\realmapi.test.dll" id="2871af18-3198-d03e-98a1-6ac3621dd3a4">
+      <Execution id="01f1a6e5-65cf-4d38-84df-37eae0f4b2fc" />
+      <TestMethod codeBase="D:/Visual Studio 2010/Projects/WowDotNetAPI/RealmAPI.Test/bin/Debug/RealmAPI.Test.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="RealmAPI.Test.RealmExplorerTest, RealmAPI.Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Get_Realms_Using_Multiple_InvalidNamesArray_Query" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="2871af18-3198-d03e-98a1-6ac3621dd3a4" executionId="01f1a6e5-65cf-4d38-84df-37eae0f4b2fc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="01f1a6e5-65cf-4d38-84df-37eae0f4b2fc" testId="2871af18-3198-d03e-98a1-6ac3621dd3a4" testName="Get_Realms_Using_Multiple_InvalidNamesArray_Query" computerName="TERRA" duration="00:00:36.7626246" startTime="2011-04-23T02:49:02.1185399-04:00" endTime="2011-04-23T02:49:39.6186848-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01f1a6e5-65cf-4d38-84df-37eae0f4b2fc">
+    </UnitTestResult>
+  </Results>
+</TestRun>
