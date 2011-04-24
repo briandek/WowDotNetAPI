@@ -5,9 +5,61 @@ WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform A
  
 Instructions
 ============
-...
 
+After referencing the WowDotNetAPI.dll in your solution, you should be able to create a RealmExplorer object.
+
+	RealmExplorer usRealmExplorer = new RealmExplorer()	    //the default region is set to "US"
+
+	RealmExplorer euRealmExplorer = new RealmExplorer("eu") //or if you want to look at European realms
+
+	RealmExplorer krRealmExplorer = new RealmExplorer()		//or Korean
+	krRealmExplorer.region = "kr"
+
+The RealmAPI uses a Realm object as its base data model 
+
+	//Realm API simple doc reference. Author: Cyaga - http://us.battle.net/wow/en/forum/topic/2416192911
+    //Realm 
+    //name: string, the fully formatted name of the realm
+    //slug: string, "data-friendly" version of name, punctuation removed and spaces converted to dashes
+    //type: string, type of the realm: pve, pvp, rp, rppvp
+    //status: boolean, true if realm is up, false otherwise
+    //queue: boolean, true if realm has a queue, false otherwise
+    //population: string, the realm's population: low, medium, high
+
+	public class Realm
+		{
+		  public string name { get; set; }
+		  public string slug { get; set; }
+		  public string type { get; set; }
+          public bool status { get; set; }
+          public bool queue { get; set; }
+          public string population { get; set; }
+		}
+
+The RealmExplorer returns lists of these objects or returns a json string depending on what function we use and what query we send to the community platform api.
+
+The RealmAPI relies on Json.Net for all of the JSON serialization and related operations.
+
+Sample Usage :
+----------------------
+
+	RealmExplorer usRE = new RealmExplorer();
+	List<Realm> realmList = usRE.GetAllRealms();										//Returns list of All US realms	
+	Realm singleRealm = usRE.GetRealm("Aegwynn")										//Returns Realm object Aewynn data
+	
+	List<Realm> twoFavoriteRealms = usRE.GetRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
+		
+	List<Realm> pvpOnlyRealmList = usRE.GetAllRealmsByType("pvp");						//Returns list of All US pvp realms
+	string medPopulationRealmJson = usRE.GetRealmsByPopulationAsJson("medium");			//Returns json of medium populated realms
+
+	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
+
+	List<Realm> sampleAPIRealmList = usRE.GetAllRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
+	List<Realm> anotherSampleAPIRealmList = usRE.GetRealms("Medivh", "Blackrock");   
+	string sampleAPIJson = usRE.GetRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
  
+
+
 Contributing
 ============
  
