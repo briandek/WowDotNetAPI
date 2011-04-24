@@ -12,66 +12,46 @@ namespace RealmAPI
     {
         private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
 
-        public string region { get; set; }
 
-        public RealmExplorer() : this("us") { }
-
-        public RealmExplorer(string region)
+        public Realm GetRealm(string name)
         {
-            this.region = region;
-        }
+            var realmList = GetRealms(name);
 
+            return realmList == null ? null : realmList.FirstOrDefault();
+        }
+       
         public List<Realm> GetAllRealms()
         {
             return GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
         }
 
-        public List<Realm> GetAllRealmsByType(string type)
+        public List<Realm> GetRealmsByType(string type)
         {
             var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+
             return realmList
                 .Where(r => r.type.Equals(type, StringComparison.InvariantCultureIgnoreCase)).ToList<Realm>();
         }
 
-        public List<Realm> GetAllRealmsByPopulation(string population)
+        public List<Realm> GetRealmsByPopulation(string population)
         {
             var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
             return realmList
                 .Where(r => r.population.Equals(population, StringComparison.InvariantCultureIgnoreCase)).ToList<Realm>();
         }
 
-        public List<Realm> GetAllRealmsByStatus(bool status)
+        public List<Realm> GetRealmsByStatus(bool status)
         {
             var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
             return realmList
                 .Where(r => r.status == status).ToList<Realm>();
         }
 
-        public List<Realm> GetAllRealmsByQueue(bool queue)
+        public List<Realm> GetRealmsByQueue(bool queue)
         {
             var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
             return realmList
                 .Where(r => r.queue == queue).ToList<Realm>();
-        }
-
-        private List<Realm> GetRealmData(string url)
-        {
-            using (var wc = new WebClient())
-            {
-                var jsonString = wc.DownloadString(url);
-                var jsonObject = JObject.Parse(jsonString);
-
-                return JsonConvert.DeserializeObject<List<Realm>>(jsonObject["realms"].ToString());
-            }
-        }
-
-        public Realm GetRealm(string name)
-        {
-            var realmList = GetRealms(name);
-            
-            if (realmList != null) return realmList.FirstOrDefault();
-
-            return null;
         }
 
         public List<Realm> GetRealms(params string[] realmNames)
@@ -84,14 +64,7 @@ namespace RealmAPI
                 query += "&realm=" + realmNames[i];
             }
 
-            try
-            {
-                return GetRealmData(string.Format(baseRealmAPIurl, region, query));
-            }
-            catch
-            {
-                return null;
-            }
+            return GetRealmsViaQuery(query);
         }
 
         public List<Realm> GetRealmsViaQuery(string query)
@@ -107,5 +80,78 @@ namespace RealmAPI
                 return null;
             }
         }
+
+        public string GetRealmsByTypeAsJson(string type)
+        {
+            return ConvertRealmListToJson(GetRealmsByType(type));
+        }
+
+        public string GetRealmsByPopulationAsJson(string population)
+        {
+            return ConvertRealmListToJson(GetRealmsByPopulation(population));
+        }
+
+        public string GetRealmsByStatusAsJson(bool status)
+        {
+            return ConvertRealmListToJson(GetRealmsByStatus(status));
+        }
+
+        public string GetRealmsByQueueAsJson(bool queue)
+        {
+            return ConvertRealmListToJson(GetRealmsByQueue(queue));
+        }
+
+        public string GetAllRealmsAsJson()
+        {
+            return GetJson(string.Format(baseRealmAPIurl, region, string.Empty));
+        }
+
+        public string GetRealmAsJson(string name)
+        {
+            return ConvertRealmListToJson(GetRealms(name));
+        }
+
+        public string GetRealmsAsJson(params string[] realmNames)
+        {
+            return ConvertRealmListToJson(GetRealms(realmNames));
+        }
+        
+        public string GetRealmsViaQueryAsJson(string query)
+        {
+            return ConvertRealmListToJson(GetRealmsViaQuery(query));
+        }
+
+        public string region { get; set; }
+
+        public RealmExplorer() : this("us") { }
+
+        public RealmExplorer(string region)
+        {
+            this.region = region;
+        }
+
+        private string ConvertRealmListToJson(List<Realm> realmList)
+        {
+            return JsonConvert.SerializeObject(
+                new Dictionary<string, List<Realm>> { { "realms", realmList } });
+        }
+
+        private List<Realm> GetRealmData(string url)
+        {
+            var jsonObject = JObject.Parse(GetJson(url));
+            var realms = jsonObject["realms"];
+
+            return JsonConvert.DeserializeObject<List<Realm>>(realms.ToString());
+        }
+
+        private string GetJson(string url)
+        {
+            using (var wc = new WebClient())
+            {
+                var jsonString = wc.DownloadString(url);
+                return jsonString;
+            }
+        }
+
     }
 }
