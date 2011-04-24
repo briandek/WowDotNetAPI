@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace RealmAPI
 {
@@ -118,7 +119,7 @@ namespace RealmAPI
         
         public string GetRealmsViaQueryAsJson(string query)
         {
-            return ConvertRealmListToJson(GetRealmsViaQuery(query));
+            return GetJson(string.Format(baseRealmAPIurl, region, query));
         }
 
         public string region { get; set; }
@@ -148,10 +149,21 @@ namespace RealmAPI
         {
             using (var wc = new WebClient())
             {
-                var jsonString = wc.DownloadString(url);
+                var jsonString = wc.DownloadString(SanitizeUrl(url));
                 return jsonString;
             }
         }
 
+        //Todo: Improve URL sanitizer
+        //http://stackoverflow.com/questions/25259/how-do-you-include-a-webpage-title-as-part-of-a-webpage-url/25486#25486
+        private string SanitizeUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url)) return "";
+
+            url = Regex.Replace(url.Trim(), @"\s+", "-");
+            url = Regex.Replace(url, "[#']", "");
+
+            return url;
+        }
     }
 }
