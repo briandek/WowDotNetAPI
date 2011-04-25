@@ -69,11 +69,11 @@ namespace RealmAPI
                 query += "&realm=" + realmNames[i];
             }
 
-            realmList = GetRealmsViaQuery(query);
+            realmList = GetMultipleRealmsViaQuery(query);
             return realmList;
         }
 
-        public List<Realm> GetRealmsViaQuery(string query)
+        public List<Realm> GetMultipleRealmsViaQuery(string query)
         {
             if (string.IsNullOrEmpty(query)) return null;
 

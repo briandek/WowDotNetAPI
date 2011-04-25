@@ -235,7 +235,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Valid_Query_Returns_Valid_Results()
         {
-            var realmList = rE.GetRealmsViaQuery("?realm=Medivh&realm=Blackrock");
+            var realmList = rE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");
 
             var allCollectedRealmsAreValid = realmList.Any() &&
                 realmList.TrueForAll(r => r.name.Equals("Medivh", StringComparison.InvariantCultureIgnoreCase)
@@ -249,7 +249,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Valid_Query_As_Json_Returns_Valid_Results()
         {
-            var realmList = rE.GetRealmsViaQuery("?realm=Medivh&realm=Blackrock");
+            var realmList = rE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");
             var realmsJson = rE.GetRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");
             var jsonObject = JObject.Parse(realmsJson);
 
@@ -267,7 +267,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Invalid_Realm_Name_In_Query_Returns_Null()
         {
-            var realmList = rE.GetRealmsViaQuery("?realm=!!adfasdza...12");
+            var realmList = rE.GetMultipleRealmsViaQuery("?realm=!!adfasdza...12");
             Assert.IsNull(realmList);
         }
 
@@ -287,7 +287,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Garbage_Query_Still_Returns_All_Realms()
         {
-            var realmList = rE.GetRealmsViaQuery("?asdf2&asdf");
+            var realmList = rE.GetMultipleRealmsViaQuery("?asdf2&asdf");
 
             Assert.IsNotNull(realmList);
             Assert.IsTrue(realmList.Count() >= 241);

@@ -55,7 +55,7 @@ Sample Use :
 
 	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
 
-	List<Realm> sampleAPIRealmList = usRE.GetAllRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
+	List<Realm> sampleAPIRealmList = usRE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
 	List<Realm> anotherSampleAPIRealmList = usRE.GetMultipleRealms("Medivh", "Blackrock");   
 	string sampleAPIJson = usRE.GetMultipleRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
  
