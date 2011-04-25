@@ -1,8 +1,9 @@
+WowDotNet
+=========
 WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform API
 
-04/23/2011 - Built base functionality for using the Realm Status API.
+You can now obtain the WowDotNetAPI dll through nuget. More information at [http://nuget.org/List/Packages/WowDotNetAPI](http://nuget.org/List/Packages/WowDotNetAPI)
 
- 
 Instructions
 ============
 
@@ -40,7 +41,7 @@ The RealmExplorer returns lists of these objects or returns a json string depend
 
 The RealmAPI relies on Json.Net for all of the JSON serialization and related operations.
 
-Sample Usage :
+Sample Use :
 ----------------------
 
 	RealmExplorer usRE = new RealmExplorer();
