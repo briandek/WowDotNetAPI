@@ -31,7 +31,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Valid_US_Realm_Returns_Unique_Realm()
         {
-            var realm = rE.GetRealm("skullcrusher");
+            var realm = rE.GetSingleRealm("skullcrusher");
 
             Assert.IsTrue(realm.name == "Skullcrusher");
             Assert.IsTrue(realm.type == "pvp");
@@ -41,7 +41,14 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Invalid_US_Realm_Returns_Null()
         {
-            var realm = rE.GetRealm("dekuz");
+            var realm = rE.GetSingleRealm("dekuz");
+            Assert.IsNull(realm);
+        }
+
+        [TestMethod]
+        public void Get_Null_US_Realm_Returns_Null()
+        {
+            var realm = rE.GetSingleRealm(null);
             Assert.IsNull(realm);
         }
 
@@ -175,7 +182,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Multiple_ValidNames_Query_Returns_Valid_Results()
         {
-            var realmList = rE.GetRealms("Skullcrusher", "Laughing Skull", "Blade's Edge");
+            var realmList = rE.GetMultipleRealms("Skullcrusher", "Laughing Skull", "Blade's Edge");
 
             var allCollectedRealmsAreValid = realmList.Any() &&
                 realmList.TrueForAll(r => r.name.Equals("Skullcrusher", StringComparison.InvariantCultureIgnoreCase)
@@ -189,7 +196,7 @@ namespace RealmAPI.Test
         [TestMethod]
         public void Get_Realms_Using_Multiple_InvalidNames_Query_Returns_One_Valid_Result()
         {
-            var realmList = rE.GetRealms("Blade's Edge", "AZUZU!", "dekuz");
+            var realmList = rE.GetMultipleRealms("Blade's Edge", "AZUZU!", "dekuz");
 
             var allCollectedRealmsAreValid = realmList.Any() &&
                 realmList.TrueForAll(r => r.name.Equals("Blade's Edge", StringComparison.InvariantCultureIgnoreCase)
@@ -205,7 +212,7 @@ namespace RealmAPI.Test
         {
             var namesList = new string[] { "Blade's Edge", "Aegwynn", "Area 52" };
 
-            var realmList = rE.GetRealms(namesList);
+            var realmList = rE.GetMultipleRealms(namesList);
 
             var allCollectedRealmsAreValid = realmList.Any() &&
                 realmList.TrueForAll(r => r.name.Equals("Blade's Edge", StringComparison.InvariantCultureIgnoreCase)
@@ -220,7 +227,7 @@ namespace RealmAPI.Test
         public void Get_Realms_Using_Multiple_InvalidNamesArray_Query_Returns_Null()
         {
             var namesList = new string[] { "Aioros", "Aioria", "Shiryu" };
-            var realmList = rE.GetRealms(namesList);
+            var realmList = rE.GetMultipleRealms(namesList);
 
             Assert.IsNull(realmList);
         }
@@ -265,6 +272,19 @@ namespace RealmAPI.Test
         }
 
         [TestMethod]
+        public void Get_Realms_Using_Sending_Null_String_List_Returns_Empty_Lists()
+        {
+            string nullRealmNameString = null;
+            string[] nullRealmNameStringArray = null;
+
+            var realmList = rE.GetMultipleRealms(nullRealmNameString);
+            Assert.IsTrue(realmList.Count == 0);
+
+            realmList = rE.GetMultipleRealms(nullRealmNameStringArray);
+            Assert.IsTrue(realmList.Count == 0);
+        }
+
+        [TestMethod]
         public void Get_Realms_Using_Garbage_Query_Still_Returns_All_Realms()
         {
             var realmList = rE.GetRealmsViaQuery("?asdf2&asdf");
@@ -286,7 +306,7 @@ namespace RealmAPI.Test
         public void Get_Valid_EU_Realm_Returns_Unique_EU_Realm()
         {
             rE.region = "eu";
-            var realm = rE.GetRealm("drek'thar");
+            var realm = rE.GetSingleRealm("drek'thar");
 
             Assert.IsTrue(realm.name == "Drek'Thar");
             Assert.IsTrue(realm.type == "pve");
@@ -297,7 +317,7 @@ namespace RealmAPI.Test
         public void Get_Invalid_EU_Realm_Returns_Null()
         {
             rE.region = "eu";
-            var realm = rE.GetRealm("dekuz");
+            var realm = rE.GetSingleRealm("dekuz");
             Assert.IsNull(realm);
         }
 
@@ -314,7 +334,7 @@ namespace RealmAPI.Test
         public void Get_Valid_KR_Realm_Returns_Unique_KR_Realm()
         {
             rE.region = "kr";
-            var realm = rE.GetRealm("kul tiras");
+            var realm = rE.GetSingleRealm("kul tiras");
 
             Assert.IsTrue(realm.name == "Kul Tiras");
             Assert.IsTrue(realm.type == "pvp");
@@ -325,7 +345,7 @@ namespace RealmAPI.Test
         public void Get_Invalid_KR_Realm_Returns_Null()
         {
             rE.region = "kr";
-            var realm = rE.GetRealm("dekuz");
+            var realm = rE.GetSingleRealm("dekuz");
             Assert.IsNull(realm);
         }
 

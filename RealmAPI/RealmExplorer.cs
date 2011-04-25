@@ -14,9 +14,9 @@ namespace RealmAPI
         private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
 
 
-        public Realm GetRealm(string name)
+        public Realm GetSingleRealm(string name)
         {
-            var realmList = GetRealms(name);
+            var realmList = GetMultipleRealms(name);
 
             return realmList == null ? null : realmList.FirstOrDefault();
         }
@@ -55,9 +55,13 @@ namespace RealmAPI
                 .Where(r => r.queue == queue).ToList<Realm>();
         }
 
-        public List<Realm> GetRealms(params string[] realmNames)
+        public List<Realm> GetMultipleRealms(params string[] realmNames)
         {
-            if (realmNames == null && realmNames.Length > 0) return null;
+            var realmList = new List<Realm>();
+
+            if (realmNames == null 
+                || realmNames.Length == 0
+                || realmNames.Any(r => r == null)) return realmList;
 
             var query = "?realm=" + realmNames[0];
             for (int i = 1; i < realmNames.Length; i++)
@@ -65,7 +69,8 @@ namespace RealmAPI
                 query += "&realm=" + realmNames[i];
             }
 
-            return GetRealmsViaQuery(query);
+            realmList = GetRealmsViaQuery(query);
+            return realmList;
         }
 
         public List<Realm> GetRealmsViaQuery(string query)
@@ -107,14 +112,14 @@ namespace RealmAPI
             return GetJson(string.Format(baseRealmAPIurl, region, string.Empty));
         }
 
-        public string GetRealmAsJson(string name)
+        public string GetSingleRealmAsJson(string name)
         {
-            return ConvertRealmListToJson(GetRealms(name));
+            return ConvertRealmListToJson(GetMultipleRealms(name));
         }
 
-        public string GetRealmsAsJson(params string[] realmNames)
+        public string GetMultipleRealmsAsJson(params string[] realmNames)
         {
-            return ConvertRealmListToJson(GetRealms(realmNames));
+            return ConvertRealmListToJson(GetMultipleRealms(realmNames));
         }
         
         public string GetRealmsViaQueryAsJson(string query)
