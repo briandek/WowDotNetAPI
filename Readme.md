@@ -44,20 +44,20 @@ The RealmAPI relies on Json.Net for all of the JSON serialization and related op
 Sample Use :
 ----------------------
 
-	RealmExplorer usRE = new RealmExplorer();
-	List<Realm> realmList = usRE.GetAllRealms();										//Returns list of All US realms	
-	Realm singleRealm = usRE.GetSingleRealm("Aegwynn")									//Returns Realm object Aewynn data
+	var usRE = new RealmExplorer();
+	var realmList = usRE.GetAllRealms();						//Returns list of All US realms	
+	var singleRealm = usRE.GetSingleRealm("Aegwynn")			//Returns Realm object Aewynn data
 	
-	List<Realm> twoFavoriteRealms = usRE.GetMultipleRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
+	var twoFavoriteRealms = usRE.GetMultipleRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
 		
-	List<Realm> pvpOnlyRealmList = usRE.GetAllRealmsByType("pvp");						//Returns list of All US pvp realms
-	string medPopulationRealmJson = usRE.GetRealmsByPopulationAsJson("medium");			//Returns json of medium populated realms
+	var pvpOnlyRealmList = usRE.GetAllRealmsByType("pvp");							//Returns list of All US pvp realms
+	var medPopulationRealmJson = usRE.GetRealmsByPopulationAsJson("medium");		//Returns json of medium populated realms
 
 	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
 
-	List<Realm> sampleAPIRealmList = usRE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
-	List<Realm> anotherSampleAPIRealmList = usRE.GetMultipleRealms("Medivh", "Blackrock");   
-	string sampleAPIJson = usRE.GetMultipleRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
+	var sampleAPIRealmList = usRE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
+	var anotherSampleAPIRealmList = usRE.GetMultipleRealms("Medivh", "Blackrock");   
+	var sampleAPIJson = usRE.GetMultipleRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
  
 
 

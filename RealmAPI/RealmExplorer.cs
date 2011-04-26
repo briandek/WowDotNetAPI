@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 namespace RealmAPI
 {
-    public class RealmExplorer
+    public class RealmExplorer : IRealmExplorer<Realm>
     {
         private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
-
 
         public Realm GetSingleRealm(string name)
         {
@@ -20,66 +19,65 @@ namespace RealmAPI
 
             return realmList == null ? null : realmList.FirstOrDefault();
         }
-       
-        public List<Realm> GetAllRealms()
+
+        public IEnumerable<Realm> GetAllRealms()
         {
-            return GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+            return GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
         }
 
-        public List<Realm> GetRealmsByType(string type)
+        public IEnumerable<Realm> GetRealmsByType(string type)
         {
-            var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+            var realmList = GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
 
             return realmList
-                .Where(r => r.type.Equals(type, StringComparison.InvariantCultureIgnoreCase)).ToList<Realm>();
+                .Where(r => r.type.Equals(type, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public List<Realm> GetRealmsByPopulation(string population)
+        public IEnumerable<Realm> GetRealmsByPopulation(string population)
         {
-            var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+            var realmList = GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
             return realmList
-                .Where(r => r.population.Equals(population, StringComparison.InvariantCultureIgnoreCase)).ToList<Realm>();
+                .Where(r => r.population.Equals(population, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public List<Realm> GetRealmsByStatus(bool status)
+        public IEnumerable<Realm> GetRealmsByStatus(bool status)
         {
-            var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+            var realmList = GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
             return realmList
-                .Where(r => r.status == status).ToList<Realm>();
+                .Where(r => r.status == status);
         }
 
-        public List<Realm> GetRealmsByQueue(bool queue)
+        public IEnumerable<Realm> GetRealmsByQueue(bool queue)
         {
-            var realmList = GetRealmData(string.Format(baseRealmAPIurl, region, string.Empty));
+            var realmList = GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
             return realmList
-                .Where(r => r.queue == queue).ToList<Realm>();
+                .Where(r => r.queue == queue);
         }
 
-        public List<Realm> GetMultipleRealms(params string[] realmNames)
+        public IEnumerable<Realm> GetMultipleRealms(params string[] names)
         {
-            var realmList = new List<Realm>();
+            var realmList = Enumerable.Empty<Realm>();
+            if (names == null 
+                || names.Length == 0
+                || names.Any(r => r == null)) return realmList;
 
-            if (realmNames == null 
-                || realmNames.Length == 0
-                || realmNames.Any(r => r == null)) return realmList;
-
-            var query = "?realm=" + realmNames[0];
-            for (int i = 1; i < realmNames.Length; i++)
+            var query = "?realm=" + names[0];
+            for (int i = 1; i < names.Length; i++)
             {
-                query += "&realm=" + realmNames[i];
+                query += "&realm=" + names[i];
             }
 
             realmList = GetMultipleRealmsViaQuery(query);
             return realmList;
         }
 
-        public List<Realm> GetMultipleRealmsViaQuery(string query)
+        public IEnumerable<Realm> GetMultipleRealmsViaQuery(string query)
         {
             if (string.IsNullOrEmpty(query)) return null;
 
             try
             {
-                return GetRealmData(string.Format(baseRealmAPIurl, region, query));
+                return GetRealmData(string.Format(baseRealmAPIurl, Region, query));
             }
             catch
             {
@@ -109,7 +107,7 @@ namespace RealmAPI
 
         public string GetAllRealmsAsJson()
         {
-            return GetJson(string.Format(baseRealmAPIurl, region, string.Empty));
+            return GetJson(string.Format(baseRealmAPIurl, Region, string.Empty));
         }
 
         public string GetSingleRealmAsJson(string name)
@@ -117,37 +115,37 @@ namespace RealmAPI
             return ConvertRealmListToJson(GetMultipleRealms(name));
         }
 
-        public string GetMultipleRealmsAsJson(params string[] realmNames)
+        public string GetMultipleRealmsAsJson(params string[] mames)
         {
-            return ConvertRealmListToJson(GetMultipleRealms(realmNames));
+            return ConvertRealmListToJson(GetMultipleRealms(mames));
         }
         
         public string GetRealmsViaQueryAsJson(string query)
         {
-            return GetJson(string.Format(baseRealmAPIurl, region, query));
+            return GetJson(string.Format(baseRealmAPIurl, Region, query));
         }
 
-        public string region { get; set; }
+        public string Region { get; set; }
 
         public RealmExplorer() : this("us") { }
 
         public RealmExplorer(string region)
         {
-            this.region = region;
+            this.Region = region;
         }
 
-        private string ConvertRealmListToJson(List<Realm> realmList)
+        private string ConvertRealmListToJson(IEnumerable<Realm> realmList)
         {
             return JsonConvert.SerializeObject(
-                new Dictionary<string, List<Realm>> { { "realms", realmList } });
+                new Dictionary<string, IEnumerable<Realm>> { { "realms", realmList } });
         }
 
-        private List<Realm> GetRealmData(string url)
+        private IEnumerable<Realm> GetRealmData(string url)
         {
             var jsonObject = JObject.Parse(GetJson(url));
             var realms = jsonObject["realms"];
 
-            return JsonConvert.DeserializeObject<List<Realm>>(realms.ToString());
+            return JsonConvert.DeserializeObject<IEnumerable<Realm>>(realms.ToString());
         }
 
         private string GetJson(string url)

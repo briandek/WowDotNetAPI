@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRealm.cs" />
+    <Compile Include="IRealmExplorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Realm.cs" />
     <Compile Include="RealmComparer.cs" />

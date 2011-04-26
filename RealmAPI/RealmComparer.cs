@@ -1,28 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 namespace RealmAPI
 {
     public class RealmComparer : EqualityComparer<Realm>
     {
 
-        public override bool Equals(Realm x, Realm y)
+        public override bool Equals(Realm a, Realm b)
         {
-            if (x == null || y == null) return false;
+            if (a == null || b == null) return false;
 
-            return x.name == y.name
-                && x.population == y.population
-                && x.queue == y.queue
-                && x.slug == y.slug
-                && x.status == y.status
-                && x.type == y.type;
+            return a.name == b.name
+                && a.population == b.population
+                && a.queue == b.queue
+                && a.slug == b.slug
+                && a.status == b.status
+                && a.type == b.type;
         }
 
-        public override int GetHashCode(Realm obj)
+        public override int GetHashCode(Realm a)
         {
-            return string.Concat(obj.name, obj.type).GetHashCode();
+            return string.Concat(a.name, a.type).GetHashCode();
         }
     }
 }

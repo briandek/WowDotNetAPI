@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -15,7 +14,7 @@ namespace RealmAPI
     //queue: boolean, true if realm has a queue, false otherwise
     //population: string, the realm's population: low, medium, high
 
-    public class Realm
+    public class Realm : IRealm
     {
         public string name { get; set; }
         public string slug { get; set; }
