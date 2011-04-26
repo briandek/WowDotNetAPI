@@ -12,7 +12,7 @@ namespace RealmAPI
     //type: string, type of the realm: pve, pvp, rp, rppvp
     //status: boolean, true if realm is up, false otherwise
     //queue: boolean, true if realm has a queue, false otherwise
-    //population: string, the realm's population: low, medium, high
+    //population: string, the realm's population: low, medium, high, n/a
 
     public class Realm : IRealm
     {

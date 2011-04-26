@@ -119,7 +119,7 @@ namespace RealmAPI
         {
             return ConvertRealmListToJson(GetMultipleRealms(mames));
         }
-        
+            
         public string GetRealmsViaQueryAsJson(string query)
         {
             return GetJson(string.Format(baseRealmAPIurl, Region, query));
