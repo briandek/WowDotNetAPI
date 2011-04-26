@@ -38,9 +38,3 @@ _ReSharper*/
 
 #Project files
 [Bb]uild/
-
-#Subversion files
-.svn
-
-# Office Temp Files
-~$*
