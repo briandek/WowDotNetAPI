@@ -39,8 +39,6 @@ The RealmAPI uses a Realm object as its base data model
 
 The RealmExplorer returns lists of these objects or returns a json string depending on what function we use and what query we send to the community platform api.
 
-The RealmAPI relies on Json.Net for all of the JSON serialization and related operations.
-
 Sample Use :
 ----------------------
 
