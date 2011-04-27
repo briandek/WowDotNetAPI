@@ -1,4 +1,4 @@
-WowDotNet
+WowDotNetAPI
 =========
 WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform API
 
