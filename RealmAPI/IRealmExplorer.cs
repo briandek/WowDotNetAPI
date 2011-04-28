@@ -6,7 +6,7 @@ using System.Net;
 
 namespace RealmAPI
 {
-    public interface IRealmExplorer<T> : IArmoryExplorer
+    public interface IRealmExplorer<T> : IExplorer
     {
         string Region { get; set; }
 

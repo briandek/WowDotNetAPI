@@ -13,6 +13,8 @@ namespace RealmAPI.Test
     {
         public IRealmExplorer<Realm> rE;
         public JavaScriptSerializer jsSerializer;
+
+
         [TestInitialize]
         public void Setup()
         {

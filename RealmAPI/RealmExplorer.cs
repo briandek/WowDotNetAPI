@@ -11,18 +11,7 @@ namespace RealmAPI
     public class RealmExplorer : IRealmExplorer<Realm>
     {
         private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
-        private WebClient _webClient;
-        public WebClient WebClient 
-        {
-            get
-            {
-                return _webClient;
-            }
-            set
-            {
-                _webClient = value ?? new WebClient();
-            }
-        }
+
         public Realm GetSingleRealm(string name)
         {
             var realmList = GetMultipleRealms(name);
@@ -134,6 +123,7 @@ namespace RealmAPI
         }
 
         public string Region { get; set; }
+        public WebClient WebClient { get; set; }
 
         public RealmExplorer() : this("us") { }
 
@@ -156,7 +146,6 @@ namespace RealmAPI
             return jsSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }
 
-
         private string GetJson(string url)
         {
             return WebClient.DownloadString(SanitizeUrl(url));
@@ -176,8 +165,7 @@ namespace RealmAPI
 
         public void Dispose()
         {
-            if (WebClient != null)
-                WebClient.Dispose();
+            if (WebClient != null)  WebClient.Dispose();
         }
     }
 }

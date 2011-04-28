@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IExplorer.cs" />
     <Compile Include="IRealm.cs" />
     <Compile Include="IRealmExplorer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
