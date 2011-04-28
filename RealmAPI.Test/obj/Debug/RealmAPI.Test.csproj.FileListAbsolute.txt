@@ -1,7 +1,0 @@
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\bin\Debug\RealmAPI.Test.dll
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\bin\Debug\RealmAPI.Test.pdb
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\obj\Debug\ResolveAssemblyReference.cache
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\obj\Debug\RealmAPI.Test.dll
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\obj\Debug\RealmAPI.Test.pdb
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\bin\Debug\WowDotNet.RealmAPI.dll
-D:\Visual Studio 2010\Projects\WowDotNetAPI\RealmAPI.Test\bin\Debug\WowDotNet.RealmAPI.pdb
