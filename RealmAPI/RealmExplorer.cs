@@ -2,21 +2,30 @@
 using System.Linq;
 using System.Text;
 using System.Net;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace RealmAPI
 {
     public class RealmExplorer : IRealmExplorer<Realm>
     {
         private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
-
+        private WebClient _webClient;
+        public WebClient WebClient 
+        {
+            get
+            {
+                return _webClient;
+            }
+            set
+            {
+                _webClient = value ?? new WebClient();
+            }
+        }
         public Realm GetSingleRealm(string name)
         {
             var realmList = GetMultipleRealms(name);
-
             return realmList == null ? null : realmList.FirstOrDefault();
         }
 
@@ -28,7 +37,6 @@ namespace RealmAPI
         public IEnumerable<Realm> GetRealmsByType(string type)
         {
             var realmList = GetRealmData(string.Format(baseRealmAPIurl, Region, string.Empty));
-
             return realmList
                 .Where(r => r.type.Equals(type, StringComparison.InvariantCultureIgnoreCase));
         }
@@ -132,29 +140,26 @@ namespace RealmAPI
         public RealmExplorer(string region)
         {
             this.Region = region;
+            WebClient = new WebClient();
         }
 
         private string ConvertRealmListToJson(IEnumerable<Realm> realmList)
         {
-            return JsonConvert.SerializeObject(
-                new Dictionary<string, IEnumerable<Realm>> { { "realms", realmList } });
+            var jsSerializer = new JavaScriptSerializer();
+            return jsSerializer.Serialize(new Dictionary<string, IEnumerable<Realm>> { { "realms", realmList } });
         }
 
         private IEnumerable<Realm> GetRealmData(string url)
         {
-            var jsonObject = JObject.Parse(GetJson(url));
-            var realms = jsonObject["realms"];
-
-            return JsonConvert.DeserializeObject<IEnumerable<Realm>>(realms.ToString());
+            var jsSerializer = new JavaScriptSerializer();
+            var jsonObjects = (Dictionary<string, object>)(jsSerializer.DeserializeObject(GetJson(url)));
+            return jsSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }
+
 
         private string GetJson(string url)
         {
-            using (var wc = new WebClient())
-            {
-                var jsonString = wc.DownloadString(SanitizeUrl(url));
-                return jsonString;
-            }
+            return WebClient.DownloadString(SanitizeUrl(url));
         }
 
         //Todo: Improve URL sanitizer
@@ -167,6 +172,12 @@ namespace RealmAPI
             url = Regex.Replace(url, "[#']", "");
 
             return url;
+        }
+
+        public void Dispose()
+        {
+            if (WebClient != null)
+                WebClient.Dispose();
         }
     }
 }
