@@ -1,16 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorers", "RealmAPI\Explorers.csproj", "{2A828141-9EF2-4A8A-8944-B2F2D1775CC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorers", "Explorers\Explorers.csproj", "{2A828141-9EF2-4A8A-8944-B2F2D1775CC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorers.Test", "RealmAPI.Test\Explorers.Test.csproj", "{F1E03291-0C37-40F6-8AAF-9B471ADEEFA1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{886FC43A-280C-4A27-A729-330F28186EFF}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-		WowDotNetAPI.vsmdi = WowDotNetAPI.vsmdi
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Explorers.Test", "Explorers.Test\Explorers.Test.csproj", "{F1E03291-0C37-40F6-8AAF-9B471ADEEFA1}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

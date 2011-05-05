@@ -17,13 +17,11 @@ namespace Explorers.Test
         public IRealmExplorer<Realm> rE;
         public JavaScriptSerializer jsSerializer;
 
-
         [TestInitialize]
         public void Setup()
         {
             rE = new RealmExplorer();
             jsSerializer = new JavaScriptSerializer();
-
         }
 
         //US - Americas; 241 realms as of 04/22/2011
