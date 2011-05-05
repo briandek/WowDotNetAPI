@@ -58,6 +58,30 @@ Sample Use :
 	var sampleAPIJson = usRE.GetMultipleRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
  
 
+Another sample:
+
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+	using WowDotNetAPI.Explorers;
+
+	namespace DemoWowDotNetApi
+	{
+		class Program
+		{
+			static void Main(string[] args)
+			{
+				RealmExplorer rE = new RealmExplorer();
+
+				foreach (var realm in rE.GetMultipleRealms("laughing skull", "skullcrusher", "ragnaros"))
+				{
+					Console.WriteLine(realm.name + " " + realm.status + " " + realm.population);
+				}
+			}
+		}
+	}
+
 
 Contributing
 ============
