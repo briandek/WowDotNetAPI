@@ -9,7 +9,7 @@
     <ProjectGuid>{F1E03291-0C37-40F6-8AAF-9B471ADEEFA1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WowDotNet.ExplorersAPI.Test</RootNamespace>
+    <RootNamespace>WowDotNetAPI.Explorers.Test</RootNamespace>
     <AssemblyName>WowDotNetAPI.Explorers.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
