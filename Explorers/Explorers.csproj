@@ -8,8 +8,8 @@
     <ProjectGuid>{2A828141-9EF2-4A8A-8944-B2F2D1775CC9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WowDotNet.Explorers</RootNamespace>
-    <AssemblyName>WowDotNet.Explorers</AssemblyName>
+    <RootNamespace>WowDotNetAPI.Explorers</RootNamespace>
+    <AssemblyName>WowDotNetAPI.Explorers</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
