@@ -5,8 +5,9 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
+using WowDotNet.Explorers.Models;
 
-namespace RealmAPI
+namespace WowDotNet.Explorers
 {
     public class RealmExplorer : IRealmExplorer<Realm>
     {

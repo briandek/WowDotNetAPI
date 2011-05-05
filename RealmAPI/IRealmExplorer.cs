@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Net;
 
-namespace RealmAPI
+namespace WowDotNet.Explorers
 {
     public interface IRealmExplorer<T> : IExplorer
     {
