@@ -65,6 +65,7 @@ Another sample:
 	using System.Linq;
 	using System.Text;
 	using WowDotNetAPI.Explorers;
+	using WowDotNetAPI.Explorers.Models;
 
 	namespace DemoWowDotNetApi
 	{
@@ -74,7 +75,7 @@ Another sample:
 			{
 				RealmExplorer rE = new RealmExplorer();
 
-				foreach (var realm in rE.GetMultipleRealms("laughing skull", "skullcrusher", "ragnaros"))
+				foreach (Realm realm in rE.GetMultipleRealms("laughing skull", "skullcrusher", "ragnaros"))
 				{
 					Console.WriteLine(realm.name + " " + realm.status + " " + realm.population);
 				}
