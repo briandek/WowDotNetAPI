@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace WowDotNet.Explorers.Models
+namespace WowDotNetAPI.Explorers.Models
 {
 
     //Realm API simple doc reference. Author: Cyaga - http://us.battle.net/wow/en/forum/topic/2416192911

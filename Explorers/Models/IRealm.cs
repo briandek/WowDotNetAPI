@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WowDotNet.Explorers.Models
+namespace WowDotNetAPI.Explorers.Models
 {
     public interface IRealm
     {

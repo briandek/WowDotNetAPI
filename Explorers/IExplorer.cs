@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 
-namespace WowDotNet.Explorers
+namespace WowDotNetAPI.Explorers
 {
     public interface IExplorer : IDisposable
     {
