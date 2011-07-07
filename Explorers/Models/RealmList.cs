@@ -14,7 +14,7 @@ namespace WowDotNetAPI.Explorers.Models
 		{
 			foreach (Realm realm in realms)
 			{
-				if (realm.queue == queue)
+				if (realm.queue != queue)
 					realms.Remove(realm);
 			}
 		}
@@ -23,7 +23,7 @@ namespace WowDotNetAPI.Explorers.Models
 		{
 			foreach (Realm realm in realms)
 			{
-				if (realm.status == status)
+				if (realm.status != status)
 					realms.Remove(realm);
 			}
 		}
@@ -32,7 +32,7 @@ namespace WowDotNetAPI.Explorers.Models
 		{
 			foreach (Realm realm in realms)
 			{
-				if (realm.population.Equals(population, StringComparison.InvariantCultureIgnoreCase))
+				if (!realm.population.Equals(population, StringComparison.InvariantCultureIgnoreCase))
 					realms.Remove(realm);
 			}
 		}
@@ -41,7 +41,7 @@ namespace WowDotNetAPI.Explorers.Models
 		{
 			foreach (Realm realm in realms)
 			{
-				if (realm.type.Equals(type, StringComparison.InvariantCultureIgnoreCase))
+				if (!realm.type.Equals(type, StringComparison.InvariantCultureIgnoreCase))
 					realms.Remove(realm);
 			}
 		}
