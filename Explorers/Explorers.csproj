@@ -50,8 +50,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IExplorer.cs" />
-    <Compile Include="Models\IRealm.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Emblem.cs" />
+    <Compile Include="Models\Guild.cs" />
+    <Compile Include="Models\Interfaces\ICharacter.cs" />
+    <Compile Include="Models\Interfaces\IEmblem.cs" />
+    <Compile Include="Models\Interfaces\IGuild.cs" />
+    <Compile Include="Models\Interfaces\IRealm.cs" />
     <Compile Include="IRealmExplorer.cs" />
+    <Compile Include="Models\Interfaces\IRealmList.cs" />
+    <Compile Include="Models\RealmList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Realm.cs" />
     <Compile Include="Comparers\RealmComparer.cs" />
