@@ -6,13 +6,13 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Achievements
-	{
-		public long[] achievementsCompleted { get; set; }
-		public long[] achievementsCompletedTimestamp { get; set; }
-		public long[] criteria { get; set; }
-		public long[] criteriaQuantity { get; set; }
-		public long[] criteriaTimestamp { get; set; }
-		public long[] criteriaCreated { get; set; }
-	}
+    public class Achievements
+    {
+        public List<long> achievementsCompleted { get; set; }
+        public List<long> achievementsCompletedTimestamp { get; set; }
+        public List<long> criteria { get; set; }
+        public List<long> criteriaQuantity { get; set; }
+        public List<long> criteriaTimestamp { get; set; }
+        public List<long> criteriaCreated { get; set; }
+    }
 }

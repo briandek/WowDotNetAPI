@@ -16,7 +16,8 @@ namespace WowDotNetAPI.Explorers
 
     public class RealmExplorer : IRealmExplorer
     {
-        private const string baseRealmAPIurl = "http://{0}.battle.net/api/wow/realm/status{1}";
+        private const string baseRealmAPIurl = 
+            "http://{0}." + ExplorerUtil.host + "/" + RealmUtil.basePath + "{1}";
 
         public IEnumerable<Realm> Realms { get; private set; }
         public WebClient WebClient { get; set; }

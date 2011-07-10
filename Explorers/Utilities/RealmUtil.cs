@@ -5,8 +5,8 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Utilities
 {
-    public static class RealmExplorerUtil
+    public static class RealmUtil
     {
-        public const string basePath= "/api/wow/realm/status";
+        public const string basePath = "/api/wow/realm/status";
     }
 }

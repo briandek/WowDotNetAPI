@@ -10,9 +10,13 @@ namespace WowDotNetAPI.Explorers.Models
 	{
 		public string name { get; set; }
 		public string realm { get; set; }
+        public int side { get; set; }
 		public int level { get; set; }
-		public int members { get; set; }
 		public int achievementPoints { get; set; }
-		public Emblem emblem { get; set; }
-	}
+        public long lastModified { get; set; }
+
+        public IEnumerable<Member> members { get; set; }
+        //public IEnumerable<Achievements> achievements { get; set; }
+        
+    }
 }

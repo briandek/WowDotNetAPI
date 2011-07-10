@@ -33,9 +33,9 @@ namespace WowDotNetAPI.Explorers.Extensions
             return realms.Where(r => !r.status);
         }
 
-        public static IEnumerable<Realm> WithPopulation(this IEnumerable<Realm> realms, string population)
+        public static IEnumerable<Realm> WithPopulation(this IEnumerable<Realm> realms, string Population)
         {
-            return realms.Where(r => r.population.Equals(population, StringComparison.InvariantCultureIgnoreCase));
+            return realms.Where(r => r.population.Equals(Population, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, string realmType)

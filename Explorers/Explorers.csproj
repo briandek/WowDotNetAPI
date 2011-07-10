@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\RealmsExtensions.cs" />
+    <Compile Include="GuildExplorer.cs" />
     <Compile Include="Interfaces\IExplorer.cs" />
+    <Compile Include="Interfaces\IGuildExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />
     <Compile Include="Models\Appearance.cs" />
     <Compile Include="Models\Boss.cs" />
@@ -62,6 +65,7 @@
     <Compile Include="Models\Guild.cs" />
     <Compile Include="Interfaces\IRealmExplorer.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Profession.cs" />
     <Compile Include="Models\Professions.cs" />
     <Compile Include="Models\Progression.cs" />
@@ -80,7 +84,7 @@
     <Compile Include="Utilities\ExplorerUtil.cs" />
     <Compile Include="Utilities\GuildUtil.cs" />
     <Compile Include="Utilities\ItemUtil.cs" />
-    <Compile Include="Utilities\RealmExplorerUtil.cs" />
+    <Compile Include="Utilities\RealmUtil.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
