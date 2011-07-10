@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
+
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Stats : IStats
+	public class Stats
 	{
 		public int health { get; set; }
 		public string powerType { get; set; }

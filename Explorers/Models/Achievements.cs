@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
+
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Achievements : IAchievements
+	public class Achievements
 	{
 		public long[] achievementsCompleted { get; set; }
 		public long[] achievementsCompletedTimestamp { get; set; }

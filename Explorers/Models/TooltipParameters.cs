@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
+
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class TooltipParameters : ITooltipParameters
+	public class TooltipParameters 
 	{
 		public int gem0 { get; set; }
 		public int gem1 { get; set; }

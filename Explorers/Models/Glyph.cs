@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
+
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Glyph : IGlyph
+	public class Glyph
 	{
 		public int glyph { get; set; }
 		public int item { get; set; }

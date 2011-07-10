@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
 
 namespace WowDotNetAPI.Explorers.Models
 {
@@ -15,13 +14,13 @@ namespace WowDotNetAPI.Explorers.Models
 	//queue: boolean, true if realm has a queue, false otherwise
 	//population: string, the realm's population: low, medium, high, n/a
 
-	public class Realm : IRealm
+	public class Realm
 	{
 		public string type { get; set; }
 		public bool queue { get; set; }
 		public bool status { get; set; }
 		public string population { get; set; }
 		public string name { get; set; }
-		public string slug { get; set; }	
+		public string slug { get; set; }
 	}
 }

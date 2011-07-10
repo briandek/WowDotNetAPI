@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models.Interfaces;
+
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Equipment : IEquipment
+	public class Equipment
 	{
 		public int averageItemLevel { get; set; }
 		public int averageItemLevelEquipped { get; set; }
