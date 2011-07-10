@@ -48,14 +48,18 @@ Sample Use :
 	
 	var twoFavoriteRealms = usRE.GetMultipleRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
 		
-	var pvpOnlyRealmList = usRE.GetAllRealmsByType("pvp");							//Returns list of All US pvp realms
-	var medPopulationRealmJson = usRE.GetRealmsByPopulationAsJson("medium");		//Returns json of medium populated realms
+	var pvpOnlyRealmList = usRE.Realms.WithType("pvp");							//Returns list of All US pvp realms
+	var medPopulationRealmJson = usRE.Realms.WithPopulation("medium").ToJson();		//Returns json of medium populated realms
 
 	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
 
 	var sampleAPIRealmList = usRE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
 	var anotherSampleAPIRealmList = usRE.GetMultipleRealms("Medivh", "Blackrock");   
-	var sampleAPIJson = usRE.GetMultipleRealmsViaQueryAsJson("?realm=Medivh&realm=Blackrock");		
+	var sampleAPIJson = anotherSampleAPIRealmList.ToJson();	
+	
+	//Note: New Data is fetched once during the constructor or for special queries, to force the explorer to fetch the data again you need to call the refresh method
+	//Refresh() will cause fresh data to be retrieved. Changing the region will automatically refresh the realm list
+	usRE.Refresh()
  
 
 Another sample:

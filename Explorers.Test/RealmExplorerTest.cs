@@ -18,13 +18,11 @@ namespace Explorers.Test
 	{
 
 		public static IRealmExplorer rE;
-        public static JavaScriptSerializer jsSerializer;
 
         [AssemblyInitialize]
         public static void GlobalStartup(TestContext testContext)
         {
             rE = new RealmExplorer();
-            jsSerializer = new JavaScriptSerializer();
         }
 
 		[TestMethod]
@@ -192,8 +190,7 @@ namespace Explorers.Test
         [TestMethod]
         public void GetAllRealms_InvalidRegion_URL_Throws_WebException()
         {
-            rE.Region = "foo";
-            ThrowsException<WebException>(() => rE.Refresh(), "The remote name could not be resolved: 'foo.battle.net'");
+            ThrowsException<WebException>(() => rE.Region = "foo", "The remote name could not be resolved: 'foo.battle.net'");
 
             rE = new RealmExplorer();
         }

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WowDotNetAPI.Explorers.Models;
+using System.Web.Script.Serialization;
 
 namespace WowDotNetAPI.Explorers.Extensions
 {
     public static class RealmsExtensions
     {
+        public static Realm GetRealm(this IEnumerable<Realm> realms, string name)
+        {
+            return realms.Where(r => r.name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+        }
         public static IEnumerable<Realm> WithQueues(this IEnumerable<Realm> realms)
         {
             return realms.Where(r => r.queue);
@@ -36,6 +41,11 @@ namespace WowDotNetAPI.Explorers.Extensions
         public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, string realmType)
         {
             return realms.Where(r => r.type.Equals(realmType, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        public static string ToJson(this IEnumerable<Realm> realms, JavaScriptSerializer JavascriptSerializer)
+        {
+            return JavascriptSerializer.Serialize(new Dictionary<string, IEnumerable<Realm>> { { "realms", realms } });
         }
     }
 }

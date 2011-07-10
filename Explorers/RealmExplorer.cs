@@ -22,17 +22,18 @@ namespace WowDotNetAPI.Explorers
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-        public string Region { get; set; }
+        private string region = string.Empty;
+
+        public string Region { get { return region; } set { region = value; Refresh(); } }
 
         public RealmExplorer() : this("us") { }
-            
+
         public RealmExplorer(string region)
         {
-            this.Region = region;
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
-
-            Realms = GetData(string.Format(baseRealmAPIurl, Region, string.Empty));
+         
+            this.Region = region;
         }
 
         public void Refresh()
@@ -42,7 +43,7 @@ namespace WowDotNetAPI.Explorers
 
         public Realm GetSingleRealm(string name)
         {
-            return Realms.Where(realm => realm.name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            return Realms.GetRealm(name);
         }
 
         public IEnumerable<Realm> GetAllRealms()
