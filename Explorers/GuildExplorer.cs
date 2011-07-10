@@ -14,50 +14,54 @@ namespace WowDotNetAPI.Explorers
     public class GuildExplorer : IGuildExplorer
     {
         private const string baseRealmAPIurl =
-            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}";
+            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}?fields=";
 
         public Guild Guild { get; private set; }
 
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-        private string region = string.Empty;
-        public string Region { get { return region; } set { region = value; Refresh(); } }
+        public string Region { get; set; }
 
         public string Realm { get; set; }
         public string Name { get; set; }
 
-        private bool getMembers = false;
-        private bool getAchievements = false;
+        public bool GetMembers { get; set; }
+        public bool GetAchievements { get; set; }
 
-        public bool GetMembers { get { return getMembers; } set { getMembers = value; Refresh(); } }
-        public bool GetAchievements { get { return getAchievements; } set { getAchievements = value; Refresh(); } }
+        public GuildExplorer() : this("us") { }
 
-        public GuildExplorer(string realm, string name) : this("us", realm, name, false, false) { }
-
-        public GuildExplorer(string realm, string name, bool getMembers, bool getAchievements) : this("us", realm, name, getMembers, getAchievements) { }
-
-        public GuildExplorer(string region, string realm, string name, bool getMembers, bool getAchievements)
+        public GuildExplorer(string region)
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
-
-            Name = name;
-            Realm = realm;
-
-            this.getMembers = getMembers;
-            this.getAchievements = getAchievements;
-
             Region = region;
         }
 
         public void Refresh()
         {
             Guild = GetData(string.Format(baseRealmAPIurl, Region, Realm, Name) +
-                (GetMembers && GetAchievements ? "?fields=achievements,members" :
-                GetMembers ? "?fields=members" :
-                GetAchievements ? "?fields=achievements" : string.Empty)
+                (GetMembers ? "members," : string.Empty) +
+                (GetAchievements ? "achievements" : string.Empty)
             );
+        }
+
+        public Guild GetGuild(string realm, string name, bool getMembers, bool getAchievements)
+        {
+            return GetGuild("us", realm, name, getMembers, getAchievements);
+        }
+
+        public Guild GetGuild(string region, string realm, string name, bool getMembers, bool getAchievements)
+        {
+            Region = region;
+            Name = name;
+            Realm = realm;
+            GetMembers = getMembers;
+            GetAchievements = getAchievements;
+
+            Refresh();
+
+            return Guild;
         }
 
         private Guild GetData(string url)

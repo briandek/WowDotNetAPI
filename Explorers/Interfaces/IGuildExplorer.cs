@@ -13,5 +13,9 @@ namespace WowDotNetAPI.Explorers.Interfaces
         string Realm { get; set; }
 
         Guild Guild { get; }
+        Guild GetGuild(string name, string realm, bool getMembers, bool getAchievements);
+        Guild GetGuild(string region, string name, string realm, bool getMembers, bool getAchievements);
+
+
     }
 }

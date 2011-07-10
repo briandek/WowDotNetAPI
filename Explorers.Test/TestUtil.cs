@@ -17,8 +17,9 @@ namespace WowDotNetAPI.Explorers.Test
         public static void GlobalStartup(TestContext testContext)
         {
             rE = new RealmExplorer();
-            gE = new GuildExplorer("skullcrusher", "immortality", true, true);
 
+            gE = new GuildExplorer();
+            gE.GetGuild("skullcrusher", "immortality", true, true);
         }
     }
 }
