@@ -49,7 +49,7 @@ Sample Use :
 	var twoFavoriteRealms = usRE.GetMultipleRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
 		
 	var pvpOnlyRealmList = usRE.Realms.WithType("pvp");							//Returns list of All US pvp realms
-	var medPopulationRealmJson = usRE.Realms.WithPopulation("medium").ToJson();		//Returns json of medium populated realms
+	var medPopulationRealmJson = usRE.Realms.WithPopulation("medium").ToJson(usRE.JavaScriptSerializer);		//Returns json of medium populated realms
 
 	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
 
