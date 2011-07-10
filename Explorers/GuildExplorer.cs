@@ -14,7 +14,7 @@ namespace WowDotNetAPI.Explorers
     public class GuildExplorer : IGuildExplorer
     {
         private const string baseRealmAPIurl =
-            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}?fields=achievements,members";
+            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}";
 
         public Guild Guild { get; private set; }
 
@@ -27,26 +27,42 @@ namespace WowDotNetAPI.Explorers
         public string Realm { get; set; }
         public string Name { get; set; }
 
-        public GuildExplorer(string realm, string name) : this("us", realm, name){}
+        private bool getMembers = false;
+        private bool getAchievements = false;
 
-        public GuildExplorer(string region, string realm, string name)
+        public bool GetMembers { get { return getMembers; } set { getMembers = value; Refresh(); } }
+        public bool GetAchievements { get { return getAchievements; } set { getAchievements = value; Refresh(); } }
+
+        public GuildExplorer(string realm, string name) : this("us", realm, name, false, false) { }
+
+        public GuildExplorer(string realm, string name, bool getMembers, bool getAchievements) : this("us", realm, name, getMembers, getAchievements) { }
+
+        public GuildExplorer(string region, string realm, string name, bool getMembers, bool getAchievements)
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
 
             Name = name;
             Realm = realm;
-            this.Region = region;
+
+            this.getMembers = getMembers;
+            this.getAchievements = getAchievements;
+
+            Region = region;
         }
 
         public void Refresh()
         {
-            Guild = GetData(string.Format(baseRealmAPIurl, Region, Realm, Name));
+            Guild = GetData(string.Format(baseRealmAPIurl, Region, Realm, Name) +
+                (GetMembers && GetAchievements ? "?fields=achievements,members" :
+                GetMembers ? "?fields=members" :
+                GetAchievements ? "?fields=achievements" : string.Empty)
+            );
         }
 
         private Guild GetData(string url)
         {
-            var guildJsonObject= (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
+            var guildJsonObject = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
             return JavaScriptSerializer.ConvertToType<Guild>(guildJsonObject);
         }
 

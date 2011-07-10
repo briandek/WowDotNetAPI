@@ -45,7 +45,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Valid_Member_From_Another_Guild()
         {
-            TestUtil.gE = new GuildExplorer("Laughing Skull", "Deus Vox");
+            TestUtil.gE = new GuildExplorer("Laughing Skull", "Deus Vox", true, false);
             Guild dvGuild = TestUtil.gE.Guild;
 
             Assert.IsTrue(dvGuild.name.Equals("deus vox", StringComparison.InvariantCultureIgnoreCase));
