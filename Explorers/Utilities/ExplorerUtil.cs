@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Net;
 
 namespace WowDotNetAPI.Explorers.Utilities
 {
@@ -20,6 +21,11 @@ namespace WowDotNetAPI.Explorers.Utilities
             url = Regex.Replace(url, "[#']", "");
 
             return url;
+        }
+
+        public static string GetJson(WebClient WebClient, string url)
+        {
+            return WebClient.DownloadString(url);
         }
     }
 }

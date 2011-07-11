@@ -74,6 +74,8 @@ namespace WowDotNetAPI.Explorers
 
         private IEnumerable<Realm> GetData(string url)
         {
+            //return JavaScriptSerializer.Deserialize<List<Realm>>(ExplorerUtil.GetJson(WebClient, url));
+
             var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
             return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }

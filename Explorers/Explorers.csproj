@@ -50,8 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\RealmsExtensions.cs" />
+    <Compile Include="CharacterExplorer.cs" />
+    <Compile Include="Extensions\GuildExtension.cs" />
+    <Compile Include="Extensions\RealmExtensions.cs" />
     <Compile Include="GuildExplorer.cs" />
+    <Compile Include="Interfaces\ICharacterExplorer.cs" />
     <Compile Include="Interfaces\IExplorer.cs" />
     <Compile Include="Interfaces\IGuildExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />

@@ -17,12 +17,10 @@ namespace WowDotNetAPI.Explorers
             "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}?fields=";
 
         public Guild Guild { get; private set; }
-
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
         public string Region { get; set; }
-
         public string Realm { get; set; }
         public string Name { get; set; }
 
@@ -66,8 +64,7 @@ namespace WowDotNetAPI.Explorers
 
         private Guild GetData(string url)
         {
-            var guildJsonObject = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
-            return JavaScriptSerializer.ConvertToType<Guild>(guildJsonObject);
+            return JavaScriptSerializer.Deserialize<Guild>(ExplorerUtil.GetJson(WebClient, url));
         }
 
         private string GetJson(string url)

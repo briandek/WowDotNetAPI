@@ -25,7 +25,6 @@ namespace WowDotNetAPI.Explorers.Models
         //criteriaTimestamp
         //criteriaCreated
 
-        public Dictionary<string, IEnumerable<long>> achievements { get; set; }
-
+        public Achievements achievements { get; set; }
     }
 }

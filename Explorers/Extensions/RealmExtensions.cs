@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 
 namespace WowDotNetAPI.Explorers.Extensions
 {
-    public static class RealmsExtensions
+    public static class RealmExtensions
     {
         public static Realm GetRealm(this IEnumerable<Realm> realms, string name)
         {

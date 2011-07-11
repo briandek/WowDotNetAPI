@@ -9,7 +9,6 @@ namespace WowDotNetAPI.Explorers.Interfaces
 {
 	public interface IRealmExplorer : IExplorer<Realm>
 	{
-
 		string Region { get; set; }
         IEnumerable<Realm> Realms { get; }
 		
