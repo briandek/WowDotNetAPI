@@ -192,7 +192,7 @@ namespace WowDotNetAPI.Explorers
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if (WebClient != null) WebClient.Dispose();
         }
     }
 }

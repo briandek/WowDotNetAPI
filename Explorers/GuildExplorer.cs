@@ -74,11 +74,6 @@ namespace WowDotNetAPI.Explorers
             }
         }
 
-        private string GetJson(string url)
-        {
-            return WebClient.DownloadString(url);
-        }
-
         public void Dispose()
         {
             if (WebClient != null) WebClient.Dispose();

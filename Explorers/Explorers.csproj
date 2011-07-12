@@ -56,6 +56,7 @@
     <Compile Include="CharacterExplorerModels\Guild.cs" />
     <Compile Include="CharacterExplorerModels\Talent.cs" />
     <Compile Include="CharacterExplorerModels\TalentTree.cs" />
+    <Compile Include="Extensions\CharacterExtension.cs" />
     <Compile Include="Extensions\GuildExtension.cs" />
     <Compile Include="Extensions\RealmExtensions.cs" />
     <Compile Include="GuildExplorer.cs" />

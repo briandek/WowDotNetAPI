@@ -2,90 +2,113 @@ WowDotNetAPI
 =========
 WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform API
 
+THE LIBRARY IS STILL EVOLVING WITH THE PLATFORM API CHANGES. USE AT OWN RISK - AND JUMP IN, HACK AWAY AND HELP OUT :]
+
+Currently supports access to the Realm, Guild, and Character(40%) areas of the Platform API.
+
 You can now obtain the WowDotNetAPI dll through nuget. More information at [http://nuget.org/List/Packages/WowDotNetAPI](http://nuget.org/List/Packages/WowDotNetAPI)
 
-Instructions
-============
-
-After referencing the WowDotNetAPI.dll in your solution, you should be able to create a RealmExplorer object.
-
-	RealmExplorer usRealmExplorer = new RealmExplorer()	    //the default region is set to "US"
-
-	RealmExplorer euRealmExplorer = new RealmExplorer("eu") //or if you want to look at European realms
-
-	RealmExplorer krRealmExplorer = new RealmExplorer()		//or Korean
-	krRealmExplorer.region = "kr"
-
-The RealmAPI uses a Realm object as its base data model 
-
-	//Realm API simple doc reference. Author: Cyaga - http://us.battle.net/wow/en/forum/topic/2416192911
-    //Realm 
-    //name: string, the fully formatted name of the realm
-    //slug: string, "data-friendly" version of name, punctuation removed and spaces converted to dashes
-    //type: string, type of the realm: pve, pvp, rp, rppvp
-    //status: boolean, true if realm is up, false otherwise
-    //queue: boolean, true if realm has a queue, false otherwise
-    //population: string, the realm's population: low, medium, high, n/a
-
-	public class Realm
-		{
-		  public string name { get; set; }
-		  public string slug { get; set; }
-		  public string type { get; set; }
-          public bool status { get; set; }
-          public bool queue { get; set; }
-          public string population { get; set; }
-		}
-
-The RealmExplorer returns lists of these objects or returns a json string depending on what function we use and what query we send to the community platform api.
-
-Sample Use :
-----------------------
-
-	var usRE = new RealmExplorer();
-	var realmList = usRE.GetAllRealms();						//Returns list of All US realms	
-	var singleRealm = usRE.GetSingleRealm("Aegwynn")			//Returns Realm object Aewynn data
-	
-	var twoFavoriteRealms = usRE.GetMultipleRealms("Skullcrusher", "Laughing Skull");   //Returns list of the 2 Realm objects
-		
-	var pvpOnlyRealmList = usRE.Realms.WithType("pvp");							//Returns list of All US pvp realms
-	var medPopulationRealmJson = usRE.Realms.WithPopulation("medium").ToJson(usRE.JavaScriptSerializer);		//Returns json of medium populated realms
-
-	//Sample API url http://us.battle.net/api/wow/realm/status?realm=Medivh&realm=Blackrock
-
-	var sampleAPIRealmList = usRE.GetMultipleRealmsViaQuery("?realm=Medivh&realm=Blackrock");						
-	var anotherSampleAPIRealmList = usRE.GetMultipleRealms("Medivh", "Blackrock");   
-	var sampleAPIJson = anotherSampleAPIRealmList.ToJson();	
-	
-	//Note: New Data is fetched once during the constructor or for special queries, to force the explorer to fetch the data again you need to call the refresh method
-	//Refresh() will cause fresh data to be retrieved. Changing the region will automatically refresh the realm list
-	usRE.Refresh()
- 
-
-Another sample:
-
+Sample:
+=========
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
 	using WowDotNetAPI.Explorers;
-	using WowDotNetAPI.Explorers.Models;
+	using WowDotNetAPI.Explorers.GuildExplorerModels;
+	using WowDotNetAPI.Explorers.Extensions;
 
-	namespace DemoWowDotNetApi
+	namespace WDA_Demo
 	{
 		class Program
 		{
 			static void Main(string[] args)
 			{
 				RealmExplorer rE = new RealmExplorer();
+				CharacterExplorer cE = new CharacterExplorer();
+				GuildExplorer gE = new GuildExplorer();
 
-				foreach (Realm realm in rE.GetMultipleRealms("laughing skull", "skullcrusher", "ragnaros"))
+				Guild immortalityGuild = gE.GetGuild("skullcrusher", "immortality", true, true);
+
+				Console.WriteLine("\n\nGUILD EXPLORER SAMPLE\n");
+
+				//Prints
+				//Immortality is a guild of level 25 and has 584 members.
+				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.", immortalityGuild.name, immortalityGuild.level, immortalityGuild.members.Count()));
+
+				//Print out first top 50 ranked members of Immortality
+				foreach (Member member in immortalityGuild.members.OrderBy(m => m.rank).Take(50))
 				{
-					Console.WriteLine(realm.name + " " + realm.status + " " + realm.population);
+					Console.WriteLine(member.character.name + " has rank " + member.rank);
 				}
+
+				//Still cleaning up the calls - bear with us :P
+				//Get briandek and don't fetch any additional data but stats.
+				//public Character GetCharacter(string region, string realm, string name,
+				//bool getGuildInfo,
+				//bool getStatsInfo,
+				//bool getTalentsInfo,
+				//bool getItemsInfo,
+				//bool getReputationInfo,
+				//bool getTitlesInfo,
+				//bool getProfessionsInfo,
+				//bool getAppearanceInfo,
+				//bool getCompanionsInfo,
+				//bool getMountsInfo,
+				//bool getPetsInfo,
+				//bool getAchievementsInfo,
+				//bool getProgressionInfo)
+				Console.WriteLine("\n\nCHARACTER EXPLORER SAMPLE\n");
+
+
+				WowDotNetAPI.Explorers.CharacterExplorerModels.Character briandekCharacter =
+					cE.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
+
+				//Prints 
+				//Briandek is a retired warrior of level 85 who has 6895 achievement points
+				Console.WriteLine(string.Format("{0} is a retired warrior of level {1} who has {2} achievement points",
+					briandekCharacter.name,
+					briandekCharacter.level,
+					briandekCharacter.achievementPoints));
+
+				//Print out character stats
+				//health : 174611
+				//powerType : rage
+				//power : 100
+				//str : 3688
+				//agi : 178
+				//sta : 9399
+				//int : 37
+				//spr : 64
+				//attackPower : 7611
+				//rangedAttackPower : 253
+				//mastery : 20.410751
+				//masteryRating : 2225
+				//...
+				foreach (KeyValuePair<string, object> stat in briandekCharacter.stats)
+				{
+					Console.WriteLine(stat.Key + " : " + stat.Value);
+				}
+
+				//Fetch another character data with simple data 
+				WowDotNetAPI.Explorers.CharacterExplorerModels.Character fleasCharacter = cE.GetCharacter("skullcrusher", "fleas");
+
+				//Get one realm
+				WowDotNetAPI.Explorers.CharacterExplorerModels.Realm skullcrusher = rE.GetRealm("skullcrusher");
+
+
+				//Get all pvp realms only
+				IEnumerable<WowDotNetAPI.Explorers.CharacterExplorerModels.Realm> pvpRealmsOnly = rE.Realms.WithType("pvp");
+				Console.WriteLine("\n\nREALMS EXPLORER SAMPLE\n");
+				foreach (var realm in pvpRealmsOnly)
+				{
+					Console.WriteLine(string.Format("{0} has {1} population", realm.name, realm.population));
+				}
+
 			}
 		}
 	}
+
 
 
 Contributing

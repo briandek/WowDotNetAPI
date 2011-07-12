@@ -16,7 +16,7 @@ namespace WowDotNetAPI.Explorers
 
     public class RealmExplorer : IRealmExplorer
     {
-        private const string baseRealmAPIurl = 
+        private const string baseRealmAPIurl =
             "http://{0}." + ExplorerUtil.host + "/" + RealmUtil.basePath + "{1}";
 
         public IEnumerable<Realm> Realms { get; private set; }
@@ -33,7 +33,7 @@ namespace WowDotNetAPI.Explorers
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
-         
+
             this.Region = region;
         }
 
@@ -74,15 +74,9 @@ namespace WowDotNetAPI.Explorers
 
         private IEnumerable<Realm> GetData(string url)
         {
-            var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
+            var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(ExplorerUtil.GetJson(WebClient, url));
             return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }
-
-        private string GetJson(string url)
-        {
-            return WebClient.DownloadString(ExplorerUtil.SanitizeUrl(url));
-        }
-
 
         public void Dispose()
         {
