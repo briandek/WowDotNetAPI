@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace WowDotNetAPI.Explorers.Models
+namespace WowDotNetAPI.Explorers.CharacterExplorerModels
 {
 
 	//Realm API simple doc reference. Author: Cyaga - http://us.battle.net/wow/en/forum/topic/2416192911

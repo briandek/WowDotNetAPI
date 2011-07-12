@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.Models
+namespace WowDotNetAPI.Explorers.GuildExplorerModels
 {
     public class Guild
     {
@@ -16,15 +16,6 @@ namespace WowDotNetAPI.Explorers.Models
         public long lastModified { get; set; }
 
         public IEnumerable<Member> members { get; set; }
-
-        //TODO:map enum for dictionary keys
-        //achievementsCompleted
-        //achievementsCompletedTimestamp
-        //criteria 
-        //criteriaQuantity
-        //criteriaTimestamp
-        //criteriaCreated
-
         public Achievements achievements { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.CharacterExplorerModels;
 using System.IO;
 using WowDotNetAPI.Explorers.Interfaces;
 using WowDotNetAPI.Explorers.Extensions;
@@ -42,7 +42,7 @@ namespace WowDotNetAPI.Explorers
             Realms = GetData(string.Format(baseRealmAPIurl, Region, string.Empty));
         }
 
-        public Realm GetSingleRealm(string name)
+        public Realm GetRealm(string name)
         {
             return Realms.GetRealm(name);
         }
@@ -74,8 +74,6 @@ namespace WowDotNetAPI.Explorers
 
         private IEnumerable<Realm> GetData(string url)
         {
-            //return JavaScriptSerializer.Deserialize<List<Realm>>(ExplorerUtil.GetJson(WebClient, url));
-
             var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(GetJson(url));
             return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }

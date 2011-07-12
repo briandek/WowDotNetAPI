@@ -7,7 +7,7 @@ using WowDotNetAPI.Explorers.Interfaces;
 using WowDotNetAPI.Explorers.Utilities;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.GuildExplorerModels;
 
 namespace WowDotNetAPI.Explorers.Test
 {

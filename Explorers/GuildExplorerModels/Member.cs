@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WowDotNetAPI.Explorers.Models
+namespace WowDotNetAPI.Explorers.GuildExplorerModels
 {
     public class Member
     {

@@ -6,7 +6,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Explorers;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.CharacterExplorerModels;
 using WowDotNetAPI.Explorers.Comparers;
 using WowDotNetAPI.Explorers.Interfaces;
 using WowDotNetAPI.Explorers.Extensions;
@@ -29,7 +29,7 @@ namespace Explorers.Test
 		[TestMethod]
 		public void Get_Valid_US_Realm_Returns_Unique_Realm()
 		{
-			var realm = TestUtil.rE.GetSingleRealm("skullcrusher");
+			var realm = TestUtil.rE.GetRealm("skullcrusher");
 
 			Assert.IsTrue(realm.name == "Skullcrusher");
 			Assert.IsTrue(realm.type == "pvp");
@@ -39,14 +39,14 @@ namespace Explorers.Test
 		[TestMethod]
 		public void Get_Invalid_US_Realm_Returns_Null()
 		{
-			var realm = TestUtil.rE.GetSingleRealm("dekuz");
+			var realm = TestUtil.rE.GetRealm("dekuz");
 			Assert.IsNull(realm);
 		}
 
 		[TestMethod]
 		public void Get_Null_US_Realm_Returns_Null()
 		{
-			var realm = TestUtil.rE.GetSingleRealm(null);
+			var realm = TestUtil.rE.GetRealm(null);
 			Assert.IsNull(realm);
 		}
 

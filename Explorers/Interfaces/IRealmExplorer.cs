@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using System.Net;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.CharacterExplorerModels;
 
 namespace WowDotNetAPI.Explorers.Interfaces
 {
@@ -12,7 +12,7 @@ namespace WowDotNetAPI.Explorers.Interfaces
 		string Region { get; set; }
         IEnumerable<Realm> Realms { get; }
 		
-        Realm GetSingleRealm(string name);
+        Realm GetRealm(string name);
 		IEnumerable<Realm> GetAllRealms();
 		IEnumerable<Realm> GetMultipleRealms(params string[] names);
         IEnumerable<Realm> GetMultipleRealmsViaQuery(string query);

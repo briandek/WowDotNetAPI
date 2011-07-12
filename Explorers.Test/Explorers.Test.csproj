@@ -46,6 +46,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterExplorerTest.cs" />
     <Compile Include="TestUtil.cs" />
     <Compile Include="GuildExplorerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

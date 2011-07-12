@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.GuildExplorerModels;
 
 namespace WowDotNetAPI.Explorers.Interfaces
 {

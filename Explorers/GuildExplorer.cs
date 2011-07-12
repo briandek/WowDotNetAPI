@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WowDotNetAPI.Explorers.Interfaces;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Explorers.GuildExplorerModels;
 using System.Net;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Explorers.Utilities;
@@ -14,7 +14,7 @@ namespace WowDotNetAPI.Explorers
     public class GuildExplorer : IGuildExplorer
     {
         private const string baseRealmAPIurl =
-            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "/{1}/{2}?fields=";
+            "http://{0}." + ExplorerUtil.host + GuildUtil.basePath + "{1}/{2}?fields=";
 
         public Guild Guild { get; private set; }
         public WebClient WebClient { get; set; }
@@ -64,7 +64,14 @@ namespace WowDotNetAPI.Explorers
 
         private Guild GetData(string url)
         {
-            return JavaScriptSerializer.Deserialize<Guild>(ExplorerUtil.GetJson(WebClient, url));
+            try
+            {
+                return JavaScriptSerializer.Deserialize<Guild>(ExplorerUtil.GetJson(WebClient, url));
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private string GetJson(string url)
