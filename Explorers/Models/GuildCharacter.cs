@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
-    public class Character
+    public class GuildCharacter
     {
         public string lastModified { get; set; }
         public string name { get; set; }
@@ -17,9 +17,5 @@ namespace WowDotNetAPI.Explorers.CharacterExplorerModels
         public int level { get; set; }
         public int achievementPoints { get; set; }
         public string thumbnail { get; set; }
-
-        public Guild guild { get; set; }
-        public Stats stats { get; set; }
-        public IEnumerable<Talent> talents { get; set; }
     }
 }

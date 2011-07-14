@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
-    public class Glyph
+    public class CharacterTalentGlyph
     {
         public int glyph { get; set; }
         public int item { get; set; }

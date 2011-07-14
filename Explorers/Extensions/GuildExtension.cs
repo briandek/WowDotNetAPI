@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.GuildExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 using System.Web.Script.Serialization;
 
 namespace WowDotNetAPI.Explorers.Extensions

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WowDotNetAPI.Explorers.Interfaces;
+using WowDotNetAPI.Explorers.Models;
 
 namespace WowDotNetAPI.Explorers.Test
 {
@@ -13,13 +14,18 @@ namespace WowDotNetAPI.Explorers.Test
         public static IRealmExplorer rE;
         public static IGuildExplorer gE;
 
+        public static IEnumerable<Realm> realms;
+
+        public static Guild immortalityGuild;
+
         [AssemblyInitialize]
         public static void GlobalStartup(TestContext testContext)
         {
             rE = new RealmExplorer();
-
             gE = new GuildExplorer();
-            gE.GetGuild("skullcrusher", "immortality", true, true);
+
+            realms = rE.GetRealms("us");
+            TestUtil.immortalityGuild = gE.GetGuild("skullcrusher", "immortality", true, true);
         }
     }
 }

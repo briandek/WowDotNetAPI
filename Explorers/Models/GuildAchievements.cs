@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.GuildExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
-    public class Achievements
+    public class GuildAchievements
     {
         public IEnumerable<int> achievementsCompleted { get; set; }
         public IEnumerable<long> achievementsCompletedTimestamp { get; set; }

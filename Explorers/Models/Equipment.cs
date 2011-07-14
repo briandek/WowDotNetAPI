@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
 	public class Equipment
 	{

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
-using WowDotNetAPI.Explorers.CharacterExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 
 namespace WowDotNetAPI.Explorers.Comparers
 {

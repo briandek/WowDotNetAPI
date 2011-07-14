@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.GuildExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
     public class Guild
     {
@@ -15,7 +15,7 @@ namespace WowDotNetAPI.Explorers.GuildExplorerModels
         public int achievementPoints { get; set; }
         public long lastModified { get; set; }
 
-        public IEnumerable<Member> members { get; set; }
-        public Achievements achievements { get; set; }
+        public IEnumerable<GuildMember> members { get; set; }
+        public GuildAchievements achievements { get; set; }
     }
 }

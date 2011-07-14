@@ -11,7 +11,5 @@ namespace WowDotNetAPI.Explorers.Interfaces
     {
         WebClient WebClient { get; set; }
         JavaScriptSerializer JavaScriptSerializer { get; set; }
-        void Refresh();
-
     }
 }

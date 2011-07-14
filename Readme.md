@@ -15,8 +15,8 @@ Sample:
 	using System.Linq;
 	using System.Text;
 	using WowDotNetAPI.Explorers;
-	using WowDotNetAPI.Explorers.GuildExplorerModels;
 	using WowDotNetAPI.Explorers.Extensions;
+	using WowDotNetAPI.Explorers.Models;
 
 	namespace WDA_Demo
 	{
@@ -37,7 +37,7 @@ Sample:
 				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.", immortalityGuild.name, immortalityGuild.level, immortalityGuild.members.Count()));
 
 				//Print out first top 50 ranked members of Immortality
-				foreach (Member member in immortalityGuild.members.OrderBy(m => m.rank).Take(50))
+				foreach (GuildMember member in immortalityGuild.members.OrderBy(m => m.rank).Take(50))
 				{
 					Console.WriteLine(member.character.name + " has rank " + member.rank);
 				}
@@ -61,7 +61,7 @@ Sample:
 				Console.WriteLine("\n\nCHARACTER EXPLORER SAMPLE\n");
 
 
-				WowDotNetAPI.Explorers.CharacterExplorerModels.Character briandekCharacter =
+				Character briandekCharacter =
 					cE.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
 
 				//Prints 
@@ -91,14 +91,15 @@ Sample:
 				}
 
 				//Fetch another character data with simple data 
-				WowDotNetAPI.Explorers.CharacterExplorerModels.Character fleasCharacter = cE.GetCharacter("skullcrusher", "fleas");
+				Character fleasCharacter = cE.GetCharacter("skullcrusher", "fleas");
 
 				//Get one realm
-				WowDotNetAPI.Explorers.CharacterExplorerModels.Realm skullcrusher = rE.GetRealm("skullcrusher");
+				IEnumerable<Realm> usRealms = rE.GetRealms("us");
+				Realm skullcrusher = usRealms.GetRealm("skullcrusher");
 
 
 				//Get all pvp realms only
-				IEnumerable<WowDotNetAPI.Explorers.CharacterExplorerModels.Realm> pvpRealmsOnly = rE.Realms.WithType("pvp");
+				IEnumerable<Realm> pvpRealmsOnly = usRealms.WithType("pvp");
 				Console.WriteLine("\n\nREALMS EXPLORER SAMPLE\n");
 				foreach (var realm in pvpRealmsOnly)
 				{
@@ -108,6 +109,7 @@ Sample:
 			}
 		}
 	}
+
 
 
 

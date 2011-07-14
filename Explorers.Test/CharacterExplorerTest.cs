@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WowDotNetAPI.Explorers.CharacterExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 
 namespace WowDotNetAPI.Explorers.Test
 {

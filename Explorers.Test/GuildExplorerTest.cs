@@ -7,33 +7,25 @@ using WowDotNetAPI.Explorers.Interfaces;
 using WowDotNetAPI.Explorers.Utilities;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.GuildExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
     public class GuildExplorerTest
     {
-        Guild immortalityGuild;
-
-        [TestInitialize]
-        public void Setup()
-        {
-            immortalityGuild = TestUtil.gE.Guild;
-        }
 
         [TestMethod]
         public void Get_Simple_Guild_Immortality_From_Skullcrusher()
         {
-            Assert.IsTrue(immortalityGuild.name.Equals("immortality", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(immortalityGuild.realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(immortalityGuild.members.Any());
+            Assert.IsTrue(TestUtil.immortalityGuild.realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(TestUtil.immortalityGuild.members.Any());
         }
 
         [TestMethod]
         public void Get_Valid_Member_From_Immortality_Guild()
         {
-            Member briandek = immortalityGuild.members.Where(m => m.character.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            GuildMember briandek = TestUtil.immortalityGuild.members.Where(m => m.character.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
             Assert.IsTrue(briandek.character.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.character.@class == 1);
@@ -52,7 +44,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.IsTrue(dvGuild.members.Any());
 
 
-            Member ohnoes = dvGuild.members.Where(m => m.character.name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            GuildMember ohnoes = dvGuild.members.Where(m => m.character.name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             Assert.IsTrue(ohnoes.character.name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(ohnoes.character.@class == 4);
             Assert.IsTrue(ohnoes.character.gender == 1);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
 	public class TalentSpecialization
 	{
@@ -12,7 +12,7 @@ namespace WowDotNetAPI.Explorers.CharacterExplorerModels
 		public string name { get; set; }
 		public string icon { get; set; }
 		public string build { get; set; }
-		public List<TalentTree> trees { get; set; }
-		public Glyphs glyphs { get; set; }
+		public List<CharacterTalentTree> trees { get; set; }
+		public CharacterTalentGlyphs glyphs { get; set; }
 	}
 }

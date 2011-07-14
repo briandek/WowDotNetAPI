@@ -5,7 +5,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.CharacterExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 using System.IO;
 using WowDotNetAPI.Explorers.Interfaces;
 using WowDotNetAPI.Explorers.Extensions;
@@ -17,15 +17,11 @@ namespace WowDotNetAPI.Explorers
     public class RealmExplorer : IRealmExplorer
     {
         private const string baseRealmAPIurl =
-            "http://{0}." + ExplorerUtil.host + "/" + RealmUtil.basePath + "{1}";
+            "http://{0}." + ExplorerUtil.host + "/" + RealmUtil.basePath;
 
-        public IEnumerable<Realm> Realms { get; private set; }
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-        private string region = string.Empty;
-
-        public string Region { get { return region; } set { region = value; Refresh(); } }
 
         public RealmExplorer() : this("us") { }
 
@@ -33,38 +29,23 @@ namespace WowDotNetAPI.Explorers
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
-
-            this.Region = region;
         }
 
-        public void Refresh()
+        public IEnumerable<Realm> GetRealms()
         {
-            Realms = GetData(string.Format(baseRealmAPIurl, Region, string.Empty));
+            return GetRealms("us");
         }
 
-        public Realm GetRealm(string name)
+        public IEnumerable<Realm> GetRealms(string region)
         {
-            return Realms.GetRealm(name);
+            return GetData(string.Format(baseRealmAPIurl, region)).realms;
         }
 
-        public IEnumerable<Realm> GetAllRealms()
+        public IEnumerable<Realm> GetRealmsViaQuery(string region, string query)
         {
-            return Realms;
-        }
-
-        public IEnumerable<Realm> GetMultipleRealms(params string[] names)
-        {
-            string query = "?realm=" + String.Join("&realm=", names);
-            return GetMultipleRealmsViaQuery(query);
-        }
-
-        public IEnumerable<Realm> GetMultipleRealmsViaQuery(string query)
-        {
-            if (string.IsNullOrEmpty(query)) return null;
-
             try
             {
-                return GetData(string.Format(baseRealmAPIurl, Region, query));
+                return GetData(string.Format(baseRealmAPIurl, region, query)).realms;
             }
             catch
             {
@@ -72,10 +53,12 @@ namespace WowDotNetAPI.Explorers
             }
         }
 
-        private IEnumerable<Realm> GetData(string url)
+        private RealmList GetData(string url)
         {
-            var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(ExplorerUtil.GetJson(WebClient, url));
-            return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
+            return JavaScriptSerializer.Deserialize<RealmList>(ExplorerUtil.GetJson(WebClient, url));
+
+            //var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(ExplorerUtil.GetJson(WebClient, url));
+            //return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }
 
         public void Dispose()

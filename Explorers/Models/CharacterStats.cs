@@ -5,9 +5,9 @@ using System.Text;
 using System.Collections;
 
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
-    public class Stats : IEnumerable
+    public class CharacterStats : IEnumerable
     {
         public int health { get; set; }
         public string powerType { get; set; }

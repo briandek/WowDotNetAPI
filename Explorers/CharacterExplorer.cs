@@ -5,7 +5,7 @@ using System.Text;
 using WowDotNetAPI.Explorers.Interfaces;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.CharacterExplorerModels;
+using WowDotNetAPI.Explorers.Models;
 using WowDotNetAPI.Explorers.Utilities;
 
 namespace WowDotNetAPI.Explorers
@@ -19,32 +19,10 @@ namespace WowDotNetAPI.Explorers
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-        public string Region { get; set; }
-        public string Realm { get; set; }
-        public string Name { get; set; }
-
-        public Character Character { get; private set; }
-
-        public bool GetGuildInfo { get; set; }
-        public bool GetStatsInfo { get; set; }
-        public bool GetTalentsInfo { get; set; }
-        public bool GetItemsInfo { get; set; }
-        public bool GetReputationInfo { get; set; }
-        public bool GetTitlesInfo { get; set; }
-        public bool GetProfessionsInfo { get; set; }
-        public bool GetAppearanceInfo { get; set; }
-        public bool GetCompanionsInfo { get; set; }
-        public bool GetMountsInfo { get; set; }
-        public bool GetPetsInfo { get; set; }
-        public bool GetAchievementsInfo { get; set; }
-        public bool GetProgressionInfo { get; set; }
-
-        public CharacterExplorer() : this("us") { }
-        public CharacterExplorer(string region)
+        public CharacterExplorer()
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
-            Region = region;
         }
 
         //There has to be a cleaner way to define query ._.
@@ -107,26 +85,22 @@ namespace WowDotNetAPI.Explorers
             bool getAchievementsInfo,
             bool getProgressionInfo)
         {
-            Region = region;
-            Realm = realm;
-            Name = name;
+            return GetData(string.Format(baseRealmAPIurl, region , realm, name)
+                + buildOptionalQuery(
+                getGuildInfo,
+                getStatsInfo,
+                getTalentsInfo,
+                getItemsInfo,
+                getReputationInfo,
+                getTitlesInfo,
+                getProfessionsInfo,
+                getAppearanceInfo,
+                getCompanionsInfo,
+                getMountsInfo,
+                getPetsInfo,
+                getAchievementsInfo,
+                getProgressionInfo));
 
-            GetGuildInfo = getGuildInfo;
-            GetStatsInfo = getStatsInfo;
-            GetTalentsInfo = getTalentsInfo;
-            GetItemsInfo = getItemsInfo;
-            GetReputationInfo = getReputationInfo;
-            GetTitlesInfo = getTitlesInfo;
-            GetProfessionsInfo = getProfessionsInfo;
-            GetAppearanceInfo = getAppearanceInfo;
-            GetCompanionsInfo = getCompanionsInfo;
-            GetMountsInfo = getMountsInfo;
-            GetPetsInfo = getPetsInfo;
-            GetAchievementsInfo = getAchievementsInfo;
-            GetProfessionsInfo = getProfessionsInfo;
-
-            Refresh();
-            return Character;
         }
 
 
@@ -135,54 +109,61 @@ namespace WowDotNetAPI.Explorers
             return JavaScriptSerializer.Deserialize<Character>(ExplorerUtil.GetJson(WebClient, url));
         }
 
-        public void Refresh()
-        {
-            Character = GetData(string.Format(baseRealmAPIurl, Region, Realm, Name) + buildOptionalQuery());
-
-        }
-
-        private string buildOptionalQuery()
+        private string buildOptionalQuery(
+            bool getGuildInfo,
+            bool getStatsInfo,
+            bool getTalentsInfo,
+            bool getItemsInfo,
+            bool getReputationInfo,
+            bool getTitlesInfo,
+            bool getProfessionsInfo,
+            bool getAppearanceInfo,
+            bool getCompanionsInfo,
+            bool getMountsInfo,
+            bool getPetsInfo,
+            bool getAchievementsInfo,
+            bool getProgressionInfo)
         {
             string query = "?fields=";
             List<string> tmp = new List<string>();
 
-            if (GetGuildInfo)
+            if (getGuildInfo)
                 tmp.Add("guild");
 
-            if (GetStatsInfo)
+            if (getStatsInfo)
                 tmp.Add("stats");
 
-            if (GetTalentsInfo)
+            if (getTalentsInfo)
                 tmp.Add("talents");
 
-            if (GetItemsInfo)
+            if (getItemsInfo)
                 tmp.Add("items");
 
-            if (GetReputationInfo)
+            if (getReputationInfo)
                 tmp.Add("reputation");
 
-            if (GetTitlesInfo)
+            if (getTitlesInfo)
                 tmp.Add("titles");
 
-            if (GetProfessionsInfo)
+            if (getProfessionsInfo)
                 tmp.Add("professions");
 
-            if (GetAppearanceInfo)
+            if (getAppearanceInfo)
                 tmp.Add("appearance");
 
-            if (GetCompanionsInfo)
+            if (getCompanionsInfo)
                 tmp.Add("companions");
 
-            if (GetMountsInfo)
+            if (getMountsInfo)
                 tmp.Add("mounts");
 
-            if (GetPetsInfo)
+            if (getPetsInfo)
                 tmp.Add("pets");
 
-            if (GetAchievementsInfo)
+            if (getAchievementsInfo)
                 tmp.Add("achievements");
 
-            if (GetProfessionsInfo)
+            if (getProfessionsInfo)
                 tmp.Add("professions");
 
             query += string.Join(",", tmp);

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 
-namespace WowDotNetAPI.Explorers.CharacterExplorerModels
+namespace WowDotNetAPI.Explorers.Models
 {
-	public class Emblem
+	public class CharacterGuildEmblem
 	{
 		public int icon { get; set; }
 		public string iconColor { get; set; }
