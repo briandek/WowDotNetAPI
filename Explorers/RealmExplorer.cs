@@ -22,7 +22,6 @@ namespace WowDotNetAPI.Explorers
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-
         public RealmExplorer() : this("us") { }
 
         public RealmExplorer(string region)
@@ -56,9 +55,6 @@ namespace WowDotNetAPI.Explorers
         private RealmList GetData(string url)
         {
             return JavaScriptSerializer.Deserialize<RealmList>(ExplorerUtil.GetJson(WebClient, url));
-
-            //var jsonObjects = (Dictionary<string, object>)JavaScriptSerializer.DeserializeObject(ExplorerUtil.GetJson(WebClient, url));
-            //return JavaScriptSerializer.ConvertToType<IEnumerable<Realm>>(jsonObjects["realms"]);
         }
 
         public void Dispose()

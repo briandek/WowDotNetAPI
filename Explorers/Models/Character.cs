@@ -21,5 +21,15 @@ namespace WowDotNetAPI.Explorers.Models
         public CharacterGuild guild { get; set; }
         public CharacterStats stats { get; set; }
         public IEnumerable<CharacterTalent> talents { get; set; }
+        public CharacterInventory items { get; set; }
+        public IEnumerable<CharacterReputation> reputation { get; set; }
+        public IEnumerable<CharacterTitle> titles { get; set; }
+        public CharacterProfessions professions { get; set; }
+        public CharacterAppearance appearance { get; set; }
+        public IEnumerable<int> companions { get; set; }
+        public IEnumerable<int> mounts { get; set; }
+        public Progression progression { get; set; }
+
+
     }
 }

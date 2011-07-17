@@ -31,16 +31,16 @@ namespace WowDotNetAPI.Explorers.Test
                 true,
                 true,
                 true,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false);
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true);
 
             //iterate through stats
             //var statsList = briandek.stats;
@@ -55,6 +55,12 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.IsTrue(briandek.talents.Where(t => t.selected).FirstOrDefault().name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.talents.ElementAt(1).glyphs.prime.ElementAt(0).name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
 
+            Assert.IsTrue(briandek.appearance.hairVariation == 13);
+            Assert.IsTrue(briandek.companions.ElementAt(1) == 32298);
+            Assert.IsTrue(briandek.items.averageItemLevelEquipped == 364);
+
+            Assert.IsTrue(briandek.mounts.Count() == 11);
+            //Assert.IsTrue(briandek.professions.primary.
         }
     }
 }

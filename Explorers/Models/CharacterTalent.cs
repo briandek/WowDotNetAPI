@@ -13,7 +13,5 @@ namespace WowDotNetAPI.Explorers.Models
         public string build { get; set; }
         public IEnumerable<CharacterTalentTree> trees { get; set; }
         public CharacterTalentGlyphs glyphs { get; set; }
-
-        
     }
 }

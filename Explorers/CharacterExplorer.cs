@@ -163,8 +163,8 @@ namespace WowDotNetAPI.Explorers
             if (getAchievementsInfo)
                 tmp.Add("achievements");
 
-            if (getProfessionsInfo)
-                tmp.Add("professions");
+            if (getProgressionInfo)
+                tmp.Add("progression");
 
             query += string.Join(",", tmp);
 

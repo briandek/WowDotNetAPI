@@ -6,12 +6,11 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Reputation
+	public class RaidBoss
 	{
-		public int id { get; set; }
 		public string name { get; set; }
-		public int standing { get; set; }
-		public int value { get; set; }
-		public int max { get; set; }
+		public int normalKills { get; set; }
+		public int heroicKills { get; set; }
+		public int id { get; set; }
 	}
 }

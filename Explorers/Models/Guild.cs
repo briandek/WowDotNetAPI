@@ -16,6 +16,6 @@ namespace WowDotNetAPI.Explorers.Models
         public long lastModified { get; set; }
 
         public IEnumerable<GuildMember> members { get; set; }
-        public GuildAchievements achievements { get; set; }
+        public Achievements achievements { get; set; }
     }
 }

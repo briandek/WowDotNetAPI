@@ -6,7 +6,7 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Models
 {
-    public class GuildAchievements
+    public class Achievements
     {
         public IEnumerable<int> achievementsCompleted { get; set; }
         public IEnumerable<long> achievementsCompletedTimestamp { get; set; }

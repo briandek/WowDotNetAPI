@@ -6,9 +6,13 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Title
+	public class CharacterProfession
 	{
 		public int id { get; set; }
 		public string name { get; set; }
+		public string icon { get; set; }
+		public int rank { get; set; }
+		public int max { get; set; }
+		public IEnumerable<int> recipes { get; set; }
 	}
 }

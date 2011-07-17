@@ -7,6 +7,6 @@ namespace WowDotNetAPI.Explorers.Models
 {
 	public class Progression
 	{
-		public List<Raid> raids { get; set; }
+		public IEnumerable<Raid> raids { get; set; }
 	}
 }

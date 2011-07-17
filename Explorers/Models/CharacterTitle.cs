@@ -6,9 +6,9 @@ using System.Text;
 
 namespace WowDotNetAPI.Explorers.Models
 {
-	public class Professions
+	public class CharacterTitle
 	{
-		public List<Profession> primary { get; set; }
-		public List<Profession> secondary { get; set; }
+		public int id { get; set; }
+		public string name { get; set; }
 	}
 }
