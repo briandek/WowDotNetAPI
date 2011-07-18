@@ -10,32 +10,34 @@ using WowDotNetAPI.Explorers.Utilities;
 
 namespace WowDotNetAPI.Explorers
 {
-    public class CharacterExplorer : ICharacterExplorer
+    public class WowExplorer : IExplorer
     {
-
-        private const string baseRealmAPIurl =
-            "http://{0}." + ExplorerUtil.host + CharacterUtil.basePath + "{1}/{2}";
+        private const string baseAPIurl =
+            "http://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
         public JavaScriptSerializer JavaScriptSerializer { get; set; }
 
-        public CharacterExplorer()
+        public string Region { get; set; }
+
+        public WowExplorer() : this("us") { }
+
+        public WowExplorer(string region)
         {
             JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
+            Region = region;
         }
-
-        //There has to be a cleaner way to define query ._.
-        //TODO: research cleaner query constructor
+        
         public Character GetCharacter(string realm, string name)
         {
-            return GetCharacter("us", realm, name,
+            return GetCharacter(Region, realm, name,
                 false, false, false, false, false, false, false, false, false, false, false, false, false);
         }
 
         public Character GetCharacter(string region, string realm, string name)
         {
-            return GetCharacter("us", realm, name,
+            return GetCharacter(region, realm, name,
                 false, false, false, false, false, false, false, false, false, false, false, false, false);
         }
 
@@ -54,7 +56,7 @@ namespace WowDotNetAPI.Explorers
            bool getAchievementsInfo,
            bool getProgressionInfo)
         {
-            return GetCharacter("us", realm, name,
+            return GetCharacter(Region, realm, name,
                 getGuildInfo,
                 getStatsInfo,
                 getTalentsInfo,
@@ -85,8 +87,8 @@ namespace WowDotNetAPI.Explorers
             bool getAchievementsInfo,
             bool getProgressionInfo)
         {
-            return GetData(string.Format(baseRealmAPIurl, region , realm, name)
-                + buildOptionalQuery(
+            return GetData<Character>(string.Format(baseAPIurl + CharacterUtil.basePath + "{1}/{2}", region, realm, name)
+                + CharacterUtil.buildOptionalQuery(
                 getGuildInfo,
                 getStatsInfo,
                 getTalentsInfo,
@@ -103,77 +105,49 @@ namespace WowDotNetAPI.Explorers
 
         }
 
-
-        private Character GetData(string url)
+        public Guild GetGuild(string realm, string name)
         {
-            return JavaScriptSerializer.Deserialize<Character>(ExplorerUtil.GetJson(WebClient, url));
+            return GetGuild(Region, realm, name, false, false);
         }
 
-        private string buildOptionalQuery(
-            bool getGuildInfo,
-            bool getStatsInfo,
-            bool getTalentsInfo,
-            bool getItemsInfo,
-            bool getReputationInfo,
-            bool getTitlesInfo,
-            bool getProfessionsInfo,
-            bool getAppearanceInfo,
-            bool getCompanionsInfo,
-            bool getMountsInfo,
-            bool getPetsInfo,
-            bool getAchievementsInfo,
-            bool getProgressionInfo)
+        public Guild GetGuild(string region, string realm, string name)
         {
-            string query = "?fields=";
-            List<string> tmp = new List<string>();
+            return GetGuild(region, realm, name, false, false);
+        }
 
-            if (getGuildInfo)
-                tmp.Add("guild");
+        public Guild GetGuild(string realm, string name, bool getMembers, bool getAchievements)
+        {
+            return GetGuild(Region, realm, name, getMembers, getAchievements);
+        }
 
-            if (getStatsInfo)
-                tmp.Add("stats");
+        public Guild GetGuild(string region, string realm, string name, bool getMembers, bool getAchievements)
+        {
+            return GetData<Guild>(string.Format(baseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name) +
+                GuildUtil.buildOptionalQuery(getMembers, getAchievements));
+        }
 
-            if (getTalentsInfo)
-                tmp.Add("talents");
+        public IEnumerable<Realm> GetRealms()
+        {
+            return GetRealms(Region);
+        }
 
-            if (getItemsInfo)
-                tmp.Add("items");
+        public IEnumerable<Realm> GetRealms(string region)
+        {
+            return GetData<RealmList>(string.Format(baseAPIurl + RealmUtil.basePath, region)).realms;
+        }
 
-            if (getReputationInfo)
-                tmp.Add("reputation");
-
-            if (getTitlesInfo)
-                tmp.Add("titles");
-
-            if (getProfessionsInfo)
-                tmp.Add("professions");
-
-            if (getAppearanceInfo)
-                tmp.Add("appearance");
-
-            if (getCompanionsInfo)
-                tmp.Add("companions");
-
-            if (getMountsInfo)
-                tmp.Add("mounts");
-
-            if (getPetsInfo)
-                tmp.Add("pets");
-
-            if (getAchievementsInfo)
-                tmp.Add("achievements");
-
-            if (getProgressionInfo)
-                tmp.Add("progression");
-
-            query += string.Join(",", tmp);
-
-            return query;
+        private T GetData<T>(string url)
+        {
+            return JavaScriptSerializer.Deserialize<T>(ExplorerUtil.GetJson(WebClient, url));
         }
 
         public void Dispose()
         {
-            if (WebClient != null) WebClient.Dispose();
+            if (WebClient != null)
+            {
+                WebClient.Dispose();
+            }
         }
+
     }
 }

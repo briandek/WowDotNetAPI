@@ -12,7 +12,7 @@ using WowDotNetAPI.Explorers.Models;
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class GuildExplorerTest
+    public class GuildTest
     {
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Valid_Member_From_Another_Guild()
         {
-            Guild dvGuild = TestUtil.gE.GetGuild("laughing skull", "deus vox", true, false);
+            Guild dvGuild = TestUtil.WowExplorer.GetGuild("laughing skull", "deus vox", true, false);
 
             Assert.IsTrue(dvGuild.name.Equals("deus vox", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(dvGuild.realm.Equals("laughing skull", StringComparison.InvariantCultureIgnoreCase));

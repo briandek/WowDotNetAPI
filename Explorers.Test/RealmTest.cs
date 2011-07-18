@@ -15,14 +15,14 @@ using WowDotNetAPI.Explorers.Test;
 namespace Explorers.Test
 {
 	[TestClass]
-	public class RealmExplorerTest
+	public class RealmTest
 	{
 		
 
 		[TestMethod]
 		public void GetAll_US_Realms_Returns_All_Realms()
 		{
-			IEnumerable<Realm> realmList = TestUtil.rE.GetRealms("us");
+			IEnumerable<Realm> realmList = TestUtil.WowExplorer.GetRealms("us");
 			Assert.IsTrue(realmList.Any());
 		}
 
@@ -81,28 +81,9 @@ namespace Explorers.Test
 			Assert.IsTrue(allCollectedRealmsHaveLowPopulation);
 		}
 
-		[TestMethod]
-		public void Get_Realms_Using_Valid_Query_Returns_Valid_Results()
-		{
-            IEnumerable<Realm> realmList = TestUtil.rE.GetRealmsViaQuery("us", "?realm=Medivh&realm=Blackrock");
-
-            Assert.IsNotNull(realmList);
-            Assert.IsTrue(realmList.Any());
-		}
-		
-        [TestMethod]
-		public void Get_Realms_Using_Invalid_Realm_Name_In_Query_Returns_Valid_Full_Realm_List()
-		{
-            IEnumerable<Realm> realmList = TestUtil.rE.GetRealmsViaQuery("us", "?realm=!!adfasdza...12");
-			Assert.IsNotNull(realmList);
-            Assert.IsTrue(realmList.Any());
-		}
-
         public void GetAllRealms_InvalidRegion_URL_Throws_WebException()
         {
-            ThrowsException<WebException>(() => TestUtil.rE.GetRealms("foo"), "The remote name could not be resolved: 'foo.battle.net'");
-
-            TestUtil.rE = new RealmExplorer();
+            ThrowsException<WebException>(() => TestUtil.WowExplorer.GetRealms("foo"), "The remote name could not be resolved: 'foo.battle.net'");
         }
         
 		//Assert.ThrowException 

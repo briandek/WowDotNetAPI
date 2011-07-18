@@ -8,14 +8,12 @@ using WowDotNetAPI.Explorers.Models;
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class CharacterExplorerTest
+    public class CharacterTest
     {
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
-            CharacterExplorer cE = new CharacterExplorer();
-
-            Character briandek = cE.GetCharacter("skullcrusher", "briandek");
+            Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsTrue(briandek.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.level == 85);
@@ -25,9 +23,8 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Complex_Character_Briandek_From_Skullcrusher()
         {
-            CharacterExplorer cE = new CharacterExplorer();
 
-            Character briandek = cE.GetCharacter("skullcrusher", "briandek",
+            Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek",
                 true,
                 true,
                 true,
@@ -60,7 +57,6 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.IsTrue(briandek.items.averageItemLevelEquipped == 364);
 
             Assert.IsTrue(briandek.mounts.Count() == 11);
-            //Assert.IsTrue(briandek.professions.primary.
         }
     }
 }

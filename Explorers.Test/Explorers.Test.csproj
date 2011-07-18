@@ -46,11 +46,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterExplorerTest.cs" />
+    <Compile Include="CharacterTest.cs" />
     <Compile Include="TestUtil.cs" />
-    <Compile Include="GuildExplorerTest.cs" />
+    <Compile Include="GuildTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealmExplorerTest.cs" />
+    <Compile Include="RealmTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Explorers\Explorers.csproj">

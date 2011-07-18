@@ -11,8 +11,7 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class TestUtil
     {
-        public static IRealmExplorer rE;
-        public static IGuildExplorer gE;
+        public static IExplorer WowExplorer;
 
         public static IEnumerable<Realm> realms;
 
@@ -21,11 +20,10 @@ namespace WowDotNetAPI.Explorers.Test
         [AssemblyInitialize]
         public static void GlobalStartup(TestContext testContext)
         {
-            rE = new RealmExplorer();
-            gE = new GuildExplorer();
+            WowExplorer = new WowExplorer("us");
 
-            realms = rE.GetRealms("us");
-            TestUtil.immortalityGuild = gE.GetGuild("skullcrusher", "immortality", true, true);
+            realms = WowExplorer.GetRealms();
+            TestUtil.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", true, true);
         }
     }
 }

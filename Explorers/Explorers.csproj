@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterExplorer.cs" />
+    <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTalentGlyph.cs" />
     <Compile Include="Models\CharacterGuild.cs" />
@@ -59,10 +59,7 @@
     <Compile Include="Extensions\CharacterExtension.cs" />
     <Compile Include="Extensions\GuildExtension.cs" />
     <Compile Include="Extensions\RealmExtensions.cs" />
-    <Compile Include="GuildExplorer.cs" />
-    <Compile Include="Interfaces\ICharacterExplorer.cs" />
     <Compile Include="Interfaces\IExplorer.cs" />
-    <Compile Include="Interfaces\IGuildExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />
     <Compile Include="Models\CharacterAppearance.cs" />
     <Compile Include="Models\RaidBoss.cs" />
@@ -70,7 +67,6 @@
     <Compile Include="Models\CharacterGuildEmblem.cs" />
     <Compile Include="Models\CharacterTalentGlyphs.cs" />
     <Compile Include="Models\Guild.cs" />
-    <Compile Include="Interfaces\IRealmExplorer.cs" />
     <Compile Include="Models\CharacterItem.cs" />
     <Compile Include="Models\GuildMember.cs" />
     <Compile Include="Models\CharacterInventory.cs" />
@@ -86,7 +82,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Realm.cs" />
     <Compile Include="Comparers\RealmComparer.cs" />
-    <Compile Include="RealmExplorer.cs" />
     <Compile Include="Utilities\CharacterUtil.cs" />
     <Compile Include="Utilities\ExplorerUtil.cs" />
     <Compile Include="Utilities\GuildUtil.cs" />
