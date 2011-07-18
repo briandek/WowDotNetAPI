@@ -27,6 +27,7 @@ namespace WowDotNetAPI
         public WowExplorer(string region)
         {
             WebClient = new WebClient();
+            WebClient.Encoding = Encoding.UTF8;
             Region = region;
         }
         
@@ -139,7 +140,7 @@ namespace WowDotNetAPI
 
         private T GetData<T>(string url) where T : class
         {
-            using (MemoryStream stream = new MemoryStream(Encoding.Unicode.GetBytes(ExplorerUtil.GetJson(WebClient, url))))
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(ExplorerUtil.GetJson(WebClient, url))))
             {
                 DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
                 return DataContractJsonSerializer.ReadObject(stream) as T;
