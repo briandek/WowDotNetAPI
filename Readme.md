@@ -4,7 +4,7 @@ WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform A
 
 THE LIBRARY IS STILL EVOLVING WITH THE PLATFORM API CHANGES. USE AT OWN RISK - AND JUMP IN, HACK AWAY AND HELP OUT :]
 
-Currently supports access to the Realm, Guild, and Character(40%) areas of the Platform API.
+Currently supports access to the Realm, Guild, and Character areas of the Platform API.
 
 You can now obtain the WowDotNetAPI dll through nuget. More information at [http://nuget.org/List/Packages/WowDotNetAPI](http://nuget.org/List/Packages/WowDotNetAPI)
 
@@ -13,7 +13,6 @@ Sample:
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using System.Text;
 	using WowDotNetAPI;
 	using WowDotNetAPI.Extensions;
 	using WowDotNetAPI.Models;
@@ -72,9 +71,6 @@ Sample:
 			}
 		}
 	}
-
-
-
 
 
 Contributing
