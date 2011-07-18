@@ -7,6 +7,8 @@ using System.Net;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace WowDotNetAPI
 {
@@ -16,7 +18,7 @@ namespace WowDotNetAPI
             "http://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
-        public JavaScriptSerializer JavaScriptSerializer { get; set; }
+        public DataContractJsonSerializer DataContractJsonSerializer { get; set; }
 
         public string Region { get; set; }
 
@@ -24,7 +26,6 @@ namespace WowDotNetAPI
 
         public WowExplorer(string region)
         {
-            JavaScriptSerializer = new JavaScriptSerializer();
             WebClient = new WebClient();
             Region = region;
         }
@@ -132,13 +133,17 @@ namespace WowDotNetAPI
         }
 
         public IEnumerable<Realm> GetRealms(string region)
-        {
-            return GetData<RealmList>(string.Format(baseAPIurl + RealmUtil.basePath, region)).realms;
+        {   
+            return GetData<RealmList>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
         }
 
-        private T GetData<T>(string url)
+        private T GetData<T>(string url) where T : class
         {
-            return JavaScriptSerializer.Deserialize<T>(ExplorerUtil.GetJson(WebClient, url));
+            using (MemoryStream stream = new MemoryStream(Encoding.Unicode.GetBytes(ExplorerUtil.GetJson(WebClient, url))))
+            {
+                DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
+                return DataContractJsonSerializer.ReadObject(stream) as T;
+            }
         }
 
         public void Dispose()

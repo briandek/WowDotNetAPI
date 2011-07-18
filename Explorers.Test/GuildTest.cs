@@ -18,18 +18,18 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Simple_Guild_Immortality_From_Skullcrusher()
         {
-            Assert.IsTrue(TestUtil.immortalityGuild.realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(TestUtil.immortalityGuild.members.Any());
+            Assert.IsTrue(TestUtil.immortalityGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(TestUtil.immortalityGuild.Members.Any());
         }
 
         [TestMethod]
         public void Get_Valid_Member_From_Immortality_Guild()
         {
-            GuildMember briandek = TestUtil.immortalityGuild.members.Where(m => m.character.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            GuildMember briandek = TestUtil.immortalityGuild.Members.Where(m => m.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
-            Assert.IsTrue(briandek.character.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.character.@class == 1);
-            Assert.IsTrue(briandek.character.gender == 0);
+            Assert.IsTrue(briandek.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(briandek.Character.@Class == 1);
+            Assert.IsTrue(briandek.Character.Gender == 0);
             //Assert.IsTrue(briandek.character.achievementPoints == 6895); achievements via guild api is broken ._.
 
         }
@@ -39,15 +39,15 @@ namespace WowDotNetAPI.Test
         {
             Guild dvGuild = TestUtil.WowExplorer.GetGuild("laughing skull", "deus vox", true, false);
 
-            Assert.IsTrue(dvGuild.name.Equals("deus vox", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(dvGuild.realm.Equals("laughing skull", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(dvGuild.members.Any());
+            Assert.IsTrue(dvGuild.Name.Equals("deus vox", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(dvGuild.Realm.Equals("laughing skull", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(dvGuild.Members.Any());
 
 
-            GuildMember ohnoes = dvGuild.members.Where(m => m.character.name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            Assert.IsTrue(ohnoes.character.name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(ohnoes.character.@class == 4);
-            Assert.IsTrue(ohnoes.character.gender == 1);
+            GuildMember ohnoes = dvGuild.Members.Where(m => m.Character.Name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            Assert.IsTrue(ohnoes.Character.Name.Equals("ohnoes", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(ohnoes.Character.@Class == 4);
+            Assert.IsTrue(ohnoes.Character.Gender == 1);
         }
     }
 }

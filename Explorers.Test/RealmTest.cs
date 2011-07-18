@@ -29,9 +29,9 @@ namespace Explorers.Test
 		{
 			Realm realm = TestUtil.realms.GetRealm("skullcrusher");
 
-			Assert.IsTrue(realm.name == "Skullcrusher");
-			Assert.IsTrue(realm.type == "pvp");
-			Assert.IsTrue(realm.slug == "skullcrusher");
+			Assert.IsTrue(realm.Name == "Skullcrusher");
+			Assert.IsTrue(realm.Type == "pvp");
+			Assert.IsTrue(realm.Slug == "skullcrusher");
 		}
 
 		[TestMethod]
@@ -39,7 +39,7 @@ namespace Explorers.Test
 		{
             IEnumerable<Realm> realmList = TestUtil.realms.WithType("pvp");
 			var allCollectedRealmsArePvp = realmList.Any() &&
-				realmList.All(r => r.type.Equals("pvp", StringComparison.InvariantCultureIgnoreCase));
+				realmList.All(r => r.Type.Equals("pvp", StringComparison.InvariantCultureIgnoreCase));
 
 			Assert.IsTrue(allCollectedRealmsArePvp);
 		}
@@ -51,7 +51,7 @@ namespace Explorers.Test
 
 			//All servers being down is likely(maintenance) and will cause test to fail
 			var allCollectedRealmsAreUp = realmList.Any() &&
-				realmList.All(r => r.status == true);
+				realmList.All(r => r.Status == true);
 
 			Assert.IsTrue(allCollectedRealmsAreUp);
 		}
@@ -64,7 +64,7 @@ namespace Explorers.Test
 
 			//All servers getting queues is unlikely but possible and will cause test to fail
 			var allCollectedRealmsHaveQueues = realmList.Any() &&
-				realmList.All(r => r.queue == false);
+				realmList.All(r => r.Queue == false);
 
 			Assert.IsTrue(allCollectedRealmsHaveQueues);
 		}
@@ -74,7 +74,7 @@ namespace Explorers.Test
 		{
             IEnumerable<Realm> realmList = TestUtil.realms.WithPopulation("low");
 			var allCollectedRealmsHaveLowPopulation = realmList.Any() &&
-				realmList.All(r => r.population.Equals("low", StringComparison.InvariantCultureIgnoreCase));
+				realmList.All(r => r.Population.Equals("low", StringComparison.InvariantCultureIgnoreCase));
 
 			Assert.IsTrue(allCollectedRealmsHaveLowPopulation);
 		}

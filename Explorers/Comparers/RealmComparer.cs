@@ -13,17 +13,17 @@ namespace WowDotNetAPI.Comparers
         {
             if (a == null || b == null) return false;
 
-            return a.name == b.name
-                && a.population == b.population
-                && a.queue == b.queue
-                && a.slug == b.slug
-                && a.status == b.status
-                && a.type == b.type;
+            return a.Name == b.Name
+                && a.Population == b.Population
+                && a.Queue == b.Queue
+                && a.Slug == b.Slug
+                && a.Status == b.Status
+                && a.Type == b.Type;
         }
 
         public override int GetHashCode(Realm a)
         {
-            return string.Concat(a.name, a.type).GetHashCode();
+            return string.Concat(a.Name, a.Type).GetHashCode();
         }
     }
 }

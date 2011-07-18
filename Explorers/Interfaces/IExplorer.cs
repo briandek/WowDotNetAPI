@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
-using System.Web.Script.Serialization;
 using WowDotNetAPI.Models;
+using System.Runtime.Serialization.Json;
 
 namespace WowDotNetAPI.Interfaces
 {
     public interface IExplorer : IDisposable
     {
         WebClient WebClient { get; set; }
-        JavaScriptSerializer JavaScriptSerializer { get; set; }
+        DataContractJsonSerializer DataContractJsonSerializer { get; set; }
 
         Character GetCharacter(string realm, string name);
         Character GetCharacter(string realm, string name,

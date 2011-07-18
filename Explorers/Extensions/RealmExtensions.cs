@@ -11,36 +11,36 @@ namespace WowDotNetAPI.Extensions
     {
         public static Realm GetRealm(this IEnumerable<Realm> realms, string name)
         {
-            return realms.Where(r => r.name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            return realms.Where(r => r.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
         public static IEnumerable<Realm> WithQueues(this IEnumerable<Realm> realms)
         {
-            return realms.Where(r => r.queue);
+            return realms.Where(r => r.Queue);
         }
 
         public static IEnumerable<Realm> WithoutQueues(this IEnumerable<Realm> realms)
         {
-            return realms.Where(r => !r.queue);
+            return realms.Where(r => !r.Queue);
         }
 
         public static IEnumerable<Realm> ThatAreUp(this IEnumerable<Realm> realms)
         {
-            return realms.Where(r => r.status);
+            return realms.Where(r => r.Status);
         }
 
         public static IEnumerable<Realm> ThatAreDown(this IEnumerable<Realm> realms)
         {
-            return realms.Where(r => !r.status);
+            return realms.Where(r => !r.Status);
         }
 
         public static IEnumerable<Realm> WithPopulation(this IEnumerable<Realm> realms, string Population)
         {
-            return realms.Where(r => r.population.Equals(Population, StringComparison.InvariantCultureIgnoreCase));
+            return realms.Where(r => r.Population.Equals(Population, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, string realmType)
         {
-            return realms.Where(r => r.type.Equals(realmType, StringComparison.InvariantCultureIgnoreCase));
+            return realms.Where(r => r.Type.Equals(realmType, StringComparison.InvariantCultureIgnoreCase));
         }
 
         public static string ToJson(this IEnumerable<Realm> realms, JavaScriptSerializer JavascriptSerializer)

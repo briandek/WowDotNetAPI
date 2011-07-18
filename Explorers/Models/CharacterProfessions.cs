@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
 	public class CharacterProfessions
 	{
-		public IEnumerable<CharacterProfession> primary { get; set; }
-        public IEnumerable<CharacterProfession> secondary { get; set; }
+        [DataMember(Name="primary")]
+		public IEnumerable<CharacterProfession> Primary { get; set; }
+
+        [DataMember(Name = "secondary")]
+        public IEnumerable<CharacterProfession> Secondary { get; set; }
 	}
 }

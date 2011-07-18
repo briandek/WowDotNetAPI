@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
 	public class CharacterReputation
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public int standing { get; set; }
-		public int value { get; set; }
-		public int max { get; set; }
+        [DataMember(Name="id")]
+		public int Id { get; set; }
+        
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+
+        [DataMember(Name = "standing")]
+        public int Standing { get; set; }
+
+        [DataMember(Name = "value")]
+        public int Value { get; set; }
+
+        [DataMember(Name = "max")]
+        public int Max { get; set; }
 	}
 }

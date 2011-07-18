@@ -6,8 +6,10 @@ using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
     public class RealmList
     {
-        public IEnumerable<Realm> realms { get; set; }
+        [DataMember(Name = "realms")]
+        public IEnumerable<Realm> Realms { get; set; }
     }
 }

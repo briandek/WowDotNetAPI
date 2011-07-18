@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
 	public class CharacterTalentGlyphs
 	{
-        public IEnumerable<CharacterTalentGlyph> prime { get; set; }
-        public IEnumerable<CharacterTalentGlyph> major { get; set; }
-        public IEnumerable<CharacterTalentGlyph> minor { get; set; }
+        [DataMember(Name="prime")]
+        public IEnumerable<CharacterTalentGlyph> Prime { get; set; }
+
+        [DataMember(Name = "major")]
+        public IEnumerable<CharacterTalentGlyph> Major { get; set; }
+
+        [DataMember(Name = "minor")]
+        public IEnumerable<CharacterTalentGlyph> Minor { get; set; }
 	}
 }

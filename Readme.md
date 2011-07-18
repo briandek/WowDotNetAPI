@@ -30,14 +30,14 @@ Sample:
 				Console.WriteLine("\n\nGUILD EXPLORER SAMPLE\n");
 
 				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.",
-					immortalityGuild.name,
-					immortalityGuild.level,
-					immortalityGuild.members.Count()));
+					immortalityGuild.Name,
+					immortalityGuild.Level,
+					immortalityGuild.Members.Count()));
 
 				//Print out first top 50 ranked members of Immortality
-				foreach (GuildMember member in immortalityGuild.members.OrderBy(m => m.rank).Take(50))
+				foreach (GuildMember member in immortalityGuild.Members.OrderBy(m => m.Rank).Take(50))
 				{
-					Console.WriteLine(member.character.name + " has rank " + member.rank);
+					Console.WriteLine(member.Character.Name + " has rank " + member.Rank);
 				}
 
 				Console.WriteLine("\n\nCHARACTER EXPLORER SAMPLE\n");
@@ -45,11 +45,11 @@ Sample:
 					explorer.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
 
 				Console.WriteLine(string.Format("{0} is a retired warrior of level {1} who has {2} achievement points",
-					briandekCharacter.name,
-					briandekCharacter.level,
-					briandekCharacter.achievementPoints));
+					briandekCharacter.Name,
+					briandekCharacter.Level,
+					briandekCharacter.AchievementPoints));
 
-				foreach (KeyValuePair<string, object> stat in briandekCharacter.stats)
+				foreach (KeyValuePair<string, object> stat in briandekCharacter.Stats)
 				{
 					Console.WriteLine(stat.Key + " : " + stat.Value);
 				}
@@ -66,7 +66,7 @@ Sample:
 				Console.WriteLine("\n\nREALMS EXPLORER SAMPLE\n");
 				foreach (var realm in pvpRealmsOnly)
 				{
-					Console.WriteLine(string.Format("{0} has {1} population", realm.name, realm.population));
+					Console.WriteLine(string.Format("{0} has {1} population", realm.Name, realm.Population));
 				}
 			}
 		}

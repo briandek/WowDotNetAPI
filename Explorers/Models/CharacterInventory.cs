@@ -2,30 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
     public class CharacterInventory
     {
-        public int averageItemLevel { get; set; }
-        public int averageItemLevelEquipped { get; set; }
-        public CharacterItem head { get; set; }
-        public CharacterItem neck { get; set; }
-        public CharacterItem shoulder { get; set; }
-        public CharacterItem back { get; set; }
-        public CharacterItem chest { get; set; }
-        public CharacterItem shirt { get; set; }
-        public CharacterItem wrist { get; set; }
-        public CharacterItem hands { get; set; }
-        public CharacterItem waist { get; set; }
-        public CharacterItem legs { get; set; }
-        public CharacterItem feet { get; set; }
-        public CharacterItem finger1 { get; set; }
-        public CharacterItem finger2 { get; set; }
-        public CharacterItem trinket1 { get; set; }
-        public CharacterItem trinket2 { get; set; }
-        public CharacterItem mainHand { get; set; }
-        public CharacterItem offHand { get; set; }
-        public CharacterItem ranged { get; set; }
+        [DataMember(Name="averageItemLevel")]
+        public int AverageItemLevel { get; set; }
+
+        [DataMember(Name = "averageItemLevelEquipped")]
+        public int AverageItemLevelEquipped { get; set; }
+
+        [DataMember(Name = "head")]
+        public CharacterItem Head { get; set; }
+
+        [DataMember(Name = "neck")]
+        public CharacterItem Neck { get; set; }
+
+        [DataMember(Name = "shoulder")]
+        public CharacterItem Shoulder { get; set; }
+
+        [DataMember(Name = "back")]
+        public CharacterItem Back { get; set; }
+
+        [DataMember(Name = "chest")]
+        public CharacterItem Chest { get; set; }
+
+        [DataMember(Name = "shirt")]
+        public CharacterItem Shirt { get; set; }
+
+        [DataMember(Name = "wrist")]
+        public CharacterItem Wrist { get; set; }
+
+        [DataMember(Name = "hands")]
+        public CharacterItem Hands { get; set; }
+
+        [DataMember(Name = "waist")]
+        public CharacterItem Waist { get; set; }
+
+        [DataMember(Name = "legs")]
+        public CharacterItem Legs { get; set; }
+
+        [DataMember(Name = "feet")]
+        public CharacterItem Feet { get; set; }
+
+        [DataMember(Name = "finger1")]
+        public CharacterItem Finger1 { get; set; }
+
+        [DataMember(Name = "finger2")]
+        public CharacterItem Finger2 { get; set; }
+
+        [DataMember(Name = "trinket1")]
+        public CharacterItem Trinket1 { get; set; }
+
+        [DataMember(Name = "trinket2")]
+        public CharacterItem Trinket2 { get; set; }
+
+        [DataMember(Name = "mainHand")]
+        public CharacterItem MainHand { get; set; }
+
+        [DataMember(Name = "offHand")]
+        public CharacterItem OffHand { get; set; }
+
+        [DataMember(Name = "ranged")]
+        public CharacterItem Ranged { get; set; }
     }
 }

@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
     public class GuildMember
     {
-        public GuildCharacter character { get; set; }
-        public int rank { get; set; }
+        [DataMember(Name="character")]
+        public GuildCharacter Character { get; set; }
+
+        [DataMember(Name = "rank")]
+        public int Rank { get; set; }
     }
 }

@@ -2,34 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
     public class Character
     {
-        public string lastModified { get; set; }
-        public string name { get; set; }
-        public string realm { get; set; }
-        public int @class { get; set; }
-        public int race { get; set; }
-        public int gender { get; set; }
-        public int level { get; set; }
-        public int achievementPoints { get; set; }
-        public string thumbnail { get; set; }
+        [DataMember(Name = "lastModified")]
+        public string LastModified { get; set; }
+        
+        [DataMember(Name = "name")]
+        public string Name { get; set; }
+        
+        [DataMember(Name = "realm")]
+        public string Realm { get; set; }
+        
+        [DataMember(Name = "class")]
+        public int @Class { get; set; }
+        
+        [DataMember(Name = "race")]
+        public int Race { get; set; }
+        
+        [DataMember(Name = "gender")]
+        public int Gender { get; set; }
+        
+        [DataMember(Name = "level")]
+        public int Level { get; set; }
+        
+        [DataMember(Name = "achievementPoints")]
+        public int AchievementPoints { get; set; }
+        
+        [DataMember(Name = "thumbnail")]
+        public string Thumbnail { get; set; }
 
-        public CharacterGuild guild { get; set; }
-        public CharacterStats stats { get; set; }
-        public IEnumerable<CharacterTalent> talents { get; set; }
-        public CharacterInventory items { get; set; }
-        public IEnumerable<CharacterReputation> reputation { get; set; }
-        public IEnumerable<CharacterTitle> titles { get; set; }
-        public CharacterProfessions professions { get; set; }
-        public CharacterAppearance appearance { get; set; }
-        public IEnumerable<int> companions { get; set; }
-        public IEnumerable<int> mounts { get; set; }
-        public Progression progression { get; set; }
+        [DataMember(Name = "guild")]
+        public CharacterGuild Guild { get; set; }
+        
+        [DataMember(Name = "stats")]
+        public CharacterStats Stats { get; set; }
+        
+        [DataMember(Name = "talents")]
+        public IEnumerable<CharacterTalent> Talents { get; set; }
+        
+        [DataMember(Name = "items")]
+        public CharacterInventory Items { get; set; }
+        
+        [DataMember(Name = "reputation")]
+        public IEnumerable<CharacterReputation> Reputation { get; set; }
+        
+        [DataMember(Name = "titles")]
+        public IEnumerable<CharacterTitle> Titles { get; set; }
+        
+        [DataMember(Name = "professions")]
+        public CharacterProfessions Professions { get; set; }
 
+        [DataMember(Name = "appearance")]
+        public CharacterAppearance Appearance { get; set; }
 
+        [DataMember(Name = "companions")]
+        public IEnumerable<int> Companions { get; set; }
+
+        [DataMember(Name = "mounts")]
+        public IEnumerable<int> Mounts { get; set; }
+
+        [DataMember(Name = "progression")]
+        public Progression Progression { get; set; }
     }
 }

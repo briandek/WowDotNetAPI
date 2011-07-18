@@ -2,20 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
 	public class ItemTooltipParameters 
 	{
-		public int gem0 { get; set; }
-		public int gem1 { get; set; }
-		public int gem2 { get; set; }
-		public int enchant { get; set; }
-		public int reforge { get; set; }
-		public int[] @set { get; set; }
-		public long seed { get; set; }
-		public bool extraSocket { get; set; }
-		public int suffix { get; set; }
+        [DataMember(Name="gem0")]
+        public int Gem0 { get; set; }
+        
+        [DataMember(Name = "gem1")]
+        public int Gem1 { get; set; }
+        
+        [DataMember(Name = "gem2")]
+        public int Gem2 { get; set; }
+
+        [DataMember(Name = "enchant")]
+        public int Enchant { get; set; }
+
+        [DataMember(Name = "reforge")]
+        public int Reforge { get; set; }
+
+        [DataMember(Name = "set")]
+        public int[] @Set { get; set; }
+
+        [DataMember(Name = "seed")]
+        public long Seed { get; set; }
+
+        [DataMember(Name = "extraSocket")]
+        public bool ExtraSocket { get; set; }
+
+        [DataMember(Name = "suffix")]
+        public int Suffix { get; set; }
 	}
 }

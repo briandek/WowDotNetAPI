@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    [DataContract]
 	public class Progression
 	{
-		public IEnumerable<Raid> raids { get; set; }
+        [DataMember(Name="raids")]
+		public IEnumerable<Raid> Raids { get; set; }
 	}
 }

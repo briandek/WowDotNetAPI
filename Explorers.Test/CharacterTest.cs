@@ -15,9 +15,9 @@ namespace WowDotNetAPI.Test
         {
             Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek");
 
-            Assert.IsTrue(briandek.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.level == 85);
-            Assert.IsTrue(briandek.@class == 1);
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(briandek.Level == 85);
+            Assert.IsTrue(briandek.@Class == 1);
         }
 
         [TestMethod]
@@ -45,18 +45,18 @@ namespace WowDotNetAPI.Test
             //{
             //}
 
-            Assert.IsTrue(briandek.name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.level == 85);
-            Assert.IsTrue(briandek.@class == 1);
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(briandek.Level == 85);
+            Assert.IsTrue(briandek.@Class == 1);
 
-            Assert.IsTrue(briandek.talents.Where(t => t.selected).FirstOrDefault().name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.talents.ElementAt(1).glyphs.prime.ElementAt(0).name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.IsTrue(briandek.appearance.hairVariation == 13);
-            Assert.IsTrue(briandek.companions.ElementAt(1) == 32298);
-            Assert.IsTrue(briandek.items.averageItemLevelEquipped == 364);
+            Assert.IsTrue(briandek.Appearance.HairVariation == 13);
+            Assert.IsTrue(briandek.Companions.ElementAt(1) == 32298);
+            Assert.IsTrue(briandek.Items.AverageItemLevelEquipped == 364);
 
-            Assert.IsTrue(briandek.mounts.Count() == 11);
+            Assert.IsTrue(briandek.Mounts.Count() == 11);
         }
     }
 }
