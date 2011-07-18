@@ -17,8 +17,6 @@ namespace Explorers.Test
 	[TestClass]
 	public class RealmTest
 	{
-		
-
 		[TestMethod]
 		public void GetAll_US_Realms_Returns_All_Realms()
 		{

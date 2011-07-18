@@ -24,17 +24,16 @@ Sample:
 		{
 			static void Main(string[] args)
 			{
-				RealmExplorer rE = new RealmExplorer();
-				CharacterExplorer cE = new CharacterExplorer();
-				GuildExplorer gE = new GuildExplorer();
+				WowExplorer explorer = new WowExplorer();
 
-				Guild immortalityGuild = gE.GetGuild("skullcrusher", "immortality", true, true);
+				Guild immortalityGuild = explorer.GetGuild("skullcrusher", "immortality", true, true);
 
 				Console.WriteLine("\n\nGUILD EXPLORER SAMPLE\n");
 
-				//Prints
-				//Immortality is a guild of level 25 and has 584 members.
-				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.", immortalityGuild.name, immortalityGuild.level, immortalityGuild.members.Count()));
+				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.",
+					immortalityGuild.name,
+					immortalityGuild.level,
+					immortalityGuild.members.Count()));
 
 				//Print out first top 50 ranked members of Immortality
 				foreach (GuildMember member in immortalityGuild.members.OrderBy(m => m.rank).Take(50))
@@ -42,61 +41,26 @@ Sample:
 					Console.WriteLine(member.character.name + " has rank " + member.rank);
 				}
 
-				//Still cleaning up the calls - bear with us :P
-				//Get briandek and don't fetch any additional data but stats.
-				//public Character GetCharacter(string region, string realm, string name,
-				//bool getGuildInfo,
-				//bool getStatsInfo,
-				//bool getTalentsInfo,
-				//bool getItemsInfo,
-				//bool getReputationInfo,
-				//bool getTitlesInfo,
-				//bool getProfessionsInfo,
-				//bool getAppearanceInfo,
-				//bool getCompanionsInfo,
-				//bool getMountsInfo,
-				//bool getPetsInfo,
-				//bool getAchievementsInfo,
-				//bool getProgressionInfo)
 				Console.WriteLine("\n\nCHARACTER EXPLORER SAMPLE\n");
-
-
 				Character briandekCharacter =
-					cE.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
+					explorer.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
 
-				//Prints 
-				//Briandek is a retired warrior of level 85 who has 6895 achievement points
 				Console.WriteLine(string.Format("{0} is a retired warrior of level {1} who has {2} achievement points",
 					briandekCharacter.name,
 					briandekCharacter.level,
 					briandekCharacter.achievementPoints));
 
-				//Print out character stats
-				//health : 174611
-				//powerType : rage
-				//power : 100
-				//str : 3688
-				//agi : 178
-				//sta : 9399
-				//int : 37
-				//spr : 64
-				//attackPower : 7611
-				//rangedAttackPower : 253
-				//mastery : 20.410751
-				//masteryRating : 2225
-				//...
 				foreach (KeyValuePair<string, object> stat in briandekCharacter.stats)
 				{
 					Console.WriteLine(stat.Key + " : " + stat.Value);
 				}
 
 				//Fetch another character data with simple data 
-				Character fleasCharacter = cE.GetCharacter("skullcrusher", "fleas");
+				Character fleasCharacter = explorer.GetCharacter("skullcrusher", "fleas");
 
 				//Get one realm
-				IEnumerable<Realm> usRealms = rE.GetRealms("us");
+				IEnumerable<Realm> usRealms = explorer.GetRealms("us");
 				Realm skullcrusher = usRealms.GetRealm("skullcrusher");
-
 
 				//Get all pvp realms only
 				IEnumerable<Realm> pvpRealmsOnly = usRealms.WithType("pvp");
@@ -105,10 +69,10 @@ Sample:
 				{
 					Console.WriteLine(string.Format("{0} has {1} population", realm.name, realm.population));
 				}
-
 			}
 		}
 	}
+
 
 
 
