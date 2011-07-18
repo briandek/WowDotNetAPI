@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Net;
 
-namespace WowDotNetAPI.Explorers.Utilities
+namespace WowDotNetAPI.Utilities
 {
     public static class ExplorerUtil
     {

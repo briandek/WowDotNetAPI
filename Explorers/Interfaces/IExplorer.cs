@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Models;
 
-namespace WowDotNetAPI.Explorers.Interfaces
+namespace WowDotNetAPI.Interfaces
 {
     public interface IExplorer : IDisposable
     {

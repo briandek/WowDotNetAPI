@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Interfaces;
+using WowDotNetAPI.Interfaces;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.Models;
-using WowDotNetAPI.Explorers.Utilities;
+using WowDotNetAPI.Models;
+using WowDotNetAPI.Utilities;
 
-namespace WowDotNetAPI.Explorers
+namespace WowDotNetAPI
 {
     public class WowExplorer : IExplorer
     {

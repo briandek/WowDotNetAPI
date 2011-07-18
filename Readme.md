@@ -14,9 +14,9 @@ Sample:
 	using System.Collections.Generic;
 	using System.Linq;
 	using System.Text;
-	using WowDotNetAPI.Explorers;
-	using WowDotNetAPI.Explorers.Extensions;
-	using WowDotNetAPI.Explorers.Models;
+	using WowDotNetAPI;
+	using WowDotNetAPI.Extensions;
+	using WowDotNetAPI.Models;
 
 	namespace WDA_Demo
 	{
@@ -24,7 +24,7 @@ Sample:
 		{
 			static void Main(string[] args)
 			{
-				WowExplorer explorer = new WowExplorer();
+				WowExplorer explorer = new WowExplorer("us");
 
 				Guild immortalityGuild = explorer.GetGuild("skullcrusher", "immortality", true, true);
 

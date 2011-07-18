@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WowDotNetAPI.Explorers.Interfaces;
-using WowDotNetAPI.Explorers.Utilities;
+using WowDotNetAPI.Interfaces;
+using WowDotNetAPI.Utilities;
 using System.Net;
 using System.Web.Script.Serialization;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Models;
 
-namespace WowDotNetAPI.Explorers.Test
+namespace WowDotNetAPI.Test
 {
     [TestClass]
     public class GuildTest

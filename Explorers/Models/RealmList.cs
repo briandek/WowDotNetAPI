@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace WowDotNetAPI.Explorers.Models
+namespace WowDotNetAPI.Models
 {
     public class RealmList
     {

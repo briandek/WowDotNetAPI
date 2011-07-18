@@ -5,7 +5,7 @@ using System.Text;
 using System.Collections;
 
 
-namespace WowDotNetAPI.Explorers.Models
+namespace WowDotNetAPI.Models
 {
     public class CharacterStats : IEnumerable
     {

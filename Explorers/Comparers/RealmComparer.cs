@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Text;
 using System.Collections.Generic;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Models;
 
-namespace WowDotNetAPI.Explorers.Comparers
+namespace WowDotNetAPI.Comparers
 {
     public class RealmComparer : EqualityComparer<Realm>
     {

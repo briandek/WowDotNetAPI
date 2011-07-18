@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Models;
 
-namespace WowDotNetAPI.Explorers.Test
+namespace WowDotNetAPI.Test
 {
     [TestClass]
     public class CharacterTest

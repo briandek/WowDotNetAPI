@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace WowDotNetAPI.Explorers.Utilities
+namespace WowDotNetAPI.Utilities
 {
     public static class GuildUtil
     {

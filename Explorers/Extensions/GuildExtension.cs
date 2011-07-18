@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Explorers.Models;
+using WowDotNetAPI.Models;
 using System.Web.Script.Serialization;
 
-namespace WowDotNetAPI.Explorers.Extensions
+namespace WowDotNetAPI.Extensions
 {
     public static class GuildExtension
     {
