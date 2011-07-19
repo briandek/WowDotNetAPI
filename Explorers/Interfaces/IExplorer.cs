@@ -59,5 +59,17 @@ namespace WowDotNetAPI.Interfaces
         IEnumerable<Realm> GetRealms();
         IEnumerable<Realm> GetRealms(string region);
 
+        IEnumerable<CharacterRace> GetCharacterRaces();
+        IEnumerable<CharacterRace> GetCharacterRaces(string region);
+
+        IEnumerable<CharacterClass> GetCharacterClasses();
+        IEnumerable<CharacterClass> GetCharacterClasses(string region);
+
+        IEnumerable<GuildReward> GetGuildRewards();
+        IEnumerable<GuildReward> GetGuildRewards(string region);
+
+        IEnumerable<GuildPerk> GetGuildPerks();
+        IEnumerable<GuildPerk> GetGuildPerks(string region);
+
     }
 }

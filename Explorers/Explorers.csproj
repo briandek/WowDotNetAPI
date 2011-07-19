@@ -50,6 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CharacterClass.cs" />
+    <Compile Include="Models\CharacterClassesData.cs" />
+    <Compile Include="Models\CharacterRace.cs" />
+    <Compile Include="Models\CharacterRacesData.cs" />
+    <Compile Include="Models\GuildPerk.cs" />
+    <Compile Include="Models\GuildPerksData.cs" />
+    <Compile Include="Models\GuildPerkSpell.cs" />
+    <Compile Include="Models\GuildReward.cs" />
+    <Compile Include="Models\GuildRewardAchievement.cs" />
+    <Compile Include="Models\GuildRewardItem.cs" />
+    <Compile Include="Models\GuildRewardsData.cs" />
+    <Compile Include="Utilities\DataUtil.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTalentGlyph.cs" />

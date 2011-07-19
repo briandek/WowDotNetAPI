@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterTest.cs" />
+    <Compile Include="DataTest.cs" />
     <Compile Include="TestUtil.cs" />
     <Compile Include="GuildTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

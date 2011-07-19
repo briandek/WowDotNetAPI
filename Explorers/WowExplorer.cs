@@ -147,6 +147,46 @@ namespace WowDotNetAPI
             }
         }
 
+        public IEnumerable<CharacterRace> GetCharacterRaces()
+        {
+            return GetCharacterRaces(Region);
+        }
+
+        public IEnumerable<CharacterRace> GetCharacterRaces(string region)
+        {
+            return GetData<CharacterRacesData>(string.Format(baseAPIurl + DataUtil.characterRacesPath, region)).Races;
+        }
+
+        public IEnumerable<CharacterClass> GetCharacterClasses()
+        {
+            return GetCharacterClasses(Region);
+        }
+
+        public IEnumerable<CharacterClass> GetCharacterClasses(string region)
+        {
+            return GetData<CharacterClassesData>(string.Format(baseAPIurl + DataUtil.characterClassesPath, region)).Classes;
+        }
+
+        public IEnumerable<GuildReward> GetGuildRewards()
+        {
+            return GetGuildRewards(Region);
+        }
+
+        public IEnumerable<GuildReward> GetGuildRewards(string region)
+        {
+            return GetData<GuildRewardsData>(string.Format(baseAPIurl + DataUtil.guildRewardsPath, region)).Rewards;
+        }
+
+        public IEnumerable<GuildPerk> GetGuildPerks()
+        {
+            return GetGuildPerks(Region);
+        }
+
+        public IEnumerable<GuildPerk> GetGuildPerks(string region)
+        {
+            return GetData<GuildPerksData>(string.Format(baseAPIurl + DataUtil.guildPerksPath, region)).Perks;
+        }
+
         public void Dispose()
         {
             if (WebClient != null)
