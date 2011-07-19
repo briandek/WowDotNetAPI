@@ -66,7 +66,7 @@ Sample:
 					Console.WriteLine("{0} has {1} population", realm.Name, realm.Population);
 				}
 
-				Console.WriteLine("\n\nGUILD PERKS EXPLORER SAMPLE\n");
+				Console.WriteLine("\n\nGUILD PERKS\n");
 
 				IEnumerable<GuildPerk> perks = explorer.GetGuildPerks();
 				foreach (var perk in perks)
@@ -74,7 +74,7 @@ Sample:
 					Console.WriteLine("{0} perk at guild level {1}", perk.Spell.Name, perk.GuildLevel);
 				}
 
-				Console.WriteLine("\n\nGUILD REWARDS SAMPLE\n");
+				Console.WriteLine("\n\nGUILD REWARDS\n");
 
 				IEnumerable<GuildReward> rewards = explorer.GetGuildRewards();
 				foreach (var reward in rewards)
@@ -82,7 +82,7 @@ Sample:
 					Console.WriteLine("{0} reward at min guild level {1}", reward.Item.Name, reward.MinGuildLevel);
 				}
 
-				Console.WriteLine("\n\nCHARACTER RACES SAMPLE\n");
+				Console.WriteLine("\n\nCHARACTER RACES\n");
 
 				IEnumerable<CharacterRace> races = explorer.GetCharacterRaces();
 				foreach (var race in races.OrderBy(r =>r.Id))
@@ -90,7 +90,7 @@ Sample:
 					Console.WriteLine("{0} race with numeric value {1}", race.Name, race.Id);
 				}
 
-				Console.WriteLine("\n\nGUILD REWARDS EXPLORER SAMPLE\n");
+				Console.WriteLine("\n\nCHARACTER CLASSES\n");
 
 				IEnumerable<CharacterClass> classes = explorer.GetCharacterClasses();
 				foreach (var @class in classes.OrderBy(c => c.Id))
@@ -100,6 +100,7 @@ Sample:
 			}
 		}
 	}
+
 
 
 
