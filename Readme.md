@@ -29,13 +29,13 @@ Sample:
 
 				Console.WriteLine("\n\nGUILD EXPLORER SAMPLE\n");
 
-				Console.WriteLine(string.Format("{0} is a guild of level {1} and has {2} members.",
+				Console.WriteLine("{0} is a guild of level {1} and has {2} members.",
 					immortalityGuild.Name,
 					immortalityGuild.Level,
-					immortalityGuild.Members.Count()));
+					immortalityGuild.Members.Count());
 
-				//Print out first top 50 ranked members of Immortality
-				foreach (GuildMember member in immortalityGuild.Members.OrderBy(m => m.Rank).Take(50))
+				//Print out first top 20 ranked members of Immortality
+				foreach (GuildMember member in immortalityGuild.Members.OrderBy(m => m.Rank).Take(20))
 				{
 					Console.WriteLine(member.Character.Name + " has rank " + member.Rank);
 				}
@@ -44,18 +44,15 @@ Sample:
 				Character briandekCharacter =
 					explorer.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
 
-				Console.WriteLine(string.Format("{0} is a retired warrior of level {1} who has {2} achievement points",
+				Console.WriteLine("{0} is a retired warrior of level {1} who has {2} achievement points",
 					briandekCharacter.Name,
 					briandekCharacter.Level,
-					briandekCharacter.AchievementPoints));
+					briandekCharacter.AchievementPoints);
 
 				foreach (KeyValuePair<string, object> stat in briandekCharacter.Stats)
 				{
 					Console.WriteLine(stat.Key + " : " + stat.Value);
 				}
-
-				//Fetch another character data with simple data 
-				Character fleasCharacter = explorer.GetCharacter("skullcrusher", "fleas");
 
 				//Get one realm
 				IEnumerable<Realm> usRealms = explorer.GetRealms("us");
@@ -66,11 +63,44 @@ Sample:
 				Console.WriteLine("\n\nREALMS EXPLORER SAMPLE\n");
 				foreach (var realm in pvpRealmsOnly)
 				{
-					Console.WriteLine(string.Format("{0} has {1} population", realm.Name, realm.Population));
+					Console.WriteLine("{0} has {1} population", realm.Name, realm.Population);
+				}
+
+				Console.WriteLine("\n\nGUILD PERKS EXPLORER SAMPLE\n");
+
+				IEnumerable<GuildPerk> perks = explorer.GetGuildPerks();
+				foreach (var perk in perks)
+				{
+					Console.WriteLine("{0} perk at guild level {1}", perk.Spell.Name, perk.GuildLevel);
+				}
+
+				Console.WriteLine("\n\nGUILD REWARDS SAMPLE\n");
+
+				IEnumerable<GuildReward> rewards = explorer.GetGuildRewards();
+				foreach (var reward in rewards)
+				{
+					Console.WriteLine("{0} reward at min guild level {1}", reward.Item.Name, reward.MinGuildLevel);
+				}
+
+				Console.WriteLine("\n\nCHARACTER RACES SAMPLE\n");
+
+				IEnumerable<CharacterRace> races = explorer.GetCharacterRaces();
+				foreach (var race in races.OrderBy(r =>r.Id))
+				{
+					Console.WriteLine("{0} race with numeric value {1}", race.Name, race.Id);
+				}
+
+				Console.WriteLine("\n\nGUILD REWARDS EXPLORER SAMPLE\n");
+
+				IEnumerable<CharacterClass> classes = explorer.GetCharacterClasses();
+				foreach (var @class in classes.OrderBy(c => c.Id))
+				{
+					Console.WriteLine("{0} class with numeric value {1}", @class.Name, @class.Id);
 				}
 			}
 		}
 	}
+
 
 
 Contributing
