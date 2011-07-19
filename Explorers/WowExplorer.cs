@@ -15,7 +15,7 @@ namespace WowDotNetAPI
     public class WowExplorer : IExplorer
     {
         private const string baseAPIurl =
-            "http://{0}." + ExplorerUtil.host;
+            "https://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
         public DataContractJsonSerializer DataContractJsonSerializer { get; set; }
@@ -30,7 +30,7 @@ namespace WowDotNetAPI
             WebClient.Encoding = Encoding.UTF8;
             Region = region;
         }
-        
+
         public Character GetCharacter(string realm, string name)
         {
             return GetCharacter(Region, realm, name,
@@ -134,8 +134,8 @@ namespace WowDotNetAPI
         }
 
         public IEnumerable<Realm> GetRealms(string region)
-        {   
-            return GetData<RealmList>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
+        {
+            return GetData<RealmsData>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
         }
 
         private T GetData<T>(string url) where T : class

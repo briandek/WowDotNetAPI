@@ -86,7 +86,7 @@
     <Compile Include="Models\CharacterProfessions.cs" />
     <Compile Include="Models\Progression.cs" />
     <Compile Include="Models\Raid.cs" />
-    <Compile Include="Models\RealmList.cs" />
+    <Compile Include="Models\RealmsData.cs" />
     <Compile Include="Models\CharacterReputation.cs" />
     <Compile Include="Models\CharacterStats.cs" />
     <Compile Include="Models\CharacterTitle.cs" />

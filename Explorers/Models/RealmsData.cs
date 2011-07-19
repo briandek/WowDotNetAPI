@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class RealmList
+    public class RealmsData
     {
         [DataMember(Name = "realms")]
         public IEnumerable<Realm> Realms { get; set; }
