@@ -10,7 +10,7 @@ namespace WowDotNetAPI.Models
     public class CharacterClass
     {
         [DataMember(Name = "id")]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [DataMember(Name = "mask")]
         public int Mask { get; set; }
