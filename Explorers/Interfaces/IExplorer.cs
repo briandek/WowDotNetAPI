@@ -11,7 +11,6 @@ namespace WowDotNetAPI.Interfaces
     public interface IExplorer : IDisposable
     {
         WebClient WebClient { get; set; }
-        DataContractJsonSerializer DataContractJsonSerializer { get; set; }
 
         Character GetCharacter(string realm, string name);
         Character GetCharacter(string realm, string name,

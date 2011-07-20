@@ -29,7 +29,7 @@ namespace WowDotNetAPI.Utilities
 
         public static T FromJSON<T>(WebClient WebClient, string url) where T : class
         {
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(ExplorerUtil.GetJSON(WebClient, url))))
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(GetJSON(WebClient, url))))
             {
                 DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
                 return DataContractJsonSerializer.ReadObject(stream) as T;
@@ -38,7 +38,6 @@ namespace WowDotNetAPI.Utilities
 
         public static string ToJSON<T>(T obj) where T : class
         {
-            DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
             WebClient WebClient = new WebClient();
             WebClient.Encoding = Encoding.UTF8;
 

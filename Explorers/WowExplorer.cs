@@ -18,7 +18,6 @@ namespace WowDotNetAPI
             "https://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
-        public DataContractJsonSerializer DataContractJsonSerializer { get; set; }
 
         public string Region { get; set; }
 
