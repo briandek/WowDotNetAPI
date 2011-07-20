@@ -138,15 +138,6 @@ namespace WowDotNetAPI
             return GetData<RealmsData>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
         }
 
-        private T GetData<T>(string url) where T : class
-        {
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(ExplorerUtil.GetJson(WebClient, url))))
-            {
-                DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
-                return DataContractJsonSerializer.ReadObject(stream) as T;
-            }
-        }
-
         public IEnumerable<CharacterRace> GetCharacterRaces()
         {
             return GetCharacterRaces(Region);
@@ -185,6 +176,11 @@ namespace WowDotNetAPI
         public IEnumerable<GuildPerk> GetGuildPerks(string region)
         {
             return GetData<GuildPerksData>(string.Format(baseAPIurl + DataUtil.guildPerksPath, region)).Perks;
+        }
+
+        private T GetData<T>(string url) where T : class
+        {
+            return ExplorerUtil.FromJSON<T>(WebClient, url);
         }
 
         public void Dispose()

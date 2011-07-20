@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using WowDotNetAPI.Models;
 using System.Web.Script.Serialization;
+using System.Runtime.Serialization.Json;
+using System.IO;
 
 namespace WowDotNetAPI.Extensions
 {
@@ -41,11 +43,6 @@ namespace WowDotNetAPI.Extensions
         public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, string realmType)
         {
             return realms.Where(r => r.Type.Equals(realmType, StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        public static string ToJson(this IEnumerable<Realm> realms, JavaScriptSerializer JavascriptSerializer)
-        {
-            return JavascriptSerializer.Serialize(new Dictionary<string, IEnumerable<Realm>> { { "realms", realms } });
         }
     }
 }

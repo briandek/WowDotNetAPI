@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WowDotNetAPI.Models;
+using WowDotNetAPI.Extensions;
 
 namespace WowDotNetAPI.Test
 {
