@@ -51,7 +51,7 @@ namespace WowDotNetAPI.Utilities
                 DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
 
                 DataContractJsonSerializer.WriteObject(stream, obj);
-                return Encoding.Default.GetString(stream.ToArray());
+                return Encoding.UTF8.GetString(stream.ToArray());
             }
         }
 
