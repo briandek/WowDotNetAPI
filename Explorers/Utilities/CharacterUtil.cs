@@ -11,61 +11,48 @@ namespace WowDotNetAPI.Utilities
         public const string racesPath = "/api/wow/data/character/races";
         public const string classesPath = "/api/wow/data/character/classes";
 
-        public static string buildOptionalQuery(
-            bool getGuildInfo,
-            bool getStatsInfo,
-            bool getTalentsInfo,
-            bool getItemsInfo,
-            bool getReputationInfo,
-            bool getTitlesInfo,
-            bool getProfessionsInfo,
-            bool getAppearanceInfo,
-            bool getCompanionsInfo,
-            bool getMountsInfo,
-            bool getPetsInfo,
-            bool getAchievementsInfo,
-            bool getProgressionInfo)
+        public static string buildOptionalQuery(CharacterOptions characterOptions)
         {
             string query = "?fields=";
             List<string> tmp = new List<string>();
 
-            if (getGuildInfo)
+            if ((characterOptions & CharacterOptions.GetGuild) == CharacterOptions.GetGuild)
                 tmp.Add("guild");
 
-            if (getStatsInfo)
+            if ((characterOptions & CharacterOptions.GetStats) == CharacterOptions.GetStats)
                 tmp.Add("stats");
 
-            if (getTalentsInfo)
+            if ((characterOptions & CharacterOptions.GetTalents) == CharacterOptions.GetTalents)
                 tmp.Add("talents");
 
-            if (getItemsInfo)
+            if ((characterOptions & CharacterOptions.GetItems) == CharacterOptions.GetItems)
                 tmp.Add("items");
 
-            if (getReputationInfo)
+            if ((characterOptions & CharacterOptions.GetReputation) == CharacterOptions.GetReputation)
                 tmp.Add("reputation");
 
-            if (getTitlesInfo)
+            if ((characterOptions & CharacterOptions.GetTitles) == CharacterOptions.GetTitles)
                 tmp.Add("titles");
 
-            if (getProfessionsInfo)
+            if ((characterOptions & CharacterOptions.GetProfessions) == CharacterOptions.GetProfessions)
                 tmp.Add("professions");
 
-            if (getAppearanceInfo)
+            if ((characterOptions & CharacterOptions.GetAppearance) == CharacterOptions.GetAppearance)
                 tmp.Add("appearance");
 
-            if (getCompanionsInfo)
+            if ((characterOptions & CharacterOptions.GetCompanions) == CharacterOptions.GetCompanions)
                 tmp.Add("companions");
 
-            if (getMountsInfo)
+            if ((characterOptions & CharacterOptions.GetMounts) == CharacterOptions.GetMounts)
                 tmp.Add("mounts");
 
-            if (getPetsInfo)
+            if ((characterOptions & CharacterOptions.GetPets) == CharacterOptions.GetPets)
                 tmp.Add("pets");
 
-            if (getAchievementsInfo)
+            if ((characterOptions & CharacterOptions.GetAchievements) == CharacterOptions.GetAchievements)
                 tmp.Add("achievements");
 
-            if (getProgressionInfo)
+            if ((characterOptions & CharacterOptions.GetProgression) == CharacterOptions.GetProgression)
                 tmp.Add("progression");
 
             query += string.Join(",", tmp);

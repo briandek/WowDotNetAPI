@@ -11,17 +11,15 @@ namespace WowDotNetAPI.Utilities
         public const string rewardsPath = "/api/wow/data/guild/rewards";
         public const string perksPath = "/api/wow/data/guild/perks";
 
-        public static string buildOptionalQuery(
-            bool getMembers,
-            bool getAchievements)
+        public static string buildOptionalQuery(GuildOptions realmOptions)
         {
             string query = "?fields=";
             List<string> tmp = new List<string>();
 
-            if (getMembers)
+            if ((realmOptions & GuildOptions.GetMembers) == GuildOptions.GetMembers)
                 tmp.Add("members");
 
-            if (getAchievements)
+            if ((realmOptions & GuildOptions.GetAchievements) == GuildOptions.GetAchievements)
                 tmp.Add("achievements");
 
             query += string.Join(",", tmp);

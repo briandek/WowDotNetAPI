@@ -35,9 +35,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Character.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Character.Gender);
 
-
             //Assert.IsTrue(briandek.character.achievementPoints == 6895); achievements via guild api is broken ._.
-
         }
 
 
@@ -57,7 +55,10 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Valid_Member_From_Another_Guild()
         {
-            Guild dvGuild = TestUtil.WowExplorer.GetGuild("laughing skull", "deus vox", true, false);
+            Guild dvGuild = TestUtil.WowExplorer.GetGuild("laughing skull", "deus vox", GuildOptions.GetMembers | GuildOptions.GetAchievements);
+
+            Assert.IsNotNull(dvGuild.Members);
+            Assert.IsNotNull(dvGuild.AchievementPoints);
 
             Assert.IsTrue(dvGuild.Name.Equals("deus vox", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(dvGuild.Realm.Equals("laughing skull", StringComparison.InvariantCultureIgnoreCase));
@@ -82,13 +83,65 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Valid_Member_From_Horde_Guild()
         {
-            Guild rageGuild = TestUtil.WowExplorer.GetGuild("skullcrusher", "rage", true, false);
+            Guild rageGuild = TestUtil.WowExplorer.GetGuild("skullcrusher", "rage", GuildOptions.GetMembers);
+
+            Assert.IsNotNull(rageGuild.Members);
+            Assert.IsNull(rageGuild.Achievements);
 
             Assert.IsTrue(rageGuild.Name.Equals("rage", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(rageGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+           
             Assert.IsTrue(rageGuild.Members.Any());
 
             Assert.IsTrue(rageGuild.Side == UnitSide.HORDE);
+        }
+
+        [TestMethod]
+        public void Get_Guild_With_Only_Achievements()
+        {
+            Guild immortality = TestUtil.WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetAchievements);
+
+            Assert.IsNull(immortality.Members);
+            Assert.IsNotNull(immortality.Achievements);
+
+            Assert.IsTrue(TestUtil.immortalityGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(UnitSide.ALLIANCE, TestUtil.immortalityGuild.Side);
+        }
+
+        [TestMethod]
+        public void Get_Guild_With_Only_Members()
+        {
+            Guild immortality = TestUtil.WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetMembers);
+
+            Assert.IsNotNull(immortality.Members);
+            Assert.IsNull(immortality.Achievements);
+
+            Assert.IsTrue(TestUtil.immortalityGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(UnitSide.ALLIANCE, TestUtil.immortalityGuild.Side);
+        }
+
+        [TestMethod]
+        public void Get_Guild_With_Only_No_Options()
+        {
+            Guild immortality = TestUtil.WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.None);
+
+            Assert.IsNull(immortality.Members);
+            Assert.IsNull(immortality.Achievements);
+
+            Assert.IsTrue(TestUtil.immortalityGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(UnitSide.ALLIANCE, TestUtil.immortalityGuild.Side);
+        }
+
+        [TestMethod]
+        public void Get_Guild_With_Base_Method_Call()
+        {
+            Guild immortality = TestUtil.WowExplorer.GetGuild("skullcrusher", "immortality");
+
+            Assert.IsNull(immortality.Members);
+            Assert.IsNull(immortality.Achievements);
+
+            Assert.IsTrue(TestUtil.immortalityGuild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(UnitSide.ALLIANCE, TestUtil.immortalityGuild.Side);
         }
     }
 }

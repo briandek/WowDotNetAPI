@@ -11,6 +11,45 @@ using System.IO;
 
 namespace WowDotNetAPI
 {
+    public enum Region
+    {
+        US,
+        EU,
+        KR,
+        TW
+    }
+
+    [Flags]
+    public enum CharacterOptions
+    {
+        None = 0,
+        GetGuild = 1,
+        GetStats = 2,
+        GetTalents = 4,
+        GetItems = 8,
+        GetReputation = 16,
+        GetTitles = 32,
+        GetProfessions = 64,
+        GetAppearance = 128,
+        GetCompanions = 256,
+        GetMounts = 512,
+        GetPets = 1024,
+        GetAchievements = 2048,
+        GetProgression = 4096,
+        GetEverything = GetGuild | GetStats | GetTalents | GetItems | GetReputation | GetTitles
+        | GetProfessions | GetAppearance | GetCompanions | GetMounts | GetPets
+        | GetAchievements | GetProgression
+    }
+
+    [Flags]
+    public enum GuildOptions
+    {
+        None = 0,
+        GetMembers = 1,
+        GetAchievements = 2,
+        GetEverything = GetMembers | GetAchievements
+    }
+
     public class WowExplorer : IExplorer
     {
         private const string baseAPIurl = "https://{0}." + ExplorerUtil.host;
@@ -30,99 +69,45 @@ namespace WowDotNetAPI
 
         public Character GetCharacter(string realm, string name)
         {
-            return GetCharacter(Region, realm, name,
-                false, false, false, false, false, false, false, false, false, false, false, false, false);
+            return GetCharacter(Region, realm, name, CharacterOptions.None);
         }
 
         public Character GetCharacter(Region region, string realm, string name)
         {
-            return GetCharacter(region, realm, name,
-                false, false, false, false, false, false, false, false, false, false, false, false, false);
+            return GetCharacter(region, realm, name, CharacterOptions.None);
         }
 
-        public Character GetCharacter(string realm, string name,
-           bool getGuildInfo,
-           bool getStatsInfo,
-           bool getTalentsInfo,
-           bool getItemsInfo,
-           bool getReputationInfo,
-           bool getTitlesInfo,
-           bool getProfessionsInfo,
-           bool getAppearanceInfo,
-           bool getCompanionsInfo,
-           bool getMountsInfo,
-           bool getPetsInfo,
-           bool getAchievementsInfo,
-           bool getProgressionInfo)
+        public Character GetCharacter(string realm, string name, CharacterOptions characterOptions)
         {
-            return GetCharacter(Region, realm, name,
-                getGuildInfo,
-                getStatsInfo,
-                getTalentsInfo,
-                getItemsInfo,
-                getReputationInfo,
-                getTitlesInfo,
-                getProfessionsInfo,
-                getAppearanceInfo,
-                getCompanionsInfo,
-                getMountsInfo,
-                getPetsInfo,
-                getAchievementsInfo,
-                getProgressionInfo);
+            return GetCharacter(Region, realm, name, characterOptions);
         }
 
-        public Character GetCharacter(Region region, string realm, string name,
-            bool getGuildInfo,
-            bool getStatsInfo,
-            bool getTalentsInfo,
-            bool getItemsInfo,
-            bool getReputationInfo,
-            bool getTitlesInfo,
-            bool getProfessionsInfo,
-            bool getAppearanceInfo,
-            bool getCompanionsInfo,
-            bool getMountsInfo,
-            bool getPetsInfo,
-            bool getAchievementsInfo,
-            bool getProgressionInfo)
+        public Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions)
         {
             return GetData<Character>(string.Format(baseAPIurl + CharacterUtil.basePath + "{1}/{2}", region, realm, name)
-                + CharacterUtil.buildOptionalQuery(
-                getGuildInfo,
-                getStatsInfo,
-                getTalentsInfo,
-                getItemsInfo,
-                getReputationInfo,
-                getTitlesInfo,
-                getProfessionsInfo,
-                getAppearanceInfo,
-                getCompanionsInfo,
-                getMountsInfo,
-                getPetsInfo,
-                getAchievementsInfo,
-                getProgressionInfo));
+                + CharacterUtil.buildOptionalQuery(characterOptions));
 
         }
 
         public Guild GetGuild(string realm, string name)
         {
-            return GetGuild(Region, realm, name, false, false);
+            return GetGuild(Region, realm, name, GuildOptions.None);
         }
 
         public Guild GetGuild(Region region, string realm, string name)
         {
-            return GetGuild(region, realm, name, false, false);
+            return GetGuild(region, realm, name, GuildOptions.None);
         }
 
-        public Guild GetGuild(string realm, string name, bool getMembers, bool getAchievements)
+        public Guild GetGuild(string realm, string name, GuildOptions realmOptions)
         {
-            return GetGuild(Region, realm, name, getMembers, getAchievements);
+            return GetGuild(Region, realm, name, realmOptions);
         }
 
-        public Guild GetGuild(Region region, string realm, string name, bool getMembers, bool getAchievements)
+        public Guild GetGuild(Region region, string realm, string name, GuildOptions realmOptions)
         {
             return GetData<Guild>(string.Format(baseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name) +
-                GuildUtil.buildOptionalQuery(getMembers, getAchievements));
+                GuildUtil.buildOptionalQuery(realmOptions));
         }
 
         public IEnumerable<Realm> GetRealms()
@@ -188,6 +173,6 @@ namespace WowDotNetAPI
             }
         }
 
-        
+
     }
 }

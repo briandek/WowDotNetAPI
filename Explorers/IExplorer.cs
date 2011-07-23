@@ -9,77 +9,21 @@ using WowDotNetAPI.Utilities;
 
 namespace WowDotNetAPI
 {
-    public enum Region
-    {
-        US,
-        EU,
-        KR,
-        TW
-    }
-
-    public enum CharacterOption
-    {
-        GetGuild,
-        GetStats,
-        GetTalents,
-        GetItems,
-        GetReputation,
-        GetTitles,
-        GetProfessions,
-        GetAppearance,
-        GetCompanions,
-        GetMounts,
-        GetPets,
-        GetAchievements,
-        GetProgression
-    }
-
     public interface IExplorer : IDisposable
     {
         WebClient WebClient { get; set; }
 
         Character GetCharacter(string realm, string name);
-        Character GetCharacter(string realm, string name,
-            bool getGuildInfo,
-            bool getStatsInfo,
-            bool getTalentsInfo,
-            bool getItemsInfo,
-            bool getReputationInfo,
-            bool getTitlesInfo,
-            bool getProfessionsInfo,
-            bool getAppearanceInfo,
-            bool getCompanionsInfo,
-            bool getMountsInfo,
-            bool getPetsInfo,
-            bool getAchievementsInfo,
-            bool getProgressionInfo);
+        Character GetCharacter(string realm, string name, CharacterOptions characterOptions);
 
         Character GetCharacter(Region region, string realm, string name);
-        Character GetCharacter(Region region, string realm, string name,
-            bool getGuildInfo,
-            bool getStatsInfo,
-            bool getTalentsInfo,
-            bool getItemsInfo,
-            bool getReputationInfo,
-            bool getTitlesInfo,
-            bool getProfessionsInfo,
-            bool getAppearanceInfo,
-            bool getCompanionsInfo,
-            bool getMountsInfo,
-            bool getPetsInfo,
-            bool getAchievementsInfo,
-            bool getProgressionInfo);
-
+        Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions);
 
         Guild GetGuild(string realm, string name);
-        Guild GetGuild(string realm, string name, 
-            bool getMembers, 
-            bool getAchievements);
+        Guild GetGuild(string realm, string name, GuildOptions guildOptions);
 
         Guild GetGuild(Region region, string realm, string name);
-        Guild GetGuild(Region region, string realm, string name, 
-            bool getMembers, 
-            bool getAchievements);
+        Guild GetGuild(Region region, string realm, string name, GuildOptions guildOptions);
 
         IEnumerable<Realm> GetRealms();
         IEnumerable<Realm> GetRealms(Region region);

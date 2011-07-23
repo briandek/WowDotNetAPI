@@ -10,8 +10,8 @@ namespace WowDotNetAPI.Models
     public enum CharacterClass
     {
         WARRIOR = 1,
-        HUNTER = 2,
-        PALADIN = 3,
+        PALADIN = 2,
+        HUNTER = 3,
         ROGUE = 4,
         PRIEST = 5,
         DEATH_KNIGHT = 6,
@@ -96,6 +96,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "professions")]
         public CharacterProfessions Professions { get; set; }
 
+        [DataMember(Name = "achievements")]
+        public Achievements Achievements { get; set; }
+
         [DataMember(Name = "appearance")]
         public CharacterAppearance Appearance { get; set; }
 
@@ -104,6 +107,9 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "mounts")]
         public IEnumerable<int> Mounts { get; set; }
+
+        [DataMember(Name = "pets")]
+        public IEnumerable<CharacterPet> Pets { get; set; }
 
         [DataMember(Name = "progression")]
         public Progression Progression { get; set; }

@@ -19,7 +19,7 @@ namespace WowDotNetAPI.Models
         public IEnumerable<int> Criteria { get; set; }
         
         [DataMember(Name = "criteriaQuantity")]
-        public IEnumerable<int> CriteriaQuantity { get; set; }
+        public IEnumerable<long> CriteriaQuantity { get; set; }
         
         [DataMember(Name = "criteriaTimestamp")]
         public IEnumerable<long> CriteriaTimestamp { get; set; }

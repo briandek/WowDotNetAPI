@@ -25,7 +25,7 @@ Sample:
 			{
 				WowExplorer explorer = new WowExplorer(Region.US);
 
-				Guild immortalityGuild = explorer.GetGuild("skullcrusher", "immortality", true, true);
+				Guild immortalityGuild = explorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
 
 				Console.WriteLine("\n\nGUILD EXPLORER SAMPLE\n");
 
@@ -42,12 +42,13 @@ Sample:
 
 				Console.WriteLine("\n\nCHARACTER EXPLORER SAMPLE\n");
 				Character briandekCharacter =
-					explorer.GetCharacter("skullcrusher", "briandek", false, true, false, false, false, false, false, false, false, false, false, false, false);
+					explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetStats | CharacterOptions.GetAchievements);
 
-				Console.WriteLine("{0} is a retired warrior of level {1} who has {2} achievement points",
+				Console.WriteLine("{0} is a retired warrior of level {1} who has {2} achievement points having completed {3} achievements",
 					briandekCharacter.Name,
 					briandekCharacter.Level,
-					briandekCharacter.AchievementPoints);
+					briandekCharacter.AchievementPoints,
+					briandekCharacter.Achievements.AchievementsCompleted.Count());
 
 				foreach (KeyValuePair<string, object> stat in briandekCharacter.Stats)
 				{
@@ -85,7 +86,7 @@ Sample:
 				Console.WriteLine("\n\nCHARACTER RACES\n");
 
 				IEnumerable<CharacterRaceInfo> races = explorer.GetCharacterRaces();
-				foreach (var race in races.OrderBy(r =>r.Id))
+				foreach (var race in races.OrderBy(r => r.Id))
 				{
 					Console.WriteLine("{0} race with numeric value {1}", race.Name, race.Id);
 				}

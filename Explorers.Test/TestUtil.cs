@@ -23,7 +23,7 @@ namespace WowDotNetAPI.Test
             WowExplorer = new WowExplorer(Region.US);
 
             realms = WowExplorer.GetRealms();
-            TestUtil.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", true, true);
+            TestUtil.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
         }
     }
 }
