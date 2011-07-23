@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WowDotNetAPI.Interfaces;
 using System.Net;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Models;
@@ -14,16 +13,15 @@ namespace WowDotNetAPI
 {
     public class WowExplorer : IExplorer
     {
-        private const string baseAPIurl =
-            "https://{0}." + ExplorerUtil.host;
+        private const string baseAPIurl = "https://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
 
-        public string Region { get; set; }
+        public Region Region { get; set; }
 
-        public WowExplorer() : this("us") { }
+        public WowExplorer() : this(Region.US) { }
 
-        public WowExplorer(string region)
+        public WowExplorer(Region region)
         {
             WebClient = new WebClient();
             WebClient.Encoding = Encoding.UTF8;
@@ -36,7 +34,7 @@ namespace WowDotNetAPI
                 false, false, false, false, false, false, false, false, false, false, false, false, false);
         }
 
-        public Character GetCharacter(string region, string realm, string name)
+        public Character GetCharacter(Region region, string realm, string name)
         {
             return GetCharacter(region, realm, name,
                 false, false, false, false, false, false, false, false, false, false, false, false, false);
@@ -73,7 +71,7 @@ namespace WowDotNetAPI
                 getProgressionInfo);
         }
 
-        public Character GetCharacter(string region, string realm, string name,
+        public Character GetCharacter(Region region, string realm, string name,
             bool getGuildInfo,
             bool getStatsInfo,
             bool getTalentsInfo,
@@ -111,7 +109,7 @@ namespace WowDotNetAPI
             return GetGuild(Region, realm, name, false, false);
         }
 
-        public Guild GetGuild(string region, string realm, string name)
+        public Guild GetGuild(Region region, string realm, string name)
         {
             return GetGuild(region, realm, name, false, false);
         }
@@ -121,7 +119,7 @@ namespace WowDotNetAPI
             return GetGuild(Region, realm, name, getMembers, getAchievements);
         }
 
-        public Guild GetGuild(string region, string realm, string name, bool getMembers, bool getAchievements)
+        public Guild GetGuild(Region region, string realm, string name, bool getMembers, bool getAchievements)
         {
             return GetData<Guild>(string.Format(baseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name) +
                 GuildUtil.buildOptionalQuery(getMembers, getAchievements));
@@ -132,49 +130,49 @@ namespace WowDotNetAPI
             return GetRealms(Region);
         }
 
-        public IEnumerable<Realm> GetRealms(string region)
+        public IEnumerable<Realm> GetRealms(Region region)
         {
             return GetData<RealmsData>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
         }
 
-        public IEnumerable<CharacterRace> GetCharacterRaces()
+        public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {
             return GetCharacterRaces(Region);
         }
 
-        public IEnumerable<CharacterRace> GetCharacterRaces(string region)
+        public IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region)
         {
-            return GetData<CharacterRacesData>(string.Format(baseAPIurl + DataUtil.characterRacesPath, region)).Races;
+            return GetData<CharacterRacesData>(string.Format(baseAPIurl + DataUtility.characterRacesPath, region)).Races;
         }
 
-        public IEnumerable<CharacterClass> GetCharacterClasses()
+        public IEnumerable<CharacterClassInfo> GetCharacterClasses()
         {
             return GetCharacterClasses(Region);
         }
 
-        public IEnumerable<CharacterClass> GetCharacterClasses(string region)
+        public IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region)
         {
-            return GetData<CharacterClassesData>(string.Format(baseAPIurl + DataUtil.characterClassesPath, region)).Classes;
+            return GetData<CharacterClassesData>(string.Format(baseAPIurl + DataUtility.characterClassesPath, region)).Classes;
         }
 
-        public IEnumerable<GuildReward> GetGuildRewards()
+        public IEnumerable<GuildRewardInfo> GetGuildRewards()
         {
             return GetGuildRewards(Region);
         }
 
-        public IEnumerable<GuildReward> GetGuildRewards(string region)
+        public IEnumerable<GuildRewardInfo> GetGuildRewards(Region region)
         {
-            return GetData<GuildRewardsData>(string.Format(baseAPIurl + DataUtil.guildRewardsPath, region)).Rewards;
+            return GetData<GuildRewardsData>(string.Format(baseAPIurl + DataUtility.guildRewardsPath, region)).Rewards;
         }
 
-        public IEnumerable<GuildPerk> GetGuildPerks()
+        public IEnumerable<GuildPerkInfo> GetGuildPerks()
         {
             return GetGuildPerks(Region);
         }
 
-        public IEnumerable<GuildPerk> GetGuildPerks(string region)
+        public IEnumerable<GuildPerkInfo> GetGuildPerks(Region region)
         {
-            return GetData<GuildPerksData>(string.Format(baseAPIurl + DataUtil.guildPerksPath, region)).Perks;
+            return GetData<GuildPerksData>(string.Format(baseAPIurl + DataUtility.guildPerksPath, region)).Perks;
         }
 
         private T GetData<T>(string url) where T : class
@@ -190,5 +188,6 @@ namespace WowDotNetAPI
             }
         }
 
+        
     }
 }

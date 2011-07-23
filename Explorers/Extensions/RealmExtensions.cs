@@ -35,14 +35,14 @@ namespace WowDotNetAPI.Extensions
             return realms.Where(r => !r.Status);
         }
 
-        public static IEnumerable<Realm> WithPopulation(this IEnumerable<Realm> realms, string Population)
+        public static IEnumerable<Realm> WithPopulation(this IEnumerable<Realm> realms, RealmPopulation Population)
         {
-            return realms.Where(r => r.Population.Equals(Population, StringComparison.InvariantCultureIgnoreCase));
+            return realms.Where(r => r.Population == Population);
         }
 
-        public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, string realmType)
+        public static IEnumerable<Realm> WithType(this IEnumerable<Realm> realms, RealmType realmType)
         {
-            return realms.Where(r => r.Type.Equals(realmType, StringComparison.InvariantCultureIgnoreCase));
+            return realms.Where(r => r.Type == realmType);
         }
     }
 }

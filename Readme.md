@@ -23,7 +23,7 @@ Sample:
 		{
 			static void Main(string[] args)
 			{
-				WowExplorer explorer = new WowExplorer("us");
+				WowExplorer explorer = new WowExplorer(Region.US);
 
 				Guild immortalityGuild = explorer.GetGuild("skullcrusher", "immortality", true, true);
 
@@ -55,11 +55,11 @@ Sample:
 				}
 
 				//Get one realm
-				IEnumerable<Realm> usRealms = explorer.GetRealms("us");
+				IEnumerable<Realm> usRealms = explorer.GetRealms(Region.US);
 				Realm skullcrusher = usRealms.GetRealm("skullcrusher");
 
 				//Get all pvp realms only
-				IEnumerable<Realm> pvpRealmsOnly = usRealms.WithType("pvp");
+				IEnumerable<Realm> pvpRealmsOnly = usRealms.WithType(RealmType.PVP);
 				Console.WriteLine("\n\nREALMS EXPLORER SAMPLE\n");
 				foreach (var realm in pvpRealmsOnly)
 				{
@@ -68,7 +68,7 @@ Sample:
 
 				Console.WriteLine("\n\nGUILD PERKS\n");
 
-				IEnumerable<GuildPerk> perks = explorer.GetGuildPerks();
+				IEnumerable<GuildPerkInfo> perks = explorer.GetGuildPerks();
 				foreach (var perk in perks)
 				{
 					Console.WriteLine("{0} perk at guild level {1}", perk.Spell.Name, perk.GuildLevel);
@@ -76,7 +76,7 @@ Sample:
 
 				Console.WriteLine("\n\nGUILD REWARDS\n");
 
-				IEnumerable<GuildReward> rewards = explorer.GetGuildRewards();
+				IEnumerable<GuildRewardInfo> rewards = explorer.GetGuildRewards();
 				foreach (var reward in rewards)
 				{
 					Console.WriteLine("{0} reward at min guild level {1}", reward.Item.Name, reward.MinGuildLevel);
@@ -84,7 +84,7 @@ Sample:
 
 				Console.WriteLine("\n\nCHARACTER RACES\n");
 
-				IEnumerable<CharacterRace> races = explorer.GetCharacterRaces();
+				IEnumerable<CharacterRaceInfo> races = explorer.GetCharacterRaces();
 				foreach (var race in races.OrderBy(r =>r.Id))
 				{
 					Console.WriteLine("{0} race with numeric value {1}", race.Name, race.Id);
@@ -92,7 +92,7 @@ Sample:
 
 				Console.WriteLine("\n\nCHARACTER CLASSES\n");
 
-				IEnumerable<CharacterClass> classes = explorer.GetCharacterClasses();
+				IEnumerable<CharacterClassInfo> classes = explorer.GetCharacterClasses();
 				foreach (var @class in classes.OrderBy(c => c.Id))
 				{
 					Console.WriteLine("{0} class with numeric value {1}", @class.Name, @class.Id);
@@ -100,6 +100,7 @@ Sample:
 			}
 		}
 	}
+
 
 
 

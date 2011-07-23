@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class GuildRewardAchievement
+    public class GuildRewardAchievementInfo
     {
         [DataMember(Name = "id")]
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace WowDotNetAPI.Models
         public string Reward { get; set; }
 
         [DataMember(Name = "rewardItem")]
-        public GuildRewardItem RewardItem { get; set; }
+        public GuildRewardItemInfo RewardItem { get; set; }
 
     }
 }

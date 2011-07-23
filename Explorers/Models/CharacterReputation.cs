@@ -6,12 +6,14 @@ using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    //public enum ReputationStanding
+
     [DataContract]
-	public class CharacterReputation
-	{
-        [DataMember(Name="id")]
-		public int Id { get; set; }
-        
+    public class CharacterReputation
+    {
+        [DataMember(Name = "id")]
+        public int Id { get; set; }
+
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
@@ -23,5 +25,5 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "max")]
         public int Max { get; set; }
-	}
+    }
 }

@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class CharacterInventory
+    public class CharacterEquipment
     {
         [DataMember(Name="averageItemLevel")]
         public int AverageItemLevel { get; set; }

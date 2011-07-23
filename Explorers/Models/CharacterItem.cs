@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
+    //public enum ItemQuality
+
     [DataContract]
 	public class CharacterItem
 	{

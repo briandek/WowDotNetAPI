@@ -10,6 +10,6 @@ namespace WowDotNetAPI.Models
     public class GuildPerksData
     {
         [DataMember(Name="perks")]
-        public IEnumerable<GuildPerk> Perks { get; set; }
+        public IEnumerable<GuildPerkInfo> Perks { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace WowDotNetAPI.Models
     public class CharacterClassesData
     {
         [DataMember(Name = "classes")]
-        public IEnumerable<CharacterClass> Classes { get; set; }
+        public IEnumerable<CharacterClassInfo> Classes { get; set; }
     }
 }

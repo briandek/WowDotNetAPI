@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class GuildPerkSpell
+    public class GuildPerkSpellInfo
     {
         [DataMember(Name="id")]
         public int Id { get; set; }

@@ -17,8 +17,10 @@ namespace WowDotNetAPI.Test
             Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.Level == 85);
-            Assert.IsTrue(briandek.@Class == 1);
+            Assert.AreEqual(85, briandek.Level);
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
         }
 
         [TestMethod]
@@ -47,8 +49,11 @@ namespace WowDotNetAPI.Test
             //}
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.IsTrue(briandek.Level == 85);
-            Assert.IsTrue(briandek.@Class == 1);
+           
+            Assert.AreEqual(85, briandek.Level);
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
 
             Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));

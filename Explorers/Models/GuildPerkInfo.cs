@@ -7,13 +7,13 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class GuildPerk
+    public class GuildPerkInfo
     {
         [DataMember(Name="guildLevel")]
         public int GuildLevel { get; set; }
 
         [DataMember(Name = "spell")]
-        public GuildPerkSpell Spell { get; set; }
+        public GuildPerkSpellInfo Spell { get; set; }
 
     }
 }

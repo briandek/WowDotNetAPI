@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class GuildReward
+    public class GuildRewardInfo
     {
         [DataMember(Name = "minGuildLevel")]
         public int MinGuildLevel { get; set; }
@@ -19,10 +19,10 @@ namespace WowDotNetAPI.Models
         public IEnumerable<int> Races { get; set; }
 
         [DataMember(Name = "achievement")]
-        public GuildRewardAchievement Achievement { get; set; }
+        public GuildRewardAchievementInfo Achievement { get; set; }
 
         [DataMember(Name = "item")]
-        public GuildRewardItem Item { get; set; }
+        public GuildRewardItemInfo Item { get; set; }
 
     }
 }

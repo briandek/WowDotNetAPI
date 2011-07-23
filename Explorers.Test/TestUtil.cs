@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WowDotNetAPI.Interfaces;
 using WowDotNetAPI.Models;
+using WowDotNetAPI.Utilities;
 
 namespace WowDotNetAPI.Test
 {
@@ -20,7 +20,7 @@ namespace WowDotNetAPI.Test
         [AssemblyInitialize]
         public static void GlobalStartup(TestContext testContext)
         {
-            WowExplorer = new WowExplorer("us");
+            WowExplorer = new WowExplorer(Region.US);
 
             realms = WowExplorer.GetRealms();
             TestUtil.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", true, true);

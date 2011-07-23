@@ -10,8 +10,6 @@ namespace WowDotNetAPI.Models
     public class GuildRewardsData
     {
         [DataMember(Name="rewards")]
-        public IEnumerable<GuildReward> Rewards { get; set; }
-
-
+        public IEnumerable<GuildRewardInfo> Rewards { get; set; }
     }
 }

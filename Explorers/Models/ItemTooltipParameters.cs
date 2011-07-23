@@ -25,7 +25,7 @@ namespace WowDotNetAPI.Models
         public int Reforge { get; set; }
 
         [DataMember(Name = "set")]
-        public int[] @Set { get; set; }
+        public IEnumerable<int> @Set { get; set; }
 
         [DataMember(Name = "seed")]
         public long Seed { get; set; }

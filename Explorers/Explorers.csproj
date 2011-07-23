@@ -50,18 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CharacterClass.cs" />
+    <Compile Include="Models\CharacterClassInfo.cs" />
     <Compile Include="Models\CharacterClassesData.cs" />
-    <Compile Include="Models\CharacterRace.cs" />
+    <Compile Include="Models\CharacterRaceInfo.cs" />
     <Compile Include="Models\CharacterRacesData.cs" />
-    <Compile Include="Models\GuildPerk.cs" />
+    <Compile Include="Models\GuildPerkInfo.cs" />
     <Compile Include="Models\GuildPerksData.cs" />
-    <Compile Include="Models\GuildPerkSpell.cs" />
-    <Compile Include="Models\GuildReward.cs" />
-    <Compile Include="Models\GuildRewardAchievement.cs" />
-    <Compile Include="Models\GuildRewardItem.cs" />
+    <Compile Include="Models\GuildPerkSpellInfo.cs" />
+    <Compile Include="Models\GuildRewardInfo.cs" />
+    <Compile Include="Models\GuildRewardAchievementInfo.cs" />
+    <Compile Include="Models\GuildRewardItemInfo.cs" />
     <Compile Include="Models\GuildRewardsData.cs" />
-    <Compile Include="Utilities\DataUtil.cs" />
+    <Compile Include="Utilities\DataUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTalentGlyph.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Models\CharacterTalent.cs" />
     <Compile Include="Models\CharacterTalentTree.cs" />
     <Compile Include="Extensions\RealmExtensions.cs" />
-    <Compile Include="Interfaces\IExplorer.cs" />
+    <Compile Include="IExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />
     <Compile Include="Models\CharacterAppearance.cs" />
     <Compile Include="Models\RaidBoss.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="Models\Guild.cs" />
     <Compile Include="Models\CharacterItem.cs" />
     <Compile Include="Models\GuildMember.cs" />
-    <Compile Include="Models\CharacterInventory.cs" />
+    <Compile Include="Models\CharacterEquipment.cs" />
     <Compile Include="Models\CharacterProfession.cs" />
     <Compile Include="Models\CharacterProfessions.cs" />
     <Compile Include="Models\Progression.cs" />

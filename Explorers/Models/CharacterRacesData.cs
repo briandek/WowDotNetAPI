@@ -10,6 +10,6 @@ namespace WowDotNetAPI.Models
     public class CharacterRacesData
     {
         [DataMember(Name="races")]
-        public IEnumerable<CharacterRace> Races { get; set; }
+        public IEnumerable<CharacterRaceInfo> Races { get; set; }
     }
 }

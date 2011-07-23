@@ -169,7 +169,6 @@ namespace WowDotNetAPI.Models
 
         //http://stackoverflow.com/questions/1447308/enumerating-through-an-objects-properties-string-in-c
         //TODO:REFACTOR THIS / possible performance issue
-        //TODO: sort out Camelcase / Pascal case -> serializing/deserializing 
         public IEnumerator GetEnumerator()
         {
             IEnumerable<KeyValuePair<string, object>> tmp = 

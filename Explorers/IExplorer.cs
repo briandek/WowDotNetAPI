@@ -5,9 +5,35 @@ using System.Text;
 using System.Net;
 using WowDotNetAPI.Models;
 using System.Runtime.Serialization.Json;
+using WowDotNetAPI.Utilities;
 
-namespace WowDotNetAPI.Interfaces
+namespace WowDotNetAPI
 {
+    public enum Region
+    {
+        US,
+        EU,
+        KR,
+        TW
+    }
+
+    public enum CharacterOption
+    {
+        GetGuild,
+        GetStats,
+        GetTalents,
+        GetItems,
+        GetReputation,
+        GetTitles,
+        GetProfessions,
+        GetAppearance,
+        GetCompanions,
+        GetMounts,
+        GetPets,
+        GetAchievements,
+        GetProgression
+    }
+
     public interface IExplorer : IDisposable
     {
         WebClient WebClient { get; set; }
@@ -28,8 +54,8 @@ namespace WowDotNetAPI.Interfaces
             bool getAchievementsInfo,
             bool getProgressionInfo);
 
-        Character GetCharacter(string region, string realm, string name);
-        Character GetCharacter(string region, string realm, string name,
+        Character GetCharacter(Region region, string realm, string name);
+        Character GetCharacter(Region region, string realm, string name,
             bool getGuildInfo,
             bool getStatsInfo,
             bool getTalentsInfo,
@@ -49,26 +75,26 @@ namespace WowDotNetAPI.Interfaces
         Guild GetGuild(string realm, string name, 
             bool getMembers, 
             bool getAchievements);
-        
-        Guild GetGuild(string region, string realm, string name);
-        Guild GetGuild(string region, string realm, string name, 
+
+        Guild GetGuild(Region region, string realm, string name);
+        Guild GetGuild(Region region, string realm, string name, 
             bool getMembers, 
             bool getAchievements);
 
         IEnumerable<Realm> GetRealms();
-        IEnumerable<Realm> GetRealms(string region);
+        IEnumerable<Realm> GetRealms(Region region);
 
-        IEnumerable<CharacterRace> GetCharacterRaces();
-        IEnumerable<CharacterRace> GetCharacterRaces(string region);
+        IEnumerable<CharacterRaceInfo> GetCharacterRaces();
+        IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region);
 
-        IEnumerable<CharacterClass> GetCharacterClasses();
-        IEnumerable<CharacterClass> GetCharacterClasses(string region);
+        IEnumerable<CharacterClassInfo> GetCharacterClasses();
+        IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region);
 
-        IEnumerable<GuildReward> GetGuildRewards();
-        IEnumerable<GuildReward> GetGuildRewards(string region);
+        IEnumerable<GuildRewardInfo> GetGuildRewards();
+        IEnumerable<GuildRewardInfo> GetGuildRewards(Region region);
 
-        IEnumerable<GuildPerk> GetGuildPerks();
-        IEnumerable<GuildPerk> GetGuildPerks(string region);
+        IEnumerable<GuildPerkInfo> GetGuildPerks();
+        IEnumerable<GuildPerkInfo> GetGuildPerks(Region region);
 
     }
 }

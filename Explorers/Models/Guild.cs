@@ -7,6 +7,13 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
+    public enum UnitSide
+    {
+        ALLIANCE = 0,
+        HORDE = 1
+    }
+    
+    [DataContract]
     public class Guild
     {
         [DataMember(Name = "name")]
@@ -16,7 +23,7 @@ namespace WowDotNetAPI.Models
         public string Realm { get; set; }
 
         [DataMember(Name = "side")]
-        public int Side { get; set; }
+        private int side { get; set; }
 
         [DataMember(Name = "level")]
         public int Level { get; set; }
@@ -32,5 +39,8 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "achievements")]
         public Achievements Achievements { get; set; }
+
+        public UnitSide Side { get { return (UnitSide)Enum.Parse(typeof(UnitSide), Enum.GetName(typeof(UnitSide), side)); } }
+
     }
 }

@@ -8,9 +8,9 @@ using System.Web.Script.Serialization;
 using WowDotNetAPI;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Comparers;
-using WowDotNetAPI.Interfaces;
 using WowDotNetAPI.Extensions;
 using WowDotNetAPI.Test;
+using WowDotNetAPI.Utilities;
 
 namespace Explorers.Test
 {
@@ -20,7 +20,7 @@ namespace Explorers.Test
         [TestMethod]
         public void GetAll_US_Realms_Returns_All_Realms()
         {
-            IEnumerable<Realm> realmList = TestUtil.WowExplorer.GetRealms("us");
+            IEnumerable<Realm> realmList = TestUtil.WowExplorer.GetRealms(Region.US);
             Assert.IsTrue(realmList.Any());
         }
 
@@ -30,16 +30,16 @@ namespace Explorers.Test
             Realm realm = TestUtil.realms.GetRealm("skullcrusher");
             Assert.IsNotNull(realm);
             Assert.IsTrue(realm.Name == "Skullcrusher");
-            Assert.IsTrue(realm.Type == "pvp");
+            Assert.IsTrue(realm.Type == RealmType.PVP);
             Assert.IsTrue(realm.Slug == "skullcrusher");
         }
 
         [TestMethod]
         public void Get_All_Realms_By_Type_Returns_Pvp_Realms()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.WithType("pvp");
+            IEnumerable<Realm> realmList = TestUtil.realms.WithType(RealmType.PVP);
             var allCollectedRealmsArePvp = realmList.Any() &&
-                realmList.All(r => r.Type.Equals("pvp", StringComparison.InvariantCultureIgnoreCase));
+                realmList.All(r => r.Type == RealmType.PVP);
 
             Assert.IsTrue(allCollectedRealmsArePvp);
         }
@@ -72,16 +72,11 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.WithPopulation("low");
+            IEnumerable<Realm> realmList = TestUtil.realms.WithPopulation(RealmPopulation.LOW);
             var allCollectedRealmsHaveLowPopulation = realmList.Any() &&
-                realmList.All(r => r.Population.Equals("low", StringComparison.InvariantCultureIgnoreCase));
+                realmList.All(r => r.Population == RealmPopulation.LOW);
 
             Assert.IsTrue(allCollectedRealmsHaveLowPopulation);
-        }
-
-        public void GetAllRealms_InvalidRegion_URL_Throws_WebException()
-        {
-            ThrowsException<WebException>(() => TestUtil.WowExplorer.GetRealms("foo"), "The remote name could not be resolved: 'foo.battle.net'");
         }
 
         //Assert.ThrowException 
