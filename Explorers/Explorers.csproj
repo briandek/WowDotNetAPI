@@ -62,6 +62,7 @@
     <Compile Include="Models\GuildRewardItemInfo.cs" />
     <Compile Include="Models\GuildRewardsData.cs" />
     <Compile Include="Utilities\DataUtility.cs" />
+    <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\CharacterTalentGlyph.cs" />

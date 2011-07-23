@@ -177,7 +177,7 @@ namespace WowDotNetAPI
 
         private T GetData<T>(string url) where T : class
         {
-            return ExplorerUtil.FromJSON<T>(WebClient, url);
+            return JsonUtility.FromJSON<T>(WebClient, url);
         }
 
         public void Dispose()
