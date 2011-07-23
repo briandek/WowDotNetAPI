@@ -52,7 +52,7 @@
   <ItemGroup>
     <Compile Include="Models\CharacterClassInfo.cs" />
     <Compile Include="Models\CharacterClassesData.cs" />
-    <Compile Include="Models\CharacterPets.cs" />
+    <Compile Include="Models\CharacterPet.cs" />
     <Compile Include="Models\CharacterRaceInfo.cs" />
     <Compile Include="Models\CharacterRacesData.cs" />
     <Compile Include="Models\GuildPerkInfo.cs" />
