@@ -53,7 +53,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(briandek.Appearance);
             Assert.IsNotNull(briandek.Companions);
             Assert.IsNotNull(briandek.Mounts);
-            //Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Pets);
             Assert.IsNotNull(briandek.Achievements);
             Assert.IsNotNull(briandek.Progression);
 

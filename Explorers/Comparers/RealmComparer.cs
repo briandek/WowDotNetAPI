@@ -8,7 +8,6 @@ namespace WowDotNetAPI.Comparers
 {
     public class RealmComparer : EqualityComparer<Realm>
     {
-
         public override bool Equals(Realm a, Realm b)
         {
             if (a == null || b == null) return false;

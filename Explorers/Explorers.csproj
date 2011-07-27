@@ -71,7 +71,7 @@
     <Compile Include="Models\CharacterTalent.cs" />
     <Compile Include="Models\CharacterTalentTree.cs" />
     <Compile Include="Extensions\RealmExtensions.cs" />
-    <Compile Include="IExplorer.cs" />
+    <Compile Include="Interfaces\IExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />
     <Compile Include="Models\CharacterAppearance.cs" />
     <Compile Include="Models\RaidBoss.cs" />

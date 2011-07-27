@@ -62,5 +62,14 @@ namespace WowDotNetAPI.Utilities
             }
         }
 
+        public static T FromJSONStream<T>(StreamReader sr) where T : class
+        {
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(sr.ReadToEnd())))
+            {
+                DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
+                return DataContractJsonSerializer.ReadObject(stream) as T;
+            }
+        }
+
     }
 }

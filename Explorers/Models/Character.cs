@@ -46,7 +46,7 @@ namespace WowDotNetAPI.Models
     }
 
     [DataContract]
-    public class Character
+    public class Character : IComparable<Character>
     {
         [DataMember(Name = "lastModified")]
         public string LastModified { get; set; }
@@ -114,9 +114,24 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "progression")]
         public Progression Progression { get; set; }
 
-        public CharacterClass @Class { get { return (CharacterClass)Enum.Parse(typeof(CharacterClass), Enum.GetName(typeof(CharacterClass), @class).Replace(' ', '_')); } }
+        public CharacterClass Class { get { return (CharacterClass)Enum.Parse(typeof(CharacterClass), Enum.GetName(typeof(CharacterClass), @class).Replace(' ', '_')); } }
         public CharacterRace @Race { get { return (CharacterRace)Enum.Parse(typeof(CharacterRace), Enum.GetName(typeof(CharacterRace), race).Replace(' ', '_')); } }
         public CharacterGender Gender { get { return (CharacterGender)Enum.Parse(typeof(CharacterGender), Enum.GetName(typeof(CharacterGender), gender).Replace(' ', '_')); } }
 
+        //TODO: cleanup 
+        //probably better to override equality operators http://msdn.microsoft.com/en-us/library/ms173147.aspx
+        public int CompareTo(Character other)
+        {
+            if (Name == other.Name
+                && Realm == other.Realm
+                && Class == other.Class
+                && Race == other.Race
+                && Gender == other.Gender)
+            {
+                return 0;
+            }
+
+            return -1;
+        }
     }
 }
