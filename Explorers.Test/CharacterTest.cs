@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Extensions;
+using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI.Test
 {
@@ -105,5 +106,6 @@ namespace WowDotNetAPI.Test
 
             Assert.AreEqual(11, talasi.Mounts.Count());
         }
+       
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WowDotNetAPI.Utilities
 {
-    public static class GuildUtil
+    public static class GuildUtility
     {
         public const string basePath = "/api/wow/guild/";
         public const string rewardsPath = "/api/wow/data/guild/rewards";

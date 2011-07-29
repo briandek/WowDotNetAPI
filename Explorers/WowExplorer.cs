@@ -89,6 +89,7 @@ namespace WowDotNetAPI
         {
             WebClient = new WebClient();
             WebClient.Encoding = Encoding.UTF8;
+
             Region = region;
             BaseAPIurl = ExplorerUtility.GetBaseURL(Region);
             Locale = locale;
@@ -175,9 +176,9 @@ namespace WowDotNetAPI
 
         public Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions)
         {
-            return GetData<Character>(string.Format(BaseAPIurl + CharacterUtil.basePath + "{1}/{2}", region, realm, name)
+            return GetData<Character>(string.Format(BaseAPIurl + CharacterUtility.basePath + "{1}/{2}", region, realm, name)
                 + GetLocaleQuery()
-                + CharacterUtil.buildOptionalQuery(characterOptions));
+                + CharacterUtility.buildOptionalQuery(characterOptions));
         }
 
         private string GetLocaleQuery()
@@ -206,9 +207,9 @@ namespace WowDotNetAPI
 
         public Guild GetGuild(Region region, string realm, string name, GuildOptions realmOptions)
         {
-            return GetData<Guild>(string.Format(BaseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name)
+            return GetData<Guild>(string.Format(BaseAPIurl + GuildUtility.basePath + "{1}/{2}", region, realm, name)
                 + GetLocaleQuery()
-                + GuildUtil.buildOptionalQuery(realmOptions));
+                + GuildUtility.buildOptionalQuery(realmOptions));
         }
 
         #endregion
@@ -221,7 +222,7 @@ namespace WowDotNetAPI
 
         public IEnumerable<Realm> GetRealms(Region region)
         {
-            return GetData<RealmsData>(string.Format(BaseAPIurl + RealmUtil.basePath, region)
+            return GetData<RealmsData>(string.Format(BaseAPIurl + RealmUtility.basePath, region)
                 + GetLocaleQuery()).Realms;
         }
 

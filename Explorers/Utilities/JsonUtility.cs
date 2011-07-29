@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI.Utilities
 {
@@ -22,7 +23,31 @@ namespace WowDotNetAPI.Utilities
 
         public static string GetJSON(WebClient WebClient, string url)
         {
-            return WebClient.DownloadString(url);
+            try
+            {
+                return WebClient.DownloadString(url);
+            }
+            catch (WebException wE)
+            {
+                using (HttpWebResponse eR = wE.Response as HttpWebResponse)
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    if (eR == null)
+                    {
+                        throw new Exception(wE.Message);
+                    }
+
+                    ErrorDetail newError = FromJSONStream<ErrorDetail>(new StreamReader(eR.GetResponseStream()));
+
+                    switch (eR.StatusCode)
+                    {
+                        case HttpStatusCode.InternalServerError:    //500
+                        case HttpStatusCode.NotFound:               //404
+                        default:
+                            throw new WowException(string.Format("Response Status: {0}. {1}", eR.StatusCode, newError.Reason), newError, url);
+                    }
+                }
+            }
         }
 
         //JSON serialization - http://www.joe-stevens.com/2009/12/29/json-serialization-using-the-datacontractjsonserializer-and-c/

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WowDotNetAPI.Utilities
 {
-    public static class CharacterUtil
+    public static class CharacterUtility
     {
         public const string basePath = "/api/wow/character/";
         public const string racesPath = "/api/wow/data/character/races";

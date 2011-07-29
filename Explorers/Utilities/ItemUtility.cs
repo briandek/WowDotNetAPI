@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WowDotNetAPI.Utilities
 {
-    public static class ItemUtil
+    public static class ItemUtility
     {
         public const string basePath = "/api/wow/data/item/";
     }

@@ -85,6 +85,30 @@ namespace WowDotNetAPI.Explorers.Test
 
         }
 
+        //Need to Fix This
+        [TestMethod]
+        public void Get_Invalid_Data_From_CN_Region_Throws_Exception()
+        {
+            WowExplorer wEx = new WowExplorer(Region.CN);
+
+            Action a = () => wEx.GetCharacterClasses();
+            TestUtility.ThrowsException<Exception>(a, "The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.");
+        }
+
+        [TestMethod]
+        public void Get_Invalid_Character_From_Skullcrusher_Throws_Exception()
+        {
+            Action a = () => TestUtility.WowExplorer.GetCharacter("skullcrusher", "talasix");
+            TestUtility.ThrowsException<WowException>(a, "Response Status: NotFound. Character not found.");
+        }
+
+        [TestMethod]
+        public void Get_Invalid_Guild_From_Skullcrusher_Throws_Exception()
+        {
+            Action a = () => TestUtility.WowExplorer.GetGuild("skullcrusher", "dekufanzero");
+            TestUtility.ThrowsException<WowException>(a, "Response Status: NotFound. Guild not found.");
+        }
+
     }
 
 }

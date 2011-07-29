@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WowDotNetAPI.Utilities
 {
-    public static class RealmUtil
+    public static class RealmUtility
     {
         public const string basePath = "/api/wow/realm/status";
     }
