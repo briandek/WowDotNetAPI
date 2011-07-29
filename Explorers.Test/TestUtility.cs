@@ -9,7 +9,7 @@ using WowDotNetAPI.Utilities;
 namespace WowDotNetAPI.Test
 {
     [TestClass]
-    public class TestUtil
+    public class TestUtility
     {
         public static IExplorer WowExplorer;
 
@@ -23,7 +23,22 @@ namespace WowDotNetAPI.Test
             WowExplorer = new WowExplorer(Region.US);
 
             realms = WowExplorer.GetRealms();
-            TestUtil.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
+            TestUtility.immortalityGuild = WowExplorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
         }
+
+        //Assert.ThrowException 
+        public static void ThrowsException<T>(Action action, string expectedMessage) where T : Exception
+        {
+            try
+            {
+                action.Invoke();
+                Assert.Fail("Exception of type {0} should be thrown", typeof(T));
+            }
+            catch (T e)
+            {
+                Assert.AreEqual(expectedMessage, e.Message);
+            }
+        }
+        
     }
 }

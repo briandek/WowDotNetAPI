@@ -40,5 +40,7 @@ namespace WowDotNetAPI
         IEnumerable<GuildPerkInfo> GetGuildPerks();
         IEnumerable<GuildPerkInfo> GetGuildPerks(Region region);
 
+        void SetLocale(Locale locale);
+
     }
 }

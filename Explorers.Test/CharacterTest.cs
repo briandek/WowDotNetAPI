@@ -14,7 +14,7 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
-            Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek");
+            Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsNull(briandek.Guild);
             Assert.IsNull(briandek.Stats);
@@ -41,7 +41,7 @@ namespace WowDotNetAPI.Test
         public void Get_Complex_Character_Briandek_From_Skullcrusher()
         {
 
-            Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
+            Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(briandek.Guild);
             Assert.IsNotNull(briandek.Stats);
@@ -79,7 +79,7 @@ namespace WowDotNetAPI.Test
         public void Get_Complex_Character_Talasi_From_Skullcrusher()
         {
 
-            Character talasi = TestUtil.WowExplorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
+            Character talasi = TestUtility.WowExplorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(talasi.Guild);
             Assert.IsNotNull(talasi.Stats);

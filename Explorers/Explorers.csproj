@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidLocaleException.cs" />
     <Compile Include="Models\CharacterClassInfo.cs" />
     <Compile Include="Models\CharacterClassesData.cs" />
     <Compile Include="Models\CharacterPet.cs" />
@@ -95,7 +96,7 @@
     <Compile Include="Models\Realm.cs" />
     <Compile Include="Comparers\RealmComparer.cs" />
     <Compile Include="Utilities\CharacterUtil.cs" />
-    <Compile Include="Utilities\ExplorerUtil.cs" />
+    <Compile Include="Utilities\ExplorerUtility.cs" />
     <Compile Include="Utilities\GuildUtil.cs" />
     <Compile Include="Utilities\ItemUtil.cs" />
     <Compile Include="Utilities\RealmUtil.cs" />

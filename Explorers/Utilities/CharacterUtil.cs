@@ -13,7 +13,7 @@ namespace WowDotNetAPI.Utilities
 
         public static string buildOptionalQuery(CharacterOptions characterOptions)
         {
-            string query = "?fields=";
+            string query = "&fields=";
             List<string> tmp = new List<string>();
 
             if ((characterOptions & CharacterOptions.GetGuild) == CharacterOptions.GetGuild)
@@ -54,6 +54,8 @@ namespace WowDotNetAPI.Utilities
 
             if ((characterOptions & CharacterOptions.GetProgression) == CharacterOptions.GetProgression)
                 tmp.Add("progression");
+
+            if (tmp.Count == 0) return string.Empty;
 
             query += string.Join(",", tmp);
 

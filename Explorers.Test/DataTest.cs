@@ -8,6 +8,7 @@ using System.Collections;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
 using System.IO;
+using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI.Explorers.Test
 {
@@ -17,7 +18,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Character_Races_Data()
         {
-            IEnumerable<CharacterRaceInfo> races = TestUtil.WowExplorer.GetCharacterRaces();
+            IEnumerable<CharacterRaceInfo> races = TestUtility.WowExplorer.GetCharacterRaces();
 
             Assert.IsTrue(races.Count() == 12);
             Assert.IsTrue(races.Any(r => r.Name == "Human" || r.Name == "Night Elf"));
@@ -26,7 +27,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Character_Classes_Data()
         {
-            IEnumerable<CharacterClassInfo> classes = TestUtil.WowExplorer.GetCharacterClasses();
+            IEnumerable<CharacterClassInfo> classes = TestUtility.WowExplorer.GetCharacterClasses();
 
             Assert.IsTrue(classes.Count() == 10);
             Assert.IsTrue(classes.Any(r => r.Name == "Warrior" || r.Name == "Death Knight"));
@@ -35,7 +36,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Guild_Rewards_Data()
         {
-            IEnumerable<GuildRewardInfo> rewards = TestUtil.WowExplorer.GetGuildRewards();
+            IEnumerable<GuildRewardInfo> rewards = TestUtility.WowExplorer.GetGuildRewards();
             Assert.IsTrue(rewards.Count() == 42);
             Assert.IsTrue(rewards.Any(r => r.Achievement != null));
         }
@@ -44,7 +45,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Guild_Perks_Data()
         {
-            IEnumerable<GuildPerkInfo> perks = TestUtil.WowExplorer.GetGuildPerks();
+            IEnumerable<GuildPerkInfo> perks = TestUtility.WowExplorer.GetGuildPerks();
             Assert.IsTrue(perks.Count() == 24);
             Assert.IsTrue(perks.Any(r => r.Spell != null));
         }
@@ -53,8 +54,8 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Realms_From_Json_File()
         {
-            IEnumerable<Realm> realms1 = TestUtil.WowExplorer.GetRealms();
-            IEnumerable<Realm> realms2 = 
+            IEnumerable<Realm> realms1 = TestUtility.WowExplorer.GetRealms();
+            IEnumerable<Realm> realms2 =
                 JsonUtility.FromJSONStream<RealmsData>(File.OpenText(@"C:\Documents and Settings\Aio\My Documents\Visual Studio 2010\Projects\WowDotNetAPI\WowDotNetAPI\Explorers.Test\Data\jsonRealmsFile.txt")).Realms;
 
             IEnumerable<Realm> realms3 = realms1.Intersect(realms2);
@@ -67,12 +68,23 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Character_From_Json_File()
         {
-            Character briandek = TestUtil.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
-            Character briandekFromJsonFile = 
+            Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
+            Character briandekFromJsonFile =
                 JsonUtility.FromJSONStream<Character>(File.OpenText(@"C:\Documents and Settings\Aio\My Documents\Visual Studio 2010\Projects\WowDotNetAPI\WowDotNetAPI\Explorers.Test\Data\jsonCharacterFile.txt"));
 
             Assert.AreEqual(0, briandek.CompareTo(briandekFromJsonFile));
 
         }
+
+        [TestMethod]
+        public void Set_Invalid_Locale_To_US_Region()
+        {
+            Action a = () => TestUtility.WowExplorer.SetLocale(Locale.fr_FR);
+
+            TestUtility.ThrowsException<InvalidLocaleException>(a, "The fr_FR locale is not associated with the US region");
+
+        }
+
     }
+
 }

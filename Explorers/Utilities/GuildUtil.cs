@@ -13,7 +13,7 @@ namespace WowDotNetAPI.Utilities
 
         public static string buildOptionalQuery(GuildOptions realmOptions)
         {
-            string query = "?fields=";
+            string query = "&fields=";
             List<string> tmp = new List<string>();
 
             if ((realmOptions & GuildOptions.GetMembers) == GuildOptions.GetMembers)
@@ -21,6 +21,8 @@ namespace WowDotNetAPI.Utilities
 
             if ((realmOptions & GuildOptions.GetAchievements) == GuildOptions.GetAchievements)
                 tmp.Add("achievements");
+
+            if (tmp.Count == 0) return string.Empty;
 
             query += string.Join(",", tmp);
 

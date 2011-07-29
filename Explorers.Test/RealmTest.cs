@@ -20,14 +20,14 @@ namespace Explorers.Test
         [TestMethod]
         public void GetAll_US_Realms_Returns_All_Realms()
         {
-            IEnumerable<Realm> realmList = TestUtil.WowExplorer.GetRealms(Region.US);
+            IEnumerable<Realm> realmList = TestUtility.WowExplorer.GetRealms(Region.US);
             Assert.IsTrue(realmList.Any());
         }
 
         [TestMethod]
         public void Get_Valid_US_Realm_Returns_Unique_Realm()
         {
-            Realm realm = TestUtil.realms.GetRealm("skullcrusher");
+            Realm realm = TestUtility.realms.GetRealm("skullcrusher");
             Assert.IsNotNull(realm);
             Assert.IsTrue(realm.Name == "Skullcrusher");
             Assert.IsTrue(realm.Type == RealmType.PVP);
@@ -37,7 +37,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Type_Returns_Pvp_Realms()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.WithType(RealmType.PVP);
+            IEnumerable<Realm> realmList = TestUtility.realms.WithType(RealmType.PVP);
             var allCollectedRealmsArePvp = realmList.Any() &&
                 realmList.All(r => r.Type == RealmType.PVP);
 
@@ -47,7 +47,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Status_Returns_Realms_That_Are_Up()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.ThatAreUp();
+            IEnumerable<Realm> realmList = TestUtility.realms.ThatAreUp();
 
             //All servers being down is likely(maintenance) and will cause test to fail
             var allCollectedRealmsAreUp = realmList.Any() &&
@@ -60,7 +60,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Queue_Returns_Realms_That_Do_Not_Have_Queues()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.WithoutQueues();
+            IEnumerable<Realm> realmList = TestUtility.realms.WithoutQueues();
 
             //All servers getting queues is unlikely but possible and will cause test to fail
             var allCollectedRealmsHaveQueues = realmList.Any() &&
@@ -72,25 +72,13 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population()
         {
-            IEnumerable<Realm> realmList = TestUtil.realms.WithPopulation(RealmPopulation.LOW);
+            IEnumerable<Realm> realmList = TestUtility.realms.WithPopulation(RealmPopulation.LOW);
             var allCollectedRealmsHaveLowPopulation = realmList.Any() &&
                 realmList.All(r => r.Population == RealmPopulation.LOW);
 
             Assert.IsTrue(allCollectedRealmsHaveLowPopulation);
         }
 
-        //Assert.ThrowException 
-        public static void ThrowsException<T>(Action action, string expectedMessage) where T : Exception
-        {
-            try
-            {
-                action.Invoke();
-                Assert.Fail("Exception of type {0} should be thrown", typeof(T));
-            }
-            catch (T e)
-            {
-                Assert.AreEqual(expectedMessage, e.Message);
-            }
-        }
+        
     }
 }

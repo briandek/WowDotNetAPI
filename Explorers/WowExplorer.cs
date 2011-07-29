@@ -8,6 +8,7 @@ using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI
 {
@@ -16,7 +17,23 @@ namespace WowDotNetAPI
         US,
         EU,
         KR,
-        TW
+        TW,
+        CN
+    }
+
+    public enum Locale
+    {
+        None,
+        en_US,
+        es_MX,
+        en_GB,
+        es_ES,
+        fr_FR,
+        ru_RU,
+        de_DE,
+        ko_KR,
+        zh_TW,
+        zh_CN
     }
 
     [Flags]
@@ -52,20 +69,94 @@ namespace WowDotNetAPI
 
     public class WowExplorer : IExplorer
     {
-        private const string baseAPIurl = "https://{0}." + ExplorerUtil.host;
 
         public WebClient WebClient { get; set; }
-
         public Region Region { get; set; }
+        public Locale Locale { get; set; }
+
+        private string BaseAPIurl { get; set; }
 
         public WowExplorer() : this(Region.US) { }
 
         public WowExplorer(Region region)
+            : this(region, Locale.en_US)
+        {
+            Region = region;
+            SetDefaultLocale();
+        }
+
+        public WowExplorer(Region region, Locale locale)
         {
             WebClient = new WebClient();
             WebClient.Encoding = Encoding.UTF8;
             Region = region;
+            BaseAPIurl = ExplorerUtility.GetBaseURL(Region);
+            Locale = locale;
         }
+
+        #region Locale
+        public void SetDefaultLocale()
+        {
+            switch (Region)
+            {
+                case Region.US:
+                    Locale = Locale.en_US;
+                    break;
+                case Region.EU:
+                    Locale = Locale.en_GB;
+                    break;
+                case Region.KR:
+                    Locale = Locale.ko_KR;
+                    break;
+                case Region.TW:
+                    Locale = Locale.zh_TW;
+                    break;
+                case Region.CN:
+                    Locale = Locale.zh_CN;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void SetLocale(Locale locale)
+        {
+            switch (locale)
+            {
+                case Locale.en_US:
+                case Locale.es_MX:
+                    if (Region == Region.US) { Locale = locale; }
+                    else { throw new Exception(string.Format("The {0} locale is not associated with the {1} region", locale, Region)); }
+                    break;
+                case Locale.en_GB:
+                case Locale.es_ES:
+                case Locale.fr_FR:
+                case Locale.ru_RU:
+                case Locale.de_DE:
+                    if (Region == Region.EU) { Locale = locale; }
+                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
+                    break;
+                case Locale.ko_KR:
+                    if (Region == Region.KR) { Locale = locale; }
+                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
+                    break;
+                case Locale.zh_TW:
+                    if (Region == Region.TW) { Locale = locale; }
+                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
+                    break;
+                case Locale.zh_CN:
+                    if (Region == Region.CN) { Locale = locale; }
+                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
+                    break;
+                default:
+                    Locale = Locale.None;
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Character
 
         public Character GetCharacter(string realm, string name)
         {
@@ -84,10 +175,19 @@ namespace WowDotNetAPI
 
         public Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions)
         {
-            return GetData<Character>(string.Format(baseAPIurl + CharacterUtil.basePath + "{1}/{2}", region, realm, name)
+            return GetData<Character>(string.Format(BaseAPIurl + CharacterUtil.basePath + "{1}/{2}", region, realm, name)
+                + GetLocaleQuery()
                 + CharacterUtil.buildOptionalQuery(characterOptions));
-
         }
+
+        private string GetLocaleQuery()
+        {
+            return "?locale=" + Locale;
+        }
+
+        #endregion
+
+        #region Guild
 
         public Guild GetGuild(string realm, string name)
         {
@@ -106,10 +206,14 @@ namespace WowDotNetAPI
 
         public Guild GetGuild(Region region, string realm, string name, GuildOptions realmOptions)
         {
-            return GetData<Guild>(string.Format(baseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name) +
-                GuildUtil.buildOptionalQuery(realmOptions));
+            return GetData<Guild>(string.Format(BaseAPIurl + GuildUtil.basePath + "{1}/{2}", region, realm, name)
+                + GetLocaleQuery()
+                + GuildUtil.buildOptionalQuery(realmOptions));
         }
 
+        #endregion
+
+        #region Realms
         public IEnumerable<Realm> GetRealms()
         {
             return GetRealms(Region);
@@ -117,9 +221,13 @@ namespace WowDotNetAPI
 
         public IEnumerable<Realm> GetRealms(Region region)
         {
-            return GetData<RealmsData>(string.Format(baseAPIurl + RealmUtil.basePath, region)).Realms;
+            return GetData<RealmsData>(string.Format(BaseAPIurl + RealmUtil.basePath, region)
+                + GetLocaleQuery()).Realms;
         }
 
+        #endregion
+
+        #region Data
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {
             return GetCharacterRaces(Region);
@@ -127,7 +235,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region)
         {
-            return GetData<CharacterRacesData>(string.Format(baseAPIurl + DataUtility.characterRacesPath, region)).Races;
+            return GetData<CharacterRacesData>(string.Format(BaseAPIurl + DataUtility.characterRacesPath, region)
+                + GetLocaleQuery()).Races;
         }
 
         public IEnumerable<CharacterClassInfo> GetCharacterClasses()
@@ -137,7 +246,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region)
         {
-            return GetData<CharacterClassesData>(string.Format(baseAPIurl + DataUtility.characterClassesPath, region)).Classes;
+            return GetData<CharacterClassesData>(string.Format(BaseAPIurl + DataUtility.characterClassesPath, region)
+                + GetLocaleQuery()).Classes;
         }
 
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
@@ -147,7 +257,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildRewardInfo> GetGuildRewards(Region region)
         {
-            return GetData<GuildRewardsData>(string.Format(baseAPIurl + DataUtility.guildRewardsPath, region)).Rewards;
+            return GetData<GuildRewardsData>(string.Format(BaseAPIurl + DataUtility.guildRewardsPath, region)
+                + GetLocaleQuery()).Rewards;
         }
 
         public IEnumerable<GuildPerkInfo> GetGuildPerks()
@@ -157,8 +268,11 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildPerkInfo> GetGuildPerks(Region region)
         {
-            return GetData<GuildPerksData>(string.Format(baseAPIurl + DataUtility.guildPerksPath, region)).Perks;
+            return GetData<GuildPerksData>(string.Format(BaseAPIurl + DataUtility.guildPerksPath, region)
+                + GetLocaleQuery()).Perks;
         }
+
+        #endregion
 
         private T GetData<T>(string url) where T : class
         {
@@ -172,7 +286,5 @@ namespace WowDotNetAPI
                 WebClient.Dispose();
             }
         }
-
-
     }
 }

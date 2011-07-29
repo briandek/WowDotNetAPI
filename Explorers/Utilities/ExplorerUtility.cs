@@ -11,19 +11,23 @@ namespace WowDotNetAPI.Utilities
 {
     public static class ExplorerUtility
     {
-        public const string host = "battle.net";
-
-        public enum Regions
+        public static string GetBaseURL(Region region)
         {
-            US,
-            EU,
-            KR,
-            TW
+            switch (region)
+            {
+                case Region.US:
+                    return "https://us.battle.net";
+                case Region.EU:
+                    return "https://eu.battle.net";
+                case Region.KR:
+                    return "https://kr.battle.net";
+                case Region.TW:
+                    return "https://tw.battle.net";
+                case Region.CN:
+                    return "https://battlenet.com.cn";
+                default:
+                    return "https://us.battle.net";
+            }
         }
-
-       
-
-        
-
     }
 }
