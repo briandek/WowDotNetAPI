@@ -11,14 +11,22 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class AuctionTest
     {
-        [TestMethod]
-        public void testAuctionsCount()
+        private void testRealm(Region region, string realm)
         {
-            Auctions actions = TestUtility.WowExplorer.GetAuctions("Skullcrusher");
+            WowExplorer explorer = new WowExplorer(Region.US);
 
-            Assert.IsTrue(actions.Horde.Auctions.Count() > 0);
-            Assert.IsTrue((from n in actions.Horde.Auctions where n.ItemId == 53010 select n).Count() > 0);
+            Auctions auctions = explorer.GetAuctions("Skullcrusher");
 
+            Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
+            Assert.IsTrue((from n in auctions.Horde.Auctions where n.ItemId == 53010 select n).Count() > 0);
+        }
+
+        [TestMethod]
+        public void testRealms()
+        {
+            this.testRealm(Region.US, "Skullcrusher");
+            this.testRealm(Region.EU, "Twisting Nether");
+            this.testRealm(Region.TW, "暴風祭壇");
         }
     }
 }
