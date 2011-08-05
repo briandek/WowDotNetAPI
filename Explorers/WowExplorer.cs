@@ -228,6 +228,15 @@ namespace WowDotNetAPI
 
         #endregion
 
+        #region Auctions
+
+        public Auctions GetAuctions(string realm)
+        {
+            return this.GetData<Auctions>(string.Format(BaseAPIurl + AuctionUtility.basePath, realm.ToLower()));
+        }
+
+        #endregion
+
         #region Data
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {

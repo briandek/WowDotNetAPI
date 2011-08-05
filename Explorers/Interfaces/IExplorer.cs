@@ -28,6 +28,8 @@ namespace WowDotNetAPI
         IEnumerable<Realm> GetRealms();
         IEnumerable<Realm> GetRealms(Region region);
 
+        Auctions GetAuctions(string realm);
+
         IEnumerable<CharacterRaceInfo> GetCharacterRaces();
         IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region);
 
