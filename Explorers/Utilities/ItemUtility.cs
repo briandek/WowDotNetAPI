@@ -7,6 +7,6 @@ namespace WowDotNetAPI.Utilities
 {
     public static class ItemUtility
     {
-        public const string basePath = "/api/wow/data/item/";
+        public const string basePath = "/api/wow/item/{0}";
     }
 }

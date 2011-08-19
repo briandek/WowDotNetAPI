@@ -50,6 +50,7 @@
     <Compile Include="AuctionTest.cs" />
     <Compile Include="CharacterTest.cs" />
     <Compile Include="DataTest.cs" />
+    <Compile Include="ItemTest.cs" />
     <Compile Include="TestUtility.cs" />
     <Compile Include="GuildTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

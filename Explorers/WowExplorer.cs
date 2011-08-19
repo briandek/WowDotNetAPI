@@ -127,7 +127,7 @@ namespace WowDotNetAPI
                 case Locale.en_US:
                 case Locale.es_MX:
                     if (Region == Region.US) { Locale = locale; }
-                    else { throw new Exception(string.Format("The {0} locale is not associated with the {1} region", locale, Region)); }
+                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
                     break;
                 case Locale.en_GB:
                 case Locale.es_ES:
@@ -232,9 +232,17 @@ namespace WowDotNetAPI
 
         public Auctions GetAuctions(string realm)
         {
-            return
-                this.GetData<Auctions>(string.Format(BaseAPIurl + AuctionUtility.basePath,
-                                                     realm.ToLower().Replace(" ", "-")));}
+            return GetData<Auctions>(string.Format(BaseAPIurl + AuctionUtility.basePath, realm.ToLower().Replace(' ', '-')));
+        }
+
+        #endregion
+
+        #region Items
+
+        public Item GetItem(string id)
+        {
+            return GetData<Item>(string.Format(BaseAPIurl + ItemUtility.basePath, id));
+        }
 
         #endregion
 

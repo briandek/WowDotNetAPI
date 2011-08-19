@@ -54,6 +54,7 @@
     <Compile Include="Exceptions\ErrorDetail.cs" />
     <Compile Include="Exceptions\InvalidLocaleException.cs" />
     <Compile Include="Exceptions\WowException.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\AuctionHouseSide.cs" />
     <Compile Include="Models\Auctions.cs" />
@@ -69,6 +70,14 @@
     <Compile Include="Models\GuildRewardAchievementInfo.cs" />
     <Compile Include="Models\GuildRewardItemInfo.cs" />
     <Compile Include="Models\GuildRewardsData.cs" />
+    <Compile Include="Models\ItemBonusStat.cs" />
+    <Compile Include="Models\ItemSocket.cs" />
+    <Compile Include="Models\ItemSocketInfo.cs" />
+    <Compile Include="Models\ItemSourceInfo.cs" />
+    <Compile Include="Models\ItemSpell.cs" />
+    <Compile Include="Models\ItemSpellInfo.cs" />
+    <Compile Include="Models\ItemWeaponDamage.cs" />
+    <Compile Include="Models\ItemWeaponInfo.cs" />
     <Compile Include="Utilities\AuctionUtility.cs" />
     <Compile Include="Utilities\DataUtility.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
