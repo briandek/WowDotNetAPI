@@ -12,21 +12,13 @@ namespace WowDotNetAPI.Utilities
 {
     public static class JsonUtility
     {
-
         public static string GetJSON(string url)
         {
-            //WebClient WebClient = new WebClient();
-            //WebClient.Encoding = Encoding.UTF8;
-            //WebClient.Proxy = null;
-
             HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
-
-
-            return GetJSON(req, url);
+            return GetJSON(req);
         }
 
-
-        public static string GetJSON(HttpWebRequest req, string url)
+        public static string GetJSON(HttpWebRequest req)
         {
             try
             {
@@ -52,7 +44,7 @@ namespace WowDotNetAPI.Utilities
                         case HttpStatusCode.InternalServerError:    //500
                         case HttpStatusCode.NotFound:               //404
                         default:
-                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, url);
+                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, req.RequestUri.ToString());
                     }
                 }
             }
@@ -62,13 +54,12 @@ namespace WowDotNetAPI.Utilities
         public static T FromJSON<T>(string url) where T : class
         {
             HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
-
-            return FromJSON<T>(req, url);
+            return FromJSON<T>(req);
         }
 
-        public static T FromJSON<T>(HttpWebRequest req, string url) where T : class
+        public static T FromJSON<T>(HttpWebRequest req) where T : class
         {
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(GetJSON(req, url))))
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(GetJSON(req))))
             {
                 DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
                 return DataContractJsonSerializer.ReadObject(stream) as T;
@@ -95,7 +86,7 @@ namespace WowDotNetAPI.Utilities
             req.Headers[HttpRequestHeader.Authorization]
                 = "BNET " + publicAuthKey + ":" + signature;
 
-            return FromJSON<T>(req, url);
+            return FromJSON<T>(req);
         }
 
         public static string ToJSON<T>(T obj) where T : class
