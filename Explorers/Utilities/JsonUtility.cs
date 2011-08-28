@@ -66,16 +66,16 @@ namespace WowDotNetAPI.Utilities
             }
         }
 
-        //TODO: Authentication WIP
         public static T FromJSON<T>(string url, string publicAuthKey, string privateAuthKey) where T : class
         {
             HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
             DateTime date = DateTime.Now.ToUniversalTime();
             req.Date = date;
 
-            string stringToSign = req.Method + "\n"
-            + date.ToString("r") + "\n"
-            + req.RequestUri.PathAndQuery + "\n";
+            string stringToSign = 
+                req.Method + "\n"
+                + date.ToString("r") + "\n"
+                + req.RequestUri.PathAndQuery + "\n";
 
             byte[] buffer = Encoding.UTF8.GetBytes(stringToSign);
 
@@ -90,14 +90,6 @@ namespace WowDotNetAPI.Utilities
         }
 
         public static string ToJSON<T>(T obj) where T : class
-        {
-            WebClient WebClient = new WebClient();
-            WebClient.Encoding = Encoding.UTF8;
-
-            return ToJSON<T>(WebClient, obj);
-        }
-
-        public static string ToJSON<T>(WebClient WebClient, T obj) where T : class
         {
             using (MemoryStream stream = new MemoryStream())
             {

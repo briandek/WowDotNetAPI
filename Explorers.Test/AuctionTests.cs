@@ -24,20 +24,20 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void testUsRealm()
         {
-            this.testRealm(Region.US, "Skullcrusher");   
+            this.testRealm(Region.US, "Skullcrusher");
         }
 
         [TestMethod]
         public void testEuRealm()
         {
-            this.testRealm(Region.EU, "Twisting Nether"); 
+            this.testRealm(Region.EU, "Twisting Nether");
         }
 
-// BROKEN
-//        [TestMethod]
-//        public void testTwRealm()
-//        {
-//            this.testRealm(Region.TW, "Balnazzar");
-//        }   
+        // BROKEN
+        //[TestMethod]
+        //public void testTwRealm()
+        //{
+        //    this.testRealm(Region.TW, "Balnazzar");
+        //}   
     }
 }

@@ -57,7 +57,7 @@ namespace WowDotNetAPI.Utilities
 
             if (tmp.Count == 0) return string.Empty;
 
-            query += string.Join(",", tmp);
+            query += string.Join(",", tmp.ToArray());
 
             return query;
         }
