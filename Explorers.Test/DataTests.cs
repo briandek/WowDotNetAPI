@@ -13,7 +13,7 @@ using WowDotNetAPI.Exceptions;
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class DataTest
+    public class DataTests
     {
         [TestMethod]
         public void Get_Character_Races_Data()
@@ -56,7 +56,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             IEnumerable<Realm> realms1 = TestUtility.WowExplorer.GetRealms();
             IEnumerable<Realm> realms2 =
-                JsonUtility.FromJSONStream<RealmsData>(File.OpenText(@"C:\Documents and Settings\Aio\My Documents\Visual Studio 2010\Projects\WowDotNetAPI\WowDotNetAPI\Explorers.Test\Data\jsonRealmsFile.txt")).Realms;
+                JsonUtility.FromJSONStream<RealmsData>(File.OpenText(@"D:\Visual Studio 2010\Projects\WowDotNetAPI\Explorers.Test\Data\jsonRealmsFile.txt")).Realms;
 
             IEnumerable<Realm> realms3 = realms1.Intersect(realms2);
             Assert.AreEqual(0, realms3.Count());
@@ -70,7 +70,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
             Character briandekFromJsonFile =
-                JsonUtility.FromJSONStream<Character>(File.OpenText(@"C:\Documents and Settings\Aio\My Documents\Visual Studio 2010\Projects\WowDotNetAPI\WowDotNetAPI\Explorers.Test\Data\jsonCharacterFile.txt"));
+                JsonUtility.FromJSONStream<Character>(File.OpenText(@"D:\Visual Studio 2010\Projects\WowDotNetAPI\Explorers.Test\Data\jsonCharacterFile.txt"));
 
             Assert.AreEqual(0, briandek.CompareTo(briandekFromJsonFile));
 
@@ -99,14 +99,14 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Invalid_Character_From_Skullcrusher_Throws_Exception()
         {
             Action a = () => TestUtility.WowExplorer.GetCharacter("skullcrusher", "talasix");
-            TestUtility.ThrowsException<WowException>(a, "Response Status: NotFound. Character not found.");
+            TestUtility.ThrowsException<WowException>(a, "Response Status: 404 NotFound. Character not found.");
         }
 
         [TestMethod]
         public void Get_Invalid_Guild_From_Skullcrusher_Throws_Exception()
         {
             Action a = () => TestUtility.WowExplorer.GetGuild("skullcrusher", "dekufanzero");
-            TestUtility.ThrowsException<WowException>(a, "Response Status: NotFound. Guild not found.");
+            TestUtility.ThrowsException<WowException>(a, "Response Status: 404 NotFound. Guild not found.");
         }
 
     }

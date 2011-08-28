@@ -9,7 +9,7 @@ using WowDotNetAPI.Models;
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class ItemTest
+    public class ItemTests
     {
         [TestMethod]
         public void Get_Sample_Item_38268()

@@ -10,7 +10,7 @@ using WowDotNetAPI.Exceptions;
 namespace WowDotNetAPI.Test
 {
     [TestClass]
-    public class CharacterTest
+    public class CharacterTests
     {
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()

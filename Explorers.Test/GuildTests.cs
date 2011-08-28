@@ -11,7 +11,7 @@ using WowDotNetAPI.Models;
 namespace WowDotNetAPI.Test
 {
     [TestClass]
-    public class GuildTest
+    public class GuildTests
     {
 
         [TestMethod]

@@ -9,7 +9,7 @@ using WowDotNetAPI.Test;
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class AuctionTest
+    public class AuctionTests
     {
         private void testRealm(Region region, string realm)
         {

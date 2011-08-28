@@ -15,7 +15,7 @@ using WowDotNetAPI.Utilities;
 namespace Explorers.Test
 {
     [TestClass]
-    public class RealmTest
+    public class RealmTests
     {
         [TestMethod]
         public void GetAll_US_Realms_Returns_All_Realms()

@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using WowDotNetAPI.Exceptions;
+using System.Security.Cryptography;
 
 namespace WowDotNetAPI.Utilities
 {
@@ -16,6 +17,7 @@ namespace WowDotNetAPI.Utilities
         {
             WebClient WebClient = new WebClient();
             WebClient.Encoding = Encoding.UTF8;
+            WebClient.Proxy = null;
 
             return GetJSON(WebClient, url);
         }
@@ -26,6 +28,7 @@ namespace WowDotNetAPI.Utilities
             try
             {
                 return WebClient.DownloadString(url);
+
             }
             catch (WebException wE)
             {
@@ -34,7 +37,7 @@ namespace WowDotNetAPI.Utilities
                 {
                     if (eR == null)
                     {
-                        throw new Exception(wE.Message);
+                        throw;
                     }
 
                     ErrorDetail newError = FromJSONStream<ErrorDetail>(new StreamReader(eR.GetResponseStream()));
@@ -44,7 +47,7 @@ namespace WowDotNetAPI.Utilities
                         case HttpStatusCode.InternalServerError:    //500
                         case HttpStatusCode.NotFound:               //404
                         default:
-                            throw new WowException(string.Format("Response Status: {0}. {1}", eR.StatusCode, newError.Reason), newError, url);
+                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, url);
                     }
                 }
             }
@@ -67,6 +70,27 @@ namespace WowDotNetAPI.Utilities
                 return DataContractJsonSerializer.ReadObject(stream) as T;
             }
         }
+
+        //TODO: Authentication WIP
+        //public static T FromJSON<T>(WebClient WebClient, string url, string publicAuthKey, string privateAuthKey) where T : class
+        //{
+        //    string date = DateTime.Now.ToUniversalTime().ToString("r");
+
+        //    string stringToSign = string.Format("GET\n{0}\n{1}\n"
+        //        , date
+        //        , WebClient.Headers["UrlPath"]);
+
+        //    byte[] buffer = Encoding.UTF8.GetBytes(stringToSign);
+
+        //    HMACSHA1 hmac = new HMACSHA1(Encoding.UTF8.GetBytes(privateAuthKey));
+
+        //    string signature = Convert.ToBase64String(hmac.ComputeHash(buffer));
+
+        //    WebClient.Headers[HttpRequestHeader.Authorization]
+        //        = "BNET " + publicAuthKey + ":" + signature;
+
+        //    return FromJSON<T>(WebClient, url);
+        //}
 
         public static string ToJSON<T>(T obj) where T : class
         {
@@ -95,6 +119,8 @@ namespace WowDotNetAPI.Utilities
                 return DataContractJsonSerializer.ReadObject(stream) as T;
             }
         }
+
+
 
     }
 }

@@ -47,14 +47,15 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuctionTest.cs" />
-    <Compile Include="CharacterTest.cs" />
-    <Compile Include="DataTest.cs" />
-    <Compile Include="ItemTest.cs" />
+    <Compile Include="AuctionTests.cs" />
+    <Compile Include="AuthTests.cs" />
+    <Compile Include="CharacterTests.cs" />
+    <Compile Include="DataTests.cs" />
+    <Compile Include="ItemTests.cs" />
     <Compile Include="TestUtility.cs" />
-    <Compile Include="GuildTest.cs" />
+    <Compile Include="GuildTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RealmTest.cs" />
+    <Compile Include="RealmTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Explorers\Explorers.csproj">
