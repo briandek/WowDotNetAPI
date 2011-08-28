@@ -69,7 +69,6 @@ namespace WowDotNetAPI
 
     public class WowExplorer : IExplorer
     {
-        public WebClient WebClient { get; set; }
         public Region Region { get; set; }
         public Locale Locale { get; set; }
 
@@ -89,9 +88,6 @@ namespace WowDotNetAPI
 
         public WowExplorer(Region region, Locale locale)
         {
-            WebClient = new WebClient();
-            WebClient.Encoding = Encoding.UTF8;
-
             Region = region;
             BaseAPIurl = ExplorerUtility.GetBaseURL(Region);
             Locale = locale;
@@ -185,12 +181,11 @@ namespace WowDotNetAPI
 
         public Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions)
         {
-            string urlPath = string.Format(CharacterUtility.basePath + "{0}/{1}", realm, name)
-                + GetLocaleQuery()
-                + CharacterUtility.buildOptionalQuery(characterOptions);
 
-            AddUrlPathToWebClient(urlPath);
-            return GetData<Character>(BaseAPIurl + urlPath);
+            return GetData<Character>(BaseAPIurl
+                + string.Format(CharacterUtility.basePath + "{0}/{1}", realm, name)
+                + GetLocaleQuery()
+                + CharacterUtility.buildOptionalQuery(characterOptions));
         }
 
         private string GetLocaleQuery()
@@ -219,12 +214,10 @@ namespace WowDotNetAPI
 
         public Guild GetGuild(Region region, string realm, string name, GuildOptions realmOptions)
         {
-            string urlPath = string.Format(GuildUtility.basePath + "{0}/{1}", realm, name)
+            return GetData<Guild>(BaseAPIurl
+                + string.Format(GuildUtility.basePath + "{0}/{1}", realm, name)
                 + GetLocaleQuery()
-                + GuildUtility.buildOptionalQuery(realmOptions);
-
-            AddUrlPathToWebClient(urlPath);
-            return GetData<Guild>(BaseAPIurl + urlPath);
+                + GuildUtility.buildOptionalQuery(realmOptions));
         }
 
         #endregion
@@ -237,10 +230,9 @@ namespace WowDotNetAPI
 
         public IEnumerable<Realm> GetRealms(Region region)
         {
-            string urlPath = RealmUtility.basePath + GetLocaleQuery();
-            
-            AddUrlPathToWebClient(urlPath);
-            return GetData<RealmsData>(BaseAPIurl + urlPath).Realms;
+            return GetData<RealmsData>(BaseAPIurl
+                + RealmUtility.basePath
+                + GetLocaleQuery()).Realms;
         }
 
         #endregion
@@ -249,11 +241,9 @@ namespace WowDotNetAPI
 
         public Auctions GetAuctions(string realm)
         {
-            string urlPath = string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
-                + GetLocaleQuery();
-
-            AddUrlPathToWebClient(urlPath);
-            return GetData<Auctions>(string.Format(BaseAPIurl + urlPath));
+            return GetData<Auctions>(string.Format(BaseAPIurl
+                + string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
+                + GetLocaleQuery()));
         }
 
         #endregion
@@ -262,10 +252,8 @@ namespace WowDotNetAPI
 
         public Item GetItem(string id)
         {
-            string urlPath = string.Format(ItemUtility.basePath, id) + GetLocaleQuery();
-
-            AddUrlPathToWebClient(urlPath);
-            return GetData<Item>(BaseAPIurl + urlPath);
+            return GetData<Item>(BaseAPIurl
+                + string.Format(ItemUtility.basePath, id) + GetLocaleQuery());
         }
 
         #endregion
@@ -278,10 +266,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region)
         {
-            string urlPath = DataUtility.characterRacesPath + GetLocaleQuery();
-
-            AddUrlPathToWebClient(urlPath);
-            return GetData<CharacterRacesData>(BaseAPIurl + urlPath).Races;
+            return GetData<CharacterRacesData>(BaseAPIurl
+                + DataUtility.characterRacesPath + GetLocaleQuery()).Races;
         }
 
         public IEnumerable<CharacterClassInfo> GetCharacterClasses()
@@ -291,10 +277,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region)
         {
-            string urlPath = DataUtility.characterClassesPath + GetLocaleQuery();
-
-            AddUrlPathToWebClient(urlPath);
-            return GetData<CharacterClassesData>(BaseAPIurl + urlPath).Classes;
+            return GetData<CharacterClassesData>(BaseAPIurl
+                + DataUtility.characterClassesPath + GetLocaleQuery()).Classes;
         }
 
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
@@ -304,10 +288,8 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildRewardInfo> GetGuildRewards(Region region)
         {
-            string urlPath = DataUtility.guildRewardsPath + GetLocaleQuery();
-
-            AddUrlPathToWebClient(DataUtility.guildRewardsPath + GetLocaleQuery());
-            return GetData<GuildRewardsData>(BaseAPIurl + urlPath).Rewards;
+            return GetData<GuildRewardsData>(BaseAPIurl
+                + DataUtility.guildRewardsPath + GetLocaleQuery()).Rewards;
         }
 
         public IEnumerable<GuildPerkInfo> GetGuildPerks()
@@ -317,38 +299,20 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildPerkInfo> GetGuildPerks(Region region)
         {
-            string urlPath = DataUtility.guildPerksPath + GetLocaleQuery();
-
-            AddUrlPathToWebClient(urlPath);
-
-            return GetData<GuildPerksData>(BaseAPIurl + urlPath).Perks;
+            return GetData<GuildPerksData>(BaseAPIurl
+                + DataUtility.guildPerksPath + GetLocaleQuery()).Perks;
         }
 
         #endregion
 
-        private void AddUrlPathToWebClient(string urlPath)
-        {
-            WebClient.Headers.Add("UrlPath", urlPath);
-        }
-
         private T GetData<T>(string url) where T : class
         {
-            //TODO: Authentication WIP
-
-            //if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
-            //{
-            //    return JsonUtility.FromJSON<T>(WebClient, url, publicAuthKey, privateAuthKey);    
-            //}
-
-            return JsonUtility.FromJSON<T>(WebClient, url);
-        }
-
-        public void Dispose()
-        {
-            if (WebClient != null)
+            if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
             {
-                WebClient.Dispose();
+                return JsonUtility.FromJSON<T>(url, publicAuthKey, privateAuthKey);
             }
+
+            return JsonUtility.FromJSON<T>(url);
         }
     }
 }

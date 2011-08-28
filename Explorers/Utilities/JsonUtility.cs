@@ -15,20 +15,25 @@ namespace WowDotNetAPI.Utilities
 
         public static string GetJSON(string url)
         {
-            WebClient WebClient = new WebClient();
-            WebClient.Encoding = Encoding.UTF8;
-            WebClient.Proxy = null;
+            //WebClient WebClient = new WebClient();
+            //WebClient.Encoding = Encoding.UTF8;
+            //WebClient.Proxy = null;
 
-            return GetJSON(WebClient, url);
+            HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
+
+
+            return GetJSON(req, url);
         }
 
 
-        public static string GetJSON(WebClient WebClient, string url)
+        public static string GetJSON(HttpWebRequest req, string url)
         {
             try
             {
-                return WebClient.DownloadString(url);
+                HttpWebResponse res = req.GetResponse() as HttpWebResponse;
 
+                StreamReader streamReader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
+                return streamReader.ReadToEnd();
             }
             catch (WebException wE)
             {
@@ -56,15 +61,14 @@ namespace WowDotNetAPI.Utilities
         //JSON serialization - http://www.joe-stevens.com/2009/12/29/json-serialization-using-the-datacontractjsonserializer-and-c/
         public static T FromJSON<T>(string url) where T : class
         {
-            WebClient WebClient = new WebClient();
-            WebClient.Encoding = Encoding.UTF8;
+            HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
 
-            return FromJSON<T>(WebClient, url);
+            return FromJSON<T>(req, url);
         }
 
-        public static T FromJSON<T>(WebClient WebClient, string url) where T : class
+        public static T FromJSON<T>(HttpWebRequest req, string url) where T : class
         {
-            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(GetJSON(WebClient, url))))
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(GetJSON(req, url))))
             {
                 DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
                 return DataContractJsonSerializer.ReadObject(stream) as T;
@@ -72,25 +76,27 @@ namespace WowDotNetAPI.Utilities
         }
 
         //TODO: Authentication WIP
-        //public static T FromJSON<T>(WebClient WebClient, string url, string publicAuthKey, string privateAuthKey) where T : class
-        //{
-        //    string date = DateTime.Now.ToUniversalTime().ToString("r");
+        public static T FromJSON<T>(string url, string publicAuthKey, string privateAuthKey) where T : class
+        {
+            HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
+            DateTime date = DateTime.Now.ToUniversalTime();
+            req.Date = date;
 
-        //    string stringToSign = string.Format("GET\n{0}\n{1}\n"
-        //        , date
-        //        , WebClient.Headers["UrlPath"]);
+            string stringToSign = req.Method + "\n"
+            + date.ToString("r") + "\n"
+            + req.RequestUri.PathAndQuery + "\n";
 
-        //    byte[] buffer = Encoding.UTF8.GetBytes(stringToSign);
+            byte[] buffer = Encoding.UTF8.GetBytes(stringToSign);
 
-        //    HMACSHA1 hmac = new HMACSHA1(Encoding.UTF8.GetBytes(privateAuthKey));
+            HMACSHA1 hmac = new HMACSHA1(Encoding.UTF8.GetBytes(privateAuthKey));
 
-        //    string signature = Convert.ToBase64String(hmac.ComputeHash(buffer));
+            string signature = Convert.ToBase64String(hmac.ComputeHash(buffer));
+            
+            req.Headers[HttpRequestHeader.Authorization]
+                = "BNET " + publicAuthKey + ":" + signature;
 
-        //    WebClient.Headers[HttpRequestHeader.Authorization]
-        //        = "BNET " + publicAuthKey + ":" + signature;
-
-        //    return FromJSON<T>(WebClient, url);
-        //}
+            return FromJSON<T>(req, url);
+        }
 
         public static string ToJSON<T>(T obj) where T : class
         {

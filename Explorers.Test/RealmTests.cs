@@ -8,7 +8,6 @@ using System.Web.Script.Serialization;
 using WowDotNetAPI;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Comparers;
-using WowDotNetAPI.Extensions;
 using WowDotNetAPI.Test;
 using WowDotNetAPI.Utilities;
 
