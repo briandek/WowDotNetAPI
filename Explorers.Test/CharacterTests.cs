@@ -71,6 +71,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+            Assert.AreEqual(CharacterPowerType.RAGE.ToString(), briandek.Stats.PowerType.ToString(), true);
 
             Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
@@ -114,5 +115,19 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(11, talasi.Mounts.Count());
         }
 
+        [TestMethod]
+        public void Get_Simple_Character_DeathKnight_From_Skullcrusher()
+        {
+            Character sinthesis = WowExplorer.GetCharacter("skullcrusher", "sinthesis", CharacterOptions.GetStats);
+
+            Assert.IsNotNull(sinthesis.Stats);
+
+            Assert.IsTrue(sinthesis.Name.Equals("sinthesis", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(85, sinthesis.Level);
+            Assert.AreEqual(CharacterClass.DEATH_KNIGHT, sinthesis.@Class);
+            Assert.AreEqual(CharacterRace.WORGEN, sinthesis.Race);
+            Assert.AreEqual(CharacterGender.MALE, sinthesis.Gender);
+            Assert.AreEqual(CharacterPowerType.RUNICPOWER.ToString(), sinthesis.Stats.PowerType.ToString(), true);
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace WowDotNetAPI.Models
     [DataContract]
     public enum CharacterPowerType
     {
-        [EnumMember(Value="focus")]
+        [EnumMember(Value = "focus")]
         FOCUS,
         [EnumMember(Value = "rage")]
         RAGE,
@@ -17,8 +17,8 @@ namespace WowDotNetAPI.Models
         MANA,
         [EnumMember(Value = "energy")]
         ENERGY,
-        [EnumMember(Value = "runicpower")]
-        RUNICPOWER,
+        [EnumMember(Value = "runic-power")]
+        RUNICPOWER
     }
 
     [DataContract]
@@ -36,6 +36,6 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
-        public CharacterPowerType PowerType { get { return (CharacterPowerType)Enum.Parse(typeof(CharacterPowerType), powerType, true); } }
+        public CharacterPowerType PowerType { get { return (CharacterPowerType)Enum.Parse(typeof(CharacterPowerType), powerType.Replace("-", string.Empty), true); } }
     }
 }

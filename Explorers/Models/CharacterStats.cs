@@ -14,7 +14,7 @@ namespace WowDotNetAPI.Models
         public int Health { get; set; }
 
         [DataMember(Name = "powerType")]
-        public string PowerType { get; set; }
+        private string powerType { get; set; }
 
         [DataMember(Name = "power")]
         public int Power { get; set; }
@@ -166,6 +166,7 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "rangedHitRating")]
         public int RangedHitRating { get; set; }
 
+        public CharacterPowerType PowerType { get { return (CharacterPowerType)Enum.Parse(typeof(CharacterPowerType), powerType.Replace("-", string.Empty), true); } }
 
         //http://stackoverflow.com/questions/1447308/enumerating-through-an-objects-properties-string-in-c
         //TODO:REFACTOR THIS / possible performance issue
