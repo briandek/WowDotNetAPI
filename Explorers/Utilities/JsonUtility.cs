@@ -70,7 +70,6 @@ namespace WowDotNetAPI.Utilities
         {
             HttpWebRequest req = WebRequest.Create(url) as HttpWebRequest;
             DateTime date = DateTime.Now.ToUniversalTime();
-            req.Date = date;
 
             string stringToSign = 
                 req.Method + "\n"
@@ -108,8 +107,5 @@ namespace WowDotNetAPI.Utilities
                 return DataContractJsonSerializer.ReadObject(stream) as T;
             }
         }
-
-
-
     }
 }

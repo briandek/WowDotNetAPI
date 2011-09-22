@@ -11,10 +11,18 @@ namespace WowDotNetAPI.Test
     [TestClass]
     public class CharacterTests
     {
+        public static IExplorer WowExplorer;
+
+        [ClassInitialize]
+        public static void Initialize(TestContext testContext)
+        {
+            WowExplorer = new WowExplorer(Region.US);
+        }
+
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
-            Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek");
+            Character briandek = WowExplorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsNull(briandek.Guild);
             Assert.IsNull(briandek.Stats);
@@ -28,7 +36,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Mounts);
             //Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
-            Assert.IsNull(briandek.Progression); 
+            Assert.IsNull(briandek.Progression);
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(85, briandek.Level);
@@ -41,7 +49,7 @@ namespace WowDotNetAPI.Test
         public void Get_Complex_Character_Briandek_From_Skullcrusher()
         {
 
-            Character briandek = TestUtility.WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
+            Character briandek = WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(briandek.Guild);
             Assert.IsNotNull(briandek.Stats);
@@ -79,7 +87,7 @@ namespace WowDotNetAPI.Test
         public void Get_Complex_Character_Talasi_From_Skullcrusher()
         {
 
-            Character talasi = TestUtility.WowExplorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
+            Character talasi = WowExplorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(talasi.Guild);
             Assert.IsNotNull(talasi.Stats);
@@ -105,6 +113,6 @@ namespace WowDotNetAPI.Test
 
             Assert.AreEqual(11, talasi.Mounts.Count());
         }
-       
+
     }
 }

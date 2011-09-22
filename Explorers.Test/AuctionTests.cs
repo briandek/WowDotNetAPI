@@ -22,13 +22,13 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        public void testUsRealm()
+        public void Get_Simple_Auction_Data_From_US_Realm()
         {
             this.testRealm(Region.US, "Skullcrusher");
         }
 
         [TestMethod]
-        public void testEuRealm()
+        public void Get_Simple_Auction_Data_From_EU_Realm()
         {
             this.testRealm(Region.EU, "Twisting Nether");
         }
