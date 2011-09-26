@@ -77,6 +77,8 @@ namespace WowDotNetAPI
 
         private string BaseAPIurl { get; set; }
 
+        public ErrorInfo ErrorInfo { get; set; }
+
         public WowExplorer() : this(Region.US) { }
 
         public WowExplorer(Region region)
@@ -160,6 +162,11 @@ namespace WowDotNetAPI
             }
         }
 
+        private string GetLocaleQuery()
+        {
+            return "?locale=" + Locale;
+        }
+
         #endregion
 
         #region Character
@@ -181,16 +188,14 @@ namespace WowDotNetAPI
 
         public Character GetCharacter(Region region, string realm, string name, CharacterOptions characterOptions)
         {
+            Character character;
 
-            return GetData<Character>(BaseAPIurl
+            TryGetData<Character>(BaseAPIurl
                 + string.Format(CharacterUtility.basePath + "{0}/{1}", realm, name)
                 + GetLocaleQuery()
-                + CharacterUtility.buildOptionalQuery(characterOptions));
-        }
+                + CharacterUtility.buildOptionalQuery(characterOptions), out character);
 
-        private string GetLocaleQuery()
-        {
-            return "?locale=" + Locale;
+            return character;
         }
 
         #endregion
@@ -214,10 +219,14 @@ namespace WowDotNetAPI
 
         public Guild GetGuild(Region region, string realm, string name, GuildOptions realmOptions)
         {
-            return GetData<Guild>(BaseAPIurl
+            Guild guild;
+
+            TryGetData<Guild>(BaseAPIurl
                 + string.Format(GuildUtility.basePath + "{0}/{1}", realm, name)
                 + GetLocaleQuery()
-                + GuildUtility.buildOptionalQuery(realmOptions));
+                + GuildUtility.buildOptionalQuery(realmOptions), out guild);
+
+            return guild;
         }
 
         #endregion
@@ -230,9 +239,13 @@ namespace WowDotNetAPI
 
         public IEnumerable<Realm> GetRealms(Region region)
         {
-            return GetData<RealmsData>(BaseAPIurl
+            RealmsData realmsData;
+
+            TryGetData<RealmsData>(BaseAPIurl
                 + RealmUtility.basePath
-                + GetLocaleQuery()).Realms;
+                + GetLocaleQuery(), out realmsData);
+
+            return (realmsData != null) ? realmsData.Realms : null;
         }
 
         #endregion
@@ -241,9 +254,13 @@ namespace WowDotNetAPI
 
         public Auctions GetAuctions(string realm)
         {
-            return GetData<Auctions>(string.Format(BaseAPIurl
+            Auctions auctions;
+
+            TryGetData<Auctions>(string.Format(BaseAPIurl
                 + string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
-                + GetLocaleQuery()));
+                + GetLocaleQuery()), out auctions);
+
+            return auctions;
         }
 
         #endregion
@@ -252,13 +269,16 @@ namespace WowDotNetAPI
 
         public Item GetItem(string id)
         {
-            return GetData<Item>(BaseAPIurl
-                + string.Format(ItemUtility.basePath, id) + GetLocaleQuery());
+            Item item;
+
+            TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery(), out item);
+
+            return item;
         }
 
         #endregion
 
-        #region Data
+        #region CharacterRaceInfo
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {
             return GetCharacterRaces(Region);
@@ -266,10 +286,13 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region)
         {
-            return GetData<CharacterRacesData>(BaseAPIurl
-                + DataUtility.characterRacesPath + GetLocaleQuery()).Races;
+            CharacterRacesData charRacesData;
+            TryGetData<CharacterRacesData>(BaseAPIurl + DataUtility.characterRacesPath + GetLocaleQuery(), out charRacesData);
+            return (charRacesData != null) ? charRacesData.Races : null;
         }
+        #endregion
 
+        #region CharacterClassInfo
         public IEnumerable<CharacterClassInfo> GetCharacterClasses()
         {
             return GetCharacterClasses(Region);
@@ -277,10 +300,13 @@ namespace WowDotNetAPI
 
         public IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region)
         {
-            return GetData<CharacterClassesData>(BaseAPIurl
-                + DataUtility.characterClassesPath + GetLocaleQuery()).Classes;
+            CharacterClassesData characterClasses;
+            TryGetData<CharacterClassesData>(BaseAPIurl + DataUtility.characterClassesPath + GetLocaleQuery(), out characterClasses);
+            return (characterClasses != null) ? characterClasses.Classes : null;
         }
+        #endregion
 
+        #region GuildRewardInfo
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
         {
             return GetGuildRewards(Region);
@@ -288,10 +314,13 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildRewardInfo> GetGuildRewards(Region region)
         {
-            return GetData<GuildRewardsData>(BaseAPIurl
-                + DataUtility.guildRewardsPath + GetLocaleQuery()).Rewards;
+            GuildRewardsData guildRewardsData;
+            TryGetData<GuildRewardsData>(BaseAPIurl + DataUtility.guildRewardsPath + GetLocaleQuery(), out guildRewardsData);
+            return (guildRewardsData != null) ? guildRewardsData.Rewards : null;
         }
+        #endregion
 
+        #region GuildPerkInfo
         public IEnumerable<GuildPerkInfo> GetGuildPerks()
         {
             return GetGuildPerks(Region);
@@ -299,12 +328,12 @@ namespace WowDotNetAPI
 
         public IEnumerable<GuildPerkInfo> GetGuildPerks(Region region)
         {
-            return GetData<GuildPerksData>(BaseAPIurl
-                + DataUtility.guildPerksPath + GetLocaleQuery()).Perks;
+            GuildPerksData guildPerksData;
+            TryGetData<GuildPerksData>(BaseAPIurl + DataUtility.guildPerksPath + GetLocaleQuery(), out guildPerksData);
+            return (guildPerksData != null) ? guildPerksData.Perks : null;
         }
-
         #endregion
-
+        
         private T GetData<T>(string url) where T : class
         {
             if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
@@ -313,6 +342,49 @@ namespace WowDotNetAPI
             }
 
             return JsonUtility.FromJSON<T>(url);
+        }
+
+        private void TryGetData<T>(string url, out T requestedObject) where T : class
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
+                {
+                    requestedObject = JsonUtility.FromJSON<T>(url, publicAuthKey, privateAuthKey);
+                }
+
+                requestedObject = JsonUtility.FromJSON<T>(url);
+            }
+            catch (WowException wowEx)
+            {
+                ErrorInfo = new ErrorInfo
+                {
+                    ErrorDetail = wowEx.ErrorDetail,
+                    OriginalException = wowEx.OriginalException,
+                    RequestUrl = wowEx.Url
+                };
+                requestedObject = null;
+            }
+            catch (WebException webEx)
+            {
+                ErrorInfo = new ErrorInfo
+                {
+                    ErrorDetail = null,
+                    OriginalException = webEx,
+                    RequestUrl = string.Empty
+                };
+                requestedObject = null;
+            }
+            catch (Exception ex)
+            {
+                ErrorInfo = new ErrorInfo
+                {
+                    ErrorDetail = null,
+                    OriginalException = ex,
+                    RequestUrl = string.Empty
+                };
+                requestedObject = null;
+            }
         }
     }
 }

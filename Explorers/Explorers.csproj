@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ErrorDetail.cs" />
+    <Compile Include="Exceptions\ErrorInfo.cs" />
     <Compile Include="Exceptions\InvalidLocaleException.cs" />
     <Compile Include="Exceptions\WowException.cs" />
     <Compile Include="Models\Item.cs" />

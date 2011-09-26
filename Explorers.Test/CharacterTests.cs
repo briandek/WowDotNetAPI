@@ -11,18 +11,19 @@ namespace WowDotNetAPI.Test
     [TestClass]
     public class CharacterTests
     {
-        public static IExplorer WowExplorer;
+        public TestContext TestContext { get; set; }
+        private static WowExplorer explorer;
 
-        [ClassInitialize]
-        public static void Initialize(TestContext testContext)
+        [ClassInitialize()]
+        public static void ClassInit(TestContext context)
         {
-            WowExplorer = new WowExplorer(Region.US);
+            explorer = new WowExplorer(Region.US, Locale.en_US);
         }
 
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
-            Character briandek = WowExplorer.GetCharacter("skullcrusher", "briandek");
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsNull(briandek.Guild);
             Assert.IsNull(briandek.Stats);
@@ -36,7 +37,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Mounts);
             //Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
-            Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Progression); 
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(85, briandek.Level);
@@ -48,8 +49,7 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Complex_Character_Briandek_From_Skullcrusher()
         {
-
-            Character briandek = WowExplorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(briandek.Guild);
             Assert.IsNotNull(briandek.Stats);
@@ -71,7 +71,6 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
-            Assert.AreEqual(CharacterPowerType.RAGE.ToString(), briandek.Stats.PowerType.ToString(), true);
 
             Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
@@ -87,8 +86,7 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Complex_Character_Talasi_From_Skullcrusher()
         {
-
-            Character talasi = WowExplorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
+            var talasi = explorer.GetCharacter("skullcrusher", "talasi", CharacterOptions.GetEverything);
 
             Assert.IsNotNull(talasi.Guild);
             Assert.IsNotNull(talasi.Stats);
@@ -114,20 +112,6 @@ namespace WowDotNetAPI.Test
 
             Assert.AreEqual(11, talasi.Mounts.Count());
         }
-
-        [TestMethod]
-        public void Get_Simple_Character_DeathKnight_From_Skullcrusher()
-        {
-            Character sinthesis = WowExplorer.GetCharacter("skullcrusher", "sinthesis", CharacterOptions.GetStats);
-
-            Assert.IsNotNull(sinthesis.Stats);
-
-            Assert.IsTrue(sinthesis.Name.Equals("sinthesis", StringComparison.InvariantCultureIgnoreCase));
-            Assert.AreEqual(85, sinthesis.Level);
-            Assert.AreEqual(CharacterClass.DEATH_KNIGHT, sinthesis.@Class);
-            Assert.AreEqual(CharacterRace.WORGEN, sinthesis.Race);
-            Assert.AreEqual(CharacterGender.MALE, sinthesis.Gender);
-            Assert.AreEqual(CharacterPowerType.RUNICPOWER.ToString(), sinthesis.Stats.PowerType.ToString(), true);
-        }
+       
     }
 }
