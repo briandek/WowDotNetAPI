@@ -11,33 +11,40 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class AuctionTests
     {
-        private void testRealm(Region region, string realm)
+        public TestContext TestContext { get; set; }
+        private static WowExplorer explorer;
+
+        [ClassInitialize()]
+        public static void ClassInit(TestContext context)
         {
-            WowExplorer explorer = new WowExplorer(region);
+            explorer = new WowExplorer(Region.US, Locale.en_US);
+        }
 
-            Auctions auctions = explorer.GetAuctions(realm);
-
+        [TestMethod]
+        public void testUsRealm()
+        {
+            Auctions auctions = explorer.GetAuctions("Skullcrusher");
             Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
+            // Is this check really necessary?
             Assert.IsTrue((from n in auctions.Horde.Auctions where n.ItemId == 53010 select n).Count() > 0);
         }
 
         [TestMethod]
-        public void Get_Simple_Auction_Data_From_US_Realm()
+        public void testEuRealm()
         {
-            this.testRealm(Region.US, "Skullcrusher");
+            explorer.Region = Region.EU;
+            Auctions auctions = explorer.GetAuctions("Twisting Nether");
+            Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
+            
         }
 
         [TestMethod]
-        public void Get_Simple_Auction_Data_From_EU_Realm()
+        public void testTwRealm()
         {
-            this.testRealm(Region.EU, "Twisting Nether");
+            explorer.Region = Region.TW;
+            Auctions auctions = explorer.GetAuctions("Balnazzar");
+            Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
+            
         }
-
-        // BROKEN
-        //[TestMethod]
-        //public void testTwRealm()
-        //{
-        //    this.testRealm(Region.TW, "Balnazzar");
-        //}   
     }
 }

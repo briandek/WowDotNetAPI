@@ -6,6 +6,7 @@ using System.Net;
 using WowDotNetAPI.Models;
 using System.Runtime.Serialization.Json;
 using WowDotNetAPI.Utilities;
+using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI
 {

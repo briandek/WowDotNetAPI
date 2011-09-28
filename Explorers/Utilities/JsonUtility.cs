@@ -30,7 +30,6 @@ namespace WowDotNetAPI.Utilities
             catch (WebException wE)
             {
                 using (HttpWebResponse eR = wE.Response as HttpWebResponse)
-                using (MemoryStream stream = new MemoryStream())
                 {
                     if (eR == null)
                     {
@@ -44,7 +43,7 @@ namespace WowDotNetAPI.Utilities
                         case HttpStatusCode.InternalServerError:    //500
                         case HttpStatusCode.NotFound:               //404
                         default:
-                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, req.RequestUri.ToString());
+                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, req.RequestUri.ToString(), wE);
                     }
                 }
             }
@@ -108,5 +107,15 @@ namespace WowDotNetAPI.Utilities
                 return DataContractJsonSerializer.ReadObject(stream) as T;
             }
         }
+
+        public static T FromJSONString<T>(string str) where T : class
+        {
+            using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(str)))
+            {
+                DataContractJsonSerializer DataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
+                return DataContractJsonSerializer.ReadObject(stream) as T;
+            }
+        }
+
     }
 }

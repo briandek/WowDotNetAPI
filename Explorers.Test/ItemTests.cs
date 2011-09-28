@@ -11,25 +11,26 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class ItemTests
     {
-        public static IExplorer WowExplorer;
+        public TestContext TestContext { get; set; }
+        private static WowExplorer explorer;
 
-        [ClassInitialize]
-        public static void Initialize(TestContext testContext)
+        [ClassInitialize()]
+        public static void ClassInit(TestContext context)
         {
-            WowExplorer = new WowExplorer(Region.US);
+            explorer = new WowExplorer(Region.US, Locale.en_US);
         }
 
         [TestMethod]
         public void Get_Sample_Item_38268()
         {
-            Item sampleItem = WowExplorer.GetItem("38268");
+            var sampleItem = explorer.GetItem("38268");
 
             Assert.AreEqual("Spare Hand", sampleItem.Name);
             Assert.AreEqual("Give to a Friend", sampleItem.Description);
             Assert.AreEqual("inv_gauntlets_09", sampleItem.Icon);
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(0, sampleItem.ItemBind);
-            Assert.AreEqual("CREATURE_PICKPOCKET", sampleItem.ItemSource.SourceType);
+            Assert.AreEqual("NONE", sampleItem.ItemSource.SourceType);
             Assert.AreEqual(2, sampleItem.WeaponInfo.Damage.First().MaxDamage);
         }
 
@@ -38,14 +39,14 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Sample_Item_39564()
         {
-            Item sampleItem = WowExplorer.GetItem("39564");
+            var sampleItem = explorer.GetItem("39564");
 
             Assert.AreEqual(@"Heroes' Bonescythe Legplates", sampleItem.Name);
             Assert.AreEqual("", sampleItem.Description);
             Assert.AreEqual("inv_pants_mail_15", sampleItem.Icon);
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(1, sampleItem.ItemBind);
-            Assert.AreEqual("VENDOR", sampleItem.ItemSource.SourceType);
+            Assert.AreEqual("CREATURE_DROP", sampleItem.ItemSource.SourceType);
 
             Assert.AreEqual(null, sampleItem.WeaponInfo);
 
@@ -60,7 +61,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Sample_Item_17182()
         {
-            Item sampleItem = WowExplorer.GetItem("17182");
+            var sampleItem = explorer.GetItem("17182");
 
             Assert.AreEqual("Sulfuras, Hand of Ragnaros", sampleItem.Name);
             Assert.AreEqual("", sampleItem.Description);
