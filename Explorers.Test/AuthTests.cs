@@ -10,10 +10,9 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class AuthTests
     {
-        public TestContext TestContext { get; set; }
         private static WowExplorer explorer;
 
-        [ClassInitialize()]
+        [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
             explorer = new WowExplorer(Region.US, Locale.en_US);

@@ -11,10 +11,9 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class ItemTests
     {
-        public TestContext TestContext { get; set; }
         private static WowExplorer explorer;
 
-        [ClassInitialize()]
+        [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
             explorer = new WowExplorer(Region.US, Locale.en_US);
@@ -30,8 +29,8 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual("inv_gauntlets_09", sampleItem.Icon);
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(0, sampleItem.ItemBind);
-            Assert.AreEqual("NONE", sampleItem.ItemSource.SourceType);
-            Assert.AreEqual(2, sampleItem.WeaponInfo.Damage.First().MaxDamage);
+            Assert.AreEqual("CREATURE_PICKPOCKET", sampleItem.ItemSource.SourceType);
+            Assert.AreEqual(2, sampleItem.WeaponInfo.Damage.MaxDamage);
         }
 
 
@@ -46,7 +45,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual("inv_pants_mail_15", sampleItem.Icon);
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(1, sampleItem.ItemBind);
-            Assert.AreEqual("CREATURE_DROP", sampleItem.ItemSource.SourceType);
+            Assert.AreEqual("VENDOR", sampleItem.ItemSource.SourceType);
 
             Assert.AreEqual(null, sampleItem.WeaponInfo);
 

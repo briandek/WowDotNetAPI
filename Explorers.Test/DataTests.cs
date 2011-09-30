@@ -9,7 +9,6 @@ using WowDotNetAPI.Test;
 using System.Collections;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
-using System.IO;
 using WowDotNetAPI.Exceptions;
 using WowDotNetAPI;
 
@@ -18,10 +17,9 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class DataTests
     {
-        public TestContext TextContext { get; set; }
         private static WowExplorer explorer;
 
-        [ClassInitialize()]
+        [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
             explorer = new WowExplorer(Region.US, Locale.en_US);
@@ -101,10 +99,10 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Invalid_Data_From_CN_Region_Throws_Exception()
         {
-            explorer.Region = Region.CN;
-            explorer.Locale = Locale.zh_CN;
-            var characterClasses = explorer.GetCharacterClasses();
-            var error = explorer.ErrorInfo;
+            var CNexplorer = new WowExplorer(Region.CN, Locale.zh_CN);
+
+            var characterClasses = CNexplorer.GetCharacterClasses();
+            var error = CNexplorer.ErrorInfo;
 
             Assert.IsNull(characterClasses);
             Assert.IsNotNull(error);

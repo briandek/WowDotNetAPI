@@ -10,7 +10,7 @@ namespace WowDotNetAPI.Models
     public class ItemWeaponInfo
     {
         [DataMember(Name = "damage")]
-        public IEnumerable<ItemWeaponDamage> Damage { get; set; }
+        public ItemWeaponDamage Damage { get; set; }
 
         [DataMember(Name="weaponSpeed")]
         public double WeaponSpeed { get; set; }

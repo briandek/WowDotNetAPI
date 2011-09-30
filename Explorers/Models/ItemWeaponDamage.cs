@@ -9,10 +9,10 @@ namespace WowDotNetAPI.Models
     [DataContract]
     public class ItemWeaponDamage
     {
-        [DataMember(Name="minDamage")]
+        [DataMember(Name="min")]
         public int MinDamage { get; set; }
 
-        [DataMember(Name = "maxDamage")]
+        [DataMember(Name = "max")]
         public int MaxDamage { get; set; }
         
     }
