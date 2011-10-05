@@ -18,6 +18,6 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "quantity")]
         public int Quantity { get; set; }
         [DataMember(Name = "timeLeft")]
-        public string TimeLeft;
+        public string TimeLeft { get; set; }
     }
 }
