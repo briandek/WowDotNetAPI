@@ -74,7 +74,7 @@ namespace WowDotNetAPI.Utilities
             string stringToSign = 
                 req.Method + "\n"
                 + date.ToString("r") + "\n"
-                + req.RequestUri.LocalPath + "\n";
+                + req.RequestUri.AbsolutePath + "\n";
 
             byte[] buffer = Encoding.UTF8.GetBytes(stringToSign);
 
