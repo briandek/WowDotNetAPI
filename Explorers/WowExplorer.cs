@@ -348,7 +348,37 @@ namespace WowDotNetAPI
             return (guildPerksData != null) ? guildPerksData.Perks : null;
         }
         #endregion
-        
+
+        #region Achievements
+        public AchievementInfo GetAchievement(int id)
+        {
+            AchievementInfo achievement;
+
+            TryGetData<AchievementInfo>(BaseAPIurl + string.Format(AchievementUtility.basePath, id) + GetLocaleQuery(), out achievement);
+
+            return achievement;
+        }
+
+        public AchievementData GetAchievements()
+        {
+            AchievementData achievementdata;
+
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery(), out achievementdata);
+
+            return achievementdata;
+        }
+
+        public AchievementData GetGuildAchievements()
+        {
+            AchievementData achievementdata = null;
+
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery(), out achievementdata);
+
+            return achievementdata;
+        }
+
+        #endregion
+
         private T GetData<T>(string url) where T : class
         {
             if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))

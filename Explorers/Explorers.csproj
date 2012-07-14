@@ -55,6 +55,14 @@
     <Compile Include="Exceptions\ErrorInfo.cs" />
     <Compile Include="Exceptions\InvalidLocaleException.cs" />
     <Compile Include="Exceptions\WowException.cs" />
+    <Compile Include="Models\AchievementCategory.cs" />
+    <Compile Include="Models\AchievementCriteria.cs" />
+    <Compile Include="Models\AchievementData.cs" />
+    <Compile Include="Models\AchievementInfo.cs" />
+    <Compile Include="Models\AchievementList.cs" />
+    <Compile Include="Models\AchievementReward.cs" />
+    <Compile Include="Models\AuctionFile.cs" />
+    <Compile Include="Models\AuctionFiles.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\AuctionHouseSide.cs" />
@@ -79,6 +87,7 @@
     <Compile Include="Models\ItemSpellInfo.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
+    <Compile Include="Utilities\AchievementUtility.cs" />
     <Compile Include="Utilities\AuctionUtility.cs" />
     <Compile Include="Utilities\DataUtility.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
