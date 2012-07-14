@@ -254,13 +254,28 @@ namespace WowDotNetAPI
 
         public Auctions GetAuctions(string realm)
         {
-            Auctions auctions;
+            string url = "";
 
-            TryGetData<Auctions>(string.Format(BaseAPIurl
+            AuctionFiles auctionFiles;
+            TryGetData<AuctionFiles>(string.Format(BaseAPIurl
                 + string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
-                + GetLocaleQuery()), out auctions);
+                + GetLocaleQuery()), out auctionFiles);
 
-            return auctions;
+            if (auctionFiles != null)
+            {
+                foreach (AuctionFile auctionFile in auctionFiles.Files)
+                {
+                    url = auctionFile.URL;
+                }
+
+                Auctions auctions;
+
+                TryGetData<Auctions>(url, out auctions);
+
+                return auctions;
+            }
+
+            return null;
         }
 
         #endregion
