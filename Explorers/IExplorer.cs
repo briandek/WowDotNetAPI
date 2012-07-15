@@ -25,8 +25,13 @@ namespace WowDotNetAPI
         Guild GetGuild(Region region, string realm, string name, GuildOptions guildOptions);
 
         AchievementInfo GetAchievement(int id);
-        AchievementData GetAchievements();
-        AchievementData GetGuildAchievements();
+
+        IEnumerable<AchievementList> GetAchievements();
+        IEnumerable<AchievementList> GetGuildAchievements();
+
+        IEnumerable<BattlegroupInfo> GetBattlegroups();
+
+        IEnumerable<ItemClassInfo> GetItemClasses();
 
         IEnumerable<Realm> GetRealms();
         IEnumerable<Realm> GetRealms(Region region);

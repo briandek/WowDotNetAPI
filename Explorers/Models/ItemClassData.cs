@@ -4,9 +4,10 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class AchievementData
+    public class ItemClassData
     {
-        [DataMember(Name = "achievements")]
-        public IEnumerable<AchievementList> Lists { get; set; }
+        [DataMember(Name = "classes")]
+        public IEnumerable<ItemClassInfo> Classes { get; set; }
     }
+
 }

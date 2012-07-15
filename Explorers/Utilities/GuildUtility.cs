@@ -22,6 +22,9 @@ namespace WowDotNetAPI.Utilities
             if ((realmOptions & GuildOptions.GetAchievements) == GuildOptions.GetAchievements)
                 tmp.Add("achievements");
 
+            if ((realmOptions & GuildOptions.GetNews) == GuildOptions.GetNews)
+                tmp.Add("news");
+
             if (tmp.Count == 0) return string.Empty;
 
             query += string.Join(",", tmp.ToArray());

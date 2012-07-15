@@ -64,7 +64,8 @@ namespace WowDotNetAPI
         None = 0,
         GetMembers = 1,
         GetAchievements = 2,
-        GetEverything = GetMembers | GetAchievements
+        GetNews = 4,
+        GetEverything = GetMembers | GetAchievements | GetNews
     }
 
     public class WowExplorer : IExplorer
@@ -291,6 +292,15 @@ namespace WowDotNetAPI
             return item;
         }
 
+        public IEnumerable<ItemClassInfo> GetItemClasses()
+        {
+            ItemClassData itemclassdata;
+
+            TryGetData<ItemClassData>(BaseAPIurl + DataUtility.itemClassesPath + GetLocaleQuery(), out itemclassdata);
+
+            return (itemclassdata != null) ? itemclassdata.Classes : null;
+        }
+
         #endregion
 
         #region CharacterRaceInfo
@@ -359,24 +369,35 @@ namespace WowDotNetAPI
             return achievement;
         }
 
-        public AchievementData GetAchievements()
+        public IEnumerable<AchievementList> GetAchievements()
         {
-            AchievementData achievementdata;
+            AchievementData achievementData;
 
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery(), out achievementdata);
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery(), out achievementData);
 
-            return achievementdata;
+            return (achievementData != null) ? achievementData.Lists : null;
         }
 
-        public AchievementData GetGuildAchievements()
+        public IEnumerable<AchievementList> GetGuildAchievements()
         {
-            AchievementData achievementdata = null;
+            AchievementData achievementData;
 
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery(), out achievementdata);
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery(), out achievementData);
 
-            return achievementdata;
+            return (achievementData != null) ? achievementData.Lists : null;
         }
 
+        #endregion
+
+        #region Battlegroups
+        public IEnumerable<BattlegroupInfo> GetBattlegroups()
+        {
+            BattlegroupData battlegroupData;
+
+            TryGetData<BattlegroupData>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery(), out battlegroupData);
+
+            return (battlegroupData != null) ? battlegroupData.Battlegroups : null;
+        }
         #endregion
 
         private T GetData<T>(string url) where T : class
