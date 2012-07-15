@@ -40,6 +40,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "achievements")]
         public Achievements Achievements { get; set; }
 
+        [DataMember(Name = "news")]
+        public IEnumerable<GuildNews> News { get; set; }
+
         public UnitSide Side { get { return (UnitSide)Enum.Parse(typeof(UnitSide), Enum.GetName(typeof(UnitSide), side)); } }
 
     }
