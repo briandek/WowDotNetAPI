@@ -379,6 +379,17 @@ namespace WowDotNetAPI
 
         #endregion
 
+        #region Battlegroups
+        public Battlegroups GetBattlegroups()
+        {
+            Battlegroups battlegroups;
+
+            TryGetData<Battlegroups>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery(), out battlegroups);
+
+            return battlegroups;
+        }
+        #endregion
+
         private T GetData<T>(string url) where T : class
         {
             if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))

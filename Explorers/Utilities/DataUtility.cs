@@ -12,6 +12,6 @@ namespace WowDotNetAPI.Utilities
         public const string guildRewardsPath = "/api/wow/data/guild/rewards";
         public const string guildPerksPath = "/api/wow/data/guild/perks";
         public const string itemsPath = "/api/wow/data/item/";
-
+        public const string battlegroundPath = "/api/wow/data/battlegroups/";
     }
 }
