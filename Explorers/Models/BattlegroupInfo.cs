@@ -3,7 +3,7 @@
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class Battlegroup
+    public class BattlegroupInfo
     {
         [DataMember(Name = "name")]
         public string Name { get; set; }

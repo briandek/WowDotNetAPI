@@ -63,8 +63,8 @@
     <Compile Include="Models\AchievementReward.cs" />
     <Compile Include="Models\AuctionFile.cs" />
     <Compile Include="Models\AuctionFiles.cs" />
-    <Compile Include="Models\Battlegroup.cs" />
-    <Compile Include="Models\Battlegroups.cs" />
+    <Compile Include="Models\BattlegroupInfo.cs" />
+    <Compile Include="Models\BattlegroupData.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\AuctionHouseSide.cs" />
@@ -82,6 +82,8 @@
     <Compile Include="Models\GuildRewardItemInfo.cs" />
     <Compile Include="Models\GuildRewardsData.cs" />
     <Compile Include="Models\ItemBonusStat.cs" />
+    <Compile Include="Models\ItemClassData.cs" />
+    <Compile Include="Models\ItemClassInfo.cs" />
     <Compile Include="Models\ItemSocket.cs" />
     <Compile Include="Models\ItemSocketInfo.cs" />
     <Compile Include="Models\ItemSourceInfo.cs" />

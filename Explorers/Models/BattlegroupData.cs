@@ -4,9 +4,9 @@ using System.Runtime.Serialization;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
-    public class Battlegroups
+    public class BattlegroupData
     {
         [DataMember(Name = "battlegroups")]
-        public IEnumerable<Battlegroup> battlegroups { get; set; }
+        public IEnumerable<BattlegroupInfo> Battlegroups { get; set; }
     }
 }

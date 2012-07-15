@@ -292,6 +292,15 @@ namespace WowDotNetAPI
             return item;
         }
 
+        public IEnumerable<ItemClassInfo> GetItemClasses()
+        {
+            ItemClassData itemclassdata;
+
+            TryGetData<ItemClassData>(BaseAPIurl + DataUtility.itemClassesPath + GetLocaleQuery(), out itemclassdata);
+
+            return (itemclassdata != null) ? itemclassdata.Classes : null;
+        }
+
         #endregion
 
         #region CharacterRaceInfo
@@ -360,34 +369,34 @@ namespace WowDotNetAPI
             return achievement;
         }
 
-        public AchievementData GetAchievements()
+        public IEnumerable<AchievementList> GetAchievements()
         {
-            AchievementData achievementdata;
+            AchievementData achievementData;
 
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery(), out achievementdata);
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery(), out achievementData);
 
-            return achievementdata;
+            return (achievementData != null) ? achievementData.Lists : null;
         }
 
-        public AchievementData GetGuildAchievements()
+        public IEnumerable<AchievementList> GetGuildAchievements()
         {
-            AchievementData achievementdata = null;
+            AchievementData achievementData;
 
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery(), out achievementdata);
+            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery(), out achievementData);
 
-            return achievementdata;
+            return (achievementData != null) ? achievementData.Lists : null;
         }
 
         #endregion
 
         #region Battlegroups
-        public Battlegroups GetBattlegroups()
+        public IEnumerable<BattlegroupInfo> GetBattlegroups()
         {
-            Battlegroups battlegroups;
+            BattlegroupData battlegroupData;
 
-            TryGetData<Battlegroups>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery(), out battlegroups);
+            TryGetData<BattlegroupData>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery(), out battlegroupData);
 
-            return battlegroups;
+            return (battlegroupData != null) ? battlegroupData.Battlegroups : null;
         }
         #endregion
 
