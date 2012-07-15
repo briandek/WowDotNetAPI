@@ -64,7 +64,8 @@ namespace WowDotNetAPI
         None = 0,
         GetMembers = 1,
         GetAchievements = 2,
-        GetEverything = GetMembers | GetAchievements
+        GetNews = 4,
+        GetEverything = GetMembers | GetAchievements | GetNews
     }
 
     public class WowExplorer : IExplorer
