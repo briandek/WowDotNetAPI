@@ -21,5 +21,8 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "achievement")]
         public AchievementInfo Achievement { get; set; }
 
+        [DataMember(Name = "levelUp")]
+        public int LevelUp { get; set; }
+
     }
 }
