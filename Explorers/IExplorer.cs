@@ -28,6 +28,8 @@ namespace WowDotNetAPI
         AchievementData GetAchievements();
         AchievementData GetGuildAchievements();
 
+        Battlegroups GetBattlegroups();
+
         IEnumerable<Realm> GetRealms();
         IEnumerable<Realm> GetRealms(Region region);
 

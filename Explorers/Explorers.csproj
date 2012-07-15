@@ -63,6 +63,8 @@
     <Compile Include="Models\AchievementReward.cs" />
     <Compile Include="Models\AuctionFile.cs" />
     <Compile Include="Models\AuctionFiles.cs" />
+    <Compile Include="Models\Battlegroup.cs" />
+    <Compile Include="Models\Battlegroups.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Auction.cs" />
     <Compile Include="Models\AuctionHouseSide.cs" />
