@@ -22,6 +22,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "realm")]
         public string Realm { get; set; }
 
+        [DataMember(Name = "battlegroup")]
+        public string Battlegroup { get; set; }
+
         [DataMember(Name = "side")]
         private int side { get; set; }
 
@@ -34,11 +37,17 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "lastModified")]
         public long LastModified { get; set; }
 
+        [DataMember(Name = "emblem")]
+        public GuildEmblem Emblem { get; set; }
+
         [DataMember(Name = "members")]
         public IEnumerable<GuildMember> Members { get; set; }
 
         [DataMember(Name = "achievements")]
         public Achievements Achievements { get; set; }
+
+        [DataMember(Name = "news")]
+        public IEnumerable<GuildNews> News { get; set; }
 
         public UnitSide Side { get { return (UnitSide)Enum.Parse(typeof(UnitSide), Enum.GetName(typeof(UnitSide), side)); } }
 
