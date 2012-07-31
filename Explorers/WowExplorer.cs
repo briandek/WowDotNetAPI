@@ -53,9 +53,12 @@ namespace WowDotNetAPI
         GetPets = 1024,
         GetAchievements = 2048,
         GetProgression = 4096,
+        GetFeed = 8192,
+        GetPvP = 16384,
+        GetQuests = 32768,
         GetEverything = GetGuild | GetStats | GetTalents | GetItems | GetReputation | GetTitles
         | GetProfessions | GetAppearance | GetCompanions | GetMounts | GetPets
-        | GetAchievements | GetProgression
+        | GetAchievements | GetProgression | GetFeed | GetPvP | GetQuests
     }
 
     [Flags]

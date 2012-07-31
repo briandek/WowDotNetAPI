@@ -65,6 +65,11 @@
     <Compile Include="Models\AuctionFiles.cs" />
     <Compile Include="Models\BattlegroupInfo.cs" />
     <Compile Include="Models\BattlegroupData.cs" />
+    <Compile Include="Models\CharacterArenaTeam.cs" />
+    <Compile Include="Models\CharacterFeed.cs" />
+    <Compile Include="Models\CharacterRatedBattleground.cs" />
+    <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
+    <Compile Include="Models\CharacterPVP.cs" />
     <Compile Include="Models\GuildEmblem.cs" />
     <Compile Include="Models\GuildNews.cs" />
     <Compile Include="Models\Item.cs" />
