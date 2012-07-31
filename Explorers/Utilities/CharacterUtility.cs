@@ -55,6 +55,15 @@ namespace WowDotNetAPI.Utilities
             if ((characterOptions & CharacterOptions.GetProgression) == CharacterOptions.GetProgression)
                 tmp.Add("progression");
 
+            if ((characterOptions & CharacterOptions.GetFeed) == CharacterOptions.GetFeed)
+                tmp.Add("feed");
+
+            if ((characterOptions & CharacterOptions.GetPvP) == CharacterOptions.GetPvP)
+                tmp.Add("pvp");
+
+            if ((characterOptions & CharacterOptions.GetQuests) == CharacterOptions.GetQuests)
+                tmp.Add("quests");
+
             if (tmp.Count == 0) return string.Empty;
 
             query += string.Join(",", tmp.ToArray());
