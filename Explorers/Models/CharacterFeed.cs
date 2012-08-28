@@ -16,7 +16,7 @@ namespace WowDotNetAPI.Models
         public long Timestamp { get; set; }
 
         [DataMember(Name = "achievement")]
-        public AchievementData Achievement { get; set; }
+        public AchievementInfo Achievement { get; set; }
 
         [DataMember(Name = "featOfStrength")]
         public bool FeatOfStrength { get; set; }
