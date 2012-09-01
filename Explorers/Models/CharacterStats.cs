@@ -125,7 +125,7 @@ namespace WowDotNetAPI.Models
         public double MainHandDps { get; set; }
 
         [DataMember(Name = "mainHandExpertise")]
-        public int MainHandExpertise { get; set; }
+        public double MainHandExpertise { get; set; }
 
         [DataMember(Name = "offHandDmgMin")]
         public double OffHandDmgMin { get; set; }

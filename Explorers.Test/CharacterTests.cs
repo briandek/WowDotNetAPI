@@ -22,6 +22,12 @@ namespace WowDotNetAPI.Test
         [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
+
+			  WowExplorer we = new WowExplorer(Region.EU, Locale.en_GB);
+			  Character character = we.GetCharacter("aegwynn", "nahrilol", CharacterOptions.GetEverything);
+			  Assert.AreEqual(character.Class, WowDotNetAPI.Models.CharacterClass.WARRIOR);
+			  Assert.AreEqual(57, character.Stats.Int);
+
             var briandek = explorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsNull(briandek.Guild);
