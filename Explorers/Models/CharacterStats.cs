@@ -44,25 +44,25 @@ namespace WowDotNetAPI.Models
         public double Mastery { get; set; }
 
         [DataMember(Name = "masteryRating")]
-        public int MasteryRating { get; set; }
+        public double MasteryRating { get; set; }
 
         [DataMember(Name = "crit")]
         public double Crit { get; set; }
 
         [DataMember(Name = "critRating")]
-        public int CritRating { get; set; }
+		  public double CritRating { get; set; }
 
         [DataMember(Name = "hitPercent")]
         public double HitPercent { get; set; }
 
         [DataMember(Name = "hitRating")]
-        public int HitRating { get; set; }
+        public double HitRating { get; set; }
 
         [DataMember(Name = "hasteRating")]
-        public int HasteRating { get; set; }
+		  public double HasteRating { get; set; }
 
         [DataMember(Name = "expertiseRating")]
-        public int ExpertiseRating { get; set; }
+		  public double ExpertiseRating { get; set; }
 
         [DataMember(Name = "spellPower")]
         public int SpellPower { get; set; }
@@ -74,13 +74,13 @@ namespace WowDotNetAPI.Models
         public double SpellCrit { get; set; }
 
         [DataMember(Name = "spellCritRating")]
-        public int SpellCritRating { get; set; }
+		  public double SpellCritRating { get; set; }
 
         [DataMember(Name = "spellHitPercent")]
         public double SpellHitPercent { get; set; }
 
         [DataMember(Name = "spellHitRating")]
-        public int SpellHitRating { get; set; }
+		  public double SpellHitRating { get; set; }
 
         [DataMember(Name = "mana5")]
         public double Mana5 { get; set; }
@@ -95,19 +95,19 @@ namespace WowDotNetAPI.Models
         public double Dodge { get; set; }
 
         [DataMember(Name = "dodgeRating")]
-        public int DodgeRating { get; set; }
+		  public double DodgeRating { get; set; }
 
         [DataMember(Name = "parry")]
         public double Parry { get; set; }
 
         [DataMember(Name = "parryRating")]
-        public int ParryRating { get; set; }
+		  public double ParryRating { get; set; }
 
         [DataMember(Name = "block")]
         public double Block { get; set; }
 
         [DataMember(Name = "blockRating")]
-        public int BlockRating { get; set; }
+		  public double BlockRating { get; set; }
 
         [DataMember(Name = "resil")]
         public int Resil { get; set; }
@@ -140,7 +140,7 @@ namespace WowDotNetAPI.Models
         public double OffHandDps { get; set; }
 
         [DataMember(Name = "offHandExpertise")]
-        public int OffHandExpertise { get; set; }
+        public double OffHandExpertise { get; set; }
 
         [DataMember(Name = "rangedDmgMin")]
         public double RangedDmgMin { get; set; }
@@ -158,13 +158,13 @@ namespace WowDotNetAPI.Models
         public double RangedCrit { get; set; }
 
         [DataMember(Name = "rangedCritRating")]
-        public int RangedCritRating { get; set; }
+        public double RangedCritRating { get; set; }
 
         [DataMember(Name = "rangedHitPercent")]
         public double RangedHitPercent { get; set; }
 
         [DataMember(Name = "rangedHitRating")]
-        public int RangedHitRating { get; set; }
+		  public double RangedHitRating { get; set; }
 
         public CharacterPowerType PowerType { get { return (CharacterPowerType)Enum.Parse(typeof(CharacterPowerType), powerType.Replace("-", string.Empty), true); } }
 
