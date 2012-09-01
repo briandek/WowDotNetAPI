@@ -12,19 +12,22 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "selected")]
         public bool Selected { get; set; }
 
-        [DataMember(Name = "name")]
-        public string Name { get; set; }
-
-        [DataMember(Name = "icon")]
-        public string Icon { get; set; }
-
-        [DataMember(Name = "build")]
-        public string Build { get; set; }
-
-        [DataMember(Name = "trees")]
-        public IEnumerable<CharacterTalentTree> Trees { get; set; }
+        [DataMember(Name = "talents")]
+        public IEnumerable<CharacterTalentInfo> Talents { get; set; }
 
         [DataMember(Name = "glyphs")]
         public CharacterTalentGlyphs Glyphs { get; set; }
+
+        [DataMember(Name = "spec")]
+        public CharacterTalentSpec Spec { get; set; }
+
+        [DataMember(Name = "calcTalent")]
+        public string CalcTalent { get; set; }
+
+        [DataMember(Name = "calcSpec")]
+        public char CalcSpec { get; set; }
+
+        [DataMember(Name = "calcGlyph")]
+        public string CalcGlyph { get; set; }
     }
 }

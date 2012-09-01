@@ -29,5 +29,9 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "criteria")]
         public IEnumerable<AchievementCriteria> Criteria { get; set; }
+
+        [DataMember(Name = "accountWide")]
+        public bool AccountWide { get; set; }
+
     }
 }

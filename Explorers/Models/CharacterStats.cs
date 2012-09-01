@@ -109,8 +109,17 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "blockRating")]
 		  public double BlockRating { get; set; }
 
-        [DataMember(Name = "resil")]
-        public int Resil { get; set; }
+        [DataMember(Name = "pvpResilience")]
+        public double PvpResilience { get; set; }
+
+        [DataMember(Name = "pvpResilienceRating")]
+        public int PvpResilienceRating { get; set; }
+
+        [DataMember(Name = "pvpPower")]
+        public double PvpPower { get; set; }
+
+        [DataMember(Name = "pvpPowerRating")]
+        public int PvpPowerRating { get; set; }
 
         [DataMember(Name = "mainHandDmgMin")]
         public double MainHandDmgMin { get; set; }

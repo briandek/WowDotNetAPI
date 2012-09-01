@@ -70,6 +70,9 @@
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />
+    <Compile Include="Models\CharacterTalentInfo.cs" />
+    <Compile Include="Models\CharacterTalentSpec.cs" />
+    <Compile Include="Models\CharacterTalentSpell.cs" />
     <Compile Include="Models\GuildEmblem.cs" />
     <Compile Include="Models\GuildNews.cs" />
     <Compile Include="Models\Item.cs" />
@@ -107,7 +110,6 @@
     <Compile Include="Models\CharacterTalentGlyph.cs" />
     <Compile Include="Models\CharacterGuild.cs" />
     <Compile Include="Models\CharacterTalent.cs" />
-    <Compile Include="Models\CharacterTalentTree.cs" />
     <Compile Include="RealmExtensions.cs" />
     <Compile Include="IExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />

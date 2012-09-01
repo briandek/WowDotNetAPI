@@ -35,7 +35,10 @@ namespace WowDotNetAPI.Models
         GOBLIN = 9,
         BLOOD_ELF = 10,
         DRAENIE = 11,
-        WORGEN = 22
+        WORGEN = 22,
+        PANDAREN_NEUTRAL = 24,
+        PANDAREN_ALLIANCE = 25,
+        PANDAREN_HORDE = 26
     }
 
     [DataContract]
@@ -71,6 +74,9 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "achievementPoints")]
         public int AchievementPoints { get; set; }
+
+        [DataMember(Name = "calcClass")]
+        public char CalcClass { get; set; }
 
         [DataMember(Name = "thumbnail")]
         public string Thumbnail { get; set; }

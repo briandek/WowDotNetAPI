@@ -9,9 +9,6 @@ namespace WowDotNetAPI.Models
     [DataContract]
 	public class CharacterTalentGlyphs
 	{
-        [DataMember(Name="prime")]
-        public IEnumerable<CharacterTalentGlyph> Prime { get; set; }
-
         [DataMember(Name = "major")]
         public IEnumerable<CharacterTalentGlyph> Major { get; set; }
 
