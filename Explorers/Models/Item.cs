@@ -48,6 +48,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "containerSlots")]
         public int ContainerSlots { get; set; }
 
+        [DataMember(Name = "gemInfo")]
+        public ItemGemInfo GemInfo { get; set; }
+
         [DataMember(Name = "weaponInfo")]
         public ItemWeaponInfo WeaponInfo { get; set; }
 

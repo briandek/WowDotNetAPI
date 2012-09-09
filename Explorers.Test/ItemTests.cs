@@ -77,5 +77,18 @@ namespace WowDotNetAPI.Explorers.Test
                 sampleItem.ItemSpells.First().Spell.Description);
         }
 
+
+        [TestMethod]
+        public void Get_Sample_Gem_52210()
+        {
+            var sampleItem = explorer.GetItem("52210");
+
+            Assert.AreEqual("+20 Parry and +30 Stamina", sampleItem.GemInfo.Bonus.Name);
+            Assert.AreEqual("PURPLE", sampleItem.GemInfo.Type.Color);
+            Assert.AreEqual(sampleItem.Id, sampleItem.GemInfo.Bonus.SourceItemId);
+            Assert.AreEqual(0, sampleItem.GemInfo.Bonus.RequiredSkillRank);
+            Assert.AreEqual(0, sampleItem.GemInfo.Bonus.MinLevel);
+            Assert.AreEqual(290, sampleItem.GemInfo.Bonus.ItemLevel);
+        }
     }
 }

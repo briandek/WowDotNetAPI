@@ -94,6 +94,9 @@
     <Compile Include="Models\ItemBonusStat.cs" />
     <Compile Include="Models\ItemClassData.cs" />
     <Compile Include="Models\ItemClassInfo.cs" />
+    <Compile Include="Models\ItemGemBonusInfo.cs" />
+    <Compile Include="Models\ItemGemInfo.cs" />
+    <Compile Include="Models\ItemGemType.cs" />
     <Compile Include="Models\ItemSocket.cs" />
     <Compile Include="Models\ItemSocketInfo.cs" />
     <Compile Include="Models\ItemSourceInfo.cs" />
