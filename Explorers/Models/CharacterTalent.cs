@@ -25,7 +25,7 @@ namespace WowDotNetAPI.Models
         public string CalcTalent { get; set; }
 
         [DataMember(Name = "calcSpec")]
-        public char CalcSpec { get; set; }
+        public string CalcSpec { get; set; }
 
         [DataMember(Name = "calcGlyph")]
         public string CalcGlyph { get; set; }
