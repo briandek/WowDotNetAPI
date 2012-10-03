@@ -64,6 +64,12 @@ namespace WowDotNetAPI.Utilities
             if ((characterOptions & CharacterOptions.GetQuests) == CharacterOptions.GetQuests)
                 tmp.Add("quests");
 
+            if ((characterOptions & CharacterOptions.GetHunterPets) == CharacterOptions.GetHunterPets)
+                tmp.Add("hunterPets");
+
+            //petSlots
+            //Pets
+
             if (tmp.Count == 0) return string.Empty;
 
             query += string.Join(",", tmp.ToArray());

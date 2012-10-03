@@ -309,6 +309,34 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithHunterPets()
+        {
+
+            var shirokuma = explorer.GetCharacter("skullcrusher", "shirokuma", CharacterOptions.GetHunterPets);
+
+            Assert.IsNull(shirokuma.Guild);
+            Assert.IsNull(shirokuma.Stats);
+            Assert.IsNull(shirokuma.Talents);
+            Assert.IsNull(shirokuma.Items);
+            Assert.IsNull(shirokuma.Reputation);
+            Assert.IsNull(shirokuma.Titles);
+            Assert.IsNull(shirokuma.Professions);
+            Assert.IsNull(shirokuma.Appearance);
+            Assert.IsNull(shirokuma.Companions);
+            Assert.IsNull(shirokuma.Mounts);
+            Assert.IsNotNull(shirokuma.HunterPets);
+            Assert.IsNull(shirokuma.Pets);
+            Assert.IsNull(shirokuma.Achievements);
+            Assert.IsNull(shirokuma.Progression);
+
+            Assert.IsTrue(shirokuma.Name.Equals("shirokuma", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.HUNTER, shirokuma.@Class);
+            Assert.AreEqual(CharacterRace.DWARF, shirokuma.Race);
+            Assert.AreEqual(CharacterGender.MALE, shirokuma.Gender);
+            Assert.IsTrue(shirokuma.HunterPets.Count() > 1);
+        }
+
+        [TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher_WithPets()
         {
 

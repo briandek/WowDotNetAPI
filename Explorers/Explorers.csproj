@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CharacterHunterPet.cs" />
     <Compile Include="Models\CharacterMount.cs" />
     <Compile Include="Models\CharacterMounts.cs" />
     <Compile Include="Exceptions\ErrorDetail.cs" />
