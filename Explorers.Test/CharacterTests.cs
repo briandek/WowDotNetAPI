@@ -47,6 +47,344 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithGuild()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetGuild);
+
+            Assert.IsNotNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithStats()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetStats);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNotNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithTalents()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetTalents);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNotNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithItems()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetItems);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNotNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithReputations()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetReputation);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNotNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithTitles()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetTitles);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNotNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithProfessions()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetProfessions);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNotNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithAppearance()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetAppearance);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNotNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithCompanions()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetCompanions);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNotNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithMounts()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetMounts);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNotNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithPets()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetPets);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNotNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithAchievements()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetAchievements);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNotNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithProgression()
+        {
+
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetProgression);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNotNull(briandek.Progression);
+
+            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
+            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
+            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+        }
+
+        [TestMethod]
         public void Get_Complex_Character_Briandek_From_Skullcrusher()
         {
             var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
