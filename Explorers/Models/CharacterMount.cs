@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
 
-namespace WowDotNetAPI
+namespace WowDotNetAPI.Models
 {
+    [DataContract]
     public class CharacterMount
     {
         [DataMember(Name = "creatureId")]
@@ -25,6 +26,9 @@ namespace WowDotNetAPI
 
         [DataMember(Name = "isJumping")]
         public bool IsJumping { get; set; }
+
+        [DataMember(Name = "itemId")]
+        public int ItemId { get; set; }
 
         [DataMember(Name = "name")]
         public string Name { get; set; }
