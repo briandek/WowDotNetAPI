@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterMount.cs" />
+    <Compile Include="CharacterMounts.cs" />
     <Compile Include="Exceptions\ErrorDetail.cs" />
     <Compile Include="Exceptions\ErrorInfo.cs" />
     <Compile Include="Exceptions\InvalidLocaleException.cs" />

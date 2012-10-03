@@ -113,7 +113,7 @@ namespace WowDotNetAPI.Models
         public IEnumerable<int> Companions { get; set; }
 
         [DataMember(Name = "mounts")]
-        public IEnumerable<int> Mounts { get; set; }
+        public CharacterMounts Mounts { get; set; }
 
         [DataMember(Name = "pets")]
         public IEnumerable<CharacterPet> Pets { get; set; }

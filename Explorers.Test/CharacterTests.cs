@@ -304,6 +304,8 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+            Assert.IsTrue(briandek.Mounts.NumCollected > 1);
+            Assert.IsTrue(briandek.Mounts.NumNotCollected > 1);
         }
 
         [TestMethod]
@@ -418,7 +420,7 @@ namespace WowDotNetAPI.Test
             Assert.IsTrue(briandek.Companions.ElementAt(1) == 32298);
             Assert.IsTrue(briandek.Items.AverageItemLevelEquipped == 364);
 
-            Assert.IsTrue(briandek.Mounts.Count() == 11);
+            Assert.IsTrue(briandek.Mounts.NumCollected > 1);
         }
 
 
@@ -449,7 +451,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterRace.NIGHT_ELF, talasi.Race);
             Assert.AreEqual(CharacterGender.MALE, talasi.Gender);
 
-            Assert.AreEqual(11, talasi.Mounts.Count());
+            Assert.IsTrue(talasi.Mounts.NumCollected > 1);
         }
        
     }
