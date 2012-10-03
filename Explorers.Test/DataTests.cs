@@ -30,7 +30,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var races = explorer.GetCharacterRaces();
 
-            Assert.IsTrue(races.Count() == 12);
+            Assert.IsTrue(races.Count() == 15);
             Assert.IsTrue(races.Any(r => r.Name == "Human" || r.Name == "Night Elf"));
         }
 
@@ -39,7 +39,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var classes = explorer.GetCharacterClasses();
 
-            Assert.IsTrue(classes.Count() == 10);
+            Assert.IsTrue(classes.Count() == 11);
             Assert.IsTrue(classes.Any(r => r.Name == "Warrior" || r.Name == "Death Knight"));
         }
 
@@ -47,7 +47,7 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Guild_Rewards_Data()
         {
             var rewards = explorer.GetGuildRewards();
-            Assert.IsTrue(rewards.Count() == 42);
+            Assert.IsTrue(rewards.Count() == 60);
             Assert.IsTrue(rewards.Any(r => r.Achievement != null));
         }
 

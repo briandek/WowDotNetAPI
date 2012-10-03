@@ -23,11 +23,6 @@ namespace WowDotNetAPI.Test
         public void Get_Simple_Character_Briandek_From_Skullcrusher()
         {
 
-			  WowExplorer we = new WowExplorer(Region.EU, Locale.en_GB);
-			  Character character = we.GetCharacter("aegwynn", "nahrilol", CharacterOptions.GetEverything);
-			  Assert.AreEqual(character.Class, WowDotNetAPI.Models.CharacterClass.WARRIOR);
-			  Assert.AreEqual(57, character.Stats.Int);
-
             var briandek = explorer.GetCharacter("skullcrusher", "briandek");
 
             Assert.IsNull(briandek.Guild);
@@ -40,7 +35,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Appearance);
             Assert.IsNull(briandek.Companions);
             Assert.IsNull(briandek.Mounts);
-            //Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression); 
 
