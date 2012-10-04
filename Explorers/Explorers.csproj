@@ -70,6 +70,7 @@
     <Compile Include="Models\BattlegroupData.cs" />
     <Compile Include="Models\CharacterArenaTeam.cs" />
     <Compile Include="Models\CharacterFeed.cs" />
+    <Compile Include="Models\CharacterPetSlot.cs" />
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />

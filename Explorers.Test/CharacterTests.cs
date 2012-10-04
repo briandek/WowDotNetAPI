@@ -33,7 +33,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -60,7 +60,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -86,7 +86,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -112,7 +112,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -138,7 +138,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -164,7 +164,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -190,7 +190,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -216,7 +216,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNotNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -242,7 +242,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNotNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -255,10 +255,10 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithCompanions()
+        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithPetSlots()
         {
 
-            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetCompanions);
+            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetPetSlots);
 
             Assert.IsNull(briandek.Guild);
             Assert.IsNull(briandek.Stats);
@@ -268,7 +268,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNotNull(briandek.Companions);
+            Assert.IsNotNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -278,6 +278,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+            Assert.IsTrue(briandek.PetSlots.Count() > 0);
         }
 
         [TestMethod]
@@ -294,7 +295,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNotNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -322,7 +323,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(shirokuma.Titles);
             Assert.IsNull(shirokuma.Professions);
             Assert.IsNull(shirokuma.Appearance);
-            Assert.IsNull(shirokuma.Companions);
+            Assert.IsNull(shirokuma.PetSlots);
             Assert.IsNull(shirokuma.Mounts);
             Assert.IsNotNull(shirokuma.HunterPets);
             Assert.IsNull(shirokuma.Pets);
@@ -350,7 +351,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNotNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -376,7 +377,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNotNull(briandek.Achievements);
@@ -402,7 +403,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Titles);
             Assert.IsNull(briandek.Professions);
             Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.Companions);
+            Assert.IsNull(briandek.PetSlots);
             Assert.IsNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
@@ -427,7 +428,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(briandek.Titles);
             Assert.IsNotNull(briandek.Professions);
             Assert.IsNotNull(briandek.Appearance);
-            Assert.IsNotNull(briandek.Companions);
+            Assert.IsNotNull(briandek.PetSlots);
             Assert.IsNotNull(briandek.Mounts);
             Assert.IsNull(briandek.Pets);
             Assert.IsNotNull(briandek.Achievements);
@@ -444,10 +445,7 @@ namespace WowDotNetAPI.Test
             //Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             //Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.IsTrue(briandek.Appearance.HairVariation == 13);
-            Assert.IsTrue(briandek.Companions.ElementAt(1) == 32298);
-            Assert.IsTrue(briandek.Items.AverageItemLevelEquipped == 364);
-
+            Assert.IsTrue(briandek.Appearance.HairVariation == 13);            
             Assert.IsTrue(briandek.Mounts.NumCollected > 1);
         }
 
@@ -465,7 +463,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(talasi.Titles);
             Assert.IsNotNull(talasi.Professions);
             Assert.IsNotNull(talasi.Appearance);
-            Assert.IsNotNull(talasi.Companions);
+            Assert.IsNotNull(talasi.PetSlots);
             Assert.IsNotNull(talasi.Mounts);
             Assert.IsNotNull(talasi.Pets);
             Assert.IsNotNull(talasi.Achievements);

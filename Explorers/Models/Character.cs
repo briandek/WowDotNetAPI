@@ -109,9 +109,6 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "appearance")]
         public CharacterAppearance Appearance { get; set; }
 
-        [DataMember(Name = "companions")]
-        public IEnumerable<int> Companions { get; set; }
-
         [DataMember(Name = "mounts")]
         public CharacterMounts Mounts { get; set; }
 
@@ -120,6 +117,9 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "pets")]
         public IEnumerable<CharacterPet> Pets { get; set; }
+
+        [DataMember(Name = "petSlots")]
+        public IEnumerable<CharacterPetSlot> PetSlots { get; set; }
 
         [DataMember(Name = "progression")]
         public Progression Progression { get; set; }

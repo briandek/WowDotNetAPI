@@ -40,8 +40,8 @@ namespace WowDotNetAPI.Utilities
             if ((characterOptions & CharacterOptions.GetAppearance) == CharacterOptions.GetAppearance)
                 tmp.Add("appearance");
 
-            if ((characterOptions & CharacterOptions.GetCompanions) == CharacterOptions.GetCompanions)
-                tmp.Add("companions");
+            if ((characterOptions & CharacterOptions.GetPetSlots) == CharacterOptions.GetPetSlots)
+                tmp.Add("petSlots");
 
             if ((characterOptions & CharacterOptions.GetMounts) == CharacterOptions.GetMounts)
                 tmp.Add("mounts");
