@@ -428,13 +428,12 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(briandek.Appearance);
             Assert.IsNotNull(briandek.PetSlots);
             Assert.IsNotNull(briandek.Mounts);
-            Assert.IsNull(briandek.Pets);
+            Assert.IsNotNull(briandek.Pets);
             Assert.IsNotNull(briandek.Achievements);
             Assert.IsNotNull(briandek.Progression);
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(85, briandek.Level);
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
@@ -462,15 +461,15 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(talasi.Professions);
             Assert.IsNotNull(talasi.Appearance);
             Assert.IsNotNull(talasi.PetSlots);
+            Assert.IsNotNull(talasi.HunterPets);
             Assert.IsNotNull(talasi.Mounts);
             Assert.IsNotNull(talasi.Pets);
             Assert.IsNotNull(talasi.Achievements);
             Assert.IsNotNull(talasi.Progression);
 
-            Assert.IsTrue(talasi.Pets.Collected.Any());
+            Assert.IsTrue(talasi.HunterPets.Any());
             Assert.IsTrue(talasi.Name.Equals("talasi", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(85, talasi.Level);
             Assert.AreEqual(CharacterClass.HUNTER, talasi.@Class);
             Assert.AreEqual(CharacterRace.NIGHT_ELF, talasi.Race);
             Assert.AreEqual(CharacterGender.MALE, talasi.Gender);
