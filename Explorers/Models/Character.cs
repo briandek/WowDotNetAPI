@@ -116,7 +116,7 @@ namespace WowDotNetAPI.Models
         public IEnumerable<CharacterHunterPet> HunterPets { get; set; }
 
         [DataMember(Name = "pets")]
-        public IEnumerable<CharacterPet> Pets { get; set; }
+        public CharacterPets Pets { get; set; }
 
         [DataMember(Name = "petSlots")]
         public IEnumerable<CharacterPetSlot> PetSlots { get; set; }

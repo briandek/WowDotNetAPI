@@ -310,7 +310,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithHunterPets()
+        public void Get_Simple_Character_Shirokuma_From_Skullcrusher_WithHunterPets()
         {
 
             var shirokuma = explorer.GetCharacter("skullcrusher", "shirokuma", CharacterOptions.GetHunterPets);
@@ -338,29 +338,27 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithPets()
+        public void Get_Simple_Character_Lukenukem_From_Illidan_WithPets()
         {
 
-            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetPets);
+            var lukenukem = explorer.GetCharacter("illidan", "lukenukem", CharacterOptions.GetPets);
 
-            Assert.IsNull(briandek.Guild);
-            Assert.IsNull(briandek.Stats);
-            Assert.IsNull(briandek.Talents);
-            Assert.IsNull(briandek.Items);
-            Assert.IsNull(briandek.Reputation);
-            Assert.IsNull(briandek.Titles);
-            Assert.IsNull(briandek.Professions);
-            Assert.IsNull(briandek.Appearance);
-            Assert.IsNull(briandek.PetSlots);
-            Assert.IsNull(briandek.Mounts);
-            Assert.IsNotNull(briandek.Pets);
-            Assert.IsNull(briandek.Achievements);
-            Assert.IsNull(briandek.Progression);
+            Assert.IsNull(lukenukem.Guild);
+            Assert.IsNull(lukenukem.Stats);
+            Assert.IsNull(lukenukem.Talents);
+            Assert.IsNull(lukenukem.Items);
+            Assert.IsNull(lukenukem.Reputation);
+            Assert.IsNull(lukenukem.Titles);
+            Assert.IsNull(lukenukem.Professions);
+            Assert.IsNull(lukenukem.Appearance);
+            Assert.IsNull(lukenukem.PetSlots);
+            Assert.IsNull(lukenukem.Mounts);
+            Assert.IsNotNull(lukenukem.Pets);
+            Assert.IsNull(lukenukem.Achievements);
+            Assert.IsNull(lukenukem.Progression);
 
-            Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
-            Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
-            Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+            Assert.IsTrue(lukenukem.Name.Equals("lukenukem", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(lukenukem.Pets.NumNotCollected > 0);
         }
 
         [TestMethod]
@@ -469,7 +467,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNotNull(talasi.Achievements);
             Assert.IsNotNull(talasi.Progression);
 
-            Assert.IsTrue(talasi.Pets.Any());
+            Assert.IsTrue(talasi.Pets.Collected.Any());
             Assert.IsTrue(talasi.Name.Equals("talasi", StringComparison.InvariantCultureIgnoreCase));
 
             Assert.AreEqual(85, talasi.Level);
