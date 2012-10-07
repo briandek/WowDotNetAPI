@@ -48,7 +48,7 @@ namespace WowDotNetAPI
         GetTitles = 32,
         GetProfessions = 64,
         GetAppearance = 128,
-        GetCompanions = 256,
+        GetPetSlots = 256,
         GetMounts = 512,
         GetPets = 1024,
         GetAchievements = 2048,
@@ -56,9 +56,10 @@ namespace WowDotNetAPI
         GetFeed = 8192,
         GetPvP = 16384,
         GetQuests = 32768,
+        GetHunterPets = 65536,
         GetEverything = GetGuild | GetStats | GetTalents | GetItems | GetReputation | GetTitles
-        | GetProfessions | GetAppearance | GetCompanions | GetMounts | GetPets
-        | GetAchievements | GetProgression | GetFeed | GetPvP | GetQuests
+        | GetProfessions | GetAppearance | GetPetSlots | GetMounts | GetPets
+        | GetAchievements | GetProgression | GetFeed | GetPvP | GetQuests | GetHunterPets
     }
 
     [Flags]

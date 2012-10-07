@@ -109,14 +109,17 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "appearance")]
         public CharacterAppearance Appearance { get; set; }
 
-        [DataMember(Name = "companions")]
-        public IEnumerable<int> Companions { get; set; }
-
         [DataMember(Name = "mounts")]
-        public IEnumerable<int> Mounts { get; set; }
+        public CharacterMounts Mounts { get; set; }
+
+        [DataMember(Name = "hunterPets")]
+        public IEnumerable<CharacterHunterPet> HunterPets { get; set; }
 
         [DataMember(Name = "pets")]
-        public IEnumerable<CharacterPet> Pets { get; set; }
+        public CharacterPets Pets { get; set; }
+
+        [DataMember(Name = "petSlots")]
+        public IEnumerable<CharacterPetSlot> PetSlots { get; set; }
 
         [DataMember(Name = "progression")]
         public Progression Progression { get; set; }

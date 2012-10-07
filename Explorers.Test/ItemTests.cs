@@ -29,8 +29,8 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual("inv_gauntlets_09", sampleItem.Icon);
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(0, sampleItem.ItemBind);
-            Assert.AreEqual("CREATURE_PICKPOCKET", sampleItem.ItemSource.SourceType);
-            Assert.AreEqual(2, sampleItem.WeaponInfo.Damage.MaxDamage);
+            Assert.AreEqual("WORLD_DROP", sampleItem.ItemSource.SourceType);
+            Assert.AreEqual(4, sampleItem.WeaponInfo.Damage.MaxDamage);
         }
 
 

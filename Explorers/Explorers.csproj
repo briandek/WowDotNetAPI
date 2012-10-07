@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CharacterHunterPet.cs" />
+    <Compile Include="Models\CharacterMount.cs" />
+    <Compile Include="Models\CharacterMounts.cs" />
     <Compile Include="Exceptions\ErrorDetail.cs" />
     <Compile Include="Exceptions\ErrorInfo.cs" />
     <Compile Include="Exceptions\InvalidLocaleException.cs" />
@@ -67,6 +70,9 @@
     <Compile Include="Models\BattlegroupData.cs" />
     <Compile Include="Models\CharacterArenaTeam.cs" />
     <Compile Include="Models\CharacterFeed.cs" />
+    <Compile Include="Models\CharacterPets.cs" />
+    <Compile Include="Models\CharacterPetSlot.cs" />
+    <Compile Include="Models\CharacterPetStats.cs" />
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />
