@@ -51,6 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Challenge.cs" />
+    <Compile Include="Models\ChallengeGroup.cs" />
+    <Compile Include="Models\ChallengeMap.cs" />
+    <Compile Include="Models\ChallengeMember.cs" />
+    <Compile Include="Models\ChallengeMemberCharacter.cs" />
+    <Compile Include="Models\Challenges.cs" />
+    <Compile Include="Models\ChallengeTime.cs" />
     <Compile Include="Models\CharacterHunterPet.cs" />
     <Compile Include="Models\CharacterMount.cs" />
     <Compile Include="Models\CharacterMounts.cs" />

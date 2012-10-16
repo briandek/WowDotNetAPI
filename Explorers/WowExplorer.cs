@@ -404,6 +404,17 @@ namespace WowDotNetAPI
         }
         #endregion
 
+        #region Challenges
+        public Challenges GetChallenges(string realm)
+        {
+            Challenges challenges;
+
+            TryGetData<Challenges>(BaseAPIurl + DataUtility.challengesPath + realm, out challenges);
+
+            return challenges;
+        }
+        #endregion
+
         private T GetData<T>(string url) where T : class
         {
             if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))

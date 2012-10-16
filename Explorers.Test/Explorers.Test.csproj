@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AuctionTests.cs" />
     <Compile Include="AuthTests.cs" />
+    <Compile Include="ChallengesTests.cs" />
     <Compile Include="CharacterTests.cs" />
     <Compile Include="DataTests.cs" />
     <Compile Include="ItemTests.cs" />
