@@ -15,6 +15,7 @@ namespace WowDotNetAPI.Utilities
         public const string itemsPath = "/api/wow/data/item/";
         public const string itemClassesPath = "/api/wow/data/item/classes";
         public const string battlegroundPath = "/api/wow/data/battlegroups/";
+        public const string challengesPath = "/api/wow/challenge/";
 
         public static Region GetRegion(string region)
         {
