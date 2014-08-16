@@ -35,7 +35,7 @@ namespace WowDotNetAPI.Models
         TROLL = 8,
         GOBLIN = 9,
         BLOOD_ELF = 10,
-        DRAENIE = 11,
+        DRAENEI = 11,
         WORGEN = 22,
         PANDAREN_NEUTRAL = 24,
         PANDAREN_ALLIANCE = 25,

@@ -296,6 +296,16 @@ namespace WowDotNetAPI
             return item;
         }
 
+        //Added a GetItem to pass in an int value
+        public Item GetItem(int id)
+        {
+            Item item;
+
+            TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery(), out item);
+
+            return item;
+        }
+
         public IEnumerable<ItemClassInfo> GetItemClasses()
         {
             ItemClassData itemclassdata;

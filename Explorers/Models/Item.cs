@@ -15,6 +15,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "description")]
         public string Description { get; set; }
 
+        [DataMember(Name = "nameDescription")]
+        public string NameDescription { get; set; }
+
         [DataMember(Name = "name")]
         public string Name { get; set; }
 
@@ -22,19 +25,19 @@ namespace WowDotNetAPI.Models
         public int Stackable { get; set; }
 
         [DataMember(Name = "allowableClasses")]
-        public IEnumerable<int> AllowableClasses { get; set; }
+        public IList<int> AllowableClasses { get; set; }
 
         [DataMember(Name = "itemBind")]
         public int ItemBind { get; set; }
 
         [DataMember(Name = "bonusStats")]
-        public IEnumerable<ItemBonusStat> BonusStats { get; set; }
+        public IList<ItemBonusStat> BonusStats { get; set; }
 
         [DataMember(Name = "icon")]
         public string Icon { get; set; }
 
         [DataMember(Name = "itemSpells")]
-        public IEnumerable<ItemSpellInfo> ItemSpells { get; set; }
+        public IList<ItemSpellInfo> ItemSpells { get; set; }
 
         [DataMember(Name = "buyPrice")]
         public int BuyPrice { get; set; }
@@ -86,7 +89,7 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "requiredLevel")]
         public int RequiredLevel { get; set; }
-
+         
         [DataMember(Name = "requiredSkillRank")]
         public int RequiredSkillRank { get; set; }
 
@@ -104,5 +107,21 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "isAuctionable")]
         public bool IsAuctionable { get; set; }
+
+        [DataMember(Name = "upgradable")]
+        public bool Upgradable { get; set; }
+
+        [DataMember(Name = "disenchantingSkillRank")]
+        public int DisenchantingSkillRank { get; set; }
+
+        [DataMember(Name = "displayInfoId")]
+        public int DisplayInfoId { get; set; }
+
+        [DataMember(Name = "heroicTooltip")]
+        public bool HeroicTooltip { get; set; }
+
+        [DataMember(Name = "nameDescriptionColor")]
+        public string NameDescriptionColor { get; set; }
+
     }
 }

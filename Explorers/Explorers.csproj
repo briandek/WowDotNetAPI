@@ -86,6 +86,7 @@
     <Compile Include="Models\CharacterTalentInfo.cs" />
     <Compile Include="Models\CharacterTalentSpec.cs" />
     <Compile Include="Models\CharacterTalentSpell.cs" />
+    <Compile Include="Models\GuildCharacterSpec.cs" />
     <Compile Include="Models\GuildEmblem.cs" />
     <Compile Include="Models\GuildNews.cs" />
     <Compile Include="Models\Item.cs" />
