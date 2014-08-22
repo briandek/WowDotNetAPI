@@ -50,7 +50,7 @@ namespace WowDotNetAPI.Models
         public double Crit { get; set; }
 
         [DataMember(Name = "critRating")]
-		  public double CritRating { get; set; }
+		public double CritRating { get; set; }
 
         [DataMember(Name = "hitPercent")]
         public double HitPercent { get; set; }
@@ -58,11 +58,17 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "hitRating")]
         public double HitRating { get; set; }
 
+        [DataMember(Name = "haste")]
+        public double Haste { get; set; }
+
         [DataMember(Name = "hasteRating")]
-		  public double HasteRating { get; set; }
+		public double HasteRating { get; set; }
+
+        [DataMember(Name = "hasteRatingPercent")]
+        public double HasteRatingPercent { get; set; }
 
         [DataMember(Name = "expertiseRating")]
-		  public double ExpertiseRating { get; set; }
+		public double ExpertiseRating { get; set; }
 
         [DataMember(Name = "spellPower")]
         public int SpellPower { get; set; }
@@ -74,13 +80,22 @@ namespace WowDotNetAPI.Models
         public double SpellCrit { get; set; }
 
         [DataMember(Name = "spellCritRating")]
-		  public double SpellCritRating { get; set; }
+		public double SpellCritRating { get; set; }
+
+        [DataMember(Name = "spellHaste")]
+        public double SpellHaste { get; set; }
+
+        [DataMember(Name = "spellHasteRating")]
+        public double SpellHasteRating { get; set; }
+
+        [DataMember(Name = "spellHasteRatingPercent")]
+        public double SpellHasteRatingPercent { get; set; }
 
         [DataMember(Name = "spellHitPercent")]
         public double SpellHitPercent { get; set; }
 
         [DataMember(Name = "spellHitRating")]
-		  public double SpellHitRating { get; set; }
+		public double SpellHitRating { get; set; }
 
         [DataMember(Name = "mana5")]
         public double Mana5 { get; set; }
@@ -95,28 +110,37 @@ namespace WowDotNetAPI.Models
         public double Dodge { get; set; }
 
         [DataMember(Name = "dodgeRating")]
-		  public double DodgeRating { get; set; }
+		public double DodgeRating { get; set; }
 
         [DataMember(Name = "parry")]
         public double Parry { get; set; }
 
         [DataMember(Name = "parryRating")]
-		  public double ParryRating { get; set; }
+		public double ParryRating { get; set; }
 
         [DataMember(Name = "block")]
         public double Block { get; set; }
 
         [DataMember(Name = "blockRating")]
-		  public double BlockRating { get; set; }
+        public double BlockRating { get; set; }
 
         [DataMember(Name = "pvpResilience")]
         public double PvpResilience { get; set; }
+
+        [DataMember(Name = "pvpResilienceBonus")]
+        public double PvPResilienceBonus { get; set; }
 
         [DataMember(Name = "pvpResilienceRating")]
         public int PvpResilienceRating { get; set; }
 
         [DataMember(Name = "pvpPower")]
         public double PvpPower { get; set; }
+
+        [DataMember(Name = "pvpPowerDamage")]
+        public double PvPPowerDamage { get; set; }
+
+        [DataMember(Name = "pvpPowerHealing")]
+        public Double PvPPowerHealing { get; set; }
 
         [DataMember(Name = "pvpPowerRating")]
         public int PvpPowerRating { get; set; }
@@ -163,6 +187,18 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "rangedDps")]
         public double RangedDps { get; set; }
 
+        [DataMember(Name = "rangedExpertise")]
+        public double RangedExpertise { get; set; }
+
+        [DataMember(Name = "rangedHaste")]
+        public double RangedHaste { get; set; }
+
+        [DataMember(Name = "rangedHasteRating")]
+        public double RangedHasteRating { get; set; }
+
+        [DataMember(Name = "rangedHasteRatingPercent")]
+        public double RangedHasteRatingPercent { get; set; }
+
         [DataMember(Name = "rangedCrit")]
         public double RangedCrit { get; set; }
 
@@ -173,7 +209,9 @@ namespace WowDotNetAPI.Models
         public double RangedHitPercent { get; set; }
 
         [DataMember(Name = "rangedHitRating")]
-		  public double RangedHitRating { get; set; }
+		public double RangedHitRating { get; set; }
+
+
 
         public CharacterPowerType PowerType { get { return (CharacterPowerType)Enum.Parse(typeof(CharacterPowerType), powerType.Replace("-", string.Empty), true); } }
 

@@ -7,6 +7,6 @@ namespace WowDotNetAPI.Utilities
 {
     public static class RealmUtility
     {
-        public const string basePath = "/api/wow/realm/status";
+        public const string basePath = "/wow/realm/status";
     }
 }

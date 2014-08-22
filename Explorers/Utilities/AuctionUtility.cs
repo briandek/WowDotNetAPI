@@ -2,6 +2,6 @@
 {
     public static class AuctionUtility
     {
-        public const string basePath = "/api/wow/auction/data/{0}";
+        public const string basePath = "/wow/auction/data/{0}";
     }
 }

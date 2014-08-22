@@ -8,14 +8,14 @@ namespace WowDotNetAPI.Utilities
 {
     public static class DataUtility
     {
-        public const string characterRacesPath = "/api/wow/data/character/races";
-        public const string characterClassesPath = "/api/wow/data/character/classes";
-        public const string guildRewardsPath = "/api/wow/data/guild/rewards";
-        public const string guildPerksPath = "/api/wow/data/guild/perks";
-        public const string itemsPath = "/api/wow/data/item/";
-        public const string itemClassesPath = "/api/wow/data/item/classes";
-        public const string battlegroundPath = "/api/wow/data/battlegroups/";
-        public const string challengesPath = "/api/wow/challenge/";
+        public const string characterRacesPath = "/wow/data/character/races";
+        public const string characterClassesPath = "/wow/data/character/classes";
+        public const string guildRewardsPath = "/wow/data/guild/rewards";
+        public const string guildPerksPath = "/wow/data/guild/perks";
+        public const string itemsPath = "/wow/data/item/";
+        public const string itemClassesPath = "/wow/data/item/classes";
+        public const string battlegroundPath = "/wow/data/battlegroups/";
+        public const string challengesPath = "/wow/challenge/";
 
         public static Region GetRegion(string region)
         {
