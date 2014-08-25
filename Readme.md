@@ -4,7 +4,8 @@ WowDotNetAPI is a C# .Net library for the World of Warcraft Community Platform A
 
 THE LIBRARY IS STILL EVOLVING WITH THE PLATFORM API CHANGES. USE AT OWN RISK - AND JUMP IN, HACK AWAY AND HELP OUT :]
 
-Currently supports access to the Realm, Guild, and Character areas of the Platform API.
+As of 8/24 you'll need a Mashery API key to use this api library/wrapper. For more info please see
+[https://dev.battle.net/docs/read/community_apis/migration](https://dev.battle.net/docs/read/community_apis/migration)
 
 You can now obtain the WowDotNetAPI dll through nuget. More information at [http://nuget.org/List/Packages/WowDotNetAPI](http://nuget.org/List/Packages/WowDotNetAPI)
 
