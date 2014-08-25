@@ -58,7 +58,7 @@ Sample:
             }
 
             //Get one realm
-            IEnumerable<Realm> usRealms = explorer.GetRealms(Region.US);
+            IEnumerable<Realm> usRealms = explorer.GetRealms();
             Realm skullcrusher = usRealms.First(r => r.Name == "Skullcrusher");
 
             //Get all pvp realms only
