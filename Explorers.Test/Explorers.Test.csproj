@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuctionTests.cs" />
-    <Compile Include="AuthTests.cs" />
     <Compile Include="ChallengesTests.cs" />
     <Compile Include="CharacterTests.cs" />
     <Compile Include="DataTests.cs" />
@@ -67,10 +66,6 @@
       <Project>{2A828141-9EF2-4A8A-8944-B2F2D1775CC9}</Project>
       <Name>Explorers</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\jsonCharacterFile.txt" />
-    <Content Include="Data\jsonRealmsFile.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TestStrings.resx">

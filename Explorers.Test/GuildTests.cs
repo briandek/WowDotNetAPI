@@ -15,11 +15,12 @@ namespace WowDotNetAPI.Test
     {
         private static WowExplorer explorer;
         private static Guild guild;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
             guild = explorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
         }
 
@@ -37,12 +38,12 @@ namespace WowDotNetAPI.Test
             var guildMember = guild.Members.Where(m => m.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             Assert.IsTrue(guildMember.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(85, guildMember.Character.Level);
+            Assert.AreEqual(90, guildMember.Character.Level);
             Assert.AreEqual(CharacterClass.WARRIOR, guildMember.Character.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, guildMember.Character.Race);
             Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
 
-            //Assert.IsTrue(briandek.character.achievementPoints == 6895); achievements via guild api is broken ._.
+            Assert.AreEqual(7575, guildMember.Character.AchievementPoints);
         }
 
 
@@ -50,7 +51,7 @@ namespace WowDotNetAPI.Test
         public void Get_Valid_Night_Elf_Member_From_Immortality_Guild()
         {
             var guildMember = guild.Members.Where(m => m.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            
+
             Assert.IsTrue(guildMember.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase));
 
             Assert.AreEqual(90, guildMember.Character.Level);
@@ -63,8 +64,8 @@ namespace WowDotNetAPI.Test
         public void Get_Valid_Member_From_Another_Guild()
         {
             Guild guild = explorer.GetGuild("laughing skull", "deus vox", GuildOptions.GetMembers | GuildOptions.GetAchievements);
-            
-            
+
+
             Assert.IsNotNull(guild.Members);
             Assert.IsNotNull(guild.AchievementPoints);
 
@@ -85,7 +86,7 @@ namespace WowDotNetAPI.Test
 
             Assert.IsTrue(guild.Name.Equals("rage", StringComparison.InvariantCultureIgnoreCase));
             Assert.IsTrue(guild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
-           
+
             Assert.IsTrue(guild.Members.Any());
 
             Assert.IsTrue(guild.Side == UnitSide.HORDE);

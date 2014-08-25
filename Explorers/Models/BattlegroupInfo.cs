@@ -9,6 +9,6 @@ namespace WowDotNetAPI.Models
         public string Name { get; set; }
 
         [DataMember(Name = "slug")]
-        public string SLUG { get; set; }
+        public string Slug { get; set; }
     }
 }

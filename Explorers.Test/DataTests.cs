@@ -18,11 +18,21 @@ namespace WowDotNetAPI.Explorers.Test
     public class DataTests
     {
         private static WowExplorer explorer;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
+        }
+
+        [TestMethod]
+        public void Get_BattleGroups_Test()
+        {
+            var battleGroups = explorer.GetBattlegroupsData();
+
+            Assert.IsTrue(battleGroups.Count() == 14); 
+            Assert.IsTrue(battleGroups.Any(r => r.Name == "Nightfall"));
         }
 
         [TestMethod]
@@ -35,12 +45,31 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
+        public void Get_Character_Achievements_Data()
+        {
+            var characterAchievements = explorer.GetAchievements();
+
+            Assert.AreEqual(11, characterAchievements.Count());
+            var achievementList = characterAchievements.First<AchievementList>(a => a.Id == 92);
+            var gotMyMindOnMyMoneyAchievement = achievementList.Achievements.First<AchievementInfo>(a => a.Id == 1181);
+            Assert.AreEqual("Loot 25,000 gold", gotMyMindOnMyMoneyAchievement.Criteria.ElementAt(0).Description);
+
+        }
+
+        [TestMethod]
         public void Get_Character_Classes_Data()
         {
             var classes = explorer.GetCharacterClasses();
 
             Assert.IsTrue(classes.Count() == 11);
             Assert.IsTrue(classes.Any(r => r.Name == "Warrior" || r.Name == "Death Knight"));
+        }
+
+        [TestMethod]
+        public void Get_Guild_Achievements_Data()
+        {
+            var guildAchievementsList = explorer.GetGuildAchievements();
+            Assert.AreEqual(7, guildAchievementsList.Count());
         }
 
         [TestMethod]
@@ -80,13 +109,6 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidLocaleException))]
-        public void Set_Invalid_Locale_To_US_Region()
-        {
-            explorer.SetLocale(Locale.fr_FR);
-        }
-
-        [TestMethod]
         public void Get_Invalid_Character_From_Skullcrusher()
         {
             var character = explorer.GetCharacter("skullcrusher", "talasix");
@@ -99,7 +121,7 @@ namespace WowDotNetAPI.Explorers.Test
         [TestMethod]
         public void Get_Invalid_Data_From_CN_Region_Throws_Exception()
         {
-            var CNexplorer = new WowExplorer(Region.CN, Locale.zh_CN);
+            var CNexplorer = new WowExplorer(Region.CN, Locale.zh_CN, APIKey);
 
             var characterClasses = CNexplorer.GetCharacterClasses();
             var error = CNexplorer.ErrorInfo;

@@ -15,11 +15,12 @@ namespace WowDotNetAPI.Explorers.Test
     {
         private static WowExplorer explorer;
         private static Challenges challenges;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);            
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);            
         }
 
         [TestMethod]

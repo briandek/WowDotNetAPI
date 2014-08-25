@@ -24,18 +24,24 @@ namespace WowDotNetAPI
     public enum Locale
     {
         None,
+        //US
         en_US,
         es_MX,
         pt_BR,
+        //EU
         en_GB,
+        de_DE,
         es_ES,
         fr_FR,
-        ru_RU,
-        de_DE,
-        pt_PT,
         it_IT,
+        pl_PL,
+        pt_PT,
+        ru_RU,
+        //KR
         ko_KR,
+        //TW
         zh_TW,
+        //CN
         zh_CN
     }
 
@@ -79,41 +85,18 @@ namespace WowDotNetAPI
     {
         public Region Region { get; set; }
         public Locale Locale { get; set; }
-
-        private string publicAuthKey { get; set; }
-        private string privateAuthKey { get; set; }
-        private string apiKey { get; set; }
-
+        public string APIKey { get; set; }
+        
         private string BaseAPIurl { get; set; }
 
         public ErrorInfo ErrorInfo { get; set; }
 
-        public WowExplorer() : this(Region.US) { }
-
-        public WowExplorer(Region region)
-            : this(region, Locale.en_US)
-        {
-            Region = region;
-            SetDefaultLocale();
-        }
-
-        public WowExplorer(Region region, Locale locale)
+        public WowExplorer(Region region, Locale locale, string apiKey)
         {
             Region = region;
             BaseAPIurl = ExplorerUtility.GetBaseURL(Region);
             Locale = locale;
-        }
-
-        public WowExplorer(Region region, Locale locale, string publicKey, string privateKey)
-            : this(region, locale)
-        {
-            publicAuthKey = publicKey;
-            privateAuthKey = privateKey;
-        }
-
-        public WowExplorer(Region region, Locale locale, string apiKey) : this(region, locale)
-        {
-            this.apiKey = apiKey;
+            APIKey = apiKey;
         }
 
         #region Locale
@@ -137,41 +120,6 @@ namespace WowDotNetAPI
                     Locale = Locale.zh_CN;
                     break;
                 default:
-                    break;
-            }
-        }
-
-        public void SetLocale(Locale locale)
-        {
-            switch (locale)
-            {
-                case Locale.en_US:
-                case Locale.es_MX:
-                    if (Region == Region.US) { Locale = locale; }
-                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
-                    break;
-                case Locale.en_GB:
-                case Locale.es_ES:
-                case Locale.fr_FR:
-                case Locale.ru_RU:
-                case Locale.de_DE:
-                    if (Region == Region.EU) { Locale = locale; }
-                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
-                    break;
-                case Locale.ko_KR:
-                    if (Region == Region.KR) { Locale = locale; }
-                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
-                    break;
-                case Locale.zh_TW:
-                    if (Region == Region.TW) { Locale = locale; }
-                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
-                    break;
-                case Locale.zh_CN:
-                    if (Region == Region.CN) { Locale = locale; }
-                    else { throw new InvalidLocaleException(string.Format("The {0} locale is not associated with the {1} region", locale, Region), Region, Locale); }
-                    break;
-                default:
-                    Locale = Locale.None;
                     break;
             }
         }
@@ -208,7 +156,7 @@ namespace WowDotNetAPI
                 + string.Format(CharacterUtility.basePath + "{0}/{1}", realm, name)
                 + GetLocaleQuery()
                 + CharacterUtility.buildOptionalQuery(characterOptions)
-                + "&apikey=" + apiKey, out character);
+                + "&apikey=" + APIKey, out character);
 
             return character;
         }
@@ -240,7 +188,7 @@ namespace WowDotNetAPI
                 + string.Format(GuildUtility.basePath + "{0}/{1}", realm, name)
                 + GetLocaleQuery()
                 + GuildUtility.buildOptionalQuery(realmOptions)
-                + "&apikey=" + apiKey, out guild);
+                + "&apikey=" + APIKey, out guild);
 
             return guild;
         }
@@ -260,7 +208,7 @@ namespace WowDotNetAPI
             TryGetData<RealmsData>(BaseAPIurl
                 + RealmUtility.basePath
                 + GetLocaleQuery()
-                + "&apikey=" + apiKey, out realmsData);
+                + "&apikey=" + APIKey, out realmsData);
 
             return (realmsData != null) ? realmsData.Realms : null;
         }
@@ -277,7 +225,7 @@ namespace WowDotNetAPI
             TryGetData<AuctionFiles>(string.Format(BaseAPIurl
                 + string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
                 + GetLocaleQuery()
-                + "&apikey=" + apiKey), out auctionFiles);
+                + "&apikey=" + APIKey), out auctionFiles);
 
             if (auctionFiles != null)
             {
@@ -305,7 +253,7 @@ namespace WowDotNetAPI
             Item item;
 
             TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + apiKey, out item);
+                + "&apikey=" + APIKey, out item);
 
             return item;
         }
@@ -316,7 +264,7 @@ namespace WowDotNetAPI
             Item item;
 
             TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + apiKey, out item);
+                + "&apikey=" + APIKey, out item);
 
             return item;
         }
@@ -326,7 +274,7 @@ namespace WowDotNetAPI
             ItemClassData itemclassdata;
 
             TryGetData<ItemClassData>(BaseAPIurl + DataUtility.itemClassesPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out itemclassdata);
+                + "&apikey=" + APIKey, out itemclassdata);
 
             return (itemclassdata != null) ? itemclassdata.Classes : null;
         }
@@ -343,7 +291,7 @@ namespace WowDotNetAPI
         {
             CharacterRacesData charRacesData;
             TryGetData<CharacterRacesData>(BaseAPIurl + DataUtility.characterRacesPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out charRacesData);
+                + "&apikey=" + APIKey, out charRacesData);
             return (charRacesData != null) ? charRacesData.Races : null;
         }
         #endregion
@@ -358,7 +306,7 @@ namespace WowDotNetAPI
         {
             CharacterClassesData characterClasses;
             TryGetData<CharacterClassesData>(BaseAPIurl + DataUtility.characterClassesPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out characterClasses);
+                + "&apikey=" + APIKey, out characterClasses);
             return (characterClasses != null) ? characterClasses.Classes : null;
         }
         #endregion
@@ -373,7 +321,7 @@ namespace WowDotNetAPI
         {
             GuildRewardsData guildRewardsData;
             TryGetData<GuildRewardsData>(BaseAPIurl + DataUtility.guildRewardsPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out guildRewardsData);
+                + "&apikey=" + APIKey, out guildRewardsData);
             return (guildRewardsData != null) ? guildRewardsData.Rewards : null;
         }
         #endregion
@@ -388,7 +336,7 @@ namespace WowDotNetAPI
         {
             GuildPerksData guildPerksData;
             TryGetData<GuildPerksData>(BaseAPIurl + DataUtility.guildPerksPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out guildPerksData);
+                + "&apikey=" + APIKey, out guildPerksData);
             return (guildPerksData != null) ? guildPerksData.Perks : null;
         }
         #endregion
@@ -399,7 +347,7 @@ namespace WowDotNetAPI
             AchievementInfo achievement;
 
             TryGetData<AchievementInfo>(BaseAPIurl + string.Format(AchievementUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + apiKey, out achievement);
+                + "&apikey=" + APIKey, out achievement);
 
             return achievement;
         }
@@ -409,7 +357,7 @@ namespace WowDotNetAPI
             AchievementData achievementData;
 
             TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out achievementData);
+                + "&apikey=" + APIKey, out achievementData);
 
             return (achievementData != null) ? achievementData.Lists : null;
         }
@@ -419,7 +367,7 @@ namespace WowDotNetAPI
             AchievementData achievementData;
 
             TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out achievementData);
+                + "&apikey=" + APIKey, out achievementData);
 
             return (achievementData != null) ? achievementData.Lists : null;
         }
@@ -427,12 +375,12 @@ namespace WowDotNetAPI
         #endregion
 
         #region Battlegroups
-        public IEnumerable<BattlegroupInfo> GetBattlegroups()
+        public IEnumerable<BattlegroupInfo> GetBattlegroupsData()
         {
             BattlegroupData battlegroupData;
 
             TryGetData<BattlegroupData>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery()
-                + "&apikey=" + apiKey, out battlegroupData);
+                + "&apikey=" + APIKey, out battlegroupData);
 
             return (battlegroupData != null) ? battlegroupData.Battlegroups : null;
         }
@@ -443,8 +391,8 @@ namespace WowDotNetAPI
         {
             Challenges challenges;
 
-            TryGetData<Challenges>(BaseAPIurl + DataUtility.challengesPath + realm
-                + "&apikey=" + apiKey, out challenges);
+            TryGetData<Challenges>(BaseAPIurl + DataUtility.challengesPath + realm + GetLocaleQuery()
+                + "&apikey=" + APIKey, out challenges);
 
             return challenges;
         }
@@ -452,11 +400,6 @@ namespace WowDotNetAPI
 
         private T GetData<T>(string url) where T : class
         {
-            if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
-            {
-                return JsonUtility.FromJSON<T>(url, publicAuthKey, privateAuthKey);
-            }
-
             return JsonUtility.FromJSON<T>(url);
         }
 
@@ -464,11 +407,6 @@ namespace WowDotNetAPI
         {
             try
             {
-                if (!string.IsNullOrEmpty(privateAuthKey) && !string.IsNullOrEmpty(publicAuthKey))
-                {
-                    requestedObject = JsonUtility.FromJSON<T>(url, publicAuthKey, privateAuthKey);
-                }
-
                 requestedObject = JsonUtility.FromJSON<T>(url);
             }
             catch (WowException wowEx)

@@ -12,11 +12,12 @@ namespace WowDotNetAPI.Explorers.Test
     public class ItemTests
     {
         private static WowExplorer explorer;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
         }
 
         [TestMethod]
@@ -73,7 +74,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual(3.7, sampleItem.WeaponInfo.WeaponSpeed);
 
             Assert.AreEqual(12, sampleItem.BonusStats.ElementAt(2).Amount);
-            Assert.AreEqual("Hurls a fiery ball that causes 303 Fire damage and an additional 75 damage over 10 sec.",
+            Assert.AreEqual("Hurls a fiery ball that causes 343 Fire damage and an additional 85 damage over 10 sec.",
                 sampleItem.ItemSpells.First().Spell.Description);
         }
 
@@ -83,7 +84,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var sampleItem = explorer.GetItem("52210");
 
-            Assert.AreEqual("+20 Parry and +30 Stamina", sampleItem.GemInfo.Bonus.Name);
+            Assert.AreEqual("+40 Parry and +30 Stamina", sampleItem.GemInfo.Bonus.Name);
             Assert.AreEqual("PURPLE", sampleItem.GemInfo.Type.Color);
             Assert.AreEqual(sampleItem.Id, sampleItem.GemInfo.Bonus.SourceItemId);
             Assert.AreEqual(0, sampleItem.GemInfo.Bonus.RequiredSkillRank);

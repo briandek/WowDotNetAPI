@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using WowDotNetAPI;
 using WowDotNetAPI.Models;
-using WowDotNetAPI.Comparers;
 using WowDotNetAPI.Test;
 using WowDotNetAPI.Utilities;
 
@@ -17,11 +16,12 @@ namespace Explorers.Test
     public class RealmTests
     {
         private static WowExplorer explorer;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Type_Returns_Pvp_Realms()
         {
-            var realms = explorer.GetRealms().WithType(RealmType.PVP);
+            var realms = explorer.GetRealms().Where(r => r.Type == RealmType.PVP);
             var allCollectedRealmsArePvp = realms.Any() && realms.All(r => r.Type == RealmType.PVP);
             Assert.IsTrue(allCollectedRealmsArePvp);
         }
@@ -52,7 +52,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Status_Returns_Realms_That_Are_Up()
         {
-            var realmList = explorer.GetRealms().ThatAreUp();
+            var realmList = explorer.GetRealms().Where(r => r.Status == true);
             //All servers being down is likely(maintenance) and will cause test to fail
             var allCollectedRealmsAreUp = realmList.Any() && realmList.All(r => r.Status == true);
             Assert.IsTrue(allCollectedRealmsAreUp);
@@ -62,7 +62,7 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Queue_Returns_Realms_That_Do_Not_Have_Queues()
         {
-            var realmList = explorer.GetRealms().WithoutQueues();
+            var realmList = explorer.GetRealms().Where(r => r.Queue == false);
             //All servers getting queues is unlikely but possible and will cause test to fail
             var allCollectedRealmsHaveQueues = realmList.Any() && realmList.All(r => r.Queue == false);
             Assert.IsTrue(allCollectedRealmsHaveQueues);
@@ -71,8 +71,8 @@ namespace Explorers.Test
         [TestMethod]
         public void Get_All_Realms_By_Population_Returns_Realms_That_Have_Low_Population()
         {
-            var realmList = explorer.GetRealms().WithPopulation(RealmPopulation.LOW);
-            var allCollectedRealmsHaveLowPopulation = realmList.Any() && realmList.All(r => r.Population == RealmPopulation.LOW);
+            var realmList = explorer.GetRealms().Where(r => r.population == "low");
+            var allCollectedRealmsHaveLowPopulation = realmList.Any() && realmList.All(r => r.population == "low");
             Assert.IsTrue(allCollectedRealmsHaveLowPopulation);
         }
 

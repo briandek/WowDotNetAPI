@@ -8,11 +8,12 @@ namespace WowDotNetAPI.Explorers.Test
     public class AuctionTests
     {
         private static WowExplorer explorer;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
         }
 
         [TestMethod]

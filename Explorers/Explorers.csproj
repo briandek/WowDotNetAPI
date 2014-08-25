@@ -127,7 +127,6 @@
     <Compile Include="Models\CharacterTalentGlyph.cs" />
     <Compile Include="Models\CharacterGuild.cs" />
     <Compile Include="Models\CharacterTalent.cs" />
-    <Compile Include="RealmExtensions.cs" />
     <Compile Include="IExplorer.cs" />
     <Compile Include="Models\Achievements.cs" />
     <Compile Include="Models\CharacterAppearance.cs" />
@@ -150,7 +149,6 @@
     <Compile Include="Models\ItemTooltipParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Realm.cs" />
-    <Compile Include="Comparers\RealmComparer.cs" />
     <Compile Include="Utilities\CharacterUtility.cs" />
     <Compile Include="Utilities\ExplorerUtility.cs" />
     <Compile Include="Utilities\GuildUtility.cs" />

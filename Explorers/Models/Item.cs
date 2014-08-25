@@ -25,19 +25,19 @@ namespace WowDotNetAPI.Models
         public int Stackable { get; set; }
 
         [DataMember(Name = "allowableClasses")]
-        public IList<int> AllowableClasses { get; set; }
+        public IEnumerable<int> AllowableClasses { get; set; }
 
         [DataMember(Name = "itemBind")]
         public int ItemBind { get; set; }
 
         [DataMember(Name = "bonusStats")]
-        public IList<ItemBonusStat> BonusStats { get; set; }
+        public IEnumerable<ItemBonusStat> BonusStats { get; set; }
 
         [DataMember(Name = "icon")]
         public string Icon { get; set; }
 
         [DataMember(Name = "itemSpells")]
-        public IList<ItemSpellInfo> ItemSpells { get; set; }
+        public IEnumerable<ItemSpellInfo> ItemSpells { get; set; }
 
         [DataMember(Name = "buyPrice")]
         public int BuyPrice { get; set; }

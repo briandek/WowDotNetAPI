@@ -29,7 +29,7 @@ namespace WowDotNetAPI
         IEnumerable<AchievementList> GetAchievements();
         IEnumerable<AchievementList> GetGuildAchievements();
 
-        IEnumerable<BattlegroupInfo> GetBattlegroups();
+        IEnumerable<BattlegroupInfo> GetBattlegroupsData();
 
         IEnumerable<ItemClassInfo> GetItemClasses();
 
@@ -53,8 +53,6 @@ namespace WowDotNetAPI
         IEnumerable<GuildPerkInfo> GetGuildPerks(Region region);
 
         Challenges GetChallenges(string realm);
-
-        void SetLocale(Locale locale);
 
     }
 }

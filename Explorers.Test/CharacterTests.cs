@@ -12,11 +12,12 @@ namespace WowDotNetAPI.Test
     public class CharacterTests
     {
         private static WowExplorer explorer;
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            explorer = new WowExplorer(Region.US, Locale.en_US);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
         }
 
         [TestMethod]
@@ -40,7 +41,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Progression); 
 
             Assert.IsTrue(briandek.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-            Assert.AreEqual(85, briandek.Level);
+            Assert.AreEqual(90, briandek.Level);
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
@@ -442,7 +443,7 @@ namespace WowDotNetAPI.Test
             //Assert.IsTrue(briandek.Talents.Where(t => t.Selected).FirstOrDefault().Name.Equals("protection", StringComparison.InvariantCultureIgnoreCase));
             //Assert.IsTrue(briandek.Talents.ElementAt(1).Glyphs.Prime.ElementAt(0).Name.Equals("Glyph of Revenge", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.IsTrue(briandek.Appearance.HairVariation == 13);            
+            Assert.AreEqual(0, briandek.Appearance.HairVariation);            
             Assert.IsTrue(briandek.Mounts.NumCollected > 1);
         }
 

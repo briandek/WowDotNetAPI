@@ -18,18 +18,19 @@ namespace WowDotNetAPI.Models
         RPPVP
     }
 
-    [DataContract]
-    public enum RealmPopulation
-    {
-        [EnumMember(Value = "low")]
-        LOW,
-        [EnumMember(Value = "medium")]
-        MEDIUM,
-        [EnumMember(Value = "high")]
-        HIGH,
-        [EnumMember(Value = "n/a")]
-        NA
-    }
+    //TODO: sort out issue with enum member n/a . It seems there's an issue with the forward slash and how we serialize and the try to parse it
+    //[DataContract]
+    //public enum RealmPopulation
+    //{
+    //    [EnumMember(Value = "low")]
+    //    LOW,
+    //    [EnumMember(Value = "medium")]
+    //    MEDIUM,
+    //    [EnumMember(Value = "high")]
+    //    HIGH,
+    //    [EnumMember(Value = "n/a")]
+    //    NA
+    //}
 
     [DataContract]
     public class Realm
@@ -44,7 +45,7 @@ namespace WowDotNetAPI.Models
         public bool Status { get; set; }
 
         [DataMember(Name = "population")]
-        private string population { get; set; }
+        public string population { get; set; }
 
         [DataMember(Name = "name")]
         public string Name { get; set; }
@@ -54,12 +55,8 @@ namespace WowDotNetAPI.Models
 
         public RealmType Type { get { return (RealmType)Enum.Parse(typeof(RealmType), type, true); } }
         
-        public RealmPopulation Population { get { return (RealmPopulation)Enum.Parse(typeof(RealmPopulation), population, true); } }
+        //See enum TODO comments
+        //public RealmPopulation Population { get { return (RealmPopulation)Enum.Parse(typeof(RealmPopulation), population, true); } }
 
-        //refactor
-        //private T GetEnumValue<T>(string s)
-        //{
-        //    return (T)Enum.Parse(typeof(T), s, true);
-        //}
     }
 }
