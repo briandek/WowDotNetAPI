@@ -34,23 +34,18 @@ namespace WowDotNetAPI
         IEnumerable<ItemClassInfo> GetItemClasses();
 
         IEnumerable<Realm> GetRealms();
-        IEnumerable<Realm> GetRealms(Region region);
 
         Auctions GetAuctions(string realm);
 
-        Item GetItem(string id);
+        Item GetItem(int id);
 
         IEnumerable<CharacterRaceInfo> GetCharacterRaces();
-        IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region);
 
         IEnumerable<CharacterClassInfo> GetCharacterClasses();
-        IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region);
 
         IEnumerable<GuildRewardInfo> GetGuildRewards();
-        IEnumerable<GuildRewardInfo> GetGuildRewards(Region region);
 
         IEnumerable<GuildPerkInfo> GetGuildPerks();
-        IEnumerable<GuildPerkInfo> GetGuildPerks(Region region);
 
         Challenges GetChallenges(string realm);
 

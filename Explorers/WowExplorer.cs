@@ -14,11 +14,12 @@ namespace WowDotNetAPI
 {
     public enum Region
     {
-        US,
-        EU,
-        KR,
-        TW,
-        CN
+        US,     //https://us.api.battle.net/
+        EU,     //https://eu.api.battle.net/
+        KR,     //https://kr.api.battle.net/
+        TW,     //https://tw.api.battle.net/
+        CN,     // ???
+        SEA     //https://sea.api.battle.net/
     }
 
     public enum Locale
@@ -100,30 +101,6 @@ namespace WowDotNetAPI
         }
 
         #region Locale
-        public void SetDefaultLocale()
-        {
-            switch (Region)
-            {
-                case Region.US:
-                    Locale = Locale.en_US;
-                    break;
-                case Region.EU:
-                    Locale = Locale.en_GB;
-                    break;
-                case Region.KR:
-                    Locale = Locale.ko_KR;
-                    break;
-                case Region.TW:
-                    Locale = Locale.zh_TW;
-                    break;
-                case Region.CN:
-                    Locale = Locale.zh_CN;
-                    break;
-                default:
-                    break;
-            }
-        }
-
         private string GetLocaleQuery()
         {
             return "?locale=" + Locale;
@@ -247,18 +224,6 @@ namespace WowDotNetAPI
         #endregion
 
         #region Items
-
-        public Item GetItem(string id)
-        {
-            Item item;
-
-            TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + APIKey, out item);
-
-            return item;
-        }
-
-        //Added a GetItem to pass in an int value
         public Item GetItem(int id)
         {
             Item item;
@@ -284,11 +249,6 @@ namespace WowDotNetAPI
         #region CharacterRaceInfo
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {
-            return GetCharacterRaces(Region);
-        }
-
-        public IEnumerable<CharacterRaceInfo> GetCharacterRaces(Region region)
-        {
             CharacterRacesData charRacesData;
             TryGetData<CharacterRacesData>(BaseAPIurl + DataUtility.characterRacesPath + GetLocaleQuery()
                 + "&apikey=" + APIKey, out charRacesData);
@@ -299,12 +259,7 @@ namespace WowDotNetAPI
         #region CharacterClassInfo
         public IEnumerable<CharacterClassInfo> GetCharacterClasses()
         {
-            return GetCharacterClasses(Region);
-        }
-
-        public IEnumerable<CharacterClassInfo> GetCharacterClasses(Region region)
-        {
-            CharacterClassesData characterClasses;
+           CharacterClassesData characterClasses;
             TryGetData<CharacterClassesData>(BaseAPIurl + DataUtility.characterClassesPath + GetLocaleQuery()
                 + "&apikey=" + APIKey, out characterClasses);
             return (characterClasses != null) ? characterClasses.Classes : null;
@@ -313,11 +268,6 @@ namespace WowDotNetAPI
 
         #region GuildRewardInfo
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
-        {
-            return GetGuildRewards(Region);
-        }
-
-        public IEnumerable<GuildRewardInfo> GetGuildRewards(Region region)
         {
             GuildRewardsData guildRewardsData;
             TryGetData<GuildRewardsData>(BaseAPIurl + DataUtility.guildRewardsPath + GetLocaleQuery()
@@ -328,11 +278,6 @@ namespace WowDotNetAPI
 
         #region GuildPerkInfo
         public IEnumerable<GuildPerkInfo> GetGuildPerks()
-        {
-            return GetGuildPerks(Region);
-        }
-
-        public IEnumerable<GuildPerkInfo> GetGuildPerks(Region region)
         {
             GuildPerksData guildPerksData;
             TryGetData<GuildPerksData>(BaseAPIurl + DataUtility.guildPerksPath + GetLocaleQuery()

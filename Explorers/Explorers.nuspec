@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>WowDotNetAPI</id>
+    <version>4.0.0</version>
+    <authors>briandek ChrisB92</authors>
+    <owners>briandek</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/briandek/WowDotNetAPI</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET library for the World of Warcraft Community Platform. Requires Mashery API key.</description>
+    <releaseNotes>1. Now requires Mashery API key, given api migration. 2. Refactored old code. </releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>World-of-Warcraft WoW Community-Platform-API</tags>
+  </metadata>
+</package>
