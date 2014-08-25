@@ -116,6 +116,8 @@
     <Compile Include="Models\ItemSourceInfo.cs" />
     <Compile Include="Models\ItemSpell.cs" />
     <Compile Include="Models\ItemSpellInfo.cs" />
+    <Compile Include="Models\ItemStat.cs" />
+    <Compile Include="Models\ItemUpgrade.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
     <Compile Include="Utilities\AchievementUtility.cs" />
