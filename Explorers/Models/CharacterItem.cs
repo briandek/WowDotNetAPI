@@ -25,5 +25,8 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "tooltipParams")]
         public ItemTooltipParameters TooltipParams { get; set; }
+
+		[DataMember(Name = "stats")]
+		public IEnumerable<ItemStat> Stats { get; set; }
 	}
 }

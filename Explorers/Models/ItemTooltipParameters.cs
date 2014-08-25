@@ -35,5 +35,8 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "suffix")]
         public int Suffix { get; set; }
+
+        [DataMember(Name = "upgrade")]
+		public ItemUpgrade ItemUpgrade { get; set; }
 	}
 }

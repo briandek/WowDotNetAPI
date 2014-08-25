@@ -125,7 +125,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
         }
 
-        [TestMethod]
+		[TestMethod]
         public void Get_Simple_Character_Briandek_From_Skullcrusher_WithItems()
         {
 
@@ -149,6 +149,9 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterClass.WARRIOR, briandek.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
+
+			Assert.AreEqual(briandek.Items.Finger2.TooltipParams.ItemUpgrade.Current, 0);
+			Assert.AreEqual(briandek.Items.Finger2.TooltipParams.ItemUpgrade.Total, 4);
         }
 
         [TestMethod]
