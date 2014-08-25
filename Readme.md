@@ -11,16 +11,16 @@ You can now obtain the WowDotNetAPI dll through nuget. More information at [http
 
 Sample:
 =========
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WowDotNetAPI;
-using WowDotNetAPI.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using WowDotNetAPI;
+    using WowDotNetAPI.Models;
 
-namespace TestConsoleApplication
-{
+    namespace TestConsoleApplication
+    {
     class Program
     {
         static void Main(string[] args)
