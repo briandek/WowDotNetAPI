@@ -16,17 +16,17 @@ namespace WowDotNetAPI.Utilities
             switch (region)
             {
                 case Region.US:
-                    return "https://us.battle.net";
+                    return "https://us.api.battle.net";
                 case Region.EU:
-                    return "https://eu.battle.net";
+                    return "https://eu.api.battle.net";
                 case Region.KR:
-                    return "https://kr.battle.net";
+                    return "https://kr.api.battle.net";
                 case Region.TW:
-                    return "https://tw.battle.net";
+                    return "https://tw.api.battle.net";
                 case Region.CN:
-                    return "https://battlenet.com.cn";
+                    return "https://www.battlenet.com.cn";
                 default:
-                    return "https://us.battle.net";
+                    return "https://us.api.battle.net";
             }
         }
     }
