@@ -8,7 +8,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class AuctionTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -17,25 +17,27 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        public void testUsRealm()
+        public void Get_US_Realm_Auction_Data()
         {
             Auctions auctions = explorer.GetAuctions("Skullcrusher");
             Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
         }
 
         [TestMethod]
-        public void testEuRealm()
+        public void Get_EU_Realm_Auction_Data()
         {
-            explorer.Region = Region.EU;
-            Auctions auctions = explorer.GetAuctions("Twisting Nether");
+            WowExplorer euExplorer = new WowExplorer(Region.EU, Locale.fr_FR, APIKey);
+
+            Auctions auctions = euExplorer.GetAuctions("Twisting Nether");
             Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
         }
 
         [TestMethod]
-        public void testTwRealm()
+        public void Get_TW_Realm_Auction_Data()
         {
-            explorer.Region = Region.TW;
-            Auctions auctions = explorer.GetAuctions("Balnazzar");
+            WowExplorer twExplorer = new WowExplorer(Region.TW, Locale.zh_TW, APIKey);
+            
+            Auctions auctions = twExplorer.GetAuctions("Balnazzar");
             Assert.IsTrue(auctions.Horde.Auctions.Count() > 0);
         }
     }

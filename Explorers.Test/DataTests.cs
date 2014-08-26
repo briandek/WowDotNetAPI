@@ -9,7 +9,6 @@ using WowDotNetAPI.Test;
 using System.Collections;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
-using WowDotNetAPI.Exceptions;
 using WowDotNetAPI;
 
 namespace WowDotNetAPI.Explorers.Test
@@ -18,7 +17,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class DataTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -108,27 +107,6 @@ namespace WowDotNetAPI.Explorers.Test
 
         }
 
-        [TestMethod]
-        public void Get_Invalid_Character_From_Skullcrusher()
-        {
-            var character = explorer.GetCharacter("skullcrusher", "talasix");
-            var error = explorer.ErrorInfo;
-
-            Assert.IsNull(character);
-            Assert.IsNotNull(error);
-        }
-
-        [TestMethod]
-        public void Get_Invalid_Data_From_CN_Region_Throws_Exception()
-        {
-            var CNexplorer = new WowExplorer(Region.CN, Locale.zh_CN, APIKey);
-
-            var characterClasses = CNexplorer.GetCharacterClasses();
-            var error = CNexplorer.ErrorInfo;
-
-            Assert.IsNull(characterClasses);
-            Assert.IsNotNull(error);
-        }
     }
 
 }

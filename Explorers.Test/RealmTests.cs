@@ -16,7 +16,7 @@ namespace Explorers.Test
     public class RealmTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -27,7 +27,7 @@ namespace Explorers.Test
         [TestMethod]
         public void GetAll_US_Realms_Returns_All_Realms()
         {
-            var realmList = explorer.GetRealms(Region.US);
+            var realmList = explorer.GetRealms();
             Assert.IsTrue(realmList.Any());
         }
 

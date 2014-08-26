@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WowDotNetAPI.Models;
-using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI.Test
 {
@@ -12,7 +11,7 @@ namespace WowDotNetAPI.Test
     public class CharacterTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)

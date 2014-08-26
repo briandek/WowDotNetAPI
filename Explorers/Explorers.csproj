@@ -61,10 +61,6 @@
     <Compile Include="Models\CharacterHunterPet.cs" />
     <Compile Include="Models\CharacterMount.cs" />
     <Compile Include="Models\CharacterMounts.cs" />
-    <Compile Include="Exceptions\ErrorDetail.cs" />
-    <Compile Include="Exceptions\ErrorInfo.cs" />
-    <Compile Include="Exceptions\InvalidLocaleException.cs" />
-    <Compile Include="Exceptions\WowException.cs" />
     <Compile Include="Models\AchievementCategory.cs" />
     <Compile Include="Models\AchievementCriteria.cs" />
     <Compile Include="Models\AchievementData.cs" />
@@ -120,9 +116,6 @@
     <Compile Include="Models\ItemUpgrade.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
-    <Compile Include="Utilities\AchievementUtility.cs" />
-    <Compile Include="Utilities\AuctionUtility.cs" />
-    <Compile Include="Utilities\DataUtility.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
@@ -152,10 +145,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Realm.cs" />
     <Compile Include="Utilities\CharacterUtility.cs" />
-    <Compile Include="Utilities\ExplorerUtility.cs" />
     <Compile Include="Utilities\GuildUtility.cs" />
-    <Compile Include="Utilities\ItemUtility.cs" />
-    <Compile Include="Utilities\RealmUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

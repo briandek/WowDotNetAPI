@@ -38,3 +38,4 @@ _ReSharper*/
 
 #Project files
 [Bb]uild/
+*.nupkg

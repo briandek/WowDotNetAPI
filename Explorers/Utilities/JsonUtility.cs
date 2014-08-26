@@ -5,7 +5,6 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Runtime.Serialization.Json;
-using WowDotNetAPI.Exceptions;
 using System.Security.Cryptography;
 
 namespace WowDotNetAPI.Utilities
@@ -27,25 +26,9 @@ namespace WowDotNetAPI.Utilities
                 StreamReader streamReader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
                 return streamReader.ReadToEnd();
             }
-            catch (WebException wE)
+            catch (Exception e)
             {
-                using (HttpWebResponse eR = wE.Response as HttpWebResponse)
-                {
-                    if (eR == null)
-                    {
-                        throw;
-                    }
-
-                    ErrorDetail newError = FromJSONStream<ErrorDetail>(new StreamReader(eR.GetResponseStream()));
-
-                    switch (eR.StatusCode)
-                    {
-                        case HttpStatusCode.InternalServerError:    //500
-                        case HttpStatusCode.NotFound:               //404
-                        default:
-                            throw new WowException(string.Format("Response Status: {0} {1}. {2}", (int)eR.StatusCode, eR.StatusCode, newError.Reason), newError, req.RequestUri.ToString(), wE);
-                    }
-                }
+                throw e;
             }
         }
 

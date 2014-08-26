@@ -7,10 +7,6 @@ namespace WowDotNetAPI.Utilities
 {
     public static class CharacterUtility
     {
-        public const string basePath = "/wow/character/";
-        public const string racesPath = "/wow/data/character/races";
-        public const string classesPath = "/wow/data/character/classes";
-
         public static string buildOptionalQuery(CharacterOptions characterOptions)
         {
             string query = "&fields=";

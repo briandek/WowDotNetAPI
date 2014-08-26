@@ -8,18 +8,17 @@ using WowDotNetAPI.Models;
 using WowDotNetAPI.Utilities;
 using System.Runtime.Serialization.Json;
 using System.IO;
-using WowDotNetAPI.Exceptions;
 
 namespace WowDotNetAPI
 {
     public enum Region
     {
-        US,     //https://us.api.battle.net/
-        EU,     //https://eu.api.battle.net/
-        KR,     //https://kr.api.battle.net/
-        TW,     //https://tw.api.battle.net/
+        US,     //us.api.battle.net/
+        EU,     //eu.api.battle.net/
+        KR,     //kr.api.battle.net/
+        TW,     //tw.api.battle.net/
         CN,     // ???
-        SEA     //https://sea.api.battle.net/
+        SEA     //sea.api.battle.net/
     }
 
     public enum Locale
@@ -87,26 +86,35 @@ namespace WowDotNetAPI
         public Region Region { get; set; }
         public Locale Locale { get; set; }
         public string APIKey { get; set; }
-        
-        private string BaseAPIurl { get; set; }
 
-        public ErrorInfo ErrorInfo { get; set; }
+        public string Host { get; set; }
 
         public WowExplorer(Region region, Locale locale, string apiKey)
         {
             Region = region;
-            BaseAPIurl = ExplorerUtility.GetBaseURL(Region);
             Locale = locale;
             APIKey = apiKey;
-        }
 
-        #region Locale
-        private string GetLocaleQuery()
-        {
-            return "?locale=" + Locale;
+            switch (Region)
+            {
+                case Region.EU:
+                    Host = "https://eu.api.battle.net";
+                    break;
+                case Region.KR:
+                    Host = "https://kr.api.battle.net";
+                    break;
+                case Region.TW:
+                    Host = "https://tw.api.battle.net";
+                    break;
+                case Region.CN:
+                    Host = "https://www.battlenet.com.cn";
+                    break;
+                case Region.US:
+                default:
+                    Host = "https://us.api.battle.net";
+                    break;
+            }
         }
-
-        #endregion
 
         #region Character
 
@@ -129,11 +137,9 @@ namespace WowDotNetAPI
         {
             Character character;
 
-            TryGetData<Character>(BaseAPIurl
-                + string.Format(CharacterUtility.basePath + "{0}/{1}", realm, name)
-                + GetLocaleQuery()
-                + CharacterUtility.buildOptionalQuery(characterOptions)
-                + "&apikey=" + APIKey, out character);
+            TryGetData<Character>(
+                string.Format(@"{0}/wow/character/{1}/{2}?locale={3}{4}&apikey={5}", Host, realm, name, Locale, CharacterUtility.buildOptionalQuery(characterOptions), APIKey),
+                out character);
 
             return character;
         }
@@ -161,11 +167,9 @@ namespace WowDotNetAPI
         {
             Guild guild;
 
-            TryGetData<Guild>(BaseAPIurl
-                + string.Format(GuildUtility.basePath + "{0}/{1}", realm, name)
-                + GetLocaleQuery()
-                + GuildUtility.buildOptionalQuery(realmOptions)
-                + "&apikey=" + APIKey, out guild);
+            TryGetData<Guild>(
+                string.Format(@"{0}/wow/guild/{1}/{2}?locale={3}{4}&apikey={5}", Host, realm, name, Locale, GuildUtility.buildOptionalQuery(realmOptions), APIKey),
+                out guild);
 
             return guild;
         }
@@ -175,17 +179,11 @@ namespace WowDotNetAPI
         #region Realms
         public IEnumerable<Realm> GetRealms()
         {
-            return GetRealms(Region);
-        }
-
-        public IEnumerable<Realm> GetRealms(Region region)
-        {
             RealmsData realmsData;
 
-            TryGetData<RealmsData>(BaseAPIurl
-                + RealmUtility.basePath
-                + GetLocaleQuery()
-                + "&apikey=" + APIKey, out realmsData);
+            TryGetData<RealmsData>(
+                string.Format(@"{0}/wow/realm/status?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out realmsData);
 
             return (realmsData != null) ? realmsData.Realms : null;
         }
@@ -196,16 +194,15 @@ namespace WowDotNetAPI
 
         public Auctions GetAuctions(string realm)
         {
-            string url = "";
-
             AuctionFiles auctionFiles;
-            TryGetData<AuctionFiles>(string.Format(BaseAPIurl
-                + string.Format(AuctionUtility.basePath, realm.ToLower().Replace(' ', '-'))
-                + GetLocaleQuery()
-                + "&apikey=" + APIKey), out auctionFiles);
+
+            TryGetData<AuctionFiles>(
+                string.Format(@"{0}/wow/auction/data/{1}?locale={2}&apikey={3}", Host, realm.ToLower().Replace(' ', '-'), Locale, APIKey),
+                out auctionFiles);
 
             if (auctionFiles != null)
             {
+                string url = "";
                 foreach (AuctionFile auctionFile in auctionFiles.Files)
                 {
                     url = auctionFile.URL;
@@ -228,8 +225,9 @@ namespace WowDotNetAPI
         {
             Item item;
 
-            TryGetData<Item>(BaseAPIurl + string.Format(ItemUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + APIKey, out item);
+            TryGetData<Item>(
+                string.Format(@"{0}/wow/item/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out item);
 
             return item;
         }
@@ -238,8 +236,9 @@ namespace WowDotNetAPI
         {
             ItemClassData itemclassdata;
 
-            TryGetData<ItemClassData>(BaseAPIurl + DataUtility.itemClassesPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out itemclassdata);
+            TryGetData<ItemClassData>(
+                string.Format(@"{0}/wow/data/item/classes/{1}?locale={2}&apikey={3}", Host, Locale, APIKey),
+                out itemclassdata);
 
             return (itemclassdata != null) ? itemclassdata.Classes : null;
         }
@@ -250,8 +249,11 @@ namespace WowDotNetAPI
         public IEnumerable<CharacterRaceInfo> GetCharacterRaces()
         {
             CharacterRacesData charRacesData;
-            TryGetData<CharacterRacesData>(BaseAPIurl + DataUtility.characterRacesPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out charRacesData);
+
+            TryGetData<CharacterRacesData>(
+                string.Format(@"{0}/wow/data/character/races?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out charRacesData);
+
             return (charRacesData != null) ? charRacesData.Races : null;
         }
         #endregion
@@ -259,9 +261,12 @@ namespace WowDotNetAPI
         #region CharacterClassInfo
         public IEnumerable<CharacterClassInfo> GetCharacterClasses()
         {
-           CharacterClassesData characterClasses;
-            TryGetData<CharacterClassesData>(BaseAPIurl + DataUtility.characterClassesPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out characterClasses);
+            CharacterClassesData characterClasses;
+
+            TryGetData<CharacterClassesData>(
+                string.Format(@"{0}/wow/data/character/classes?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out characterClasses);
+
             return (characterClasses != null) ? characterClasses.Classes : null;
         }
         #endregion
@@ -270,8 +275,11 @@ namespace WowDotNetAPI
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
         {
             GuildRewardsData guildRewardsData;
-            TryGetData<GuildRewardsData>(BaseAPIurl + DataUtility.guildRewardsPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out guildRewardsData);
+            
+            TryGetData<GuildRewardsData>(
+                string.Format(@"{0}/wow/data/guild/rewards?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out guildRewardsData);
+            
             return (guildRewardsData != null) ? guildRewardsData.Rewards : null;
         }
         #endregion
@@ -280,8 +288,11 @@ namespace WowDotNetAPI
         public IEnumerable<GuildPerkInfo> GetGuildPerks()
         {
             GuildPerksData guildPerksData;
-            TryGetData<GuildPerksData>(BaseAPIurl + DataUtility.guildPerksPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out guildPerksData);
+
+            TryGetData<GuildPerksData>(
+                 string.Format(@"{0}/wow/data/guild/perks?locale={1}&apikey={2}", Host, Locale, APIKey), 
+                 out guildPerksData);
+
             return (guildPerksData != null) ? guildPerksData.Perks : null;
         }
         #endregion
@@ -291,8 +302,9 @@ namespace WowDotNetAPI
         {
             AchievementInfo achievement;
 
-            TryGetData<AchievementInfo>(BaseAPIurl + string.Format(AchievementUtility.basePath, id) + GetLocaleQuery()
-                + "&apikey=" + APIKey, out achievement);
+            TryGetData<AchievementInfo>(
+                string.Format(@"{0}/wow/achievement/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out achievement);
 
             return achievement;
         }
@@ -300,9 +312,10 @@ namespace WowDotNetAPI
         public IEnumerable<AchievementList> GetAchievements()
         {
             AchievementData achievementData;
-
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.listPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out achievementData);
+            
+            TryGetData<AchievementData>(
+                string.Format(@"{0}/wow/data/character/achievements?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out achievementData);
 
             return (achievementData != null) ? achievementData.Lists : null;
         }
@@ -311,8 +324,9 @@ namespace WowDotNetAPI
         {
             AchievementData achievementData;
 
-            TryGetData<AchievementData>(BaseAPIurl + AchievementUtility.guildPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out achievementData);
+            TryGetData<AchievementData>(
+                string.Format(@"{0}/wow/data/guild/achievements?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out achievementData);
 
             return (achievementData != null) ? achievementData.Lists : null;
         }
@@ -322,10 +336,11 @@ namespace WowDotNetAPI
         #region Battlegroups
         public IEnumerable<BattlegroupInfo> GetBattlegroupsData()
         {
-            BattlegroupData battlegroupData;
-
-            TryGetData<BattlegroupData>(BaseAPIurl + DataUtility.battlegroundPath + GetLocaleQuery()
-                + "&apikey=" + APIKey, out battlegroupData);
+            BattlegroupData battlegroupData;            
+            
+            TryGetData<BattlegroupData>(
+                string.Format(@"{0}/wow/data/battlegroups/?locale={1}&apikey={2}", Host, Locale, APIKey), 
+                out battlegroupData);
 
             return (battlegroupData != null) ? battlegroupData.Battlegroups : null;
         }
@@ -336,8 +351,9 @@ namespace WowDotNetAPI
         {
             Challenges challenges;
 
-            TryGetData<Challenges>(BaseAPIurl + DataUtility.challengesPath + realm + GetLocaleQuery()
-                + "&apikey=" + APIKey, out challenges);
+            TryGetData<Challenges>(
+                string.Format(@"{0}/wow/challenge/{1}?locale={2}&apikey={3}", Host, realm, Locale, APIKey), 
+                out challenges);
 
             return challenges;
         }
@@ -354,35 +370,10 @@ namespace WowDotNetAPI
             {
                 requestedObject = JsonUtility.FromJSON<T>(url);
             }
-            catch (WowException wowEx)
-            {
-                ErrorInfo = new ErrorInfo
-                {
-                    ErrorDetail = wowEx.ErrorDetail,
-                    OriginalException = wowEx.OriginalException,
-                    RequestUrl = wowEx.Url
-                };
-                requestedObject = null;
-            }
-            catch (WebException webEx)
-            {
-                ErrorInfo = new ErrorInfo
-                {
-                    ErrorDetail = null,
-                    OriginalException = webEx,
-                    RequestUrl = string.Empty
-                };
-                requestedObject = null;
-            }
             catch (Exception ex)
-            {
-                ErrorInfo = new ErrorInfo
-                {
-                    ErrorDetail = null,
-                    OriginalException = ex,
-                    RequestUrl = string.Empty
-                };
+            {                
                 requestedObject = null;
+                throw ex;
             }
         }
     }

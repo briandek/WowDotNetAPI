@@ -15,7 +15,7 @@ namespace WowDotNetAPI.Explorers.Test
     {
         private static WowExplorer explorer;
         private static Challenges challenges;
-        private static string APIKey = "";
+        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
