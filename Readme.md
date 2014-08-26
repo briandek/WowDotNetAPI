@@ -9,7 +9,7 @@ As of 8/24 you'll need a Mashery API key to use this api library/wrapper. For mo
 
 You can now obtain the WowDotNetAPI dll through nuget. More information at [http://nuget.org/List/Packages/WowDotNetAPI](http://nuget.org/List/Packages/WowDotNetAPI)
 
-Todo: Build Character Audit model and use JavascriptSerializer(4.5)
+Todo: Build Character Audit model and use JavascriptSerializer
 
 Sample:
 =========
