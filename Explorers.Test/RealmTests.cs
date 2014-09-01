@@ -16,7 +16,7 @@ namespace Explorers.Test
     public class RealmTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)

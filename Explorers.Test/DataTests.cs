@@ -17,7 +17,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class DataTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "kpvwrqw2abwjh8crhsvsx7p4cbhxpmtk";
+        private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -104,6 +104,14 @@ namespace WowDotNetAPI.Explorers.Test
             var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
             var briandekFromJsonString = JsonUtility.FromJSONString<Character>(TestStrings.TestCharacter);
             Assert.AreEqual(0, briandek.CompareTo(briandekFromJsonString));
+
+        }
+
+        [TestMethod]
+        public void Get_Item_Classes()
+        {
+            var itemClasses = explorer.GetItemClasses();
+            Assert.AreEqual(15, itemClasses.Count());
 
         }
 

@@ -237,7 +237,7 @@ namespace WowDotNetAPI
             ItemClassData itemclassdata;
 
             TryGetData<ItemClassData>(
-                string.Format(@"{0}/wow/data/item/classes/{1}?locale={2}&apikey={3}", Host, Locale, APIKey),
+                string.Format(@"{0}/wow/data/item/classes?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out itemclassdata);
 
             return (itemclassdata != null) ? itemclassdata.Classes : null;
