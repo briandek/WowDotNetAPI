@@ -18,6 +18,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "realm")]
         public string Realm { get; set; }
 
+        [DataMember(Name = "guildRealm")]
+		public string GuildRealm { get; set; }
+
         [DataMember(Name = "class")]
         private int @class { get; set; }
 
