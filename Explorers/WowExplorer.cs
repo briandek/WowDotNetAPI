@@ -180,12 +180,8 @@ namespace WowDotNetAPI
         public IEnumerable<Realm> GetRealms(Locale locale)
         {
             RealmsData realmsData;
-
-            //TryGetData<RealmsData>(
-            //    string.Format(@"{0}/wow/realm/status?locale={1}&apikey={2}", Host, Locale, APIKey),
-            //    out realmsData);
             TryGetData<RealmsData>(
-                string.Format(@"{0}/wow/realm/status?apikey={1}", Host, APIKey),
+                string.Format(@"{0}/wow/realm/status?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out realmsData);
             if (realmsData == null)
             {
