@@ -28,8 +28,8 @@ namespace WowDotNetAPI.Explorers.Test
         {
             challenges = explorer.GetChallenges("skullcrusher");
             Assert.IsTrue(challenges.Challenge.Count() > 0);            
-            Assert.IsTrue(challenges.Challenge.First().Groups.Count() > 0);
-            Assert.IsTrue(challenges.Challenge.First().Map.Name != "");
+            Assert.IsTrue(challenges.Challenge.First().Groups.Count() == 0);
+            Assert.AreEqual("Auchindoun", challenges.Challenge.First().Map.Name);
         }
     }
 }

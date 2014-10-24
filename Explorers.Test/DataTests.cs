@@ -30,7 +30,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var battleGroups = explorer.GetBattlegroupsData();
 
-            Assert.IsTrue(battleGroups.Count() == 14); 
+            Assert.AreEqual(15, battleGroups.Count()); 
             Assert.IsTrue(battleGroups.Any(r => r.Name == "Nightfall"));
         }
 
@@ -39,7 +39,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var races = explorer.GetCharacterRaces();
 
-            Assert.IsTrue(races.Count() == 15);
+            Assert.AreEqual(24, races.Count());
             Assert.IsTrue(races.Any(r => r.Name == "Human" || r.Name == "Night Elf"));
         }
 
@@ -48,7 +48,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var characterAchievements = explorer.GetAchievements();
 
-            Assert.AreEqual(11, characterAchievements.Count());
+            Assert.AreEqual(14, characterAchievements.Count());
             var achievementList = characterAchievements.First<AchievementList>(a => a.Id == 92);
             var gotMyMindOnMyMoneyAchievement = achievementList.Achievements.First<AchievementInfo>(a => a.Id == 1181);
             Assert.AreEqual("Loot 25,000 gold", gotMyMindOnMyMoneyAchievement.Criteria.ElementAt(0).Description);
@@ -75,7 +75,7 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Guild_Rewards_Data()
         {
             var rewards = explorer.GetGuildRewards();
-            Assert.IsTrue(rewards.Count() == 60);
+            Assert.AreEqual(62, rewards.Count());
             Assert.IsTrue(rewards.Any(r => r.Achievement != null));
         }
 
@@ -84,7 +84,7 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Guild_Perks_Data()
         {
             var perks = explorer.GetGuildPerks();
-            Assert.IsTrue(perks.Count() == 24);
+            Assert.AreEqual(6, perks.Count());
             Assert.IsTrue(perks.Any(r => r.Spell != null));
         }
 

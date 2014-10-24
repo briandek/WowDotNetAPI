@@ -31,7 +31,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual(1, sampleItem.Stackable);
             Assert.AreEqual(0, sampleItem.ItemBind);
             Assert.AreEqual("WORLD_DROP", sampleItem.ItemSource.SourceType);
-            Assert.AreEqual(4, sampleItem.WeaponInfo.Damage.MaxDamage);
+            Assert.AreEqual(1, sampleItem.WeaponInfo.Damage.MaxDamage);
         }
 
 
@@ -51,7 +51,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual(null, sampleItem.WeaponInfo);
 
             Assert.AreEqual(4, sampleItem.AllowableClasses.First());
-            Assert.AreEqual(37, sampleItem.BonusStats.ElementAt(2).Amount);
+            Assert.AreEqual(16, sampleItem.BonusStats.ElementAt(2).Amount);
 
             Assert.AreEqual("BLUE", sampleItem.SocketInfo.Sockets.First().Type);
 
@@ -73,8 +73,8 @@ namespace WowDotNetAPI.Explorers.Test
 
             Assert.AreEqual(3.7, sampleItem.WeaponInfo.WeaponSpeed);
 
-            Assert.AreEqual(12, sampleItem.BonusStats.ElementAt(2).Amount);
-            Assert.AreEqual("Hurls a fiery ball that causes 343 Fire damage and an additional 85 damage over 10 sec.",
+            Assert.AreEqual(8, sampleItem.BonusStats.ElementAt(2).Amount);
+            Assert.AreEqual("Hurls a fiery ball that causes 267 Fire damage and an additional 65 damage over 10 sec.",
                 sampleItem.ItemSpells.First().Spell.Description);
         }
 
@@ -84,7 +84,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var sampleItem = explorer.GetItem(52210);
 
-            Assert.AreEqual("+40 Parry and +30 Stamina", sampleItem.GemInfo.Bonus.Name);
+            Assert.AreEqual("+8 Parry and +4 Stamina", sampleItem.GemInfo.Bonus.Name);
             Assert.AreEqual("PURPLE", sampleItem.GemInfo.Type.Color);
             Assert.AreEqual(sampleItem.Id, sampleItem.GemInfo.Bonus.SourceItemId);
             Assert.AreEqual(0, sampleItem.GemInfo.Bonus.RequiredSkillRank);
