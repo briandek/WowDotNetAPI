@@ -11,7 +11,7 @@ namespace WowDotNetAPI.Test
     public class CharacterTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+		private static string APIKey = "";
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -149,8 +149,10 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(CharacterRace.HUMAN, briandek.Race);
             Assert.AreEqual(CharacterGender.MALE, briandek.Gender);
 
-			Assert.AreEqual(briandek.Items.Finger2.TooltipParams.ItemUpgrade.Current, 0);
-			Assert.AreEqual(briandek.Items.Finger2.TooltipParams.ItemUpgrade.Total, 4);
+			Assert.AreEqual(briandek.Items.Head.ItemLevel, 630);
+			Assert.AreEqual(briandek.Items.Head.Armor, 255);
+			//Assert.AreEqual(briandek.Items.Head.TooltipParams.ItemUpgrade.Current, 0);
+			//Assert.AreEqual(briandek.Items.Finger2.TooltipParams.ItemUpgrade.Total, 4);
         }
 
         [TestMethod]

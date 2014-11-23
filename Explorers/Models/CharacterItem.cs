@@ -23,10 +23,22 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "quality")]
         public int Quality { get; set; }
 
+		[DataMember(Name = "itemLevel")]
+		public int ItemLevel { get; set; }
+
         [DataMember(Name = "tooltipParams")]
         public ItemTooltipParameters TooltipParams { get; set; }
 
 		[DataMember(Name = "stats")]
 		public IEnumerable<ItemStat> Stats { get; set; }
+
+		[DataMember(Name = "armor")]
+		public int Armor { get; set; }
+
+		[DataMember(Name = "context")]
+		public string Context { get; set; }
+
+		[DataMember(Name = "bonusLists")]
+		public IEnumerable<int> BonusLists { get; set; }
 	}
 }
