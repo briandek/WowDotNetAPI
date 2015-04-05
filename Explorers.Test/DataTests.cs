@@ -39,7 +39,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var races = explorer.GetCharacterRaces();
 
-            Assert.AreEqual(24, races.Count());
+            Assert.AreEqual(25, races.Count());
             Assert.IsTrue(races.Any(r => r.Name == "Human" || r.Name == "Night Elf"));
         }
 
