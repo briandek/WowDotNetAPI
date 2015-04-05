@@ -99,15 +99,6 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        public void Get_Character_From_Json_String()
-        {
-            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
-            var briandekFromJsonString = JsonUtility.FromJSONString<Character>(TestStrings.TestCharacter);
-            Assert.AreEqual(0, briandek.CompareTo(briandekFromJsonString));
-
-        }
-
-        [TestMethod]
         public void Get_Item_Classes()
         {
             var itemClasses = explorer.GetItemClasses();
