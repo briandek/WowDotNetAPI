@@ -29,7 +29,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher()
+        public void Get_Simple_Character()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName);
@@ -56,7 +56,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithGuild()
+        public void Get_Simple_Character_WithGuild()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetGuild);
@@ -83,7 +83,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithStats()
+        public void Get_Simple_Character_WithStats()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetStats);
@@ -110,7 +110,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithTalents()
+        public void Get_Simple_Character_WithTalents()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetTalents);
@@ -137,7 +137,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithItems()
+        public void Get_Simple_Character_WithItems()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetItems);
@@ -164,7 +164,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithReputations()
+        public void Get_Simple_Character_WithReputations()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetReputation);
@@ -191,7 +191,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithTitles()
+        public void Get_Simple_Character_WithTitles()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetTitles);
@@ -218,7 +218,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithProfessions()
+        public void Get_Simple_Character_WithProfessions()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetProfessions);
@@ -245,7 +245,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithAppearance()
+        public void Get_Simple_Character_WithAppearance()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetAppearance);
@@ -272,7 +272,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithPetSlots()
+        public void Get_Simple_Character_WithPetSlots()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetPetSlots);
@@ -300,7 +300,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithMounts()
+        public void Get_Simple_Character_WithMounts()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetMounts);
@@ -329,7 +329,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithAchievements()
+        public void Get_Simple_Character_WithAchievements()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetAchievements);
@@ -356,7 +356,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Simple_Character_Briandek_From_Skullcrusher_WithProgression()
+        public void Get_Simple_Character_WithProgression()
         {
 
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetProgression);
@@ -383,7 +383,7 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Complex_Character_Briandek_From_Skullcrusher()
+        public void Get_Complex_Character()
         {
             var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetEverything);
 
