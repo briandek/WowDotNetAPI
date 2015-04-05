@@ -34,21 +34,6 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Valid_Human_Member_From_Immortality_Guild()
-        {
-            var guildMember = guild.Members.Where(m => m.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            Assert.IsTrue(guildMember.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-
-            Assert.AreEqual(100, guildMember.Character.Level);
-            Assert.AreEqual(CharacterClass.WARRIOR, guildMember.Character.@Class);
-            Assert.AreEqual(CharacterRace.HUMAN, guildMember.Character.Race);
-            Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
-
-            Assert.AreEqual(7575, guildMember.Character.AchievementPoints);
-        }
-
-
-        [TestMethod]
         public void Get_Valid_Night_Elf_Member_From_Immortality_Guild()
         {
             var guildMember = guild.Members.Where(m => m.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
