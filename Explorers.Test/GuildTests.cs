@@ -7,6 +7,7 @@ using WowDotNetAPI.Utilities;
 using System.Net;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Models;
+using WowDotNetAPI.Explorers.Test;
 
 namespace WowDotNetAPI.Test
 {
@@ -15,7 +16,7 @@ namespace WowDotNetAPI.Test
     {
         private static WowExplorer explorer;
         private static Guild guild;
-		private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -143,12 +144,12 @@ namespace WowDotNetAPI.Test
 
         [TestMethod]
         public void Get_Guild_With_Connected_Realms() {
-			WowExplorer explorer2 = new WowExplorer(Region.EU, Locale.en_GB, APIKey);
-			Guild guild2 = explorer2.GetGuild("darksorrow", "mentality", GuildOptions.GetMembers);
-			List<GuildMember> guildMembers = guild2.Members.Where(x => x.Character.Name.Equals("Danishpala", StringComparison.CurrentCultureIgnoreCase)).ToList();
+            WowExplorer explorer2 = new WowExplorer(Region.EU, Locale.en_GB, APIKey);
+            Guild guild2 = explorer2.GetGuild("darksorrow", "mentality", GuildOptions.GetMembers);
+            List<GuildMember> guildMembers = guild2.Members.Where(x => x.Character.Name.Equals("Danishpala", StringComparison.CurrentCultureIgnoreCase)).ToList();
 
-			Assert.AreEqual(2, guildMembers.Count);
-			Assert.AreEqual(1, guildMembers.Count(x => !x.Character.Realm.Equals(x.Character.GuildRealm)));
+            Assert.AreEqual(2, guildMembers.Count);
+            Assert.AreEqual(1, guildMembers.Count(x => !x.Character.Realm.Equals(x.Character.GuildRealm)));
         }
     }
 }

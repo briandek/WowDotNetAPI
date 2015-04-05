@@ -12,7 +12,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class ItemTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
