@@ -30,8 +30,8 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var battleGroups = explorer.GetBattlegroupsData();
 
-            Assert.AreEqual(15, battleGroups.Count()); 
-            Assert.IsTrue(battleGroups.Any(r => r.Name == "Nightfall"));
+            Assert.AreEqual(9, battleGroups.Count()); 
+            Assert.IsTrue(battleGroups.Any(r => r.Name == "Rampage"));
         }
 
         [TestMethod]
