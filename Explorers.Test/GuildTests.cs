@@ -39,7 +39,7 @@ namespace WowDotNetAPI.Test
             var guildMember = guild.Members.Where(m => m.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
             Assert.IsTrue(guildMember.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(90, guildMember.Character.Level);
+            Assert.AreEqual(100, guildMember.Character.Level);
             Assert.AreEqual(CharacterClass.WARRIOR, guildMember.Character.@Class);
             Assert.AreEqual(CharacterRace.HUMAN, guildMember.Character.Race);
             Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
@@ -55,7 +55,7 @@ namespace WowDotNetAPI.Test
 
             Assert.IsTrue(guildMember.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(90, guildMember.Character.Level);
+            Assert.AreEqual(100, guildMember.Character.Level);
             Assert.AreEqual(CharacterClass.DRUID, guildMember.Character.@Class);
             Assert.AreEqual(CharacterRace.NIGHT_ELF, guildMember.Character.Race);
             Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
