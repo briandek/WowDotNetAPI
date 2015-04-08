@@ -12,7 +12,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class ItemTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -74,10 +74,9 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual(3.7, sampleItem.WeaponInfo.WeaponSpeed);
 
             Assert.AreEqual(8, sampleItem.BonusStats.ElementAt(2).Amount);
-            Assert.AreEqual("Hurls a fiery ball that causes 267 Fire damage and an additional 65 damage over 10 sec.",
+            Assert.AreEqual("Hurls a fiery ball that causes ^6.6574 Fire damage and an additional ^1.6475 damage over 10 sec.",
                 sampleItem.ItemSpells.First().Spell.Description);
         }
-
 
         [TestMethod]
         public void Get_Sample_Gem_52210()

@@ -7,6 +7,7 @@ using WowDotNetAPI.Utilities;
 using System.Net;
 using System.Web.Script.Serialization;
 using WowDotNetAPI.Models;
+using WowDotNetAPI.Explorers.Test;
 
 namespace WowDotNetAPI.Test
 {
@@ -15,7 +16,7 @@ namespace WowDotNetAPI.Test
     {
         private static WowExplorer explorer;
         private static Guild guild;
-		private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -33,28 +34,13 @@ namespace WowDotNetAPI.Test
         }
 
         [TestMethod]
-        public void Get_Valid_Human_Member_From_Immortality_Guild()
-        {
-            var guildMember = guild.Members.Where(m => m.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
-            Assert.IsTrue(guildMember.Character.Name.Equals("briandek", StringComparison.InvariantCultureIgnoreCase));
-
-            Assert.AreEqual(90, guildMember.Character.Level);
-            Assert.AreEqual(CharacterClass.WARRIOR, guildMember.Character.@Class);
-            Assert.AreEqual(CharacterRace.HUMAN, guildMember.Character.Race);
-            Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
-
-            Assert.AreEqual(7575, guildMember.Character.AchievementPoints);
-        }
-
-
-        [TestMethod]
         public void Get_Valid_Night_Elf_Member_From_Immortality_Guild()
         {
             var guildMember = guild.Members.Where(m => m.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
 
             Assert.IsTrue(guildMember.Character.Name.Equals("fleas", StringComparison.InvariantCultureIgnoreCase));
 
-            Assert.AreEqual(90, guildMember.Character.Level);
+            Assert.AreEqual(100, guildMember.Character.Level);
             Assert.AreEqual(CharacterClass.DRUID, guildMember.Character.@Class);
             Assert.AreEqual(CharacterRace.NIGHT_ELF, guildMember.Character.Race);
             Assert.AreEqual(CharacterGender.MALE, guildMember.Character.Gender);
@@ -143,12 +129,12 @@ namespace WowDotNetAPI.Test
 
         [TestMethod]
         public void Get_Guild_With_Connected_Realms() {
-			WowExplorer explorer2 = new WowExplorer(Region.EU, Locale.en_GB, APIKey);
-			Guild guild2 = explorer2.GetGuild("darksorrow", "mentality", GuildOptions.GetMembers);
-			List<GuildMember> guildMembers = guild2.Members.Where(x => x.Character.Name.Equals("Danishpala", StringComparison.CurrentCultureIgnoreCase)).ToList();
+            WowExplorer explorer2 = new WowExplorer(Region.EU, Locale.en_GB, APIKey);
+            Guild guild2 = explorer2.GetGuild("darksorrow", "mentality", GuildOptions.GetMembers);
+            List<GuildMember> guildMembers = guild2.Members.Where(x => x.Character.Name.Equals("Danishpala", StringComparison.CurrentCultureIgnoreCase)).ToList();
 
-			Assert.AreEqual(2, guildMembers.Count);
-			Assert.AreEqual(1, guildMembers.Count(x => !x.Character.Realm.Equals(x.Character.GuildRealm)));
+            Assert.AreEqual(2, guildMembers.Count);
+            Assert.AreEqual(1, guildMembers.Count(x => !x.Character.Realm.Equals(x.Character.GuildRealm)));
         }
     }
 }

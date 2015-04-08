@@ -9,6 +9,7 @@ using WowDotNetAPI;
 using WowDotNetAPI.Models;
 using WowDotNetAPI.Test;
 using WowDotNetAPI.Utilities;
+using WowDotNetAPI.Explorers.Test;
 
 namespace Explorers.Test
 {
@@ -16,7 +17,7 @@ namespace Explorers.Test
     public class RealmTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)

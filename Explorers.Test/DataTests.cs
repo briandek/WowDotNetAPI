@@ -17,7 +17,7 @@ namespace WowDotNetAPI.Explorers.Test
     public class DataTests
     {
         private static WowExplorer explorer;
-        private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -30,8 +30,8 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var battleGroups = explorer.GetBattlegroupsData();
 
-            Assert.AreEqual(15, battleGroups.Count()); 
-            Assert.IsTrue(battleGroups.Any(r => r.Name == "Nightfall"));
+            Assert.AreEqual(9, battleGroups.Count()); 
+            Assert.IsTrue(battleGroups.Any(r => r.Name == "Rampage"));
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var races = explorer.GetCharacterRaces();
 
-            Assert.AreEqual(24, races.Count());
+            Assert.AreEqual(25, races.Count());
             Assert.IsTrue(races.Any(r => r.Name == "Human" || r.Name == "Night Elf"));
         }
 
@@ -95,15 +95,6 @@ namespace WowDotNetAPI.Explorers.Test
             var realms2 = JsonUtility.FromJSONString<RealmsData>(TestStrings.TestRealms).Realms;
             var realms3 = realms1.Intersect(realms2);
             Assert.AreEqual(0, realms3.Count());
-
-        }
-
-        [TestMethod]
-        public void Get_Character_From_Json_String()
-        {
-            var briandek = explorer.GetCharacter("skullcrusher", "briandek", CharacterOptions.GetEverything);
-            var briandekFromJsonString = JsonUtility.FromJSONString<Character>(TestStrings.TestCharacter);
-            Assert.AreEqual(0, briandek.CompareTo(briandekFromJsonString));
 
         }
 

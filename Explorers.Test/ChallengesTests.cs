@@ -15,7 +15,7 @@ namespace WowDotNetAPI.Explorers.Test
     {
         private static WowExplorer explorer;
         private static Challenges challenges;
-        private static string APIKey = "";
+        private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
@@ -28,7 +28,6 @@ namespace WowDotNetAPI.Explorers.Test
         {
             challenges = explorer.GetChallenges("skullcrusher");
             Assert.IsTrue(challenges.Challenge.Count() > 0);            
-            Assert.IsTrue(challenges.Challenge.First().Groups.Count() == 0);
             Assert.AreEqual("Auchindoun", challenges.Challenge.First().Map.Name);
         }
     }
