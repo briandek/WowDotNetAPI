@@ -116,6 +116,8 @@
     <Compile Include="Models\ItemUpgrade.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
+    <Compile Include="Models\PvpStats.cs" />
+    <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
