@@ -53,8 +53,14 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "slug")]
         public string Slug { get; set; }
 
+        [DataMember(Name = "battlegroup")]
+        public string Battlegroup { get; set; }
+
+        [DataMember(Name = "locale")]
+        public string Locale { get; set; }
+
         public RealmType Type { get { return (RealmType)Enum.Parse(typeof(RealmType), type, true); } }
-        
+
         //See enum TODO comments
         //public RealmPopulation Population { get { return (RealmPopulation)Enum.Parse(typeof(RealmPopulation), population, true); } }
 

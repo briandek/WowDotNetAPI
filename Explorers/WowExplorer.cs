@@ -177,15 +177,22 @@ namespace WowDotNetAPI
         #endregion
 
         #region Realms
-        public IEnumerable<Realm> GetRealms()
+        public IEnumerable<Realm> GetRealms(Locale locale)
         {
             RealmsData realmsData;
-
             TryGetData<RealmsData>(
                 string.Format(@"{0}/wow/realm/status?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out realmsData);
+            if (realmsData == null)
+            {
+                return null;
+            }
+            return locale == Locale.None ? realmsData.Realms : realmsData.Realms.Where(x => x.Locale == locale.ToString());
+        }
 
-            return (realmsData != null) ? realmsData.Realms : null;
+        public IEnumerable<Realm> GetRealms()
+        {
+            return this.GetRealms(Locale.None);
         }
 
         #endregion
@@ -275,11 +282,11 @@ namespace WowDotNetAPI
         public IEnumerable<GuildRewardInfo> GetGuildRewards()
         {
             GuildRewardsData guildRewardsData;
-            
+
             TryGetData<GuildRewardsData>(
                 string.Format(@"{0}/wow/data/guild/rewards?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out guildRewardsData);
-            
+
             return (guildRewardsData != null) ? guildRewardsData.Rewards : null;
         }
         #endregion
@@ -290,7 +297,7 @@ namespace WowDotNetAPI
             GuildPerksData guildPerksData;
 
             TryGetData<GuildPerksData>(
-                 string.Format(@"{0}/wow/data/guild/perks?locale={1}&apikey={2}", Host, Locale, APIKey), 
+                 string.Format(@"{0}/wow/data/guild/perks?locale={1}&apikey={2}", Host, Locale, APIKey),
                  out guildPerksData);
 
             return (guildPerksData != null) ? guildPerksData.Perks : null;
@@ -312,7 +319,7 @@ namespace WowDotNetAPI
         public IEnumerable<AchievementList> GetAchievements()
         {
             AchievementData achievementData;
-            
+
             TryGetData<AchievementData>(
                 string.Format(@"{0}/wow/data/character/achievements?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out achievementData);
@@ -336,10 +343,10 @@ namespace WowDotNetAPI
         #region Battlegroups
         public IEnumerable<BattlegroupInfo> GetBattlegroupsData()
         {
-            BattlegroupData battlegroupData;            
-            
+            BattlegroupData battlegroupData;
+
             TryGetData<BattlegroupData>(
-                string.Format(@"{0}/wow/data/battlegroups/?locale={1}&apikey={2}", Host, Locale, APIKey), 
+                string.Format(@"{0}/wow/data/battlegroups/?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out battlegroupData);
 
             return (battlegroupData != null) ? battlegroupData.Battlegroups : null;
@@ -352,7 +359,7 @@ namespace WowDotNetAPI
             Challenges challenges;
 
             TryGetData<Challenges>(
-                string.Format(@"{0}/wow/challenge/{1}?locale={2}&apikey={3}", Host, realm, Locale, APIKey), 
+                string.Format(@"{0}/wow/challenge/{1}?locale={2}&apikey={3}", Host, realm, Locale, APIKey),
                 out challenges);
 
             return challenges;
@@ -371,7 +378,7 @@ namespace WowDotNetAPI
                 requestedObject = JsonUtility.FromJSON<T>(url);
             }
             catch (Exception ex)
-            {                
+            {
                 requestedObject = null;
                 throw ex;
             }
