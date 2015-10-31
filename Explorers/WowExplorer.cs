@@ -366,6 +366,19 @@ namespace WowDotNetAPI
         }
         #endregion
 
+        #region PvP
+        public Leaderboard GetLeaderBoards(Bracket bracket)
+        {
+            Leaderboard pvpRows;
+
+            TryGetData<Leaderboard>(
+                string.Format(@"{0}/wow/leaderboard/{1}?locale={2}&apikey={3}", Host, bracket.ToString().Replace("_", "") , Locale, APIKey),
+                out pvpRows);
+
+            return pvpRows;
+        }
+        #endregion
+
         private T GetData<T>(string url) where T : class
         {
             return JsonUtility.FromJSON<T>(url);
