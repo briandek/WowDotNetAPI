@@ -7,33 +7,33 @@ namespace WowDotNetAPI.Explorers.Test
     [TestClass]
     public class AchievementTests
     {
-        private static WowExplorer Explorer;
+        private static WowExplorer explorer;
         private static string APIKey = TestStrings.APIKey;
 
         [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
-            Explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
+            explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
         }
 
         [TestMethod]
         public void Get_Achievements_List()
         {
-            var achievements = Explorer.GetAchievements();
+            var achievements = explorer.GetAchievements();
             Assert.IsTrue(achievements != null && achievements.Count() > 0);
         }
 
         [TestMethod]
         public void Get_Achievement_Details()
         {
-            var achievement = Explorer.GetAchievement(2144);
+            var achievement = explorer.GetAchievement(2144);
             Assert.IsNotNull(achievement);
         }
 
         [TestMethod]
         public void Get_Guild_Achievements_List()
         {
-            var achievements = Explorer.GetGuildAchievements();
+            var achievements = explorer.GetGuildAchievements();
             Assert.IsTrue(achievements != null && achievements.Count() > 0);
         }
     }

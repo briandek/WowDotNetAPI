@@ -176,6 +176,54 @@ namespace WowDotNetAPI
 
         #endregion
 
+        #region Pets
+
+        /// <summary>
+        /// Gets a list of all battle pets
+        /// </summary>
+        /// <returns>PetList object containing an IEnumerable of Pet objects</returns>
+        public PetList GetPets()
+        {
+            PetList pets;
+
+            TryGetData<PetList>(string.Format(@"{0}/wow/pet/?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out pets);
+
+            return pets;
+        }
+
+        /// <summary>
+        /// Gets details on a specific Battle Pet ability
+        /// </summary>
+        /// <param name="id">The id of the ability to get details on.</param>
+        /// <returns>Returns PetAbilityDetails object for the ability with the given id</returns>
+        public PetAbilityDetails GetPetAbilityDetails(int id)
+        {
+            PetAbilityDetails ability;
+
+            TryGetData<PetAbilityDetails>(string.Format(@"{0}/wow/pet/ability/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out ability);
+
+            return ability;
+        }
+
+        /// <summary>
+        /// Gets details on a specific [species of] Battle Pet
+        /// </summary>
+        /// <param name="id">The species ID of the battle pet</param>
+        /// <returns>PetSpecies object containing details for the battle pet with the given species ID</returns>
+        public PetSpecies GetPetSpeciesDetails(int id)
+        {
+            PetSpecies species;
+
+            TryGetData<PetSpecies>(string.Format(@"{0}/wow/pet/species/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out species);
+
+            return species;
+        }
+
+        #endregion
+
         #region Realms
         public IEnumerable<Realm> GetRealms(Locale locale)
         {
