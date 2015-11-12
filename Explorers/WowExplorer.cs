@@ -198,7 +198,11 @@ namespace WowDotNetAPI
         #endregion
 
         #region Auctions
-
+        /// <summary>
+        /// Gets a list of all current auctions on the given realm and connected realms
+        /// </summary>
+        /// <param name="realm">The name of the realm to base the search on</param>
+        /// <returns>Auctions object for the given realm.</returns>
         public Auctions GetAuctions(string realm)
         {
             AuctionFiles auctionFiles;

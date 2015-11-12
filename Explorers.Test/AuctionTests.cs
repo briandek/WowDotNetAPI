@@ -17,28 +17,10 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        public void Get_US_Realm_Auction_Data()
+        public void Get_Auction_Data()
         {
             Auctions auctions = explorer.GetAuctions("skullcrusher");
-            Assert.IsTrue(auctions.AllAuctionHouses.Auctions.Count() > 0);
-        }
-
-        [TestMethod]
-        public void Get_EU_Realm_Auction_Data()
-        {
-            WowExplorer euExplorer = new WowExplorer(Region.EU, Locale.fr_FR, APIKey);
-
-            Auctions auctions = euExplorer.GetAuctions("Twisting Nether");
-            Assert.IsTrue(auctions.AllAuctionHouses.Auctions.Count() > 0);
-        }
-
-        [TestMethod]
-        public void Get_TW_Realm_Auction_Data()
-        {
-            WowExplorer twExplorer = new WowExplorer(Region.TW, Locale.zh_TW, APIKey);
-            
-            Auctions auctions = twExplorer.GetAuctions("Balnazzar");
-            Assert.IsTrue(auctions.AllAuctionHouses.Auctions.Count() > 0);
+            Assert.IsTrue(auctions.CurrentAuctions.Count() > 0);
         }
     }
 }

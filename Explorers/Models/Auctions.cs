@@ -12,6 +12,6 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "realm")]
         public Realm Realm { get; set; }
         [DataMember(Name = "auctions")]
-        public AuctionHouseSide AllAuctionHouses { get; set; }
+        public IEnumerable<Auction> CurrentAuctions { get; set; }
     }
 }
