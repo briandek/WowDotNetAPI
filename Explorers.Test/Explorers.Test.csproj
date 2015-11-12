@@ -47,6 +47,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AchievementTests.cs" />
     <Compile Include="AuctionTests.cs" />
     <Compile Include="ChallengesTests.cs" />
     <Compile Include="CharacterTests.cs" />

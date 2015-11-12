@@ -305,6 +305,11 @@ namespace WowDotNetAPI
         #endregion
 
         #region Achievements
+        /// <summary>
+        /// Gets details on a particular achievement
+        /// </summary>
+        /// <param name="id">The id of the achievement to get details on</param>
+        /// <returns>AchievementInfo object for the achievement with the given id</returns>
         public AchievementInfo GetAchievement(int id)
         {
             AchievementInfo achievement;
@@ -316,6 +321,10 @@ namespace WowDotNetAPI
             return achievement;
         }
 
+        /// <summary>
+        /// Gets a list of all character achievements
+        /// </summary>
+        /// <returns>IEnumerable containing AchievementList items for each achievement</returns>
         public IEnumerable<AchievementList> GetAchievements()
         {
             AchievementData achievementData;
@@ -327,6 +336,10 @@ namespace WowDotNetAPI
             return (achievementData != null) ? achievementData.Lists : null;
         }
 
+        /// <summary>
+        /// Gets a list of all guild achievements
+        /// </summary>
+        /// <returns>IEnumerable containing AchievementList items for each achievement</returns>
         public IEnumerable<AchievementList> GetGuildAchievements()
         {
             AchievementData achievementData;
