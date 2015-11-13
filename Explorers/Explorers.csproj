@@ -114,6 +114,8 @@
     <Compile Include="Models\ItemUpgrade.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
+    <Compile Include="Models\Mount.cs" />
+    <Compile Include="Models\Mounts.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\PetAbility.cs" />
     <Compile Include="Models\PetAbilityDetails.cs" />
@@ -124,6 +126,8 @@
     <Compile Include="Models\PetTypeData.cs" />
     <Compile Include="Models\PvpStats.cs" />
     <Compile Include="Models\Leaderboard.cs" />
+    <Compile Include="Models\Quest.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />

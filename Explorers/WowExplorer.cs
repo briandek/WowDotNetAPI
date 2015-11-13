@@ -516,6 +516,26 @@ namespace WowDotNetAPI
         }
         #endregion
 
+        #region Recipes
+
+        /// <summary>
+        /// The recipe API provides basic recipe information.
+        /// </summary>
+        /// <param name="recipeId">Unique ID for the desired recipe.</param>
+        /// <returns></returns>
+        public Recipe GetRecipeData(int recipeId)
+        {
+            Recipe recipe;
+
+            TryGetData<Recipe>(
+                string.Format(@"{0}/wow/quest/{1}?locale={2}&apikey={3}", Host, recipeId, Locale, APIKey),
+                out recipe);
+
+            return recipe;
+        }
+
+        #endregion
+
         private T GetData<T>(string url) where T : class
         {
             return JsonUtility.FromJSON<T>(url);

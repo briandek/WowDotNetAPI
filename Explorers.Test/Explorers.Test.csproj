@@ -54,9 +54,12 @@
     <Compile Include="DataTests.cs" />
     <Compile Include="ItemTests.cs" />
     <Compile Include="GuildTests.cs" />
+    <Compile Include="MountTests.cs" />
     <Compile Include="PetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestTests.cs" />
     <Compile Include="RealmTests.cs" />
+    <Compile Include="RecipeTests.cs" />
     <Compile Include="TestStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
