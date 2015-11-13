@@ -528,10 +528,30 @@ namespace WowDotNetAPI
             Recipe recipe;
 
             TryGetData<Recipe>(
-                string.Format(@"{0}/wow/quest/{1}?locale={2}&apikey={3}", Host, recipeId, Locale, APIKey),
+                string.Format(@"{0}/wow/recipe/{1}?locale={2}&apikey={3}", Host, recipeId, Locale, APIKey),
                 out recipe);
 
             return recipe;
+        }
+
+        #endregion
+
+        #region Spells
+
+        /// <summary>
+        /// The spell API provides some information about spells.
+        /// </summary>
+        /// <param name="spellId">Unique ID of the desired spell.</param>
+        /// <returns></returns>
+        public Spell GetSpellData(int spellId)
+        {
+            Spell spell;
+
+            TryGetData<Spell>(
+                string.Format(@"{0}/wow/spell/{1}?locale={2}&apikey={3}", Host, spellId, Locale, APIKey),
+                out spell);
+
+            return spell;
         }
 
         #endregion
