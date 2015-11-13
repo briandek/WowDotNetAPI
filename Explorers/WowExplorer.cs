@@ -182,14 +182,14 @@ namespace WowDotNetAPI
         /// Gets a list of all battle pets
         /// </summary>
         /// <returns>PetList object containing an IEnumerable of Pet objects</returns>
-        public PetList GetPets()
+        public IEnumerable<Pet> GetPets()
         {
             PetList pets;
 
             TryGetData<PetList>(string.Format(@"{0}/wow/pet/?locale={1}&apikey={2}", Host, Locale, APIKey),
                 out pets);
 
-            return pets;
+            return pets.Pets;
         }
 
         /// <summary>
@@ -221,6 +221,38 @@ namespace WowDotNetAPI
 
             return species;
         }
+
+        /// <summary>
+        /// Retrieve detailed information about a given species of pet.
+        /// </summary>
+        /// <param name="speciesId">The pet's species ID. This can be found by querying a users' list of pets via the Character Profile API.</param>
+        /// <param name="level">The pet's level. Pet levels max out at 25. If omitted the API assumes a default value of 1.</param>
+        /// <param name="breedId">The pet's breed. Retrievable via the Character Profile API. If omitted the API assumes a default value of 3.</param>
+        /// <param name="qualityId">The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5 (0 is poor quality and 5 is legendary). If omitted the API will assume a default value of 1.</param>
+        /// <returns></returns>
+        public PetStats GetPetStats(int speciesId, int level, int breedId, int qualityId)
+        {
+            PetStats stats;
+
+            TryGetData<PetStats>(string.Format(@"{0}/wow/pet/stats/{1}?level={2}&breedId={3}&qualityId={4}&locale={5}&apikey={6}", Host, speciesId, level, breedId, qualityId, Locale, APIKey),
+                out stats);
+
+            return stats;
+        }
+
+        /// <summary>
+        /// The different bat pet types (including what they are strong and weak against)
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<PetType> GetPetTypes()
+        {
+            PetTypeData types;
+
+            TryGetData<PetTypeData>(string.Format(@"{0}/wow/data/pet/types?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out types);
+
+            return types.PetTypes.Any() ? types.PetTypes : null;
+        } 
 
         #endregion
 

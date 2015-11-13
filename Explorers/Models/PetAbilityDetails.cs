@@ -13,7 +13,7 @@ namespace WowDotNetAPI.Models
         public int AbilityId { get; set; }
 
         [DataMember(Name = "name")]
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         [DataMember(Name = "icon")]
         public string Icon { get; set; }
