@@ -483,6 +483,26 @@ namespace WowDotNetAPI
         }
         #endregion
 
+        #region Quests
+
+        /// <summary>
+        /// Retrieve metadata for a given quest.
+        /// </summary>
+        /// <param name="questId">The ID of the desired quest.</param>
+        /// <returns></returns>
+        public Quest GetQuestData(int questId)
+        {
+            Quest quest;
+
+            TryGetData<Quest>(
+                string.Format(@"{0}/wow/quest/{1}?locale={2}&apikey={3}", Host, questId, Locale, APIKey),
+                out quest);
+
+            return quest;
+        }
+
+        #endregion
+
         #region PvP
         public Leaderboard GetLeaderBoards(Bracket bracket)
         {
