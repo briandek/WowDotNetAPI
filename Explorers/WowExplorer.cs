@@ -252,7 +252,21 @@ namespace WowDotNetAPI
                 out types);
 
             return types.PetTypes.Any() ? types.PetTypes : null;
-        } 
+        }
+
+        #endregion
+
+        #region Mounts
+
+        public IEnumerable<Mount> GetMounts()
+        {
+            Mounts mounts;
+
+            TryGetData<Mounts>(string.Format(@"{0}/wow/mount/?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out mounts);
+
+            return mounts.MountList;
+        }
 
         #endregion
 
