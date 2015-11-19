@@ -33,6 +33,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "shirt")]
         public CharacterItem Shirt { get; set; }
 
+        [DataMember(Name = "tabard")]
+        public CharacterItem Tabard { get; set; }
+
         [DataMember(Name = "wrist")]
         public CharacterItem Wrist { get; set; }
 
