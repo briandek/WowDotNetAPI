@@ -128,6 +128,7 @@
     <Compile Include="Models\Leaderboard.cs" />
     <Compile Include="Models\Quest.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\Spell.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />

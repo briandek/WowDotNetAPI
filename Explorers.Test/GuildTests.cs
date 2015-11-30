@@ -22,13 +22,13 @@ namespace WowDotNetAPI.Test
         public static void ClassInit(TestContext context)
         {
             explorer = new WowExplorer(Region.US, Locale.en_US, APIKey);
-            guild = explorer.GetGuild("skullcrusher", "immortality", GuildOptions.GetEverything);
+            guild = explorer.GetGuild("korgath", "immortality", GuildOptions.GetEverything);
         }
 
         [TestMethod]
-        public void Get_Simple_Guild_Immortality_From_Skullcrusher()
+        public void Get_Simple_Guild_Immortality_From_Korgath()
         {
-            Assert.IsTrue(guild.Realm.Equals("skullcrusher", StringComparison.InvariantCultureIgnoreCase));
+            Assert.IsTrue(guild.Realm.Equals("korgath", StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(UnitSide.ALLIANCE, guild.Side);
             Assert.IsTrue(guild.Members.Any());
         }

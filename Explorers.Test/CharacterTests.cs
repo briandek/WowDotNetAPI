@@ -13,13 +13,13 @@ namespace WowDotNetAPI.Test
     {
         private static WowExplorer explorer;
         private static string APIKey = TestStrings.APIKey;
-        private const Region WowRegion = Region.EU;
-        private const Locale WowLocale = Locale.en_GB;
-        private const string CharacterName = "Eadie";
-        private const string Realm = "Burning Blade";
+        private const Region WowRegion = Region.US;
+        private const Locale WowLocale = Locale.en_US;
+        private const string CharacterName = "briandek";
+        private const string Realm = "spirestone";
         private const int level = 100;
-        private const CharacterClass cClass = CharacterClass.MAGE;
-        private const CharacterRace cRace = CharacterRace.GOBLIN;
+        private const CharacterClass cClass = CharacterClass.WARRIOR;
+        private const CharacterRace cRace = CharacterRace.HUMAN;
         private const CharacterGender cGender = CharacterGender.MALE;
 
         [ClassInitialize]
@@ -161,12 +161,12 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(cClass, briandek.@Class);
             Assert.AreEqual(cRace, briandek.Race);
             Assert.AreEqual(cGender, briandek.Gender);
-			Assert.IsNotNull(briandek.Items.Tabard);
+			Assert.IsNull(briandek.Items.Tabard);
         }
 
 		[TestMethod]
 		public void Get_Simple_Character_WithItems_Tabard() {
-			string characterNameWithTabard = "Urf";
+			string characterNameWithTabard = "Nidus";
 			var briandek = explorer.GetCharacter(Realm, characterNameWithTabard, CharacterOptions.GetItems);
 			Assert.IsNotNull(briandek.Items);
 			Assert.IsTrue(briandek.Name.Equals(characterNameWithTabard, StringComparison.InvariantCultureIgnoreCase));
