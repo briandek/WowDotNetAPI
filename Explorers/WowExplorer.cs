@@ -176,6 +176,100 @@ namespace WowDotNetAPI
 
         #endregion
 
+        #region Pets
+
+        /// <summary>
+        /// Gets a list of all battle pets
+        /// </summary>
+        /// <returns>PetList object containing an IEnumerable of Pet objects</returns>
+        public IEnumerable<Pet> GetPets()
+        {
+            PetList pets;
+
+            TryGetData<PetList>(string.Format(@"{0}/wow/pet/?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out pets);
+
+            return pets.Pets;
+        }
+
+        /// <summary>
+        /// Gets details on a specific Battle Pet ability
+        /// </summary>
+        /// <param name="id">The id of the ability to get details on.</param>
+        /// <returns>Returns PetAbilityDetails object for the ability with the given id</returns>
+        public PetAbilityDetails GetPetAbilityDetails(int id)
+        {
+            PetAbilityDetails ability;
+
+            TryGetData<PetAbilityDetails>(string.Format(@"{0}/wow/pet/ability/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out ability);
+
+            return ability;
+        }
+
+        /// <summary>
+        /// Gets details on a specific [species of] Battle Pet
+        /// </summary>
+        /// <param name="id">The species ID of the battle pet</param>
+        /// <returns>PetSpecies object containing details for the battle pet with the given species ID</returns>
+        public PetSpecies GetPetSpeciesDetails(int id)
+        {
+            PetSpecies species;
+
+            TryGetData<PetSpecies>(string.Format(@"{0}/wow/pet/species/{1}?locale={2}&apikey={3}", Host, id, Locale, APIKey),
+                out species);
+
+            return species;
+        }
+
+        /// <summary>
+        /// Retrieve detailed information about a given species of pet.
+        /// </summary>
+        /// <param name="speciesId">The pet's species ID. This can be found by querying a users' list of pets via the Character Profile API.</param>
+        /// <param name="level">The pet's level. Pet levels max out at 25. If omitted the API assumes a default value of 1.</param>
+        /// <param name="breedId">The pet's breed. Retrievable via the Character Profile API. If omitted the API assumes a default value of 3.</param>
+        /// <param name="qualityId">The pet's quality. Retrievable via the Character Profile API. Pet quality can range from 0 to 5 (0 is poor quality and 5 is legendary). If omitted the API will assume a default value of 1.</param>
+        /// <returns></returns>
+        public PetStats GetPetStats(int speciesId, int level, int breedId, int qualityId)
+        {
+            PetStats stats;
+
+            TryGetData<PetStats>(string.Format(@"{0}/wow/pet/stats/{1}?level={2}&breedId={3}&qualityId={4}&locale={5}&apikey={6}", Host, speciesId, level, breedId, qualityId, Locale, APIKey),
+                out stats);
+
+            return stats;
+        }
+
+        /// <summary>
+        /// The different bat pet types (including what they are strong and weak against)
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<PetType> GetPetTypes()
+        {
+            PetTypeData types;
+
+            TryGetData<PetTypeData>(string.Format(@"{0}/wow/data/pet/types?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out types);
+
+            return types.PetTypes.Any() ? types.PetTypes : null;
+        }
+
+        #endregion
+
+        #region Mounts
+
+        public IEnumerable<Mount> GetMounts()
+        {
+            Mounts mounts;
+
+            TryGetData<Mounts>(string.Format(@"{0}/wow/mount/?locale={1}&apikey={2}", Host, Locale, APIKey),
+                out mounts);
+
+            return mounts.MountList;
+        }
+
+        #endregion
+
         #region Realms
         public IEnumerable<Realm> GetRealms(Locale locale)
         {
@@ -198,7 +292,11 @@ namespace WowDotNetAPI
         #endregion
 
         #region Auctions
-
+        /// <summary>
+        /// Gets a list of all current auctions on the given realm and connected realms
+        /// </summary>
+        /// <param name="realm">The name of the realm to base the search on</param>
+        /// <returns>Auctions object for the given realm.</returns>
         public Auctions GetAuctions(string realm)
         {
             AuctionFiles auctionFiles;
@@ -305,6 +403,11 @@ namespace WowDotNetAPI
         #endregion
 
         #region Achievements
+        /// <summary>
+        /// Gets details on a particular achievement
+        /// </summary>
+        /// <param name="id">The id of the achievement to get details on</param>
+        /// <returns>AchievementInfo object for the achievement with the given id</returns>
         public AchievementInfo GetAchievement(int id)
         {
             AchievementInfo achievement;
@@ -316,6 +419,10 @@ namespace WowDotNetAPI
             return achievement;
         }
 
+        /// <summary>
+        /// Gets a list of all character achievements
+        /// </summary>
+        /// <returns>IEnumerable containing AchievementList items for each achievement</returns>
         public IEnumerable<AchievementList> GetAchievements()
         {
             AchievementData achievementData;
@@ -327,6 +434,10 @@ namespace WowDotNetAPI
             return (achievementData != null) ? achievementData.Lists : null;
         }
 
+        /// <summary>
+        /// Gets a list of all guild achievements
+        /// </summary>
+        /// <returns>IEnumerable containing AchievementList items for each achievement</returns>
         public IEnumerable<AchievementList> GetGuildAchievements()
         {
             AchievementData achievementData;
@@ -354,6 +465,12 @@ namespace WowDotNetAPI
         #endregion
 
         #region Challenges
+
+        /// <summary>
+        /// The data in this request has data for all 9 challenge mode maps (currently). The map field includes the current medal times for each dungeon. Inside each ladder we provide data about each character that was part of each run. The character data includes the current cached spec of the character while the member field includes the spec of the character during the challenge mode run.
+        /// </summary>
+        /// <param name="realm">The realm being requested.</param>
+        /// <returns></returns>
         public Challenges GetChallenges(string realm)
         {
             Challenges challenges;
@@ -364,6 +481,26 @@ namespace WowDotNetAPI
 
             return challenges;
         }
+        #endregion
+
+        #region Quests
+
+        /// <summary>
+        /// Retrieve metadata for a given quest.
+        /// </summary>
+        /// <param name="questId">The ID of the desired quest.</param>
+        /// <returns></returns>
+        public Quest GetQuestData(int questId)
+        {
+            Quest quest;
+
+            TryGetData<Quest>(
+                string.Format(@"{0}/wow/quest/{1}?locale={2}&apikey={3}", Host, questId, Locale, APIKey),
+                out quest);
+
+            return quest;
+        }
+
         #endregion
 
         #region PvP
@@ -377,6 +514,46 @@ namespace WowDotNetAPI
 
             return pvpRows;
         }
+        #endregion
+
+        #region Recipes
+
+        /// <summary>
+        /// The recipe API provides basic recipe information.
+        /// </summary>
+        /// <param name="recipeId">Unique ID for the desired recipe.</param>
+        /// <returns></returns>
+        public Recipe GetRecipeData(int recipeId)
+        {
+            Recipe recipe;
+
+            TryGetData<Recipe>(
+                string.Format(@"{0}/wow/recipe/{1}?locale={2}&apikey={3}", Host, recipeId, Locale, APIKey),
+                out recipe);
+
+            return recipe;
+        }
+
+        #endregion
+
+        #region Spells
+
+        /// <summary>
+        /// The spell API provides some information about spells.
+        /// </summary>
+        /// <param name="spellId">Unique ID of the desired spell.</param>
+        /// <returns></returns>
+        public Spell GetSpellData(int spellId)
+        {
+            Spell spell;
+
+            TryGetData<Spell>(
+                string.Format(@"{0}/wow/spell/{1}?locale={2}&apikey={3}", Host, spellId, Locale, APIKey),
+                out spell);
+
+            return spell;
+        }
+
         #endregion
 
         private T GetData<T>(string url) where T : class

@@ -1,11 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WowDotNetAPI.Models;
 
 namespace WowDotNetAPI.Explorers.Test
 {
     [TestClass]
-    public class AuctionTests
+    public class RecipeTests
     {
         private static WowExplorer explorer;
         private static string APIKey = TestStrings.APIKey;
@@ -17,10 +19,10 @@ namespace WowDotNetAPI.Explorers.Test
         }
 
         [TestMethod]
-        public void Get_Auction_Data()
+        public void Get_Recipe_Data()
         {
-            Auctions auctions = explorer.GetAuctions("skullcrusher");
-            Assert.IsTrue(auctions.CurrentAuctions.Count() > 0);
+            var recipe = explorer.GetRecipeData(33994);
+            Assert.IsNotNull(recipe);
         }
     }
 }

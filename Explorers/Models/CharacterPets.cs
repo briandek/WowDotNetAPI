@@ -16,6 +16,6 @@ namespace WowDotNetAPI.Models
         public int NumNotCollected { get; set; }
 
         [DataMember(Name = "collected")]
-        public IEnumerable<CharacterPet> Collected { get; set; }
+        public IEnumerable<Pet> Collected { get; set; }
     }
 }

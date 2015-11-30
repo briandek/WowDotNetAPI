@@ -7,6 +7,7 @@ using System.Text;
 namespace WowDotNetAPI.Models
 {
     [DataContract]
+    [Obsolete("With Warlords of Draaenor, auction houses are merged. This class only adds convolution.", true)]
     public class AuctionHouseSide
     {
         [DataMember(Name = "auctions")]

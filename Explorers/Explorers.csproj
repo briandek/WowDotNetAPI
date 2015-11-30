@@ -75,7 +75,6 @@
     <Compile Include="Models\CharacterFeed.cs" />
     <Compile Include="Models\CharacterPets.cs" />
     <Compile Include="Models\CharacterPetSlot.cs" />
-    <Compile Include="Models\CharacterPetStats.cs" />
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />
@@ -91,7 +90,6 @@
     <Compile Include="Models\Auctions.cs" />
     <Compile Include="Models\CharacterClassInfo.cs" />
     <Compile Include="Models\CharacterClassesData.cs" />
-    <Compile Include="Models\CharacterPet.cs" />
     <Compile Include="Models\CharacterRaceInfo.cs" />
     <Compile Include="Models\CharacterRacesData.cs" />
     <Compile Include="Models\GuildPerkInfo.cs" />
@@ -116,8 +114,20 @@
     <Compile Include="Models\ItemUpgrade.cs" />
     <Compile Include="Models\ItemWeaponDamage.cs" />
     <Compile Include="Models\ItemWeaponInfo.cs" />
+    <Compile Include="Models\Mount.cs" />
+    <Compile Include="Models\Mounts.cs" />
+    <Compile Include="Models\Pet.cs" />
+    <Compile Include="Models\PetAbility.cs" />
+    <Compile Include="Models\PetAbilityDetails.cs" />
+    <Compile Include="Models\PetList.cs" />
+    <Compile Include="Models\PetSpecies.cs" />
+    <Compile Include="Models\PetStats.cs" />
+    <Compile Include="Models\PetType.cs" />
+    <Compile Include="Models\PetTypeData.cs" />
     <Compile Include="Models\PvpStats.cs" />
     <Compile Include="Models\Leaderboard.cs" />
+    <Compile Include="Models\Quest.cs" />
+    <Compile Include="Models\Recipe.cs" />
     <Compile Include="Utilities\JsonUtility.cs" />
     <Compile Include="WowExplorer.cs" />
     <Compile Include="Models\Character.cs" />
