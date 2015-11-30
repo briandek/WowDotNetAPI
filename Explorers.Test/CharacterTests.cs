@@ -161,9 +161,19 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(cClass, briandek.@Class);
             Assert.AreEqual(cRace, briandek.Race);
             Assert.AreEqual(cGender, briandek.Gender);
+			Assert.IsNotNull(briandek.Items.Tabard);
         }
 
-        [TestMethod]
+		[TestMethod]
+		public void Get_Simple_Character_WithItems_Tabard() {
+			string characterNameWithTabard = "Urf";
+			var briandek = explorer.GetCharacter(Realm, characterNameWithTabard, CharacterOptions.GetItems);
+			Assert.IsNotNull(briandek.Items);
+			Assert.IsTrue(briandek.Name.Equals(characterNameWithTabard, StringComparison.InvariantCultureIgnoreCase));
+			Assert.IsNotNull(briandek.Items.Tabard);
+		}
+
+		[TestMethod]
         public void Get_Simple_Character_WithReputations()
         {
 
