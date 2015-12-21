@@ -74,7 +74,7 @@ namespace WowDotNetAPI.Explorers.Test
             Assert.AreEqual(3.7, sampleItem.WeaponInfo.WeaponSpeed);
 
             Assert.AreEqual(8, sampleItem.BonusStats.ElementAt(2).Amount);
-            Assert.AreEqual("Hurls a fiery ball that causes ^6.6574 Fire damage and an additional ^1.6475 damage over 10 sec.",
+            Assert.AreEqual("Hurls a fiery ball that causes ^6.7081 Fire damage and an additional ^1.6600 damage over 10 sec.",
                 sampleItem.ItemSpells.First().Spell.Description);
         }
 
