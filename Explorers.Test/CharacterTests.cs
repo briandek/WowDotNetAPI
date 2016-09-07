@@ -416,6 +416,15 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(cClass, briandek.@Class);
             Assert.AreEqual(cRace, briandek.Race);
             Assert.AreEqual(cGender, briandek.Gender);
-        }       
-    }
+        }
+
+		[TestMethod]
+		public void Get_Artifact_Weapon() {
+			var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetEverything);
+
+			Assert.IsNotNull(briandek.Items);
+			Assert.IsTrue(briandek.Items.MainHand.ArtifactId > 0);
+			Assert.IsTrue(briandek.Items.MainHand.Relics.Any());
+		}
+	}
 }
