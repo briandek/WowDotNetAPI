@@ -19,7 +19,8 @@ namespace WowDotNetAPI.Models
         MAGE = 8,
         WARLOCK = 9,
         MONK = 10,
-        DRUID = 11
+        DRUID = 11,
+		DEMONHUNTER = 12
     }
 
     [DataContract]

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace WowDotNetAPI.Models
 {
-    //public enum ItemQuality
-
     [DataContract]
 	public class CharacterItem
 	{
@@ -40,5 +35,15 @@ namespace WowDotNetAPI.Models
 
 		[DataMember(Name = "bonusLists")]
 		public IEnumerable<int> BonusLists { get; set; }
+
+		// Legion
+		[DataMember(Name = "artifactId")]
+		public int ArtifactId { get; set; }
+
+		[DataMember(Name = "artifactTraits")]
+		public IEnumerable<CharacterItemArtifactTrait> ArtifactTraits { get; set; }
+
+		[DataMember(Name = "relics")]
+		public IEnumerable<CharacterItemRelic> Relics { get; set; }
 	}
 }
