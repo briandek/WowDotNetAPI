@@ -16,8 +16,8 @@ namespace WowDotNetAPI.Test
         private const Region WowRegion = Region.US;
         private const Locale WowLocale = Locale.en_US;
         private const string CharacterName = "briandek";
-        private const string Realm = "spirestone";
-        private const int level = 100;
+        private const string Realm = "korgath";
+        private const int level = 110;
         private const CharacterClass cClass = CharacterClass.WARRIOR;
         private const CharacterRace cRace = CharacterRace.HUMAN;
         private const CharacterGender cGender = CharacterGender.MALE;

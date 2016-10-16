@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>WowDotNetAPI</id>
-    <version>4.0.3</version>
-    <authors>briandek</authors>
+    <version>4.0.8</version>
+    <authors>jsassner mjdean1994 Dramacydal Mythos Eadie Briandek</authors>
     <owners>briandek</owners>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/briandek/WowDotNetAPI</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.NET library for the World of Warcraft Community Platform. Requires Mashery API key.</description>
-    <releaseNotes>1. more updates </releaseNotes>
-    <copyright>Copyright 2014</copyright>
+    <releaseNotes>Legion Updates</releaseNotes>
+    <copyright>Copyright 2015</copyright>
     <tags>World-of-Warcraft WoW Community-Platform-API</tags>
   </metadata>
 </package>
