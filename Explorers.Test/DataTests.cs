@@ -48,7 +48,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var characterAchievements = explorer.GetAchievements();
 
-            Assert.AreEqual(14, characterAchievements.Count());
+            Assert.AreEqual(15, characterAchievements.Count());
             var achievementList = characterAchievements.First<AchievementList>(a => a.Id == 92);
             var gotMyMindOnMyMoneyAchievement = achievementList.Achievements.First<AchievementInfo>(a => a.Id == 1181);
             Assert.AreEqual("Loot 25,000 gold", gotMyMindOnMyMoneyAchievement.Criteria.ElementAt(0).Description);
@@ -60,7 +60,7 @@ namespace WowDotNetAPI.Explorers.Test
         {
             var classes = explorer.GetCharacterClasses();
 
-            Assert.IsTrue(classes.Count() == 11);
+            Assert.AreEqual(classes.Count(), 12);
             Assert.IsTrue(classes.Any(r => r.Name == "Warrior" || r.Name == "Death Knight"));
         }
 
@@ -84,7 +84,7 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Guild_Perks_Data()
         {
             var perks = explorer.GetGuildPerks();
-            Assert.AreEqual(6, perks.Count());
+            Assert.AreEqual(5, perks.Count());
             Assert.IsTrue(perks.Any(r => r.Spell != null));
         }
 
