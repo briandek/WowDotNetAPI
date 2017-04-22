@@ -18,7 +18,9 @@ namespace WowDotNetAPI.Models
         [EnumMember(Value = "energy")]
         ENERGY,
         [EnumMember(Value = "runic-power")]
-        RUNICPOWER
+        RUNICPOWER,
+        [EnumMember(Value = "fury")]
+        FURY
     }
 
     [DataContract]
