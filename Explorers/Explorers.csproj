@@ -77,6 +77,8 @@
     <Compile Include="Models\CharacterFeed.cs" />
     <Compile Include="Models\CharacterPets.cs" />
     <Compile Include="Models\CharacterPetSlot.cs" />
+    <Compile Include="Models\CharacterPvPBracket.cs" />
+    <Compile Include="Models\CharacterPvPBrackets.cs" />
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />

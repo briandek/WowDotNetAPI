@@ -63,9 +63,6 @@ namespace WowDotNetAPI.Utilities
             if ((characterOptions & CharacterOptions.GetHunterPets) == CharacterOptions.GetHunterPets)
                 tmp.Add("hunterPets");
 
-            if ((characterOptions & CharacterOptions.GetStatistics) == CharacterOptions.GetStatistics)
-                tmp.Add("statistics");
-
             //petSlots
             //Pets
 

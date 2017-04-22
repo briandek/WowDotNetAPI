@@ -137,6 +137,9 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "statistics")]
         public CharacterStatistics Statistics { get; set; }
 
+        [DataMember(Name = "totalHonorableKills")]
+        public int TotalHonorableKills { get; set; }
+
         public CharacterClass Class { get { return (CharacterClass)Enum.Parse(typeof(CharacterClass), Enum.GetName(typeof(CharacterClass), @class).Replace(' ', '_')); } }
         public CharacterRace @Race { get { return (CharacterRace)Enum.Parse(typeof(CharacterRace), Enum.GetName(typeof(CharacterRace), race).Replace(' ', '_')); } }
         public CharacterGender Gender { get { return (CharacterGender)Enum.Parse(typeof(CharacterGender), Enum.GetName(typeof(CharacterGender), gender).Replace(' ', '_')); } }

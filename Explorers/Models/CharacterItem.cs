@@ -45,5 +45,10 @@ namespace WowDotNetAPI.Models
 
 		[DataMember(Name = "relics")]
 		public IEnumerable<CharacterItemRelic> Relics { get; set; }
-	}
+
+        public override string ToString()
+        {
+            return string.Format("{0}", Name);
+        }
+    }
 }

@@ -71,5 +71,31 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "ranged")]
         public CharacterItem Ranged { get; set; }
+
+        public CharacterItem[] ToArray()
+        {
+            return new []
+            {
+                Head,
+                Neck,
+                Shoulder,
+                Back,
+                Chest,
+                Shirt,
+                Tabard,
+                Wrist,
+                Hands,
+                Waist,
+                Legs,
+                Feet,
+                Finger1,
+                Finger2,
+                Trinket1,
+                Trinket2,
+                MainHand,
+                OffHand,
+                Ranged
+            };
+        }
     }
 }
