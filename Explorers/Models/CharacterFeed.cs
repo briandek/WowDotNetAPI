@@ -33,5 +33,11 @@ namespace WowDotNetAPI.Models
         [DataMember(Name = "itemId")]
         public int ItemId { get; set; }
 
+        [DataMember(Name = "context")]
+        public string Context { get; set; }
+
+        [DataMember(Name = "bonusLists")]
+        public int[] BonusLists { get; set; }
+
     }
 }

@@ -77,9 +77,14 @@
     <Compile Include="Models\CharacterFeed.cs" />
     <Compile Include="Models\CharacterPets.cs" />
     <Compile Include="Models\CharacterPetSlot.cs" />
+    <Compile Include="Models\CharacterPvPBracket.cs" />
+    <Compile Include="Models\CharacterPvPBrackets.cs" />
     <Compile Include="Models\CharacterRatedBattleground.cs" />
     <Compile Include="Models\CharacterRatedBattlegrounds.cs" />
     <Compile Include="Models\CharacterPVP.cs" />
+    <Compile Include="Models\CharacterStatisticEntry.cs" />
+    <Compile Include="Models\CharacterStatistics.cs" />
+    <Compile Include="Models\CharacterStatisticsSubcategory.cs" />
     <Compile Include="Models\CharacterTalentInfo.cs" />
     <Compile Include="Models\CharacterTalentSpec.cs" />
     <Compile Include="Models\CharacterTalentSpell.cs" />

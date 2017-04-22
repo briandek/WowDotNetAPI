@@ -127,6 +127,7 @@ namespace WowDotNetAPI.Test
             Assert.AreEqual(UnitSide.ALLIANCE, guild.Side);
         }
 
+
         [TestMethod]
         public void Get_Guild_With_Connected_Realms() {
             WowExplorer explorer2 = new WowExplorer(Region.EU, Locale.en_GB, APIKey);

@@ -12,11 +12,17 @@ namespace WowDotNetAPI.Models
         [DataMember(Name="name")]
 		public string Name { get; set; }
 
+        [DataMember(Name = "lfr")]
+        public int LFR { get; set; }
+
         [DataMember(Name = "normal")]
         public int Normal { get; set; }
 
         [DataMember(Name = "heroic")]
         public int Heroic { get; set; }
+
+        [DataMember(Name = "mythic")]
+        public int Mythic { get; set; }
 
         [DataMember(Name = "id")]
         public int Id { get; set; }

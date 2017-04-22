@@ -59,8 +59,7 @@ namespace WowDotNetAPI.Explorers.Test
         public void Get_Character_Classes_Data()
         {
             var classes = explorer.GetCharacterClasses();
-
-            Assert.IsTrue(classes.Count() == 12);
+            Assert.AreEqual(classes.Count(), 12);
             Assert.IsTrue(classes.Any(r => r.Name == "Warrior" || r.Name == "Death Knight"));
         }
 
