@@ -47,6 +47,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -74,6 +75,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -101,6 +103,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -128,6 +131,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -155,6 +159,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -192,6 +197,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -219,6 +225,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -246,6 +253,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -273,6 +281,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -300,6 +309,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -328,6 +338,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -357,6 +368,7 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNotNull(briandek.Achievements);
             Assert.IsNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
@@ -384,6 +396,35 @@ namespace WowDotNetAPI.Test
             Assert.IsNull(briandek.Pets);
             Assert.IsNull(briandek.Achievements);
             Assert.IsNotNull(briandek.Progression);
+            Assert.IsNull(briandek.Statistics);
+
+            Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
+            Assert.AreEqual(level, briandek.Level);
+            Assert.AreEqual(cClass, briandek.@Class);
+            Assert.AreEqual(cRace, briandek.Race);
+            Assert.AreEqual(cGender, briandek.Gender);
+        }
+
+        [TestMethod]
+        public void Get_Simple_Character_WithStatistics()
+        {
+
+            var briandek = explorer.GetCharacter(Realm, CharacterName, CharacterOptions.GetStatistics);
+
+            Assert.IsNull(briandek.Guild);
+            Assert.IsNull(briandek.Stats);
+            Assert.IsNull(briandek.Talents);
+            Assert.IsNull(briandek.Items);
+            Assert.IsNull(briandek.Reputation);
+            Assert.IsNull(briandek.Titles);
+            Assert.IsNull(briandek.Professions);
+            Assert.IsNull(briandek.Appearance);
+            Assert.IsNull(briandek.PetSlots);
+            Assert.IsNull(briandek.Mounts);
+            Assert.IsNull(briandek.Pets);
+            Assert.IsNull(briandek.Achievements);
+            Assert.IsNull(briandek.Progression);
+            Assert.IsNotNull(briandek.Statistics);
 
             Assert.IsTrue(briandek.Name.Equals(CharacterName, StringComparison.InvariantCultureIgnoreCase));
             Assert.AreEqual(level, briandek.Level);
