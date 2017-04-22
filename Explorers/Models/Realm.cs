@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
@@ -58,6 +59,9 @@ namespace WowDotNetAPI.Models
 
         [DataMember(Name = "locale")]
         public string Locale { get; set; }
+
+        [DataMember(Name = "connected_realms")]
+        public IEnumerable<string> ConnectedRealms { get; set; }
 
         public RealmType Type { get { return (RealmType)Enum.Parse(typeof(RealmType), type, true); } }
 
