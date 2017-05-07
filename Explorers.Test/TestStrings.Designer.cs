@@ -61,7 +61,7 @@ namespace WowDotNetAPI.Explorers.Test {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
+        ///   Looks up a localized string similar to gfyjawteeb4wbzke674wbwzyjbpcahjv.
         /// </summary>
         internal static string APIKey {
             get {
