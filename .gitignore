@@ -39,3 +39,4 @@ _ReSharper*/
 #Project files
 [Bb]uild/
 *.nupkg
+/.vs/WowDotNetAPI/v15/sqlite3
