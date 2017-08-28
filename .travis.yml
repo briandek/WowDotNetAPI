@@ -1,0 +1,10 @@
+language: csharp
+script:
+  - msbuild /p:Configuration=Debug WowDotNetAPI.sln
+before_install:
+  - sudo apt-get install nunit-console
+  - msbuild-prepare
+before_script:
+  - nuget restore WowDotNetAPI.sln
+after_script:
+  - nunit-console Explorers.Test/bin/Debug/WowDotNetAPI.Explorers.Test.dll

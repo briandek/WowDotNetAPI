@@ -164,7 +164,8 @@ namespace WowDotNetAPI.Test
 			Assert.IsNull(briandek.Items.Tabard);
         }
 
-		[TestMethod]
+
+	[TestMethod]
         public void Get_Simple_Character_WithReputations()
         {
 
